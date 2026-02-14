@@ -1,0 +1,61 @@
+[gd_scene format=3 uid="uid://bo2psdoq8iqmi"]
+
+[ext_resource type="PackedScene" uid="uid://bny4sqh4i8i5v" path="res://misc/HarvestItems/Harvestable.tscn" id="1_s8r23"]
+[ext_resource type="Script" uid="uid://wm1t8anytdyq" path="res://scr/Resources/ItemData/ItemData.gd" id="2_f737b"]
+[ext_resource type="Texture2D" uid="uid://b2hy8v8yu57g3" path="res://misc/HarvestItems/Textures/Cactus.png" id="2_s8r23"]
+[ext_resource type="Resource" path="res://scr/Resources/Items/Cactus.tres" id="3_hkyrd"]
+[ext_resource type="Texture2D" uid="uid://bvn1k3yr05y11" path="res://Assets/Textures/Shadows/Shadow.png" id="3_plvqm"]
+[ext_resource type="Script" uid="uid://c8gtsucgxp2ef" path="res://misc/Boxes/EnemyHitBox.gd" id="4_wjwgw"]
+[ext_resource type="Script" uid="uid://b2ovoyoflp1gw" path="res://scr/Resources/ItemData/Equip_item_data.gd" id="5_plvqm"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wjwgw"]
+radius = 8.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_plvqm"]
+
+[sub_resource type="Resource" id="Resource_6bkd1"]
+script = ExtResource("5_plvqm")
+Damage = 1.5
+metadata/_custom_type_script = "uid://b2ovoyoflp1gw"
+
+[node name="Cactus" instance=ExtResource("1_s8r23")]
+harvest_tool_lvl = 2
+
+[node name="CollisionShape2D" parent="StaticBody2D" index="0"]
+position = Vector2(-1, -7)
+rotation = -1.57079
+shape = SubResource("CircleShape2D_wjwgw")
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2(0, -9)
+shape = SubResource("CircleShape2D_plvqm")
+
+[node name="optimizer" parent="." index="3" node_paths=PackedStringArray("hide_objects")]
+position = Vector2(2.38419e-07, -14.5)
+scale = Vector2(1.3, 1.65)
+hide_objects = [NodePath("../Sprite2D"), NodePath("../Shadow")]
+
+[node name="droper" parent="." index="4"]
+drop_item = Array[ExtResource("2_f737b")]([ExtResource("3_hkyrd")])
+max_drop = 5
+
+[node name="Sprite2D" type="Sprite2D" parent="." index="5"]
+position = Vector2(-1, -10)
+texture = ExtResource("2_s8r23")
+offset = Vector2(3, -7)
+
+[node name="Shadow" type="Sprite2D" parent="." index="6"]
+self_modulate = Color(0.0392157, 0.0705882, 0.2, 0.388235)
+z_index = -10
+position = Vector2(0, -3)
+scale = Vector2(1.75, 0.739666)
+texture = ExtResource("3_plvqm")
+
+[node name="entity_HitBox" type="Area2D" parent="." index="7"]
+script = ExtResource("4_wjwgw")
+equip = SubResource("Resource_6bkd1")
+metadata/_custom_type_script = "uid://c8gtsucgxp2ef"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="entity_HitBox" index="0"]
+position = Vector2(0, -9)
+shape = SubResource("CircleShape2D_plvqm")

@@ -1,0 +1,53 @@
+[gd_scene load_steps=3 format=3 uid="uid://civqx7y0nh75n"]
+
+[ext_resource type="Script" uid="uid://bci0xbmv0yg4c" path="res://scr/Systems/Inventory/Tooltip.gd" id="1_jbrqr"]
+[ext_resource type="Script" uid="uid://bttgnk3bb2a8i" path="res://addons/font_auto_size_labels/auto_size_label.gd" id="2_wxwl8"]
+
+[node name="Tooltip" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -480.0
+offset_bottom = -267.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_jbrqr")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -71.0
+offset_right = 126.0
+offset_bottom = -4.0
+grow_vertical = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 1.0
+offset_right = 122.0
+offset_bottom = 65.0
+
+[node name="Name" type="Label" parent="Panel/VBoxContainer"]
+custom_minimum_size = Vector2(100, 20)
+layout_mode = 2
+text = "item"
+autowrap_mode = 3
+
+[node name="Description" type="Label" parent="Panel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+text = "this is description"
+autowrap_mode = 3
+clip_text = true
+script = ExtResource("2_wxwl8")
+_max_size = 8
+_min_size = 2
+_current_font_size = 8
+_editor_defaults_set = true
+metadata/_custom_type_script = "uid://bttgnk3bb2a8i"

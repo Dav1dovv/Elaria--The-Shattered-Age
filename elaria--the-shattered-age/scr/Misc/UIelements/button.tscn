@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://gb7k36a7pc6o"]
+
+[ext_resource type="Script" uid="uid://b22k0b1ixwx0c" path="res://scr/Misc/Blaze_button.gd" id="1_e3xi5"]
+[ext_resource type="AudioStream" uid="uid://b6pu37af3vvgg" path="res://Assets/Audio/SFX/button_hover.wav" id="4_8u74a"]
+
+[node name="Button" type="Button"]
+offset_right = 145.0
+offset_bottom = 20.0
+script = ExtResource("1_e3xi5")
+
+[node name="Accept" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_8u74a")
+pitch_scale = 1.28
+bus = &"SFX"
+
+[node name="Decline" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_8u74a")
+pitch_scale = 0.64
+bus = &"SFX"
+
+[node name="Hover" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_8u74a")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="pressed" from="." to="." method="_on_pressed"]

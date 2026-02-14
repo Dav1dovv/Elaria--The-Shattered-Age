@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://b4chos4wwnr5"]
+
+[ext_resource type="PackedScene" uid="uid://df84w5luit8l8" path="res://misc/Entity/Villagers/npc.tscn" id="1_aiqfy"]
+[ext_resource type="Texture2D" uid="uid://dm71dyhffa4r4" path="res://misc/Entity/Textures/Mila1.png" id="2_aiqfy"]
+[ext_resource type="PackedScene" path="res://misc/DialogBubble/DialogBubble.tscn" id="3_4jgkr"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_aiqfy"]
+radius = 3.6607246
+height = 9.969101
+
+[node name="Mila" instance=ExtResource("1_aiqfy")]
+
+[node name="Body" parent="Skin" index="0"]
+texture = ExtResource("2_aiqfy")
+
+[node name="LeftLeg" parent="Skin/Body" index="0"]
+texture = ExtResource("2_aiqfy")
+
+[node name="RightLeg" parent="Skin/Body" index="1"]
+texture = ExtResource("2_aiqfy")
+
+[node name="Head" parent="Skin/Body" index="2"]
+texture = ExtResource("2_aiqfy")
+offset = Vector2(-0.501, -4.942)
+region_rect = Rect2(8, 5, 14, 14)
+
+[node name="Eyes" parent="Skin/Body/Head" index="0"]
+position = Vector2(2.5138035, -3.600765)
+texture = ExtResource("2_aiqfy")
+region_enabled = true
+region_rect = Rect2(15, 1, 6, 3)
+
+[node name="LeftHand" parent="Skin/Body/Hand" index="0"]
+texture = ExtResource("2_aiqfy")
+
+[node name="RightHand" parent="Skin/Body/Hand" index="1"]
+texture = ExtResource("2_aiqfy")
+
+[node name="DialogBubble" parent="." index="3" instance=ExtResource("3_4jgkr")]
+visible = false
+offset_left = 0.29652405
+offset_top = -24.476028
+offset_right = 0.29652405
+offset_bottom = -24.476028
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="4"]
+position = Vector2(0, -3.6562843)
+rotation = -1.5707964
+shape = SubResource("CapsuleShape2D_aiqfy")

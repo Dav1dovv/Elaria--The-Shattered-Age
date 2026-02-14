@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://d1tpxnk1173p1"]
+
+[ext_resource type="PackedScene" uid="uid://df84w5luit8l8" path="res://misc/Entity/Villagers/npc.tscn" id="1_5c6dj"]
+[ext_resource type="Texture2D" uid="uid://dxfw53owl5mi5" path="res://misc/Entity/Textures/Villagers.png" id="2_npjvt"]
+[ext_resource type="PackedScene" path="res://misc/DialogBubble/DialogBubble.tscn" id="3_la6gk"]
+
+[node name="NPC" instance=ExtResource("1_5c6dj")]
+
+[node name="Body" parent="Skin" index="0"]
+texture = ExtResource("2_npjvt")
+
+[node name="LeftLeg" parent="Skin/Body" index="0"]
+texture = ExtResource("2_npjvt")
+
+[node name="RightLeg" parent="Skin/Body" index="1"]
+texture = ExtResource("2_npjvt")
+
+[node name="Head" parent="Skin/Body" index="2"]
+texture = ExtResource("2_npjvt")
+
+[node name="Eyes" parent="Skin/Body/Head" index="0"]
+visible = false
+
+[node name="LeftHand" parent="Skin/Body/Hand" index="0"]
+texture = ExtResource("2_npjvt")
+
+[node name="RightHand" parent="Skin/Body/Hand" index="1"]
+texture = ExtResource("2_npjvt")
+
+[node name="DialogBubble" parent="." index="3" instance=ExtResource("3_la6gk")]
+visible = false

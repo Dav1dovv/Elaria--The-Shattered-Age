@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://dgd5as0pvq6c2"]
+
+[ext_resource type="PackedScene" uid="uid://bny4sqh4i8i5v" path="res://misc/HarvestItems/Harvestable.tscn" id="1_vlig4"]
+[ext_resource type="Texture2D" uid="uid://fntr6jml7ihq" path="res://misc/HarvestItems/Textures/Bone.png" id="2_hdpap"]
+[ext_resource type="Script" uid="uid://b7lfnqk6b5cdp" path="res://scr/Misc/RandomSprite.gd" id="3_dvcta"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_igy4k"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2tqya"]
+size = Vector2(21, 21.4598)
+
+[node name="Bone" unique_id=1170788625 instance=ExtResource("1_vlig4")]
+durability = 13.0
+
+[node name="CollisionShape2D" parent="StaticBody2D" index="0"]
+shape = SubResource("CircleShape2D_igy4k")
+
+[node name="optimizer" parent="." index="2" node_paths=PackedStringArray("hide_objects")]
+rect = Rect2(-17, -30, 36, 31)
+hide_objects = [NodePath("../Sprite2D")]
+
+[node name="CollisionShape2D" parent="." index="5"]
+position = Vector2(0.5000003, -11.2701)
+shape = SubResource("RectangleShape2D_2tqya")
+
+[node name="Sprite2D" type="Sprite2D" parent="." index="6" unique_id=304451572]
+position = Vector2(1, -10)
+texture = ExtResource("2_hdpap")
+offset = Vector2(0, -7)
+hframes = 3
+script = ExtResource("3_dvcta")
+frame_weights = Array[float]([0.5, 0.5, 0.5])
+metadata/_custom_type_script = "uid://b7lfnqk6b5cdp"

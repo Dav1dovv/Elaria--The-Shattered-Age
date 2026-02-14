@@ -1,0 +1,384 @@
+[gd_scene format=3 uid="uid://be2h1sxenyt31"]
+
+[ext_resource type="PackedScene" uid="uid://ddok5ai5dtxca" path="res://misc/Entity/entity.tscn" id="1_c0o1h"]
+[ext_resource type="Script" uid="uid://cu4mrajt8isay" path="res://misc/Entity/AI/BossAI.gd" id="2_agbjq"]
+[ext_resource type="PackedScene" uid="uid://cxgki8imydgcn" path="res://misc/Entity/Enemies/Worms/SandWorm.tscn" id="3_agbjq"]
+[ext_resource type="PackedScene" uid="uid://u72aa5bych45" path="res://misc/Projectiles/Bullet.tscn" id="3_s1125"]
+[ext_resource type="Script" uid="uid://cg0qrkg54iwle" path="res://misc/Entity/AI/BossConfig.gd" id="4_v706e"]
+[ext_resource type="Script" uid="uid://cpp05fs341abo" path="res://misc/Entity/Stats.gd" id="5_0l42q"]
+[ext_resource type="Texture2D" uid="uid://cmufgb3l4np0" path="res://misc/Entity/Textures/Bosses/Cursed Lord2.png" id="6_eq6o3"]
+[ext_resource type="Shader" uid="uid://bave1i4dxbqt3" path="res://Assets/Shader/Wind Sway.gdshader" id="7_s1125"]
+[ext_resource type="Texture2D" uid="uid://bvn1k3yr05y11" path="res://Assets/Textures/Shadows/Shadow.png" id="8_4vcol"]
+[ext_resource type="Script" uid="uid://cyqd8atmamgy0" path="res://scr/Misc/VFX.gd" id="9_4nfqn"]
+[ext_resource type="Script" uid="uid://c6tw2fkklnri5" path="res://misc/Drop/DropItem.gd" id="10_ibndq"]
+[ext_resource type="Script" uid="uid://wm1t8anytdyq" path="res://scr/Resources/ItemData/ItemData.gd" id="11_a01sq"]
+[ext_resource type="Script" uid="uid://c8gtsucgxp2ef" path="res://misc/Boxes/EnemyHitBox.gd" id="13_53nt5"]
+[ext_resource type="AudioStream" uid="uid://b15uoyeoq3550" path="res://Assets/Audio/SFX/Player/Drink.wav" id="13_k57ji"]
+[ext_resource type="Script" uid="uid://dj4umu6271nxr" path="res://scr/Resources/effects/EffectResource.gd" id="14_iapxn"]
+[ext_resource type="Texture2D" uid="uid://tl5v6uf373gc" path="res://Assets/Textures/SpriteSheets/Food - Sheet.png" id="15_4vcol"]
+[ext_resource type="Script" uid="uid://d2b3gchtl7jhb" path="res://misc/Boxes/HurtBox.gd" id="15_tus67"]
+[ext_resource type="Script" uid="uid://ds5d4cljtsmfp" path="res://scr/Resources/ItemData/Food_item_data.gd" id="16_4nfqn"]
+[ext_resource type="Texture2D" uid="uid://bj3k1id46eild" path="res://Assets/Textures/SpriteSheets/weapons-Sheet.png" id="18_ibndq"]
+[ext_resource type="Script" uid="uid://b2ovoyoflp1gw" path="res://scr/Resources/ItemData/Equip_item_data.gd" id="19_a01sq"]
+
+[sub_resource type="Resource" id="Resource_lctoi"]
+script = ExtResource("4_v706e")
+phase2_threshold = 0.25
+phase_transition_anim = "Idle"
+phase_transition_duration = 0.1
+chase_speed_mult = 1.0
+phase2_speed_mult = 1.0
+phase3_speed_mult = 1.0
+approach_offset = 0.0
+offset_change_interval = 0.5
+melee_cooldown = 0.2
+melee_cooldown_phase2_mult = 0.1
+melee_cooldown_phase3_mult = 0.1
+rotation_speed = 5.06
+ranged_enabled = true
+shoot_cooldown = 3.0
+projectile_scene = ExtResource("3_s1125")
+projectile_burst = 4
+burst_spread_deg = 15.0
+dash_enabled = true
+dash_cooldown = 2.0
+dash_speed_mult = 14.0
+dash_duration = 0.25
+dash_min_range = 360.0
+summon_enabled = true
+minion_scenes = Array[PackedScene]([ExtResource("3_agbjq")])
+minion_count = 5
+max_minions = 6
+death_linger_time = 8.0
+metadata/_custom_type_script = "uid://cg0qrkg54iwle"
+
+[sub_resource type="Resource" id="Resource_y8844"]
+script = ExtResource("5_0l42q")
+max_health = 876
+base_move_speed = 2.6
+base_armor = 100.0
+base_defense_modifier = 0.3
+metadata/_custom_type_script = "uid://cpp05fs341abo"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_v706e"]
+shader = ExtResource("7_s1125")
+shader_parameter/speed = 7.0
+shader_parameter/minStrength = 0.05
+shader_parameter/maxStrength = 0.01
+shader_parameter/strengthScale = 100.0
+shader_parameter/interval = 3.5
+shader_parameter/detail = 1.0
+shader_parameter/distortion = 0.0
+shader_parameter/heightOffset = 0.0
+shader_parameter/offset = 0.0
+
+[sub_resource type="Animation" id="Animation_0l42q"]
+resource_name = "Attack"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body:material:shader_parameter/speed")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 3.2, 4.4666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [7.0, 0.0, 0.0, 7.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../HurtBox/CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.33333334, 3.4333334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_k57ji"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Body:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../HitBox/CollisionShape2D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../HurtBox/CollisionShape2D:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Body:material:shader_parameter/speed")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [7.0]
+}
+
+[sub_resource type="Animation" id="Animation_iapxn"]
+resource_name = "Spawn"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Body:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, -0.0029687285), Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../HitBox/CollisionShape2D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../HurtBox/CollisionShape2D:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_4vcol"]
+resource_name = "Walk"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.03333336),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Body:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.03333336),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../HitBox/CollisionShape2D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.03333336),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../HurtBox/CollisionShape2D:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.03333336),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4nfqn"]
+_data = {
+&"Attack": SubResource("Animation_0l42q"),
+&"RESET": SubResource("Animation_k57ji"),
+&"Spawn": SubResource("Animation_iapxn"),
+&"Walk": SubResource("Animation_4vcol")
+}
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hia2p"]
+atlas = ExtResource("15_4vcol")
+region = Rect2(32, 32, 16, 16)
+margin = Rect2(0.6, 0, 0, 0)
+
+[sub_resource type="Resource" id="Resource_x03lt"]
+script = ExtResource("16_4nfqn")
+eat_sound = ExtResource("13_k57ji")
+icon = SubResource("AtlasTexture_hia2p")
+play_anim = "Drink"
+item_name = "Energy Drink"
+metadata/_custom_type_script = "uid://ds5d4cljtsmfp"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qw0k2"]
+atlas = ExtResource("18_ibndq")
+region = Rect2(32, 48, 16, 16)
+
+[sub_resource type="Resource" id="Resource_aqglf"]
+script = ExtResource("19_a01sq")
+lvl = 2
+Damage = 18
+hit_distance = 22.0
+equiped_weapon_sprite = SubResource("AtlasTexture_qw0k2")
+icon = SubResource("AtlasTexture_qw0k2")
+item_name = "Iron Hammer"
+metadata/_custom_type_script = "uid://b2ovoyoflp1gw"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_c0o1h"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hgcfy"]
+size = Vector2(10.000001, 21.875)
+
+[node name="Eaater" unique_id=2111811093 node_paths=PackedStringArray("body_anim", "Vfx_node") instance=ExtResource("1_c0o1h")]
+scale = Vector2(1.6, 1.6)
+script = ExtResource("2_agbjq")
+config = SubResource("Resource_lctoi")
+body_anim = NodePath("Skin/AnimationPlayer")
+enemy_lvl = 1
+lvl_changeable = false
+Entity_stats = SubResource("Resource_y8844")
+Vfx_node = NodePath("VFX")
+knockback_strength = 0.0
+
+[node name="optimizer" parent="." index="0" unique_id=63861658]
+rect = Rect2(-12.499999, 0.625, 26.249998, 28.124996)
+
+[node name="Body" type="Sprite2D" parent="Skin" parent_id_path=PackedInt32Array(1828601376) index="0" unique_id=983770043]
+material = SubResource("ShaderMaterial_v706e")
+position = Vector2(0, 13.053839)
+texture = ExtResource("6_eq6o3")
+offset = Vector2(0, -7.969999)
+region_rect = Rect2(12, 19, 8, 8)
+
+[node name="Shadow" type="Sprite2D" parent="Skin/Body" index="0" unique_id=1829858245]
+self_modulate = Color(0.039215688, 0.07058824, 0.2, 0.14509805)
+z_index = -10
+position = Vector2(0, 2.0000014)
+scale = Vector2(0.85937494, 0.43305358)
+texture = ExtResource("8_4vcol")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Skin" parent_id_path=PackedInt32Array(1828601376) index="1" unique_id=1810838831]
+libraries/ = SubResource("AnimationLibrary_4nfqn")
+autoplay = &"Spawn"
+
+[node name="HealthBar" parent="." index="2" unique_id=1655663475]
+visible = true
+offset_left = -13.749998
+offset_top = 20.0
+offset_right = 13.749998
+offset_bottom = 23.0
+
+[node name="VFX" type="Node" parent="." index="3" unique_id=1156688135]
+script = ExtResource("9_4nfqn")
+metadata/_custom_type_script = "uid://cyqd8atmamgy0"
+
+[node name="Drop_items" type="Node" parent="." index="4" unique_id=546601998]
+script = ExtResource("10_ibndq")
+drop_item = Array[ExtResource("11_a01sq")]([SubResource("Resource_x03lt")])
+max_drop = 21
+metadata/_custom_type_script = "uid://c6tw2fkklnri5"
+
+[node name="HitBox" type="Area2D" parent="." index="5" unique_id=624539802]
+position = Vector2(0, 3.7499995)
+rotation = 1.5707964
+script = ExtResource("13_53nt5")
+equip = SubResource("Resource_aqglf")
+metadata/_custom_type_script = "uid://c8gtsucgxp2ef"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox" index="0" unique_id=2132861132]
+position = Vector2(5.6250005, -4.7683716e-07)
+scale = Vector2(0.99999994, 0.99999994)
+shape = SubResource("CircleShape2D_c0o1h")
+
+[node name="ShotPoint" type="Marker2D" parent="HitBox" index="1" unique_id=770292526]
+position = Vector2(0.62500024, -2.731963e-08)
+
+[node name="HurtBox" type="Area2D" parent="." index="6" unique_id=200152166 node_paths=PackedStringArray("Path_to_stat") groups=["Ennemy"]]
+position = Vector2(0, 6.2499995)
+collision_layer = 16
+collision_mask = 8
+script = ExtResource("15_tus67")
+Path_to_stat = NodePath("..")
+metadata/_custom_type_script = "uid://d2b3gchtl7jhb"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox" index="0" unique_id=1882022331]
+position = Vector2(0, -0.9374992)
+scale = Vector2(0.9999998, 0.9999998)
+shape = SubResource("RectangleShape2D_hgcfy")
+disabled = true

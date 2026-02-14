@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://c3c0loneb1l85"]
+
+[ext_resource type="Texture2D" uid="uid://c2ysa6udwgtci" path="res://Assets/Textures/SpriteSheets/Structures.png" id="1_q4ava"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m5l1d"]
+size = Vector2(36, 10)
+
+[node name="Fence" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -7)
+texture = ExtResource("1_q4ava")
+region_enabled = true
+region_rect = Rect2(278, 37, 37, 25)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, -6)
+shape = SubResource("RectangleShape2D_m5l1d")
+debug_color = Color(0.9999997, 0.013056019, 0.044672728, 0.41960785)

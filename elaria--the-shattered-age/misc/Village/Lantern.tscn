@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://dp8cftudt2khy"]
+
+[ext_resource type="Texture2D" uid="uid://c2ysa6udwgtci" path="res://Assets/Textures/SpriteSheets/Structures.png" id="1_qkf40"]
+[ext_resource type="Texture2D" uid="uid://dsqxjnpk365qg" path="res://Assets/Textures/Light/Light.png" id="2_dw7eu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2bqls"]
+size = Vector2(2, 14)
+
+[node name="Lantern" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -13)
+texture = ExtResource("1_qkf40")
+offset = Vector2(0, -9)
+region_enabled = true
+region_rect = Rect2(293, 85, 6, 43)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Sprite2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/StaticBody2D"]
+position = Vector2(0, 5)
+shape = SubResource("RectangleShape2D_2bqls")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(0, -35)
+color = Color(0.78039217, 0.6784314, 0, 1)
+texture = ExtResource("2_dw7eu")
+texture_scale = 11.93

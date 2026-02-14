@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://di5cggjdpmass"]
+
+[ext_resource type="Texture2D" uid="uid://c2ysa6udwgtci" path="res://Assets/Textures/SpriteSheets/Structures.png" id="1_e1abj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0unp7"]
+size = Vector2(4, 52)
+
+[node name="Hfence" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(5, -4)
+texture = ExtResource("1_e1abj")
+region_enabled = true
+region_rect = Rect2(277, 69, 12, 56)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, -6)
+shape = SubResource("RectangleShape2D_0unp7")
+debug_color = Color(0.9999997, 0.013056019, 0.044672728, 0.41960785)

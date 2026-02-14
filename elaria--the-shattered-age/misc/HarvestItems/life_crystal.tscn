@@ -1,0 +1,75 @@
+[gd_scene format=3 uid="uid://c4utefe16m5jg"]
+
+[ext_resource type="PackedScene" uid="uid://bny4sqh4i8i5v" path="res://misc/HarvestItems/Harvestable.tscn" id="1_mpy3a"]
+[ext_resource type="Script" uid="uid://wm1t8anytdyq" path="res://scr/Resources/ItemData/ItemData.gd" id="2_3mg1d"]
+[ext_resource type="Texture2D" uid="uid://bvn1k3yr05y11" path="res://Assets/Textures/Shadows/Shadow.png" id="2_kwsjy"]
+[ext_resource type="Texture2D" uid="uid://c1lu2mx28lw8e" path="res://misc/HarvestItems/Textures/LifeCrystal.png" id="3_jjxvs"]
+[ext_resource type="Resource" path="res://scr/Resources/Items/Life Crystal.tres" id="3_sdryy"]
+[ext_resource type="Resource" path="res://scr/Resources/Items/Stone.tres" id="4_1rdd0"]
+[ext_resource type="AudioStream" uid="uid://dxdm4dmbwy5o" path="res://misc/HarvestItems/SFX/Mining/CrystalDestroy1.mp3" id="7_51311"]
+[ext_resource type="AudioStream" uid="uid://dcdnb1cqxf1sv" path="res://misc/HarvestItems/SFX/Mining/CrystalDestroy2.mp3" id="8_i01v7"]
+[ext_resource type="AudioStream" uid="uid://dbbhice1grva3" path="res://misc/HarvestItems/SFX/Mining/Mineral1.mp3" id="9_epgrp"]
+[ext_resource type="AudioStream" uid="uid://cwh1uo74lmus0" path="res://misc/HarvestItems/SFX/Mining/Mineral2.mp3" id="10_00ryl"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3mg1d"]
+radius = 6.0
+height = 32.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mpy3a"]
+radius = 15.4689
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_kjewb"]
+playback_mode = 1
+streams_count = 2
+stream_0/stream = ExtResource("7_51311")
+stream_1/stream = ExtResource("8_i01v7")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_77c5i"]
+playback_mode = 1
+streams_count = 2
+stream_0/stream = ExtResource("9_epgrp")
+stream_1/stream = ExtResource("10_00ryl")
+
+[node name="LifeCrystal" instance=ExtResource("1_mpy3a")]
+durability = 30.0
+harvest_tool_lvl = 2
+
+[node name="CollisionShape2D" parent="StaticBody2D" index="0"]
+position = Vector2(0, -6)
+rotation = -1.57079
+shape = SubResource("CapsuleShape2D_3mg1d")
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2(0.54052, -14)
+shape = SubResource("CircleShape2D_mpy3a")
+
+[node name="VFX" parent="." index="2" node_paths=PackedStringArray("audio_player")]
+audio_player = NodePath("../SFX")
+
+[node name="optimizer" parent="." index="3" node_paths=PackedStringArray("hide_objects")]
+position = Vector2(7.15256e-07, -15.5)
+scale = Vector2(1.8, 1.65)
+hide_objects = [NodePath("../Shadow"), NodePath("../Sprite2D")]
+
+[node name="droper" parent="." index="4"]
+drop_item = Array[ExtResource("2_3mg1d")]([ExtResource("3_sdryy"), ExtResource("4_1rdd0")])
+max_drop = 3
+
+[node name="Shadow" type="Sprite2D" parent="." index="5"]
+self_modulate = Color(0.0392157, 0.0705882, 0.2, 0.388235)
+z_index = -10
+position = Vector2(0, -2)
+scale = Vector2(2.25, 0.739666)
+texture = ExtResource("2_kwsjy")
+
+[node name="Sprite2D" type="Sprite2D" parent="." index="6"]
+position = Vector2(0, -10)
+texture = ExtResource("3_jjxvs")
+offset = Vector2(0, -7)
+
+[node name="Destroy" type="AudioStreamPlayer2D" parent="." index="7"]
+stream = SubResource("AudioStreamRandomizer_kjewb")
+
+[node name="SFX" type="AudioStreamPlayer2D" parent="." index="8"]
+stream = SubResource("AudioStreamRandomizer_77c5i")
+pitch_scale = 1.75

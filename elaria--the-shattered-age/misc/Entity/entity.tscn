@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://ddok5ai5dtxca"]
+
+[ext_resource type="Script" uid="uid://dsd2vkq83udix" path="res://misc/Entity/Entity.gd" id="1_281gg"]
+[ext_resource type="Script" uid="uid://dbxsovdq7bbia" path="res://scr/Misc/Optimizer.gd" id="2_q2g5j"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_281gg"]
+bg_color = Color(0.117647, 0.117647, 0.117647, 0.380392)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.133333, 0.133333, 0.133333, 0.521569)
+expand_margin_left = 1.0
+expand_margin_top = 1.0
+expand_margin_right = 1.0
+expand_margin_bottom = 1.0
+shadow_color = Color(0, 0, 0, 0.043137256)
+shadow_size = 1
+shadow_offset = Vector2(0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q2g5j"]
+bg_color = Color(0.28627452, 0.62352943, 0.16862746, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0.62352943, 0.18039216, 0.75686276)
+
+[node name="Entity" type="CharacterBody2D" unique_id=2111811093]
+y_sort_enabled = true
+script = ExtResource("1_281gg")
+metadata/_custom_type_script = "uid://dsd2vkq83udix"
+metadata/_edit_group_ = true
+
+[node name="optimizer" type="VisibleOnScreenEnabler2D" parent="." unique_id=63861658 node_paths=PackedStringArray("hide_objects")]
+position = Vector2(0, -10)
+enable_node_path = NodePath("../Skin")
+script = ExtResource("2_q2g5j")
+hide_objects = [NodePath("../Skin")]
+metadata/_custom_type_script = "uid://dbxsovdq7bbia"
+
+[node name="Skin" type="Node2D" parent="." unique_id=1828601376]
+
+[node name="HealthBar" type="ProgressBar" parent="." unique_id=1655663475]
+visible = false
+offset_left = -10.0
+offset_top = 3.0
+offset_right = 10.0
+offset_bottom = 6.0
+theme_override_styles/background = SubResource("StyleBoxFlat_281gg")
+theme_override_styles/fill = SubResource("StyleBoxFlat_q2g5j")
+value = 50.0
+show_percentage = false

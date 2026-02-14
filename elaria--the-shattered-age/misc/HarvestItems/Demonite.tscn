@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://bclxtpnpktidm"]
+
+[ext_resource type="PackedScene" uid="uid://bny4sqh4i8i5v" path="res://misc/HarvestItems/Harvestable.tscn" id="1_xgt2v"]
+[ext_resource type="Script" uid="uid://wm1t8anytdyq" path="res://scr/Resources/ItemData/ItemData.gd" id="2_uvpti"]
+[ext_resource type="Texture2D" uid="uid://cy8768n75v85m" path="res://misc/HarvestItems/Textures/Demonite.png" id="2_xgt2v"]
+[ext_resource type="Script" uid="uid://b7lfnqk6b5cdp" path="res://scr/Misc/RandomSprite.gd" id="3_uvpti"]
+[ext_resource type="Resource" path="res://scr/Resources/Items/Hot Ore.tres" id="3_w163v"]
+[ext_resource type="Texture2D" uid="uid://bvn1k3yr05y11" path="res://Assets/Textures/Shadows/Shadow.png" id="4_w163v"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vwh0b"]
+radius = 5.0
+height = 28.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bbc7c"]
+size = Vector2(34, 25)
+
+[node name="Diamond" instance=ExtResource("1_xgt2v")]
+durability = 50.0
+harvest_tool_lvl = 4
+
+[node name="CollisionShape2D" parent="StaticBody2D" index="0"]
+position = Vector2(0, -6)
+rotation = -1.57079
+shape = SubResource("CapsuleShape2D_vwh0b")
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2(2.38419e-07, -11.5)
+shape = SubResource("RectangleShape2D_bbc7c")
+
+[node name="optimizer" parent="." index="3" node_paths=PackedStringArray("hide_objects")]
+position = Vector2(-4.76837e-07, -11)
+scale = Vector2(1.7, 1.3)
+hide_objects = [NodePath("../Sprite2D"), NodePath("../Shadow")]
+
+[node name="droper" parent="." index="4"]
+drop_item = Array[ExtResource("2_uvpti")]([ExtResource("3_w163v")])
+max_drop = 5
+
+[node name="Sprite2D" type="Sprite2D" parent="." index="5"]
+position = Vector2(0, -9)
+texture = ExtResource("2_xgt2v")
+offset = Vector2(0, -6)
+hframes = 2
+script = ExtResource("3_uvpti")
+frame_weights = Array[float]([0.5, 0.5])
+metadata/_custom_type_script = "uid://b7lfnqk6b5cdp"
+
+[node name="Shadow" type="Sprite2D" parent="." index="6"]
+self_modulate = Color(0.0392157, 0.0705882, 0.2, 0.388235)
+z_index = -10
+position = Vector2(0, -4)
+scale = Vector2(1.875, 0.875)
+texture = ExtResource("4_w163v")

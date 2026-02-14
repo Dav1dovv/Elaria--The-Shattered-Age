@@ -1,0 +1,107 @@
+[gd_scene format=3 uid="uid://xbceqybdlaga"]
+
+[ext_resource type="PackedScene" uid="uid://bny4sqh4i8i5v" path="res://misc/HarvestItems/Harvestable.tscn" id="1_0sged"]
+[ext_resource type="Texture2D" uid="uid://bvn1k3yr05y11" path="res://Assets/Textures/Shadows/Shadow.png" id="2_7lhcv"]
+[ext_resource type="Script" uid="uid://wm1t8anytdyq" path="res://scr/Resources/ItemData/ItemData.gd" id="2_ndbv1"]
+[ext_resource type="Shader" uid="uid://bave1i4dxbqt3" path="res://Assets/Shader/Wind Sway.gdshader" id="3_7lhcv"]
+[ext_resource type="Resource" path="res://scr/Resources/Items/Wood.tres" id="3_hajx0"]
+[ext_resource type="Texture2D" uid="uid://bbnebr6dwgti1" path="res://misc/HarvestItems/Textures/Palma.png" id="3_vsckn"]
+[ext_resource type="Script" uid="uid://ctm4b4v8txo1q" path="res://scr/Resources/WeightItem.gd" id="4_m0b6l"]
+[ext_resource type="Script" uid="uid://b7lfnqk6b5cdp" path="res://scr/Misc/RandomSprite.gd" id="4_ndbv1"]
+[ext_resource type="Resource" path="res://scr/Resources/Items/Coconout.tres" id="5_8cvd8"]
+[ext_resource type="AudioStream" uid="uid://bdpgims8h837c" path="res://misc/HarvestItems/SFX/Tree/Chop1.mp3" id="8_k7raf"]
+[ext_resource type="AudioStream" uid="uid://bjtqd3qjpmj7i" path="res://misc/HarvestItems/SFX/Tree/Chop2.mp3" id="9_e7l6s"]
+[ext_resource type="AudioStream" uid="uid://7cg0p0tt6th1" path="res://misc/HarvestItems/SFX/Tree/Chop3.mp3" id="10_m0b6l"]
+[ext_resource type="AudioStream" uid="uid://j5uefj5halva" path="res://misc/HarvestItems/SFX/Tree/Chop4.mp3" id="11_8cvd8"]
+[ext_resource type="AudioStream" uid="uid://b8nyht1i5ljfb" path="res://misc/HarvestItems/SFX/Tree/Chop5.mp3" id="12_pmes1"]
+[ext_resource type="AudioStream" uid="uid://bwykf37vh1ja0" path="res://misc/HarvestItems/SFX/Tree/Chop6.mp3" id="13_15nbm"]
+[ext_resource type="AudioStream" uid="uid://cgq3vrt2mb3mp" path="res://misc/HarvestItems/SFX/Tree/Chop7.mp3" id="14_g3skw"]
+[ext_resource type="AudioStream" uid="uid://bucv88ie5tnuv" path="res://misc/HarvestItems/SFX/Tree/WoodDestroy.mp3" id="15_hq4k5"]
+[ext_resource type="PackedScene" uid="uid://dtmd2j03iu8sl" path="res://misc/Particles/BushSFX.tscn" id="16_fysw1"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hajx0"]
+radius = 6.00564
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0sged"]
+radius = 13.7324
+
+[sub_resource type="Resource" id="Resource_pmes1"]
+script = ExtResource("4_m0b6l")
+item = ExtResource("5_8cvd8")
+weight = 0.2
+metadata/_custom_type_script = "uid://ctm4b4v8txo1q"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vsckn"]
+shader = ExtResource("3_7lhcv")
+shader_parameter/speed = 1.0
+shader_parameter/minStrength = 0.0450000021375
+shader_parameter/maxStrength = 0.0
+shader_parameter/strengthScale = 100.0
+shader_parameter/interval = 3.5
+shader_parameter/detail = 1.295
+shader_parameter/distortion = 0.12400000589
+shader_parameter/heightOffset = 0.0
+shader_parameter/offset = 0.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_hi8h6"]
+playback_mode = 1
+streams_count = 7
+stream_0/stream = ExtResource("8_k7raf")
+stream_1/stream = ExtResource("9_e7l6s")
+stream_2/stream = ExtResource("10_m0b6l")
+stream_3/stream = ExtResource("11_8cvd8")
+stream_4/stream = ExtResource("12_pmes1")
+stream_5/stream = ExtResource("13_15nbm")
+stream_6/stream = ExtResource("14_g3skw")
+
+[node name="HarvestItem" instance=ExtResource("1_0sged")]
+durability = 18.0
+max_distance = 60.0
+
+[node name="CollisionShape2D" parent="StaticBody2D" index="0"]
+position = Vector2(-1, -7)
+shape = SubResource("CircleShape2D_hajx0")
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2(-0.72974, -10.2701)
+shape = SubResource("CircleShape2D_0sged")
+
+[node name="VFX" parent="." index="2" node_paths=PackedStringArray("audio_player", "particles")]
+audio_player = NodePath("../SFX")
+particles = NodePath("../Particles")
+
+[node name="optimizer" parent="." index="3" node_paths=PackedStringArray("hide_objects")]
+position = Vector2(-1.5, -21.5)
+scale = Vector2(1.85, 2.45)
+hide_objects = [NodePath("../Shadow"), NodePath("../Sprite2D")]
+
+[node name="droper" parent="." index="4"]
+drop_item = Array[ExtResource("2_ndbv1")]([ExtResource("3_hajx0")])
+unique_items = Array[ExtResource("4_m0b6l")]([SubResource("Resource_pmes1")])
+max_drop = 7
+
+[node name="Shadow" type="Sprite2D" parent="." index="5"]
+self_modulate = Color(0.0392157, 0.0705882, 0.2, 0.254902)
+z_index = -10
+position = Vector2(0, -2)
+scale = Vector2(2.25, 0.739666)
+texture = ExtResource("2_7lhcv")
+
+[node name="Sprite2D" type="Sprite2D" parent="." index="6"]
+material = SubResource("ShaderMaterial_vsckn")
+position = Vector2(0, -11)
+texture = ExtResource("3_vsckn")
+offset = Vector2(-2, -17)
+hframes = 2
+script = ExtResource("4_ndbv1")
+frame_weights = Array[float]([0.5, 0.5])
+metadata/_custom_type_script = "uid://b7lfnqk6b5cdp"
+
+[node name="SFX" type="AudioStreamPlayer2D" parent="." index="7"]
+stream = SubResource("AudioStreamRandomizer_hi8h6")
+
+[node name="Destroy" type="AudioStreamPlayer2D" parent="." index="8"]
+stream = ExtResource("15_hq4k5")
+
+[node name="Particles" parent="." index="9" instance=ExtResource("16_fysw1")]
+position = Vector2(0, -33)

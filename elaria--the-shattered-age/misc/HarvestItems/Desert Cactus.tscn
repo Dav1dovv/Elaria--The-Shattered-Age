@@ -1,0 +1,63 @@
+[gd_scene format=3 uid="uid://dj2ll8p771f1k"]
+
+[ext_resource type="PackedScene" uid="uid://bny4sqh4i8i5v" path="res://misc/HarvestItems/Harvestable.tscn" id="1_ulbfy"]
+[ext_resource type="Texture2D" uid="uid://c7hhm5i1vluh6" path="res://misc/HarvestItems/Textures/DeseertCactus.png" id="2_4vhbo"]
+[ext_resource type="Script" uid="uid://wm1t8anytdyq" path="res://scr/Resources/ItemData/ItemData.gd" id="2_kimx4"]
+[ext_resource type="Texture2D" uid="uid://bvn1k3yr05y11" path="res://Assets/Textures/Shadows/Shadow.png" id="3_lcvta"]
+[ext_resource type="Resource" path="res://scr/Resources/Items/Cactus.tres" id="3_vkbtg"]
+[ext_resource type="Script" uid="uid://c8gtsucgxp2ef" path="res://misc/Boxes/EnemyHitBox.gd" id="4_kimx4"]
+[ext_resource type="Script" uid="uid://b2ovoyoflp1gw" path="res://scr/Resources/ItemData/Equip_item_data.gd" id="5_lcvta"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wjwgw"]
+radius = 8.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_plvqm"]
+
+[sub_resource type="Resource" id="Resource_kimx4"]
+script = ExtResource("5_lcvta")
+Damage = 1.5
+metadata/_custom_type_script = "uid://b2ovoyoflp1gw"
+
+[node name="Cactus" instance=ExtResource("1_ulbfy")]
+durability = 18.0
+harvest_tool_lvl = 2
+
+[node name="CollisionShape2D" parent="StaticBody2D" index="0"]
+position = Vector2(-1, -7)
+rotation = -1.57079
+shape = SubResource("CircleShape2D_wjwgw")
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2(0, -9)
+shape = SubResource("CircleShape2D_plvqm")
+
+[node name="optimizer" parent="." index="3" node_paths=PackedStringArray("hide_objects")]
+position = Vector2(-0.445925, -24.9051)
+scale = Vector2(1.56756, 2.69051)
+hide_objects = [NodePath("../Sprite2D"), NodePath("../Shadow")]
+
+[node name="droper" parent="." index="4"]
+drop_item = Array[ExtResource("2_kimx4")]([ExtResource("3_vkbtg")])
+max_drop = 8
+
+[node name="Sprite2D" type="Sprite2D" parent="." index="5"]
+position = Vector2(-2.11678, -24.0617)
+texture = ExtResource("2_4vhbo")
+offset = Vector2(3, -7)
+hframes = 4
+
+[node name="Shadow" type="Sprite2D" parent="." index="6"]
+self_modulate = Color(0.0392157, 0.0705882, 0.2, 0.388235)
+z_index = -10
+position = Vector2(0, -3)
+scale = Vector2(1.8896, 0.739666)
+texture = ExtResource("3_lcvta")
+
+[node name="entity_HitBox" type="Area2D" parent="." index="7"]
+script = ExtResource("4_kimx4")
+equip = SubResource("Resource_kimx4")
+metadata/_custom_type_script = "uid://c8gtsucgxp2ef"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="entity_HitBox" index="0"]
+position = Vector2(0, -9)
+shape = SubResource("CircleShape2D_plvqm")

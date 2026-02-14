@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://cflf6jkefex3e"]
+
+[ext_resource type="Texture2D" uid="uid://5s0ki3udxh7u" path="res://Assets/Textures/Cave.png" id="1_h1l3o"]
+[ext_resource type="Script" uid="uid://bj528o0edtyfg" path="res://scr/Misc/Door.gd" id="2_kr863"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_50q3t"]
+radius = 11.0
+height = 40.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uq0qi"]
+size = Vector2(25, 14)
+
+[node name="Cave" type="Node2D" unique_id=694596822]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=964770682]
+position = Vector2(0, -24)
+texture = ExtResource("1_h1l3o")
+region_enabled = true
+region_rect = Rect2(64, 16, 64, 48)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1333236899]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1933409554]
+position = Vector2(1, -12)
+rotation = -1.5707964
+shape = SubResource("CapsuleShape2D_50q3t")
+
+[node name="Door" type="Area2D" parent="." unique_id=1690525909]
+collision_layer = 1024
+collision_mask = 4
+script = ExtResource("2_kr863")
+go_to_scene = "MushTrollScene"
+metadata/_custom_type_script = "uid://bj528o0edtyfg"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Door" unique_id=2068460270]
+position = Vector2(2.5, -5)
+shape = SubResource("RectangleShape2D_uq0qi")

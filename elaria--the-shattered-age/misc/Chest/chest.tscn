@@ -1,0 +1,441 @@
+[gd_scene format=3 uid="uid://t1mi61y84oib"]
+
+[ext_resource type="Script" uid="uid://dbxsovdq7bbia" path="res://scr/Misc/Optimizer.gd" id="1_7b68o"]
+[ext_resource type="Script" uid="uid://wflmgj2qexop" path="res://misc/Chest/Chest.gd" id="1_8dabs"]
+[ext_resource type="Script" uid="uid://dp5sqr3dvy444" path="res://misc/Chest/LootPool.gd" id="2_5xnle"]
+[ext_resource type="Script" uid="uid://btxho8sqg8tnx" path="res://scr/Systems/Interaction/Interaction.gd" id="2_yb1kq"]
+[ext_resource type="Texture2D" uid="uid://datsysl7u1w7" path="res://misc/Chest/Chest1.png" id="3_8dabs"]
+[ext_resource type="Script" uid="uid://wm1t8anytdyq" path="res://scr/Resources/ItemData/ItemData.gd" id="3_72dcn"]
+[ext_resource type="Resource" path="res://scr/Resources/Items/Bitter.tres" id="4_mcgxt"]
+[ext_resource type="Texture2D" uid="uid://bvn1k3yr05y11" path="res://Assets/Textures/Shadows/Shadow.png" id="4_uyyit"]
+[ext_resource type="Resource" path="res://scr/Resources/Items/Cooper Sword.tres" id="5_0n4jv"]
+[ext_resource type="Resource" path="res://scr/Resources/Items/Clay key.tres" id="5_rn3rj"]
+[ext_resource type="Resource" path="res://scr/Resources/Items/Lead key.tres" id="6_h2h67"]
+[ext_resource type="Resource" path="res://scr/Resources/Items/Elder.tres" id="6_i3qui"]
+[ext_resource type="Resource" path="res://scr/Resources/Items/Bone Key.tres" id="7_j78vg"]
+[ext_resource type="Script" uid="uid://c6tw2fkklnri5" path="res://misc/Drop/DropItem.gd" id="11_8f5ct"]
+[ext_resource type="Texture2D" uid="uid://cuy7jewreml0b" path="res://misc/Chest/Chest2.png" id="11_rg1xu"]
+[ext_resource type="Resource" path="res://scr/Resources/Items/PortalEnergy.tres" id="12_0pqcv"]
+[ext_resource type="Texture2D" uid="uid://dbia0pj3m7m3f" path="res://misc/Chest/Chest3.png" id="12_s1m10"]
+[ext_resource type="Script" uid="uid://ctm4b4v8txo1q" path="res://scr/Resources/WeightItem.gd" id="13_rn3rj"]
+[ext_resource type="Resource" path="res://scr/Resources/Items/Old Hemlet.tres" id="14_h2h67"]
+[ext_resource type="Resource" path="res://scr/Resources/Items/perfect bow.tres" id="15_j78vg"]
+[ext_resource type="Resource" path="res://scr/Resources/Items/ZiziColaSmall.tres" id="16_sr236"]
+[ext_resource type="Texture2D" uid="uid://bj3k1id46eild" path="res://Assets/Textures/SpriteSheets/weapons-Sheet.png" id="17_mcgxt"]
+[ext_resource type="PackedScene" uid="uid://u72aa5bych45" path="res://misc/Projectiles/Bullet.tscn" id="18_0n4jv"]
+[ext_resource type="Script" uid="uid://b2ovoyoflp1gw" path="res://scr/Resources/ItemData/Equip_item_data.gd" id="19_i3qui"]
+[ext_resource type="Resource" path="res://scr/Resources/Items/Skovorodka.tres" id="20_rg1xu"]
+[ext_resource type="Resource" path="res://scr/Resources/Items/Sharder.tres" id="21_s1m10"]
+[ext_resource type="Resource" path="res://scr/Resources/Items/Iron axe.tres" id="22_1ky7r"]
+[ext_resource type="Resource" path="res://scr/Resources/Items/Bumerang.tres" id="23_nm1sp"]
+[ext_resource type="Resource" path="res://scr/Resources/Items/Bomb.tres" id="24_576ff"]
+[ext_resource type="AudioStream" uid="uid://e6mf5rd80uw8" path="res://misc/Chest/Chest close.wav" id="30_mcgxt"]
+
+[sub_resource type="Resource" id="Resource_jujb2"]
+script = ExtResource("2_5xnle")
+items = Array[ExtResource("3_72dcn")]([ExtResource("4_mcgxt"), ExtResource("5_0n4jv"), ExtResource("6_i3qui")])
+weights = Array[float]([0.5, 0.7, 0.4])
+metadata/_custom_type_script = "uid://dp5sqr3dvy444"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dpjqc"]
+radius = 14.9364
+
+[sub_resource type="Animation" id="Animation_7b68o"]
+resource_name = "Open"
+length = 1.54
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(0.211052, -0.25, 0, 0.25, 0, 0.195438, -0.25, 0, 0.25, 0, 0.20794, -0.25, 0, 0.25, 0, 0.211052, -0.25, 0, 0.106697, 120.789),
+"times": PackedFloat32Array(0, 0.29, 1.03333, 1.43333)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(-6.07981, -0.25, 0, 0.25, 0, -3.88393, -0.25, 0, 0.25, 0, -24, -0.25, 0, 0.25, 0, -6.07981, -0.493303, 8.07981, 0.25, 0),
+"times": PackedFloat32Array(0, 0.29, 1.03333, 1.43333)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0, 2, 1, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, -0.193408, 0, 0, 0, 0, 0.108864, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+"times": PackedFloat32Array(0, 0.29, 0.966667, 1.21, 1.43333)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:scale:x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 2, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1.17757, -0.25, 0, 0.25, 0, 0.488509, -0.25, 0, 0.25, 0, 1.32575, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.29, 0.733333, 1.03, 1.4)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Sprite2D:scale:y")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 0.555814, -0.25, 0, 0.25, 0, 1.23331, -0.25, 0, 0.25, 0, 1.09321, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.29, 0.733333, 1.03, 1.4)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Shadow:position:x")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1.43333)
+}
+tracks/6/type = "bezier"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Shadow:position:y")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(-2.94315, -0.25, 0, 0.25, 0, -2.94315, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1.43333)
+}
+tracks/7/type = "bezier"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Shadow:rotation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1.43333)
+}
+tracks/8/type = "bezier"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Shadow:scale:x")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(2.36938, -0.25, 0, 0.25, 0, 2.36938, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1.43333)
+}
+tracks/9/type = "bezier"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Shadow:scale:y")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1.43333)
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Sprite2D:frame")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0.527482, 0.666667, 0.933333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 0, 1]
+}
+tracks/11/type = "method"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Drop_items")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0.8666667),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_drop_items"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_yb1kq"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0.211052, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-6.07981, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:scale:x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Sprite2D:scale:y")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Shadow:position:x")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/6/type = "bezier"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Shadow:position:y")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-2.94315, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/7/type = "bezier"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Shadow:rotation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/8/type = "bezier"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Shadow:scale:x")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(2.36938, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/9/type = "bezier"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Shadow:scale:y")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Sprite2D:frame")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8dabs"]
+_data = {
+&"Open": SubResource("Animation_7b68o"),
+&"RESET": SubResource("Animation_yb1kq")
+}
+
+[sub_resource type="Resource" id="Resource_hk36e"]
+script = ExtResource("13_rn3rj")
+item = ExtResource("14_h2h67")
+weight = 0.03
+metadata/_custom_type_script = "uid://ctm4b4v8txo1q"
+
+[sub_resource type="Resource" id="Resource_t6o7e"]
+script = ExtResource("13_rn3rj")
+item = ExtResource("15_j78vg")
+weight = 0.04
+metadata/_custom_type_script = "uid://ctm4b4v8txo1q"
+
+[sub_resource type="Resource" id="Resource_x854i"]
+script = ExtResource("13_rn3rj")
+item = ExtResource("16_sr236")
+weight = 0.05
+metadata/_custom_type_script = "uid://ctm4b4v8txo1q"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1chp8"]
+atlas = ExtResource("17_mcgxt")
+region = Rect2(128, 80, 16, 16)
+
+[sub_resource type="Resource" id="Resource_2w6sc"]
+script = ExtResource("19_i3qui")
+Damage = 3
+Atk_speed = 2.0
+equiped_weapon_sprite = SubResource("AtlasTexture_1chp8")
+projectile = ExtResource("18_0n4jv")
+spread_degrees = 0.6
+icon = SubResource("AtlasTexture_1chp8")
+item_name = "Magic Stick"
+stackable = false
+metadata/_custom_type_script = "uid://b2ovoyoflp1gw"
+
+[sub_resource type="Resource" id="Resource_3y81i"]
+script = ExtResource("13_rn3rj")
+item = SubResource("Resource_2w6sc")
+weight = 0.03
+metadata/_custom_type_script = "uid://ctm4b4v8txo1q"
+
+[sub_resource type="Resource" id="Resource_et4m0"]
+script = ExtResource("13_rn3rj")
+item = ExtResource("20_rg1xu")
+weight = 0.02
+metadata/_custom_type_script = "uid://ctm4b4v8txo1q"
+
+[sub_resource type="Resource" id="Resource_qhdog"]
+script = ExtResource("13_rn3rj")
+item = ExtResource("21_s1m10")
+weight = 0.04
+metadata/_custom_type_script = "uid://ctm4b4v8txo1q"
+
+[sub_resource type="Resource" id="Resource_7tuwt"]
+script = ExtResource("13_rn3rj")
+item = ExtResource("22_1ky7r")
+weight = 0.1
+metadata/_custom_type_script = "uid://ctm4b4v8txo1q"
+
+[sub_resource type="Resource" id="Resource_8tsw2"]
+script = ExtResource("13_rn3rj")
+item = ExtResource("23_nm1sp")
+weight = 0.1
+metadata/_custom_type_script = "uid://ctm4b4v8txo1q"
+
+[sub_resource type="Resource" id="Resource_1py36"]
+script = ExtResource("13_rn3rj")
+item = ExtResource("24_576ff")
+weight = 0.08
+metadata/_custom_type_script = "uid://ctm4b4v8txo1q"
+
+[sub_resource type="Resource" id="Resource_5hme3"]
+script = ExtResource("13_rn3rj")
+item = SubResource("Resource_2w6sc")
+weight = 0.08
+metadata/_custom_type_script = "uid://ctm4b4v8txo1q"
+
+[node name="Chest" type="Node2D"]
+script = ExtResource("1_8dabs")
+drop_pools = Array[ExtResource("2_5xnle")]([SubResource("Resource_jujb2")])
+need_tool = Array[ExtResource("3_72dcn")]([ExtResource("5_rn3rj"), ExtResource("6_h2h67"), ExtResource("7_j78vg")])
+sprites = Array[Texture]([ExtResource("3_8dabs"), ExtResource("11_rg1xu"), ExtResource("12_s1m10")])
+
+[node name="optimizer" type="VisibleOnScreenEnabler2D" parent="." node_paths=PackedStringArray("hide_objects")]
+position = Vector2(-0.0817547, -9.31995)
+scale = Vector2(1.97287, 1.42512)
+script = ExtResource("1_7b68o")
+hide_objects = [NodePath("../Sprite2D"), NodePath("../Shadow")]
+metadata/_custom_type_script = "uid://dbxsovdq7bbia"
+
+[node name="interaction_area" type="Area2D" parent="." groups=["Interactable"]]
+collision_layer = 128
+collision_mask = 256
+script = ExtResource("2_yb1kq")
+show_message = "Open chest"
+metadata/_custom_type_script = "uid://btxho8sqg8tnx"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="interaction_area"]
+position = Vector2(0, -9.81047)
+shape = SubResource("CircleShape2D_dpjqc")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0.211052, -6.07981)
+texture = ExtResource("3_8dabs")
+offset = Vector2(-0.211052, -5.03873)
+hframes = 2
+
+[node name="Shadow" type="Sprite2D" parent="."]
+modulate = Color(0.0505171, 0.0960983, 0.231323, 0.235294)
+z_index = -5
+position = Vector2(0, -2.94315)
+scale = Vector2(2.36938, 1)
+texture = ExtResource("4_uyyit")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_8dabs")
+}
+
+[node name="Drop_items" type="Node" parent="."]
+script = ExtResource("11_8f5ct")
+drop_item = Array[ExtResource("3_72dcn")]([ExtResource("12_0pqcv")])
+unique_items = Array[ExtResource("13_rn3rj")]([SubResource("Resource_hk36e"), SubResource("Resource_t6o7e"), SubResource("Resource_x854i"), SubResource("Resource_3y81i"), SubResource("Resource_et4m0"), SubResource("Resource_qhdog"), SubResource("Resource_7tuwt"), SubResource("Resource_8tsw2"), SubResource("Resource_1py36"), SubResource("Resource_5hme3")])
+max_drop = 5
+random_values = true
+metadata/_custom_type_script = "uid://c6tw2fkklnri5"
+
+[node name="SFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("30_mcgxt")

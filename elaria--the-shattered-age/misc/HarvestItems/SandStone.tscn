@@ -1,0 +1,80 @@
+[gd_scene format=3 uid="uid://d1ho2o3el8abn"]
+
+[ext_resource type="PackedScene" uid="uid://bny4sqh4i8i5v" path="res://misc/HarvestItems/Harvestable.tscn" id="1_esxs8"]
+[ext_resource type="Texture2D" uid="uid://dqaxq3iceubds" path="res://misc/HarvestItems/Textures/SandStone.png" id="2_esxs8"]
+[ext_resource type="Script" uid="uid://b7lfnqk6b5cdp" path="res://scr/Misc/RandomSprite.gd" id="3_i21nc"]
+[ext_resource type="Texture2D" uid="uid://bvn1k3yr05y11" path="res://Assets/Textures/Shadows/Shadow.png" id="4_nv4v0"]
+[ext_resource type="Script" uid="uid://wm1t8anytdyq" path="res://scr/Resources/ItemData/ItemData.gd" id="5_kh02v"]
+[ext_resource type="Resource" path="res://scr/Resources/Items/Stone.tres" id="6_nowhl"]
+[ext_resource type="AudioStream" uid="uid://dhnejho0mmxmq" path="res://misc/HarvestItems/SFX/Mining/Destroy1.mp3" id="7_h4luk"]
+[ext_resource type="AudioStream" uid="uid://prb16b2eig2m" path="res://misc/HarvestItems/SFX/Mining/Destroy2.mp3" id="8_mvseu"]
+[ext_resource type="AudioStream" uid="uid://c5rjjykffa2ub" path="res://misc/HarvestItems/SFX/Mining/Destroy3.mp3" id="9_p0nyc"]
+[ext_resource type="AudioStream" uid="uid://d16cd8gkmveq0" path="res://misc/HarvestItems/SFX/Mining/Stone1.mp3" id="10_pe4wm"]
+[ext_resource type="AudioStream" uid="uid://ck8tnuu1blxre" path="res://misc/HarvestItems/SFX/Mining/Stone2.mp3" id="11_x5qhq"]
+[ext_resource type="AudioStream" uid="uid://c158d8m1quj47" path="res://misc/HarvestItems/SFX/Mining/Stone3.mp3" id="12_lxloe"]
+[ext_resource type="AudioStream" uid="uid://imuayp8xcd7r" path="res://misc/HarvestItems/SFX/Mining/Stone4.mp3" id="13_b5nm7"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bhrl0"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bhrl0"]
+radius = 13.697088
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_bhrl0"]
+playback_mode = 1
+streams_count = 3
+stream_0/stream = ExtResource("7_h4luk")
+stream_1/stream = ExtResource("8_mvseu")
+stream_2/stream = ExtResource("9_p0nyc")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_nlxki"]
+playback_mode = 1
+streams_count = 4
+stream_0/stream = ExtResource("10_pe4wm")
+stream_1/stream = ExtResource("11_x5qhq")
+stream_2/stream = ExtResource("12_lxloe")
+stream_3/stream = ExtResource("13_b5nm7")
+
+[node name="HarvestItem" instance=ExtResource("1_esxs8")]
+durability = 20.0
+harvest_tool_lvl = 2
+
+[node name="CollisionShape2D" parent="StaticBody2D" index="0"]
+rotation = -1.5707941
+shape = SubResource("CapsuleShape2D_bhrl0")
+
+[node name="CollisionShape2D" parent="." index="1"]
+shape = SubResource("CircleShape2D_bhrl0")
+
+[node name="Sprite2D" type="Sprite2D" parent="." index="2"]
+position = Vector2(0, -16)
+texture = ExtResource("2_esxs8")
+hframes = 3
+frame = 1
+script = ExtResource("3_i21nc")
+frame_weights = Array[float]([1.0, 1.0, 1.0])
+metadata/_custom_type_script = "uid://b7lfnqk6b5cdp"
+
+[node name="Shadow" type="Sprite2D" parent="Sprite2D" index="0"]
+modulate = Color(0, 0, 0.14509805, 0.23529412)
+z_index = -1
+position = Vector2(0, 13)
+scale = Vector2(2.625, 1.125)
+texture = ExtResource("4_nv4v0")
+
+[node name="VFX" parent="." index="3" node_paths=PackedStringArray("audio_player")]
+audio_player = NodePath("../SFX")
+
+[node name="optimizer" parent="." index="4" node_paths=PackedStringArray("hide_objects")]
+position = Vector2(0, -13)
+rect = Rect2(-18, -14, 36, 28)
+hide_objects = [NodePath("../Sprite2D")]
+
+[node name="droper" parent="." index="5"]
+drop_item = Array[ExtResource("5_kh02v")]([ExtResource("6_nowhl")])
+max_drop = 5
+
+[node name="Destroy" type="AudioStreamPlayer2D" parent="." index="7"]
+stream = SubResource("AudioStreamRandomizer_bhrl0")
+
+[node name="SFX" type="AudioStreamPlayer2D" parent="." index="8"]
+stream = SubResource("AudioStreamRandomizer_nlxki")

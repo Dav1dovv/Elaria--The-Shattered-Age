@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://piec4akyrig7"]
+
+[ext_resource type="PackedScene" uid="uid://df84w5luit8l8" path="res://misc/Entity/Villagers/npc.tscn" id="1_uqgh2"]
+[ext_resource type="Texture2D" uid="uid://dxfw53owl5mi5" path="res://misc/Entity/Textures/Villagers.png" id="2_34ld1"]
+[ext_resource type="PackedScene" path="res://misc/DialogBubble/DialogBubble.tscn" id="3_agugx"]
+
+[node name="NPC" instance=ExtResource("1_uqgh2")]
+
+[node name="Body" parent="Skin" index="0"]
+texture = ExtResource("2_34ld1")
+region_rect = Rect2(76, 19, 7, 8)
+
+[node name="LeftLeg" parent="Skin/Body" index="0"]
+texture = ExtResource("2_34ld1")
+region_rect = Rect2(76, 27, 3, 4)
+
+[node name="RightLeg" parent="Skin/Body" index="1"]
+texture = ExtResource("2_34ld1")
+region_rect = Rect2(80, 27, 3, 4)
+
+[node name="Head" parent="Skin/Body" index="2"]
+texture = ExtResource("2_34ld1")
+offset = Vector2(-0.501, -4.572)
+region_rect = Rect2(72, 2, 14, 16)
+
+[node name="Eyes" parent="Skin/Body/Head" index="0"]
+visible = false
+
+[node name="LeftHand" parent="Skin/Body/Hand" index="0"]
+texture = ExtResource("2_34ld1")
+region_rect = Rect2(72, 20, 2, 6)
+
+[node name="Equip" parent="Skin/Body/Hand/LeftHand" index="0"]
+visible = true
+scale = Vector2(0.76186585, 0.76186585)
+
+[node name="RightHand" parent="Skin/Body/Hand" index="1"]
+texture = ExtResource("2_34ld1")
+region_rect = Rect2(72, 20, 2, 6)
+
+[node name="DialogBubble" parent="." index="3" instance=ExtResource("3_agugx")]
+visible = false
+offset_top = -29.0
+offset_right = 0.0
+offset_bottom = -29.0

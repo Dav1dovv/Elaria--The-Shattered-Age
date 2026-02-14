@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://fgmnq4ft82wh"]
+
+[ext_resource type="Script" uid="uid://bdpkv7mxycsja" path="res://scr/Manager/GameManager.gd" id="1_8lo6w"]
+[ext_resource type="Script" uid="uid://loq3kip7ism3" path="res://scr/Systems/WorldGenerator/WorldGenerator.gd" id="2_8lo6w"]
+[ext_resource type="Script" uid="uid://bwabf86cec2s5" path="res://scr/Systems/WorldGenerator/Generation.gd" id="3_6ue0y"]
+[ext_resource type="PackedScene" uid="uid://wrujdkh27eaa" path="res://misc/HarvestItems/TreeObjects/Simple_tree.tscn" id="4_2ifnd"]
+[ext_resource type="PackedScene" uid="uid://qc6y8v64442s" path="res://misc/Entity/Player/player.tscn" id="5_1ds54"]
+[ext_resource type="Script" uid="uid://cpp05fs341abo" path="res://misc/Entity/Stats.gd" id="6_n55o3"]
+[ext_resource type="Script" uid="uid://cx0477dq0nkws" path="res://scr/Misc/Blaze_camera.gd" id="7_q0jo5"]
+
+[sub_resource type="Resource" id="Resource_bd8m6"]
+script = ExtResource("3_6ue0y")
+Generation_scene = ExtResource("4_2ifnd")
+metadata/_custom_type_script = "uid://bwabf86cec2s5"
+
+[sub_resource type="Resource" id="Resource_ubcgh"]
+script = ExtResource("6_n55o3")
+base_move_speed = 4.2
+base_armor = 2.0
+base_defense_modifier = 0.2
+metadata/_custom_type_script = "uid://cpp05fs341abo"
+
+[node name="LocationRoot" type="Node2D" unique_id=1133907741]
+y_sort_enabled = true
+script = ExtResource("1_8lo6w")
+
+[node name="WorldGenerator" type="Node2D" parent="." unique_id=569046359 node_paths=PackedStringArray("player")]
+y_sort_enabled = true
+script = ExtResource("2_8lo6w")
+generation_items = Array[ExtResource("3_6ue0y")]([SubResource("Resource_bd8m6")])
+player = NodePath("../Player")
+metadata/_custom_type_script = "uid://loq3kip7ism3"
+
+[node name="Player" parent="." unique_id=1150737309 instance=ExtResource("5_1ds54")]
+Entity_stats = SubResource("Resource_ubcgh")
+
+[node name="Blaze_camera" type="Camera2D" parent="Player" unique_id=253610393]
+position_smoothing_enabled = true
+rotation_smoothing_enabled = true
+script = ExtResource("7_q0jo5")
+auto_screenshot = false
+metadata/_custom_type_script = "uid://cx0477dq0nkws"

@@ -1,0 +1,118 @@
+[gd_scene load_steps=3 format=3 uid="uid://sjgag6jimpm5"]
+
+[ext_resource type="Script" uid="uid://gmjkwg2yd4f4" path="res://scr/Misc/RandomObjectChooser.gd" id="1_pcqxj"]
+[ext_resource type="PackedScene" uid="uid://cpcvbjrcfytg" path="res://misc/HarvestItems/Vase.tscn" id="2_8dfux"]
+
+[node name="Jars" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_pcqxj")
+
+[node name="Node2D" type="Node2D" parent="."]
+visible = false
+y_sort_enabled = true
+
+[node name="Vase" parent="Node2D" instance=ExtResource("2_8dfux")]
+position = Vector2(-1, -11)
+
+[node name="Vase2" parent="Node2D" instance=ExtResource("2_8dfux")]
+position = Vector2(-2, 15)
+
+[node name="Vase3" parent="Node2D" instance=ExtResource("2_8dfux")]
+position = Vector2(28, -9)
+
+[node name="Vase4" parent="Node2D" instance=ExtResource("2_8dfux")]
+position = Vector2(56, -6)
+
+[node name="Vase5" parent="Node2D" instance=ExtResource("2_8dfux")]
+position = Vector2(-35, -9)
+
+[node name="Node2D2" type="Node2D" parent="."]
+visible = false
+y_sort_enabled = true
+
+[node name="Vase6" parent="Node2D2" instance=ExtResource("2_8dfux")]
+position = Vector2(0, -1)
+
+[node name="Vase7" parent="Node2D2" instance=ExtResource("2_8dfux")]
+position = Vector2(24, -1)
+
+[node name="Vase8" parent="Node2D2" instance=ExtResource("2_8dfux")]
+position = Vector2(12, 21)
+
+[node name="Vase9" parent="Node2D2" instance=ExtResource("2_8dfux")]
+position = Vector2(11, -15)
+
+[node name="Node2D3" type="Node2D" parent="."]
+visible = false
+y_sort_enabled = true
+
+[node name="Vase" parent="Node2D3" instance=ExtResource("2_8dfux")]
+position = Vector2(-14, 23)
+
+[node name="Vase2" parent="Node2D3" instance=ExtResource("2_8dfux")]
+position = Vector2(24, -4)
+
+[node name="Vase3" parent="Node2D3" instance=ExtResource("2_8dfux")]
+position = Vector2(48, 17)
+
+[node name="Vase4" parent="Node2D3" instance=ExtResource("2_8dfux")]
+position = Vector2(34, 37)
+
+[node name="Vase5" parent="Node2D3" instance=ExtResource("2_8dfux")]
+position = Vector2(75, 38)
+
+[node name="Vase6" parent="Node2D3" instance=ExtResource("2_8dfux")]
+position = Vector2(116, -3)
+
+[node name="Node2D4" type="Node2D" parent="."]
+visible = false
+y_sort_enabled = true
+
+[node name="Vase" parent="Node2D4" instance=ExtResource("2_8dfux")]
+position = Vector2(0, -15)
+
+[node name="Vase2" parent="Node2D4" instance=ExtResource("2_8dfux")]
+position = Vector2(-20, -2)
+
+[node name="Vase3" parent="Node2D4" instance=ExtResource("2_8dfux")]
+position = Vector2(-34, 20)
+
+[node name="Vase4" parent="Node2D4" instance=ExtResource("2_8dfux")]
+position = Vector2(-28, 42)
+
+[node name="Vase5" parent="Node2D4" instance=ExtResource("2_8dfux")]
+position = Vector2(-9, 54)
+
+[node name="Vase6" parent="Node2D4" instance=ExtResource("2_8dfux")]
+position = Vector2(17, 49)
+
+[node name="Vase7" parent="Node2D4" instance=ExtResource("2_8dfux")]
+position = Vector2(37, 34)
+
+[node name="Vase8" parent="Node2D4" instance=ExtResource("2_8dfux")]
+position = Vector2(42, 11)
+
+[node name="Vase9" parent="Node2D4" instance=ExtResource("2_8dfux")]
+position = Vector2(32, -8)
+
+[node name="Node2D5" type="Node2D" parent="."]
+visible = false
+y_sort_enabled = true
+
+[node name="Vase" parent="Node2D5" instance=ExtResource("2_8dfux")]
+position = Vector2(-13, -2)
+
+[node name="Vase2" parent="Node2D5" instance=ExtResource("2_8dfux")]
+position = Vector2(19, 2)
+
+[node name="Vase3" parent="Node2D5" instance=ExtResource("2_8dfux")]
+position = Vector2(47, -6)
+
+[node name="Vase4" parent="Node2D5" instance=ExtResource("2_8dfux")]
+position = Vector2(-2, 19)
+
+[node name="Vase5" parent="Node2D5" instance=ExtResource("2_8dfux")]
+position = Vector2(27, 26)
+
+[node name="Vase6" parent="Node2D5" instance=ExtResource("2_8dfux")]
+position = Vector2(54, 36)

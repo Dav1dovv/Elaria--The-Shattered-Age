@@ -1,0 +1,60 @@
+[gd_scene format=3 uid="uid://docichxvgtw5j"]
+
+[ext_resource type="PackedScene" uid="uid://bny4sqh4i8i5v" path="res://misc/HarvestItems/Harvestable.tscn" id="1_k25c7"]
+[ext_resource type="Script" uid="uid://wm1t8anytdyq" path="res://scr/Resources/ItemData/ItemData.gd" id="2_j4flj"]
+[ext_resource type="Texture2D" uid="uid://brhpx2lbnnfy2" path="res://misc/HarvestItems/Textures/Coal.png" id="2_k25c7"]
+[ext_resource type="Texture2D" uid="uid://bvn1k3yr05y11" path="res://Assets/Textures/Shadows/Shadow.png" id="3_j4flj"]
+[ext_resource type="Resource" path="res://scr/Resources/Items/Coal.tres" id="3_rac0g"]
+[ext_resource type="AudioStream" uid="uid://dhnejho0mmxmq" path="res://misc/HarvestItems/SFX/Mining/Destroy1.mp3" id="6_4hw3q"]
+[ext_resource type="AudioStream" uid="uid://prb16b2eig2m" path="res://misc/HarvestItems/SFX/Mining/Destroy2.mp3" id="7_j3hu0"]
+[ext_resource type="AudioStream" uid="uid://c5rjjykffa2ub" path="res://misc/HarvestItems/SFX/Mining/Destroy3.mp3" id="8_letgc"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_k8spl"]
+radius = 5.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_k25c7"]
+radius = 12.4712
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_nn5o6"]
+playback_mode = 1
+streams_count = 3
+stream_0/stream = ExtResource("6_4hw3q")
+stream_1/stream = ExtResource("7_j3hu0")
+stream_2/stream = ExtResource("8_letgc")
+
+[node name="Coal" instance=ExtResource("1_k25c7")]
+durability = 10.0
+
+[node name="CollisionShape2D" parent="StaticBody2D" index="0"]
+position = Vector2(0, -6)
+rotation = -1.57079
+shape = SubResource("CapsuleShape2D_k8spl")
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2(0, -11)
+shape = SubResource("CircleShape2D_k25c7")
+
+[node name="optimizer" parent="." index="3" node_paths=PackedStringArray("hide_objects")]
+position = Vector2(-0.500001, -8.5)
+scale = Vector2(1.95, 1.15)
+hide_objects = [NodePath("../Sprite2D"), NodePath("../Shadow")]
+
+[node name="droper" parent="." index="4"]
+drop_item = Array[ExtResource("2_j4flj")]([ExtResource("3_rac0g")])
+max_drop = 6
+
+[node name="Sprite2D" type="Sprite2D" parent="." index="5"]
+position = Vector2(0, -9)
+texture = ExtResource("2_k25c7")
+offset = Vector2(0, -7)
+
+[node name="Shadow" type="Sprite2D" parent="." index="6"]
+self_modulate = Color(0.0392157, 0.0705882, 0.2, 0.388235)
+z_index = -10
+position = Vector2(0, -3)
+scale = Vector2(2.25, 0.739666)
+texture = ExtResource("3_j4flj")
+
+[node name="Destroy" type="AudioStreamPlayer2D" parent="." index="7"]
+stream = SubResource("AudioStreamRandomizer_nn5o6")
+pitch_scale = 0.5
