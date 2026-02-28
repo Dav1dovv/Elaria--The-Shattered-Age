@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="FoodData" format=3 uid="uid://cb1sewtosnmna"]
+
+[ext_resource type="Script" uid="uid://dj4umu6271nxr" path="res://scr/Resources/effects/EffectResource.gd" id="1_ash0r"]
+[ext_resource type="Texture2D" uid="uid://cf3avrbvs0ues" path="res://Assets/Textures/SpriteSheets/Items-Sheet.png" id="2_07mjn"]
+[ext_resource type="Script" uid="uid://ds5d4cljtsmfp" path="res://scr/Resources/ItemData/Food_item_data.gd" id="2_y3uq1"]
+
+[sub_resource type="Resource" id="Resource_gpoqj"]
+script = ExtResource("1_ash0r")
+value = 30.0
+metadata/_custom_type_script = "uid://dj4umu6271nxr"
+
+[sub_resource type="Resource" id="Resource_1xmul"]
+script = ExtResource("1_ash0r")
+effect_type = 2
+value = 5.0
+duration = 10.0
+metadata/_custom_type_script = "uid://dj4umu6271nxr"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rpt42"]
+atlas = ExtResource("2_07mjn")
+region = Rect2(96, 80, 16, 16)
+
+[resource]
+script = ExtResource("2_y3uq1")
+effects = Array[ExtResource("1_ash0r")]([SubResource("Resource_gpoqj"), SubResource("Resource_1xmul")])
+icon = SubResource("AtlasTexture_rpt42")
+play_anim = "Eating"
+item_name = "Fruit Salad"
+stackable = false
+metadata/_custom_type_script = "uid://ds5d4cljtsmfp"

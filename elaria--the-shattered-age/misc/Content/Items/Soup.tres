@@ -1,0 +1,31 @@
+[gd_resource type="Resource" script_class="FoodData" format=3 uid="uid://dcq40wub6m824"]
+
+[ext_resource type="Script" uid="uid://dj4umu6271nxr" path="res://scr/Resources/effects/EffectResource.gd" id="1_xp6ks"]
+[ext_resource type="Texture2D" uid="uid://cf3avrbvs0ues" path="res://Assets/Textures/SpriteSheets/Items-Sheet.png" id="2_ne3ue"]
+[ext_resource type="Script" uid="uid://ds5d4cljtsmfp" path="res://scr/Resources/ItemData/Food_item_data.gd" id="2_wu61a"]
+
+[sub_resource type="Resource" id="Resource_3w5u7"]
+script = ExtResource("1_xp6ks")
+value = 35.0
+metadata/_custom_type_script = "uid://dj4umu6271nxr"
+
+[sub_resource type="Resource" id="Resource_rhf4l"]
+script = ExtResource("1_xp6ks")
+effect_type = 3
+value = 7.0
+duration = 40.0
+tick_interval = 3.0
+metadata/_custom_type_script = "uid://dj4umu6271nxr"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0fetf"]
+atlas = ExtResource("2_ne3ue")
+region = Rect2(128, 64, 16, 16)
+
+[resource]
+script = ExtResource("2_wu61a")
+effects = Array[ExtResource("1_xp6ks")]([SubResource("Resource_3w5u7"), SubResource("Resource_rhf4l")])
+icon = SubResource("AtlasTexture_0fetf")
+play_anim = "Eating"
+item_name = "mushroom Soup"
+stackable = false
+metadata/_custom_type_script = "uid://ds5d4cljtsmfp"

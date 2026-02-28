@@ -4,8 +4,10 @@
 [ext_resource type="Script" uid="uid://wm1t8anytdyq" path="res://scr/Resources/ItemData/ItemData.gd" id="2_hov17"]
 [ext_resource type="Texture2D" uid="uid://8gr600sw3qmf" path="res://misc/HarvestItems/Textures/Diamond.png" id="2_pbbmj"]
 [ext_resource type="Script" uid="uid://b7lfnqk6b5cdp" path="res://scr/Misc/RandomSprite.gd" id="3_hov17"]
-[ext_resource type="Resource" path="res://scr/Resources/Items/Diamond.tres" id="3_v72lb"]
+[ext_resource type="Resource" uid="uid://dm7ru2a5fnwfi" path="res://misc/Content/Items/Diamond.tres" id="3_nilht"]
+[ext_resource type="Script" uid="uid://ctm4b4v8txo1q" path="res://scr/Resources/WeightItem.gd" id="4_6tsnx"]
 [ext_resource type="Texture2D" uid="uid://bvn1k3yr05y11" path="res://Assets/Textures/Shadows/Shadow.png" id="4_v72lb"]
+[ext_resource type="Resource" uid="uid://65hul2glofe3" path="res://misc/Content/Items/Stone.tres" id="5_5tadn"]
 [ext_resource type="AudioStream" uid="uid://dhnejho0mmxmq" path="res://misc/HarvestItems/SFX/Mining/Destroy1.mp3" id="7_0href"]
 [ext_resource type="AudioStream" uid="uid://prb16b2eig2m" path="res://misc/HarvestItems/SFX/Mining/Destroy2.mp3" id="8_5e2p8"]
 [ext_resource type="AudioStream" uid="uid://c5rjjykffa2ub" path="res://misc/HarvestItems/SFX/Mining/Destroy3.mp3" id="9_nilht"]
@@ -15,8 +17,11 @@
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gxqxa"]
 radius = 7.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_bbc7c"]
-size = Vector2(34, 25)
+[sub_resource type="Resource" id="Resource_iy0bo"]
+script = ExtResource("4_6tsnx")
+item = ExtResource("5_5tadn")
+weight = 0.5
+metadata/_custom_type_script = "uid://ctm4b4v8txo1q"
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_iy0bo"]
 playback_mode = 1
@@ -31,50 +36,52 @@ streams_count = 2
 stream_0/stream = ExtResource("10_6tsnx")
 stream_1/stream = ExtResource("11_5tadn")
 
-[node name="Diamond" instance=ExtResource("1_pbbmj")]
-durability = 20.0
-harvest_tool_lvl = 3
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bbc7c"]
+size = Vector2(34, 25)
+
+[node name="Diamond" unique_id=189448538 instance=ExtResource("1_pbbmj")]
+durability = 100.0
+harvest_tool_lvl = 6
 
 [node name="CollisionShape2D" parent="StaticBody2D" index="0"]
 position = Vector2(0, -6)
 rotation = -1.57079
 shape = SubResource("CapsuleShape2D_gxqxa")
 
-[node name="CollisionShape2D" parent="." index="1"]
-position = Vector2(2.38419e-07, -11.5)
-shape = SubResource("RectangleShape2D_bbc7c")
-
-[node name="VFX" parent="." index="2" node_paths=PackedStringArray("audio_player")]
+[node name="VFX" parent="." index="1" node_paths=PackedStringArray("audio_player")]
 audio_player = NodePath("../SFX")
 
-[node name="optimizer" parent="." index="3" node_paths=PackedStringArray("hide_objects")]
+[node name="optimizer" parent="." index="2" node_paths=PackedStringArray("hide_objects")]
 position = Vector2(-4.76837e-07, -11)
 scale = Vector2(1.7, 1.3)
 hide_objects = [NodePath("../Sprite2D"), NodePath("../Shadow")]
 
-[node name="droper" parent="." index="4"]
-drop_item = Array[ExtResource("2_hov17")]([ExtResource("3_v72lb")])
-max_drop = 5
+[node name="droper" parent="." index="3"]
+drop_item = Array[ExtResource("2_hov17")]([ExtResource("3_nilht")])
+unique_items = Array[ExtResource("4_6tsnx")]([SubResource("Resource_iy0bo")])
 
-[node name="Sprite2D" type="Sprite2D" parent="." index="5"]
+[node name="Sprite2D" type="Sprite2D" parent="." index="5" unique_id=1808674882]
 position = Vector2(0, -9)
 texture = ExtResource("2_pbbmj")
 offset = Vector2(0, -6)
 hframes = 2
-frame = 1
 script = ExtResource("3_hov17")
 frame_weights = Array[float]([0.5, 0.5])
 metadata/_custom_type_script = "uid://b7lfnqk6b5cdp"
 
-[node name="Shadow" type="Sprite2D" parent="." index="6"]
+[node name="Shadow" type="Sprite2D" parent="." index="6" unique_id=1119134542]
 self_modulate = Color(0.0392157, 0.0705882, 0.2, 0.388235)
 z_index = -10
 position = Vector2(0, -3)
 scale = Vector2(2.125, 0.875)
 texture = ExtResource("4_v72lb")
 
-[node name="Destroy" type="AudioStreamPlayer2D" parent="." index="7"]
+[node name="Destroy" type="AudioStreamPlayer2D" parent="." index="7" unique_id=2139289417]
 stream = SubResource("AudioStreamRandomizer_iy0bo")
 
-[node name="SFX" type="AudioStreamPlayer2D" parent="." index="8"]
+[node name="SFX" type="AudioStreamPlayer2D" parent="." index="8" unique_id=2039981130]
 stream = SubResource("AudioStreamRandomizer_v35ih")
+
+[node name="CollisionShape2D" parent="." index="9"]
+position = Vector2(2.38419e-07, -11.5)
+shape = SubResource("RectangleShape2D_bbc7c")

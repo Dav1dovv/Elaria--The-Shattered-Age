@@ -41,12 +41,20 @@ boot_splash/stretch_mode=0
 boot_splash/use_filter=false
 config/icon="uid://hf3cyclv72nt"
 
+[audio]
+
+buses/default_bus_layout="uid://bk6y7uxh7vvu6"
+
 [autoload]
 
-Game="*uid://bt2ajpcx1cdom"
 PhantomCameraManager="*uid://duq6jhf6unyis"
 Cursor="*res://scr/Systems/Cursor/cursor.tscn"
 Global="*res://scr/Manager/global.tscn"
+DialogueManager="*uid://c3rodes2l3gxb"
+
+[dialogue_manager]
+
+runtime/balloon_path="res://misc/Dialogue/ui/balloon.tscn"
 
 [display]
 
@@ -65,7 +73,7 @@ movie_writer/movie_file="C:/Users/davit/OneDrive/Документы/TLOE_adventu
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/flickering_light/plugin.cfg", "res://addons/font_auto_size_labels/plugin.cfg", "res://addons/phantom_camera/plugin.cfg")
+enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg", "res://addons/flickering_light/plugin.cfg", "res://addons/font_auto_size_labels/plugin.cfg", "res://addons/phantom_camera/plugin.cfg")
 
 [file_customization]
 
@@ -161,6 +169,15 @@ ui_debug={
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194336,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
 ]
 }
+Land={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":32,"key_label":0,"unicode":32,"location":0,"echo":false,"script":null)
+]
+}
+
+[internationalization]
+
+locale/translations_pot_files=PackedStringArray("res://misc/Dialogue/Start.dialogue", "res://misc/Dialogue/Quest Complete.dialogue", "res://misc/Dialogue/activated.dialogue")
 
 [layer_names]
 
@@ -186,6 +203,8 @@ ui_debug={
 2d_physics/layer_9="Cursor"
 2d_physics/layer_10="Cursor Check"
 2d_physics/layer_11="ActivationZones"
+2d_physics/layer_12="Island"
+2d_physics/layer_13="Ship"
 
 [maaacks_options_menus]
 

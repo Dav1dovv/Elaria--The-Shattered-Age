@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://b4t7q4o81hsi1"
+path="res://.godot/imported/Quest Complete.dialogue-f28c3ee0aadb2a5c6fca3dd5e23f0a17.tres"
+
+[deps]
+
+source_file="res://misc/Dialogue/Quest Complete.dialogue"
+dest_files=["res://.godot/imported/Quest Complete.dialogue-f28c3ee0aadb2a5c6fca3dd5e23f0a17.tres"]
+
+[params]
+
+defaults=true

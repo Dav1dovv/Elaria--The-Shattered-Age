@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="FoodData" format=3 uid="uid://dt6c2htc1a2l5"]
+
+[ext_resource type="Script" uid="uid://dj4umu6271nxr" path="res://scr/Resources/effects/EffectResource.gd" id="1_1wttl"]
+[ext_resource type="Script" uid="uid://ds5d4cljtsmfp" path="res://scr/Resources/ItemData/Food_item_data.gd" id="2_bbgqo"]
+[ext_resource type="Texture2D" uid="uid://cf3avrbvs0ues" path="res://Assets/Textures/SpriteSheets/Items-Sheet.png" id="2_rn874"]
+
+[sub_resource type="Resource" id="Resource_txcwf"]
+script = ExtResource("1_1wttl")
+value = 10.0
+metadata/_custom_type_script = "uid://dj4umu6271nxr"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_81hqh"]
+atlas = ExtResource("2_rn874")
+region = Rect2(112, 64, 16, 16)
+
+[resource]
+script = ExtResource("2_bbgqo")
+effects = Array[ExtResource("1_1wttl")]([SubResource("Resource_txcwf")])
+icon = SubResource("AtlasTexture_81hqh")
+play_anim = "Eating"
+item_name = "Honey"
+metadata/_custom_type_script = "uid://ds5d4cljtsmfp"

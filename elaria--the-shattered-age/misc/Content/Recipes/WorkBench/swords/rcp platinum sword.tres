@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="CraftRecipe" format=3 uid="uid://btudfcis3rlg"]
+
+[ext_resource type="Script" uid="uid://bcg5vwna4id5n" path="res://scr/Systems/Craft/SimpleCraft/CraftIngeridents.gd" id="1_7hvm6"]
+[ext_resource type="Resource" uid="uid://3lb2c5cw8a80" path="res://misc/Content/Items/PlatinumIngot.tres" id="2_4epww"]
+[ext_resource type="Resource" uid="uid://bbc1aftv65w3b" path="res://misc/Content/Items/Sword Material.tres" id="3_8iyfx"]
+[ext_resource type="Resource" uid="uid://xyck3q0gr12o" path="res://misc/Content/Items/Wayfinder.tres" id="4_bjakp"]
+[ext_resource type="Resource" uid="uid://c2ewnappikwfb" path="res://misc/Content/Items/Platinum Sword.tres" id="4_qoytl"]
+[ext_resource type="Script" uid="uid://b47c08bhjaot6" path="res://scr/Systems/Craft/SimpleCraft/CraftRecipe.gd" id="5_c7ccb"]
+
+[sub_resource type="Resource" id="Resource_h0exe"]
+script = ExtResource("1_7hvm6")
+item = ExtResource("2_4epww")
+amount = 17
+metadata/_custom_type_script = "uid://bcg5vwna4id5n"
+
+[sub_resource type="Resource" id="Resource_u4e5u"]
+script = ExtResource("1_7hvm6")
+item = ExtResource("3_8iyfx")
+amount = 8
+metadata/_custom_type_script = "uid://bcg5vwna4id5n"
+
+[sub_resource type="Resource" id="Resource_c47e2"]
+script = ExtResource("1_7hvm6")
+item = ExtResource("4_bjakp")
+amount = 5
+metadata/_custom_type_script = "uid://bcg5vwna4id5n"
+
+[resource]
+script = ExtResource("5_c7ccb")
+recipe_name = "Platinum Sword"
+result_item = ExtResource("4_qoytl")
+ingredients = Array[ExtResource("1_7hvm6")]([SubResource("Resource_h0exe"), SubResource("Resource_u4e5u"), SubResource("Resource_c47e2")])
+metadata/_custom_type_script = "uid://b47c08bhjaot6"

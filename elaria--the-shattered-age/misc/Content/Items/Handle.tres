@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://bcj6bmre3yk8h"]
+
+[ext_resource type="Texture2D" uid="uid://cf3avrbvs0ues" path="res://Assets/Textures/SpriteSheets/Items-Sheet.png" id="1_5n356"]
+[ext_resource type="Script" uid="uid://wm1t8anytdyq" path="res://scr/Resources/ItemData/ItemData.gd" id="1_x67gi"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0d52o"]
+atlas = ExtResource("1_5n356")
+region = Rect2(112, 48, 16, 16)
+
+[resource]
+script = ExtResource("1_x67gi")
+icon = SubResource("AtlasTexture_0d52o")
+item_name = "Handle"
+max_count = 16
+metadata/_custom_type_script = "uid://wm1t8anytdyq"

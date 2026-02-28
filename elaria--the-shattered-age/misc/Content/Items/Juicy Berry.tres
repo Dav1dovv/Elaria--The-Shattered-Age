@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="FoodData" format=3 uid="uid://cek8v8e4qeq28"]
+
+[ext_resource type="Script" uid="uid://dj4umu6271nxr" path="res://scr/Resources/effects/EffectResource.gd" id="1_0b0pu"]
+[ext_resource type="Texture2D" uid="uid://cf3avrbvs0ues" path="res://Assets/Textures/SpriteSheets/Items-Sheet.png" id="2_6l2xg"]
+[ext_resource type="Script" uid="uid://ds5d4cljtsmfp" path="res://scr/Resources/ItemData/Food_item_data.gd" id="3_pc32h"]
+
+[sub_resource type="Resource" id="Resource_6vp8f"]
+script = ExtResource("1_0b0pu")
+value = 5.0
+metadata/_custom_type_script = "uid://dj4umu6271nxr"
+
+[sub_resource type="Resource" id="Resource_jbcly"]
+script = ExtResource("1_0b0pu")
+effect_type = 1
+value = 1.2
+duration = 3.0
+metadata/_custom_type_script = "uid://dj4umu6271nxr"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xo0m3"]
+atlas = ExtResource("2_6l2xg")
+region = Rect2(16, 64, 16, 16)
+
+[resource]
+script = ExtResource("3_pc32h")
+effects = Array[ExtResource("1_0b0pu")]([SubResource("Resource_6vp8f"), SubResource("Resource_jbcly")])
+icon = SubResource("AtlasTexture_xo0m3")
+play_anim = "Eating"
+item_name = "Juicy Berry"
+metadata/_custom_type_script = "uid://ds5d4cljtsmfp"

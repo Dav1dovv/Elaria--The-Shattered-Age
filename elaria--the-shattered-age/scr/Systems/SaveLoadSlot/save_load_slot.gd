@@ -118,8 +118,7 @@ func _display_sorted_slots():
 
 func _on_save_slot_selected(slot_name: String):
 	if save_system.load_save(slot_name):
-		Global.day_night.start()
-		Global.scene_manager.change_scene("LightGrass", false, Vector2.ZERO)
+		Global.scene_manager.change_scene("World", false, Vector2.ZERO)
 
 func _on_new_save_pressed():
 	$Panel/VBoxContainer.visible = false
@@ -140,7 +139,7 @@ func _on_create_pressed() -> void:
 	var skin_index = skin_selector.skin_index
 	var head_index = skin_selector.head_inex
 	
-	if save_system.create_new_save(player_name, skin_index, head_index,"LightGrass"):
+	if save_system.create_new_save(player_name, skin_index, head_index,"World"):
 		update_save_slots()
 		new_save_panel.visible = false
 		$ColorRect.visible = false

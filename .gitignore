@@ -1,3 +1,9 @@
 # Godot 4+ specific ignores
 .godot/
 /android/
+Elaria Demo.zip
+Elaria Demo/Elaria.exe
+Elaria Demo/Elaria.pck
+Elaria Demo/libgodot_rapier.windows.x86_64-pc-windows-msvc.dll
+Exploria.zip
+Game Base.zip

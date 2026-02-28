@@ -1,6 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://b6s6o4b5xbu0"]
+[gd_scene format=3 uid="uid://b6s6o4b5xbu0"]
 
-[ext_resource type="Texture2D" uid="uid://dcqw070vjultd" path="res://Misc/Particles/Explosion_Sheet.png" id="1_f05ew"]
+[ext_resource type="Texture2D" uid="uid://dcqw070vjultd" path="res://misc/Particles/Explosion_Sheet.png" id="1_f05ew"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_d4x5i"]
 particles_animation = true
@@ -35,7 +35,7 @@ scale_curve = SubResource("CurveTexture_iraa4")
 color_ramp = SubResource("GradientTexture1D_0y3pu")
 anim_speed_max = 6.18
 
-[node name="Explosion" type="GPUParticles2D"]
+[node name="Explosion" type="GPUParticles2D" unique_id=440659189]
 material = SubResource("CanvasItemMaterial_d4x5i")
 emitting = false
 amount = 24

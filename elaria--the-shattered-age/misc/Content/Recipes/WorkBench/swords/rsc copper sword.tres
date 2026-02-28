@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="CraftRecipe" format=3 uid="uid://c41nm58s3hxof"]
+
+[ext_resource type="Script" uid="uid://bcg5vwna4id5n" path="res://scr/Systems/Craft/SimpleCraft/CraftIngeridents.gd" id="1_qkmcq"]
+[ext_resource type="Resource" uid="uid://bk51less4fsvv" path="res://misc/Content/Items/CopperIngot.tres" id="2_lyy8n"]
+[ext_resource type="Resource" uid="uid://bbc1aftv65w3b" path="res://misc/Content/Items/Sword Material.tres" id="3_dwk4h"]
+[ext_resource type="Resource" uid="uid://xyck3q0gr12o" path="res://misc/Content/Items/Wayfinder.tres" id="4_8cwgq"]
+[ext_resource type="Resource" uid="uid://dvukk5p825yse" path="res://misc/Content/Items/Copper Sword.tres" id="4_j0s1y"]
+[ext_resource type="Script" uid="uid://b47c08bhjaot6" path="res://scr/Systems/Craft/SimpleCraft/CraftRecipe.gd" id="5_h6p76"]
+
+[sub_resource type="Resource" id="Resource_ts75j"]
+script = ExtResource("1_qkmcq")
+item = ExtResource("2_lyy8n")
+amount = 10
+metadata/_custom_type_script = "uid://bcg5vwna4id5n"
+
+[sub_resource type="Resource" id="Resource_pitud"]
+script = ExtResource("1_qkmcq")
+item = ExtResource("3_dwk4h")
+amount = 3
+metadata/_custom_type_script = "uid://bcg5vwna4id5n"
+
+[sub_resource type="Resource" id="Resource_2sx3x"]
+script = ExtResource("1_qkmcq")
+item = ExtResource("4_8cwgq")
+amount = 5
+metadata/_custom_type_script = "uid://bcg5vwna4id5n"
+
+[resource]
+script = ExtResource("5_h6p76")
+recipe_name = "Copper Sword"
+result_item = ExtResource("4_j0s1y")
+ingredients = Array[ExtResource("1_qkmcq")]([SubResource("Resource_ts75j"), SubResource("Resource_pitud"), SubResource("Resource_2sx3x")])
+metadata/_custom_type_script = "uid://b47c08bhjaot6"

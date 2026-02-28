@@ -3,9 +3,11 @@
 [ext_resource type="PackedScene" uid="uid://bny4sqh4i8i5v" path="res://misc/HarvestItems/Harvestable.tscn" id="1_33cki"]
 [ext_resource type="Texture2D" uid="uid://njxtt1jmyf5l" path="res://misc/HarvestItems/Textures/Platinum.png" id="2_6u2mh"]
 [ext_resource type="Script" uid="uid://wm1t8anytdyq" path="res://scr/Resources/ItemData/ItemData.gd" id="2_xq12a"]
-[ext_resource type="Resource" path="res://scr/Resources/Items/Platinum.tres" id="3_np2s1"]
 [ext_resource type="Script" uid="uid://b7lfnqk6b5cdp" path="res://scr/Misc/RandomSprite.gd" id="3_xq12a"]
+[ext_resource type="Resource" uid="uid://dt2b6cng2gr6j" path="res://misc/Content/Items/Platinum Ore.tres" id="3_xv8fx"]
+[ext_resource type="Script" uid="uid://ctm4b4v8txo1q" path="res://scr/Resources/WeightItem.gd" id="4_17rr5"]
 [ext_resource type="Texture2D" uid="uid://bvn1k3yr05y11" path="res://Assets/Textures/Shadows/Shadow.png" id="4_np2s1"]
+[ext_resource type="Resource" uid="uid://ce8lum742bja1" path="res://misc/Content/Items/IronOre.tres" id="5_s8x0m"]
 [ext_resource type="AudioStream" uid="uid://dhnejho0mmxmq" path="res://misc/HarvestItems/SFX/Mining/Destroy1.mp3" id="7_0jcko"]
 [ext_resource type="AudioStream" uid="uid://prb16b2eig2m" path="res://misc/HarvestItems/SFX/Mining/Destroy2.mp3" id="8_br5ky"]
 [ext_resource type="AudioStream" uid="uid://c5rjjykffa2ub" path="res://misc/HarvestItems/SFX/Mining/Destroy3.mp3" id="9_xv8fx"]
@@ -15,8 +17,11 @@
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_33cki"]
 radius = 6.2601
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_33cki"]
-size = Vector2(30, 20)
+[sub_resource type="Resource" id="Resource_g35m3"]
+script = ExtResource("4_17rr5")
+item = ExtResource("5_s8x0m")
+weight = 0.2
+metadata/_custom_type_script = "uid://ctm4b4v8txo1q"
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_g35m3"]
 playback_mode = 1
@@ -31,49 +36,54 @@ streams_count = 2
 stream_0/stream = ExtResource("10_17rr5")
 stream_1/stream = ExtResource("11_s8x0m")
 
-[node name="Platinum" instance=ExtResource("1_33cki")]
-durability = 25.0
-harvest_tool_lvl = 3
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_33cki"]
+size = Vector2(30, 20)
+
+[node name="Platinum" unique_id=170288313 instance=ExtResource("1_33cki")]
+durability = 100.0
+harvest_tool_lvl = 5
 
 [node name="CollisionShape2D" parent="StaticBody2D" index="0"]
 position = Vector2(0, -7)
 rotation = -1.57079
 shape = SubResource("CapsuleShape2D_33cki")
 
-[node name="CollisionShape2D" parent="." index="1"]
-position = Vector2(2.38419e-07, -10.5402)
-shape = SubResource("RectangleShape2D_33cki")
-
-[node name="VFX" parent="." index="2" node_paths=PackedStringArray("audio_player")]
+[node name="VFX" parent="." index="1" node_paths=PackedStringArray("audio_player")]
 audio_player = NodePath("../SFX")
 
-[node name="optimizer" parent="." index="3" node_paths=PackedStringArray("hide_objects")]
+[node name="optimizer" parent="." index="2" node_paths=PackedStringArray("hide_objects")]
 position = Vector2(-0.499999, -10.5)
 scale = Vector2(1.75, 1.05)
 hide_objects = [NodePath("../Sprite2D"), NodePath("../Shadow")]
 
-[node name="droper" parent="." index="4"]
-drop_item = Array[ExtResource("2_xq12a")]([ExtResource("3_np2s1")])
-max_drop = 6
+[node name="droper" parent="." index="3"]
+drop_item = Array[ExtResource("2_xq12a")]([ExtResource("3_xv8fx")])
+unique_items = Array[ExtResource("4_17rr5")]([SubResource("Resource_g35m3")])
+max_drop = 8
 
-[node name="Sprite2D" type="Sprite2D" parent="." index="5"]
+[node name="Sprite2D" type="Sprite2D" parent="." index="5" unique_id=787816025]
 position = Vector2(0, -9)
 texture = ExtResource("2_6u2mh")
 offset = Vector2(0, -7)
 hframes = 2
+frame = 1
 script = ExtResource("3_xq12a")
 frame_weights = Array[float]([1.0, 1.0])
 metadata/_custom_type_script = "uid://b7lfnqk6b5cdp"
 
-[node name="Shadow" type="Sprite2D" parent="." index="6"]
+[node name="Shadow" type="Sprite2D" parent="." index="6" unique_id=1741142202]
 self_modulate = Color(0.0392157, 0.0705882, 0.2, 0.388235)
 z_index = -10
 position = Vector2(0, -4)
 scale = Vector2(2.25, 0.739666)
 texture = ExtResource("4_np2s1")
 
-[node name="Destroy" type="AudioStreamPlayer2D" parent="." index="7"]
+[node name="Destroy" type="AudioStreamPlayer2D" parent="." index="7" unique_id=1555578893]
 stream = SubResource("AudioStreamRandomizer_g35m3")
 
-[node name="SFX" type="AudioStreamPlayer2D" parent="." index="8"]
+[node name="SFX" type="AudioStreamPlayer2D" parent="." index="8" unique_id=1376590876]
 stream = SubResource("AudioStreamRandomizer_kpotg")
+
+[node name="CollisionShape2D" parent="." index="9"]
+position = Vector2(2.38419e-07, -10.5402)
+shape = SubResource("RectangleShape2D_33cki")

@@ -10,7 +10,7 @@ signal paricles_finished
 func _hit_vfx(target: Node) -> void:
 	if audio_player:
 		audio_player.play()
-	
+	_play_particles()
 	var tween = create_tween().set_parallel(true)
 	tween.tween_property(target, "rotation", randf_range(-0.2, 0.2), 0.1)
 	tween.tween_property(target, "scale", Vector2(1.1, 1.1), 0.1)
@@ -22,10 +22,11 @@ func _hit_vfx(target: Node) -> void:
 func _damage_vfx(target: Node):
 	if audio_player: 
 		audio_player.play()
+	_play_particles()
 	var tween = create_tween()
 	tween.tween_property(target, "rotation", randf_range(-0.2, 0.2), 0.1)
-	await tween.tween_property(target, 'modulate', Color(0.958, 0.0, 0.0, 1.0), 0.1)
-	tween.tween_property(target, 'modulate', Color.WHITE, 0.1)
+	await tween.tween_property(target, 'modulate', Color(1.219, 0.0, 0.0, 1.0), 0.1)
+	tween.tween_property(target, 'modulate', Color.WHITE, 0.3)
 	tween.tween_property(target, "rotation", 0.0, 0.1).set_delay(0.1)
 
 

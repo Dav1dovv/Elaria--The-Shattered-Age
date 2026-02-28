@@ -2,40 +2,23 @@
 
 [ext_resource type="Script" uid="uid://dbxsovdq7bbia" path="res://scr/Misc/Optimizer.gd" id="1_7b68o"]
 [ext_resource type="Script" uid="uid://wflmgj2qexop" path="res://misc/Chest/Chest.gd" id="1_8dabs"]
-[ext_resource type="Script" uid="uid://dp5sqr3dvy444" path="res://misc/Chest/LootPool.gd" id="2_5xnle"]
+[ext_resource type="Resource" uid="uid://xyck3q0gr12o" path="res://misc/Content/Items/Wayfinder.tres" id="2_lqs0i"]
 [ext_resource type="Script" uid="uid://btxho8sqg8tnx" path="res://scr/Systems/Interaction/Interaction.gd" id="2_yb1kq"]
-[ext_resource type="Texture2D" uid="uid://datsysl7u1w7" path="res://misc/Chest/Chest1.png" id="3_8dabs"]
-[ext_resource type="Script" uid="uid://wm1t8anytdyq" path="res://scr/Resources/ItemData/ItemData.gd" id="3_72dcn"]
-[ext_resource type="Resource" path="res://scr/Resources/Items/Bitter.tres" id="4_mcgxt"]
 [ext_resource type="Texture2D" uid="uid://bvn1k3yr05y11" path="res://Assets/Textures/Shadows/Shadow.png" id="4_uyyit"]
-[ext_resource type="Resource" path="res://scr/Resources/Items/Cooper Sword.tres" id="5_0n4jv"]
-[ext_resource type="Resource" path="res://scr/Resources/Items/Clay key.tres" id="5_rn3rj"]
-[ext_resource type="Resource" path="res://scr/Resources/Items/Lead key.tres" id="6_h2h67"]
-[ext_resource type="Resource" path="res://scr/Resources/Items/Elder.tres" id="6_i3qui"]
-[ext_resource type="Resource" path="res://scr/Resources/Items/Bone Key.tres" id="7_j78vg"]
+[ext_resource type="Texture2D" uid="uid://ccsu05d4cl65i" path="res://misc/Chest/Simple Chest.png" id="6_f7t7j"]
+[ext_resource type="Texture2D" uid="uid://cf3avrbvs0ues" path="res://Assets/Textures/SpriteSheets/Items-Sheet.png" id="9_2urs1"]
+[ext_resource type="Script" uid="uid://b2ovoyoflp1gw" path="res://scr/Resources/ItemData/Equip_item_data.gd" id="10_a1p81"]
+[ext_resource type="Resource" uid="uid://x1lita8ofrji" path="res://misc/Content/Items/Magic Wand.tres" id="10_jct2l"]
 [ext_resource type="Script" uid="uid://c6tw2fkklnri5" path="res://misc/Drop/DropItem.gd" id="11_8f5ct"]
-[ext_resource type="Texture2D" uid="uid://cuy7jewreml0b" path="res://misc/Chest/Chest2.png" id="11_rg1xu"]
-[ext_resource type="Resource" path="res://scr/Resources/Items/PortalEnergy.tres" id="12_0pqcv"]
-[ext_resource type="Texture2D" uid="uid://dbia0pj3m7m3f" path="res://misc/Chest/Chest3.png" id="12_s1m10"]
 [ext_resource type="Script" uid="uid://ctm4b4v8txo1q" path="res://scr/Resources/WeightItem.gd" id="13_rn3rj"]
-[ext_resource type="Resource" path="res://scr/Resources/Items/Old Hemlet.tres" id="14_h2h67"]
-[ext_resource type="Resource" path="res://scr/Resources/Items/perfect bow.tres" id="15_j78vg"]
-[ext_resource type="Resource" path="res://scr/Resources/Items/ZiziColaSmall.tres" id="16_sr236"]
-[ext_resource type="Texture2D" uid="uid://bj3k1id46eild" path="res://Assets/Textures/SpriteSheets/weapons-Sheet.png" id="17_mcgxt"]
-[ext_resource type="PackedScene" uid="uid://u72aa5bych45" path="res://misc/Projectiles/Bullet.tscn" id="18_0n4jv"]
-[ext_resource type="Script" uid="uid://b2ovoyoflp1gw" path="res://scr/Resources/ItemData/Equip_item_data.gd" id="19_i3qui"]
-[ext_resource type="Resource" path="res://scr/Resources/Items/Skovorodka.tres" id="20_rg1xu"]
-[ext_resource type="Resource" path="res://scr/Resources/Items/Sharder.tres" id="21_s1m10"]
-[ext_resource type="Resource" path="res://scr/Resources/Items/Iron axe.tres" id="22_1ky7r"]
-[ext_resource type="Resource" path="res://scr/Resources/Items/Bumerang.tres" id="23_nm1sp"]
-[ext_resource type="Resource" path="res://scr/Resources/Items/Bomb.tres" id="24_576ff"]
+[ext_resource type="PackedScene" uid="uid://cwva7bwy2vvpl" path="res://misc/Projectiles/Plasma.tscn" id="14_xr131"]
+[ext_resource type="Resource" uid="uid://b64inqtvf3yh" path="res://misc/Content/Items/boomerang.tres" id="16_rmn11"]
+[ext_resource type="Resource" uid="uid://qla56cxkr8ij" path="res://misc/Content/Items/Speed Potion.tres" id="18_mb2eo"]
 [ext_resource type="AudioStream" uid="uid://e6mf5rd80uw8" path="res://misc/Chest/Chest close.wav" id="30_mcgxt"]
 
-[sub_resource type="Resource" id="Resource_jujb2"]
-script = ExtResource("2_5xnle")
-items = Array[ExtResource("3_72dcn")]([ExtResource("4_mcgxt"), ExtResource("5_0n4jv"), ExtResource("6_i3qui")])
-weights = Array[float]([0.5, 0.7, 0.4])
-metadata/_custom_type_script = "uid://dp5sqr3dvy444"
+[sub_resource type="AtlasTexture" id="AtlasTexture_f7t7j"]
+atlas = ExtResource("9_2urs1")
+region = Rect2(0, 32, 16, 16)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dpjqc"]
 radius = 14.9364
@@ -311,131 +294,112 @@ _data = {
 &"RESET": SubResource("Animation_yb1kq")
 }
 
-[sub_resource type="Resource" id="Resource_hk36e"]
+[sub_resource type="Resource" id="Resource_2urs1"]
 script = ExtResource("13_rn3rj")
-item = ExtResource("14_h2h67")
-weight = 0.03
+item = ExtResource("10_jct2l")
+weight = 0.2
 metadata/_custom_type_script = "uid://ctm4b4v8txo1q"
 
-[sub_resource type="Resource" id="Resource_t6o7e"]
+[sub_resource type="Resource" id="Resource_a1p81"]
 script = ExtResource("13_rn3rj")
-item = ExtResource("15_j78vg")
-weight = 0.04
+item = ExtResource("16_rmn11")
+weight = 0.2
 metadata/_custom_type_script = "uid://ctm4b4v8txo1q"
 
-[sub_resource type="Resource" id="Resource_x854i"]
+[sub_resource type="Resource" id="Resource_0pqcv"]
 script = ExtResource("13_rn3rj")
-item = ExtResource("16_sr236")
-weight = 0.05
+item = ExtResource("18_mb2eo")
+weight = 0.2
 metadata/_custom_type_script = "uid://ctm4b4v8txo1q"
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_1chp8"]
-atlas = ExtResource("17_mcgxt")
-region = Rect2(128, 80, 16, 16)
+[sub_resource type="AtlasTexture" id="AtlasTexture_xr131"]
+atlas = ExtResource("9_2urs1")
+region = Rect2(0, 112, 16, 16)
 
-[sub_resource type="Resource" id="Resource_2w6sc"]
-script = ExtResource("19_i3qui")
-Damage = 3
-Atk_speed = 2.0
-equiped_weapon_sprite = SubResource("AtlasTexture_1chp8")
-projectile = ExtResource("18_0n4jv")
-spread_degrees = 0.6
-icon = SubResource("AtlasTexture_1chp8")
-item_name = "Magic Stick"
-stackable = false
+[sub_resource type="Resource" id="Resource_lqs0i"]
+script = ExtResource("10_a1p81")
+max_durability = 200
+Damage = 22
+Atk_speed = 1.05
+equiped_weapon_sprite = SubResource("AtlasTexture_xr131")
+icon = SubResource("AtlasTexture_xr131")
+item_name = "Akarum"
 metadata/_custom_type_script = "uid://b2ovoyoflp1gw"
 
-[sub_resource type="Resource" id="Resource_3y81i"]
+[sub_resource type="Resource" id="Resource_f7t7j"]
 script = ExtResource("13_rn3rj")
-item = SubResource("Resource_2w6sc")
-weight = 0.03
-metadata/_custom_type_script = "uid://ctm4b4v8txo1q"
-
-[sub_resource type="Resource" id="Resource_et4m0"]
-script = ExtResource("13_rn3rj")
-item = ExtResource("20_rg1xu")
-weight = 0.02
-metadata/_custom_type_script = "uid://ctm4b4v8txo1q"
-
-[sub_resource type="Resource" id="Resource_qhdog"]
-script = ExtResource("13_rn3rj")
-item = ExtResource("21_s1m10")
-weight = 0.04
-metadata/_custom_type_script = "uid://ctm4b4v8txo1q"
-
-[sub_resource type="Resource" id="Resource_7tuwt"]
-script = ExtResource("13_rn3rj")
-item = ExtResource("22_1ky7r")
-weight = 0.1
-metadata/_custom_type_script = "uid://ctm4b4v8txo1q"
-
-[sub_resource type="Resource" id="Resource_8tsw2"]
-script = ExtResource("13_rn3rj")
-item = ExtResource("23_nm1sp")
-weight = 0.1
-metadata/_custom_type_script = "uid://ctm4b4v8txo1q"
-
-[sub_resource type="Resource" id="Resource_1py36"]
-script = ExtResource("13_rn3rj")
-item = ExtResource("24_576ff")
+item = SubResource("Resource_lqs0i")
 weight = 0.08
 metadata/_custom_type_script = "uid://ctm4b4v8txo1q"
 
-[sub_resource type="Resource" id="Resource_5hme3"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_g3pw7"]
+atlas = ExtResource("9_2urs1")
+region = Rect2(16, 128, 16, 16)
+
+[sub_resource type="Resource" id="Resource_rmn11"]
+script = ExtResource("10_a1p81")
+max_durability = 250
+Damage = 16
+equiped_weapon_sprite = SubResource("AtlasTexture_g3pw7")
+projectile = ExtResource("14_xr131")
+num_projectiles = 7
+spread_degrees = 20.0
+projectile_speed = 100.0
+icon = SubResource("AtlasTexture_g3pw7")
+item_name = "Sword of Kahlua"
+metadata/_custom_type_script = "uid://b2ovoyoflp1gw"
+
+[sub_resource type="Resource" id="Resource_btpx7"]
 script = ExtResource("13_rn3rj")
-item = SubResource("Resource_2w6sc")
-weight = 0.08
+item = SubResource("Resource_rmn11")
+weight = 0.1
 metadata/_custom_type_script = "uid://ctm4b4v8txo1q"
 
-[node name="Chest" type="Node2D"]
+[node name="Chest" type="Node2D" unique_id=1524391707]
 script = ExtResource("1_8dabs")
-drop_pools = Array[ExtResource("2_5xnle")]([SubResource("Resource_jujb2")])
-need_tool = Array[ExtResource("3_72dcn")]([ExtResource("5_rn3rj"), ExtResource("6_h2h67"), ExtResource("7_j78vg")])
-sprites = Array[Texture]([ExtResource("3_8dabs"), ExtResource("11_rg1xu"), ExtResource("12_s1m10")])
+need_tool = ExtResource("2_lqs0i")
 
-[node name="optimizer" type="VisibleOnScreenEnabler2D" parent="." node_paths=PackedStringArray("hide_objects")]
+[node name="optimizer" type="VisibleOnScreenEnabler2D" parent="." unique_id=1282912484 node_paths=PackedStringArray("hide_objects")]
 position = Vector2(-0.0817547, -9.31995)
 scale = Vector2(1.97287, 1.42512)
 script = ExtResource("1_7b68o")
 hide_objects = [NodePath("../Sprite2D"), NodePath("../Shadow")]
 metadata/_custom_type_script = "uid://dbxsovdq7bbia"
 
-[node name="interaction_area" type="Area2D" parent="." groups=["Interactable"]]
+[node name="interaction_area" type="Area2D" parent="." unique_id=1596524138 groups=["Interactable"]]
 collision_layer = 128
 collision_mask = 256
 script = ExtResource("2_yb1kq")
 show_message = "Open chest"
+icon_help = SubResource("AtlasTexture_f7t7j")
 metadata/_custom_type_script = "uid://btxho8sqg8tnx"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="interaction_area"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="interaction_area" unique_id=892211489]
 position = Vector2(0, -9.81047)
 shape = SubResource("CircleShape2D_dpjqc")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1456740653]
 position = Vector2(0.211052, -6.07981)
-texture = ExtResource("3_8dabs")
+texture = ExtResource("6_f7t7j")
 offset = Vector2(-0.211052, -5.03873)
 hframes = 2
 
-[node name="Shadow" type="Sprite2D" parent="."]
+[node name="Shadow" type="Sprite2D" parent="." unique_id=2111125922]
 modulate = Color(0.0505171, 0.0960983, 0.231323, 0.235294)
 z_index = -5
 position = Vector2(0, -2.94315)
 scale = Vector2(2.36938, 1)
 texture = ExtResource("4_uyyit")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_8dabs")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1958094703]
+libraries/ = SubResource("AnimationLibrary_8dabs")
 
-[node name="Drop_items" type="Node" parent="."]
+[node name="Drop_items" type="Node" parent="." unique_id=1572889324]
 script = ExtResource("11_8f5ct")
-drop_item = Array[ExtResource("3_72dcn")]([ExtResource("12_0pqcv")])
-unique_items = Array[ExtResource("13_rn3rj")]([SubResource("Resource_hk36e"), SubResource("Resource_t6o7e"), SubResource("Resource_x854i"), SubResource("Resource_3y81i"), SubResource("Resource_et4m0"), SubResource("Resource_qhdog"), SubResource("Resource_7tuwt"), SubResource("Resource_8tsw2"), SubResource("Resource_1py36"), SubResource("Resource_5hme3")])
+unique_items = Array[ExtResource("13_rn3rj")]([SubResource("Resource_2urs1"), SubResource("Resource_a1p81"), SubResource("Resource_0pqcv"), SubResource("Resource_f7t7j"), SubResource("Resource_btpx7")])
 max_drop = 5
 random_values = true
 metadata/_custom_type_script = "uid://c6tw2fkklnri5"
 
-[node name="SFX" type="AudioStreamPlayer2D" parent="."]
+[node name="SFX" type="AudioStreamPlayer2D" parent="." unique_id=1904701498]
 stream = ExtResource("30_mcgxt")

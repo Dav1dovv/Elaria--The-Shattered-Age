@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="equip_data" format=3 uid="uid://c2ywjfkso56g7"]
+
+[ext_resource type="Texture2D" uid="uid://cf3avrbvs0ues" path="res://Assets/Textures/SpriteSheets/Items-Sheet.png" id="1_lroit"]
+[ext_resource type="Script" uid="uid://b2ovoyoflp1gw" path="res://scr/Resources/ItemData/Equip_item_data.gd" id="2_q87b5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tuabl"]
+atlas = ExtResource("1_lroit")
+region = Rect2(96, 96, 16, 16)
+
+[resource]
+script = ExtResource("2_q87b5")
+lvl = 6
+max_durability = 500
+Damage = 27
+hit_distance = 22.0
+Atk_speed = 1.4
+equiped_weapon_sprite = SubResource("AtlasTexture_tuabl")
+accuracy_radius = 22.0
+miss_chance_per_unit = 0.02
+critical_radius = 10.0
+critical_chance = 0.6
+critical_multiplier = 5.0
+one_shot_attack = false
+icon = SubResource("AtlasTexture_tuabl")
+item_name = "Diamond Sword"
+stackable = false
+metadata/_custom_type_script = "uid://b2ovoyoflp1gw"

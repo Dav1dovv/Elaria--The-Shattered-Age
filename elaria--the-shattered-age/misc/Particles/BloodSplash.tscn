@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://digbxx3ko1dgy"]
+[gd_scene format=3 uid="uid://digbxx3ko1dgy"]
 
 [sub_resource type="Curve" id="Curve_k51xm"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.642857, 0.651685), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -31,7 +31,7 @@ color = Color(0.647059, 0.133333, 0, 1)
 color_ramp = SubResource("GradientTexture1D_6rmse")
 alpha_curve = SubResource("CurveTexture_4qrji")
 
-[node name="GPUParticles2D" type="GPUParticles2D"]
+[node name="GPUParticles2D" type="GPUParticles2D" unique_id=1460921651]
 scale = Vector2(0.482964, 0.482964)
 emitting = false
 amount = 32

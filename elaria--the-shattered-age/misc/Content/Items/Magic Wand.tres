@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="equip_data" format=3 uid="uid://x1lita8ofrji"]
+
+[ext_resource type="Texture2D" uid="uid://cf3avrbvs0ues" path="res://Assets/Textures/SpriteSheets/Items-Sheet.png" id="1_bybl6"]
+[ext_resource type="Script" uid="uid://b2ovoyoflp1gw" path="res://scr/Resources/ItemData/Equip_item_data.gd" id="1_ybaj2"]
+[ext_resource type="PackedScene" uid="uid://cwva7bwy2vvpl" path="res://misc/Projectiles/Plasma.tscn" id="2_txclx"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rn3rj"]
+atlas = ExtResource("1_bybl6")
+region = Rect2(80, 128, 16, 16)
+
+[resource]
+script = ExtResource("1_ybaj2")
+max_durability = 70
+equiped_weapon_sprite = SubResource("AtlasTexture_rn3rj")
+projectile = ExtResource("2_txclx")
+num_projectiles = 2
+spread_degrees = 15.0
+icon = SubResource("AtlasTexture_rn3rj")
+play_anim = "Shoot"
+item_name = "Wand"
+metadata/_custom_type_script = "uid://b2ovoyoflp1gw"

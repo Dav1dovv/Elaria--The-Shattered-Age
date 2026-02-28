@@ -14,7 +14,6 @@ func _ready() -> void:
 	connect("area_entered", hit)
 	if hotbar:
 		hotbar.hotbar_changed.connect(_on_hotbar_changed)
-		# При старте сразу экипируем выбранный слот
 		_update_from_hotbar()
 	else:
 		push_error("Hotbar not found! Add Hotbar node to group 'Hotbar'")
@@ -42,6 +41,9 @@ func update_equip(new_equip : ItemData):
 		equip_sprite.rotation = 45
 		equip_sprite.texture = equip.equiped_weapon_sprite
 		is_weapon = true
+		# Подключаем сигналы прочности
+		if not equip.weapon_broken.is_connected(_on_weapon_broken):
+			equip.weapon_broken.connect(_on_weapon_broken)
 		print("equiped weapon")
 
 	elif equip is FoodData:
@@ -66,63 +68,45 @@ func update_equip(new_equip : ItemData):
 		equip_sprite.texture = null
 		is_weapon = false
 
-
-#func hit(area: Area2D):
-	#if not equip is equip_data:
-		#return
-	#
-	#var ed = equip as equip_data
-	#
-	## Ranged оружие не использует melee collision
-	#if ed.projectile:
-		#return
-	#
-	#
-	## Применяем урон
-	#if area.is_in_group("Harvestable"):
-		#area.Harvest(ed.Damage, ed.lvl, ed.is_weapon)
-	#elif area.is_in_group("Ennemy"):
-		#area.get_parent().take_damage(ed.Damage, self)
-		#print("Melee damaged: " + str(ed.Damage))
+func _on_weapon_broken() -> void:
+	print("Оружие сломано!")
+	# Визуальная обратная связь — мигание красным
+	var tween = create_tween()
+	tween.tween_property(equip_sprite, "modulate", Color(1, 0.2, 0.2), 0.1)
+	tween.tween_property(equip_sprite, "modulate", Color(1, 1, 1), 0.1)
+	tween.tween_property(equip_sprite, "modulate", Color(1, 0.2, 0.2), 0.1)
+	tween.tween_property(equip_sprite, "modulate", Color(0.4, 0.4, 0.4), 0.2)
 
 func hit(area: Area2D):
 	if not is_weapon:
 		return
 	
-	var target_pos = area.global_position
-	var mouse_pos = get_global_mouse_position()
-	var dist_to_target = target_pos.distance_to(mouse_pos)
-	
-	# Проверка на промах
-	if dist_to_target > equip.accuracy_radius:
-		var miss_chance = min(1.0, (dist_to_target - equip.accuracy_radius) * equip.miss_chance_per_unit)
-		if randf() < miss_chance:
-			print("Промах!")
-			return
-	
-	# Плавный расчёт модификатора урона
-	var modified_damage = equip.Damage
-	if dist_to_target <= equip.accuracy_radius:
-		# Линейная интерполяция: от +2.5 (при dist=0) до +0 (при dist=accuracy_radius)
-		var t = dist_to_target / equip.accuracy_radius
-		modified_damage += lerp(2.5, 0.0, t)
-	else:
-		# Штраф от 0 до -2.5 в зависимости от превышения радиуса
-		var excess_dist = dist_to_target - equip.accuracy_radius
-		var penalty = min(2.5, excess_dist * 0.05)  # Например, -2.5 на 50 пикселях
-		modified_damage -= penalty
-	
-	apply_damage(area, equip.Damage)
+	# Проверяем прочность перед ударом
+	if equip is equip_data and equip.is_broken():
+		print("Оружие сломано — удар не наносится!")
+		return
 
-# Применение урона с учётом модифицированного значения
+	apply_damage(area, equip.Damage)
+	
+	# Уменьшаем прочность после успешного удара
+	if equip is equip_data:
+		equip.reduce_durability(1)
+		# Обновляем UI слота хотбара
+		_refresh_hotbar_slot_ui()
+
 func apply_damage(area: Area2D, damage: float):
 	if area.is_in_group("Harvestable"):
 		area.Harvest(damage, equip.lvl, equip.is_weapon)
 		
 	elif area.is_in_group("Ennemy"):
-		area.get_parent().take_damage(damage,self)
+		area.get_parent().take_damage(damage, self)
 		print("weapon damaged: " + str(damage))
 
+func _refresh_hotbar_slot_ui() -> void:
+	if not hotbar: return
+	var slot_data = hotbar.slots[hotbar.selected_index]
+	if slot_data.slot_node:
+		slot_data.slot_node.update_ui()
 
 func consume_food(food: FoodData) -> void:
 	if not hotbar: return
@@ -131,19 +115,16 @@ func consume_food(food: FoodData) -> void:
 	if slot_data.amount <= 0:
 		return
 	
-	# Уменьшаем количество
 	slot_data.amount -= 1
 	slot_data.slot_node.ammount = slot_data.amount
 	slot_data.slot_node.update_ui()
 	
-	# Если кончилось — очищаем слот
 	if slot_data.amount <= 0:
 		slot_data.item = null
 		slot_data.slot_node.item = null
 		slot_data.slot_node.update_ui()
 		update_equip(null)
 	
-	# Применяем эффекты еды
 	_apply_food_effects(food)
 	hotbar.emit_signal("hotbar_changed")
 
@@ -156,12 +137,10 @@ func _apply_food_effects(food: FoodData) -> void:
 		player.finished.connect(player.queue_free)
 	
 	for effect in food.effects:
-		# Здесь просто вызываем методы игрока
 		var player = owner
 		if player.effect_manager.has_method("apply_effect_instance"):
 			player.apply_effect_instance(effect)
-		# Или напрямую:
-		if effect.effect_type == 0:  # Heal
+		if effect.effect_type == 0:
 			if player.has_method("heal"):
 				player.heal(effect.value)
 

@@ -1,0 +1,44 @@
+[gd_resource type="Resource" script_class="LootPool" format=3 uid="uid://61oqwhc7fs65"]
+
+[ext_resource type="Script" uid="uid://wm1t8anytdyq" path="res://scr/Resources/ItemData/ItemData.gd" id="1_v6f38"]
+[ext_resource type="Resource" uid="uid://r1vs08ih23fx" path="res://misc/Content/Items/Metal piece.tres" id="2_g5qby"]
+[ext_resource type="Resource" uid="uid://bcj6bmre3yk8h" path="res://misc/Content/Items/Handle.tres" id="3_5lco2"]
+[ext_resource type="Resource" uid="uid://d3solnlslg6pa" path="res://misc/Drop/Auralis.tres" id="4_d674q"]
+[ext_resource type="Resource" uid="uid://damxy1wcffxi6" path="res://misc/Content/Items/web.tres" id="5_cwhlu"]
+[ext_resource type="Resource" uid="uid://b6v20ewqdrkp6" path="res://misc/Content/Items/Health Potion.tres" id="6_tw3hy"]
+[ext_resource type="Texture2D" uid="uid://cf3avrbvs0ues" path="res://Assets/Textures/SpriteSheets/Items-Sheet.png" id="7_ue24x"]
+[ext_resource type="Script" uid="uid://b2ovoyoflp1gw" path="res://scr/Resources/ItemData/Equip_item_data.gd" id="8_3ut8y"]
+[ext_resource type="Script" uid="uid://dp5sqr3dvy444" path="res://misc/Chest/LootPool.gd" id="9_x6oqv"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8f5ct"]
+atlas = ExtResource("7_ue24x")
+region = Rect2(64, 128, 16, 16)
+
+[sub_resource type="Resource" id="Resource_0pqcv"]
+script = ExtResource("8_3ut8y")
+Damage = 9
+Atk_speed = 0.9
+equiped_weapon_sprite = SubResource("AtlasTexture_8f5ct")
+icon = SubResource("AtlasTexture_8f5ct")
+item_name = "Simple Boomerang"
+stackable = false
+metadata/_custom_type_script = "uid://b2ovoyoflp1gw"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rn3rj"]
+atlas = ExtResource("7_ue24x")
+region = Rect2(96, 128, 16, 16)
+
+[sub_resource type="Resource" id="Resource_h2h67"]
+script = ExtResource("8_3ut8y")
+equiped_weapon_sprite = SubResource("AtlasTexture_rn3rj")
+icon = SubResource("AtlasTexture_rn3rj")
+play_anim = "Shoot"
+item_name = "Simple Wand"
+metadata/_custom_type_script = "uid://b2ovoyoflp1gw"
+
+[resource]
+script = ExtResource("9_x6oqv")
+items = Array[ExtResource("1_v6f38")]([ExtResource("2_g5qby"), ExtResource("3_5lco2"), ExtResource("4_d674q"), ExtResource("5_cwhlu"), ExtResource("6_tw3hy"), SubResource("Resource_0pqcv"), SubResource("Resource_h2h67")])
+weights = Array[float]([0.3, 0.1, 0.3, 0.2, 0.4, 0.4, 0.4])
+max_items = 3
+metadata/_custom_type_script = "uid://dp5sqr3dvy444"

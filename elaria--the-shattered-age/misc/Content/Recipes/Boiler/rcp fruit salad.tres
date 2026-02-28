@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="CraftRecipe" format=3 uid="uid://dyd83rdskkgoh"]
+
+[ext_resource type="Script" uid="uid://bcg5vwna4id5n" path="res://scr/Systems/Craft/SimpleCraft/CraftIngeridents.gd" id="1_gb1vv"]
+[ext_resource type="Resource" uid="uid://dt3jv77sc1amr" path="res://misc/Content/Items/Berry.tres" id="2_p16qe"]
+[ext_resource type="Resource" uid="uid://cek8v8e4qeq28" path="res://misc/Content/Items/Juicy Berry.tres" id="3_6hdhx"]
+[ext_resource type="Resource" uid="uid://bx48che8mxghx" path="res://misc/Content/Items/Apple.tres" id="4_xox1w"]
+[ext_resource type="Resource" uid="uid://cb1sewtosnmna" path="res://misc/Content/Items/Fruit Salad.tres" id="5_j2xoj"]
+[ext_resource type="Script" uid="uid://b47c08bhjaot6" path="res://scr/Systems/Craft/SimpleCraft/CraftRecipe.gd" id="6_middb"]
+
+[sub_resource type="Resource" id="Resource_6pkmi"]
+script = ExtResource("1_gb1vv")
+item = ExtResource("2_p16qe")
+amount = 10
+metadata/_custom_type_script = "uid://bcg5vwna4id5n"
+
+[sub_resource type="Resource" id="Resource_q0wty"]
+script = ExtResource("1_gb1vv")
+item = ExtResource("3_6hdhx")
+amount = 10
+metadata/_custom_type_script = "uid://bcg5vwna4id5n"
+
+[sub_resource type="Resource" id="Resource_ynesy"]
+script = ExtResource("1_gb1vv")
+item = ExtResource("4_xox1w")
+amount = 10
+metadata/_custom_type_script = "uid://bcg5vwna4id5n"
+
+[resource]
+script = ExtResource("6_middb")
+recipe_name = "Fruit salad"
+result_item = ExtResource("5_j2xoj")
+ingredients = Array[ExtResource("1_gb1vv")]([SubResource("Resource_6pkmi"), SubResource("Resource_q0wty"), SubResource("Resource_ynesy")])
+metadata/_custom_type_script = "uid://b47c08bhjaot6"

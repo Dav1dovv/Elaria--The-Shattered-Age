@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="FoodData" format=3 uid="uid://bvyr07c4lf4nq"]
+
+[ext_resource type="Script" uid="uid://dj4umu6271nxr" path="res://scr/Resources/effects/EffectResource.gd" id="1_4n675"]
+[ext_resource type="Texture2D" uid="uid://cf3avrbvs0ues" path="res://Assets/Textures/SpriteSheets/Items-Sheet.png" id="2_3wsgx"]
+[ext_resource type="Script" uid="uid://ds5d4cljtsmfp" path="res://scr/Resources/ItemData/Food_item_data.gd" id="2_g6xjt"]
+
+[sub_resource type="Resource" id="Resource_biysh"]
+script = ExtResource("1_4n675")
+value = 35.0
+metadata/_custom_type_script = "uid://dj4umu6271nxr"
+
+[sub_resource type="Resource" id="Resource_qwapa"]
+script = ExtResource("1_4n675")
+effect_type = 4
+duration = 40.0
+metadata/_custom_type_script = "uid://dj4umu6271nxr"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_27o6j"]
+atlas = ExtResource("2_3wsgx")
+region = Rect2(112, 80, 16, 16)
+
+[resource]
+script = ExtResource("2_g6xjt")
+effects = Array[ExtResource("1_4n675")]([SubResource("Resource_biysh"), SubResource("Resource_qwapa")])
+icon = SubResource("AtlasTexture_27o6j")
+play_anim = "Eating"
+item_name = "Cooked mushroom"
+stackable = false
+metadata/_custom_type_script = "uid://ds5d4cljtsmfp"

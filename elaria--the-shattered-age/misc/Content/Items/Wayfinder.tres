@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://xyck3q0gr12o"]
+
+[ext_resource type="Script" uid="uid://wm1t8anytdyq" path="res://scr/Resources/ItemData/ItemData.gd" id="1_6hhhq"]
+[ext_resource type="Texture2D" uid="uid://cf3avrbvs0ues" path="res://Assets/Textures/SpriteSheets/Items-Sheet.png" id="1_xbc8s"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7hr6j"]
+atlas = ExtResource("1_xbc8s")
+region = Rect2(0, 32, 16, 16)
+
+[resource]
+script = ExtResource("1_6hhhq")
+icon = SubResource("AtlasTexture_7hr6j")
+item_name = "Wayfinder"
+metadata/_custom_type_script = "uid://wm1t8anytdyq"

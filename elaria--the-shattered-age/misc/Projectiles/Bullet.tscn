@@ -1,12 +1,12 @@
-[gd_scene load_steps=11 format=3 uid="uid://u72aa5bych45"]
+[gd_scene format=3 uid="uid://u72aa5bych45"]
 
 [ext_resource type="Script" uid="uid://b1l7sa4nobavs" path="res://misc/Projectiles/Projectile.gd" id="1_xmoit"]
 [ext_resource type="Texture2D" uid="uid://dqm1tvqyd7xrh" path="res://Assets/Textures/SpriteSheets/Porjectiles.png" id="2_ipxpn"]
 [ext_resource type="AudioStream" uid="uid://cgigsrfyxuodb" path="res://Assets/Audio/SFX/Swing.wav" id="3_q56gs"]
 [ext_resource type="Texture2D" uid="uid://cf3avrbvs0ues" path="res://Assets/Textures/SpriteSheets/Items-Sheet.png" id="4_nc27p"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_njjya"]
-radius = 3.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xmoit"]
+size = Vector2(11, 3)
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_njjya"]
 particle_flag_disable_z = true
@@ -50,39 +50,39 @@ scale_over_velocity_min = 0.19999999
 scale_over_velocity_max = 0.59999996
 color_ramp = SubResource("GradientTexture1D_fdh37")
 
-[node name="Bullet" type="CharacterBody2D"]
+[node name="Bullet" type="CharacterBody2D" unique_id=399276925]
 script = ExtResource("1_xmoit")
 speed = 550.0
 lifetime = 12.0
 max_travel_distance = 800.0
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=947838315]
 texture = ExtResource("2_ipxpn")
 region_enabled = true
-region_rect = Rect2(32, 16, 16, 16)
+region_rect = Rect2(128, 0, 16, 16)
 
-[node name="LifetimeTimer" type="Timer" parent="."]
+[node name="LifetimeTimer" type="Timer" parent="." unique_id=1756769947]
 one_shot = true
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="." unique_id=694930289]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(3, 0)
-shape = SubResource("CircleShape2D_njjya")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=990540380]
+position = Vector2(0.5, -0.5)
+shape = SubResource("RectangleShape2D_xmoit")
 
-[node name="HitSound" type="AudioStreamPlayer2D" parent="."]
+[node name="HitSound" type="AudioStreamPlayer2D" parent="." unique_id=1624150569]
 stream = ExtResource("3_q56gs")
 
-[node name="ExplosionParticles" type="GPUParticles2D" parent="."]
+[node name="ExplosionParticles" type="GPUParticles2D" parent="." unique_id=621806998]
 emitting = false
 lifetime = 0.2
 one_shot = true
 process_material = SubResource("ParticleProcessMaterial_njjya")
 
-[node name="BombTimer" type="Timer" parent="."]
+[node name="BombTimer" type="Timer" parent="." unique_id=255197717]
 one_shot = true
 
-[node name="HitParticles" type="GPUParticles2D" parent="."]
+[node name="HitParticles" type="GPUParticles2D" parent="." unique_id=851990821]
 emitting = false
 amount = 12
 texture = SubResource("AtlasTexture_mg0kq")

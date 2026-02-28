@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://dm7ru2a5fnwfi"]
+
+[ext_resource type="Script" uid="uid://wm1t8anytdyq" path="res://scr/Resources/ItemData/ItemData.gd" id="1_eo50f"]
+[ext_resource type="Texture2D" uid="uid://cf3avrbvs0ues" path="res://Assets/Textures/SpriteSheets/Items-Sheet.png" id="1_f1dvb"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ry0fr"]
+atlas = ExtResource("1_f1dvb")
+region = Rect2(144, 0, 16, 16)
+
+[resource]
+script = ExtResource("1_eo50f")
+icon = SubResource("AtlasTexture_ry0fr")
+item_name = "Diamond"
+metadata/_custom_type_script = "uid://wm1t8anytdyq"

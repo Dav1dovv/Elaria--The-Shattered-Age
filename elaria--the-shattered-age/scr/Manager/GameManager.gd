@@ -1,18 +1,33 @@
 extends Node2D
 
 @export var world_seed: String
+@export var max_activation_stations : int = 0
 
+var activated_stations : int = 0
 var last_saved_position: Array[Vector2]
 var player
 
+const START = preload("uid://dmkfjbjyqud87")
+const QUEST_COMPLETE = preload("uid://b4t7q4o81hsi1")
+const ACTIVATED = preload("uid://dwl7yd8xi1g4i")
+
 func _ready() -> void:
+	#DialogueManager.show_dialogue_balloon(START)
 	world_seed = Global.player_name
 	add_to_group("World")
 	_initialize_seed_system()
 	
 func respawn():
 	player = get_tree().get_first_node_in_group("Player")
-	player.position = last_saved_position.front()
+	if last_saved_position.is_empty():
+		player.save_and_load.load_player(player)
+		print(Global.current_location)
+		Global.scene_manager.change_scene(Global.current_location,false,Vector2.ZERO)
+	else:
+		get_tree().call_group("Ennemy","queue_free")
+		Global.scene_manager.fade()
+		player.respawn()
+		player.position = last_saved_position.front()
 
 func set_spawn_point(save_position : Vector2):
 	last_saved_position.append(save_position)
@@ -232,3 +247,12 @@ func import_world_seed(seed_string: String) -> bool:
 		return true
 	
 	return false
+
+
+func activate_station():
+	if activated_stations == max_activation_stations:
+		DialogueManager.show_dialogue_balloon(QUEST_COMPLETE)
+	
+	if activated_stations < max_activation_stations:
+		activated_stations += 1
+		DialogueManager.show_dialogue_balloon(ACTIVATED)

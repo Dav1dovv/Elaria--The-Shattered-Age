@@ -2,16 +2,13 @@
 
 [ext_resource type="PackedScene" uid="uid://bny4sqh4i8i5v" path="res://misc/HarvestItems/Harvestable.tscn" id="1_n0ndn"]
 [ext_resource type="Shader" uid="uid://btycjoosxomvj" path="res://Assets/Shader/Wind.gdshader" id="2_4ftsn"]
-[ext_resource type="Texture2D" uid="uid://d37sojnjtd6q2" path="res://misc/HarvestItems/Textures/Energetic/EmeraldTreeEnergetic.png" id="3_n0ndn"]
 [ext_resource type="Texture2D" uid="uid://c1e076bqw7scs" path="res://misc/HarvestItems/Textures/EmeraldTRee.png" id="4_n0ndn"]
 [ext_resource type="Script" uid="uid://b7lfnqk6b5cdp" path="res://scr/Misc/RandomSprite.gd" id="5_th528"]
 [ext_resource type="Texture2D" uid="uid://bvn1k3yr05y11" path="res://Assets/Textures/Shadows/Shadow.png" id="6_cd1ki"]
+[ext_resource type="Resource" uid="uid://10qblpi41tcd" path="res://misc/Content/Items/Wood.tres" id="7_ei2fv"]
 [ext_resource type="Script" uid="uid://wm1t8anytdyq" path="res://scr/Resources/ItemData/ItemData.gd" id="7_v7q21"]
-[ext_resource type="Resource" path="res://scr/Resources/Items/Wood.tres" id="8_lpaj7"]
 [ext_resource type="Script" uid="uid://ctm4b4v8txo1q" path="res://scr/Resources/WeightItem.gd" id="9_2k24j"]
-[ext_resource type="Resource" path="res://scr/Resources/Items/Apple.tres" id="10_xw1du"]
-[ext_resource type="Resource" path="res://scr/Resources/Items/Stick.tres" id="11_se7gg"]
-[ext_resource type="Resource" path="res://scr/Resources/Items/Nut.tres" id="12_j7s16"]
+[ext_resource type="Resource" uid="uid://bx48che8mxghx" path="res://misc/Content/Items/Apple.tres" id="9_f0nke"]
 [ext_resource type="AudioStream" uid="uid://bdpgims8h837c" path="res://misc/HarvestItems/SFX/Tree/Chop1.mp3" id="13_yjfjm"]
 [ext_resource type="AudioStream" uid="uid://bjtqd3qjpmj7i" path="res://misc/HarvestItems/SFX/Tree/Chop2.mp3" id="14_d4fy5"]
 [ext_resource type="AudioStream" uid="uid://7cg0p0tt6th1" path="res://misc/HarvestItems/SFX/Tree/Chop3.mp3" id="15_7i3u3"]
@@ -37,20 +34,8 @@ height = 15.6869
 
 [sub_resource type="Resource" id="Resource_n3vdi"]
 script = ExtResource("9_2k24j")
-item = ExtResource("10_xw1du")
+item = ExtResource("9_f0nke")
 weight = 0.07
-metadata/_custom_type_script = "uid://ctm4b4v8txo1q"
-
-[sub_resource type="Resource" id="Resource_y4qqg"]
-script = ExtResource("9_2k24j")
-item = ExtResource("11_se7gg")
-weight = 0.02
-metadata/_custom_type_script = "uid://ctm4b4v8txo1q"
-
-[sub_resource type="Resource" id="Resource_8e0o7"]
-script = ExtResource("9_2k24j")
-item = ExtResource("12_j7s16")
-weight = 0.3
 metadata/_custom_type_script = "uid://ctm4b4v8txo1q"
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_mchyi"]
@@ -69,8 +54,7 @@ size = Vector2(21.7234, 24.4137)
 
 [node name="Tree" unique_id=1525282769 instance=ExtResource("1_n0ndn")]
 material = SubResource("ShaderMaterial_6ve0l")
-durability = 68.0
-energy_sprite = ExtResource("3_n0ndn")
+durability = 85.0
 max_distance = 60.0
 
 [node name="CollisionShape2D" parent="StaticBody2D" index="0"]
@@ -95,7 +79,6 @@ use_parent_material = true
 position = Vector2(-1, -28)
 texture = ExtResource("4_n0ndn")
 hframes = 4
-frame = 2
 script = ExtResource("5_th528")
 frame_weights = Array[float]([1.0, 1.0, 1.0, 1.0])
 metadata/_custom_type_script = "uid://b7lfnqk6b5cdp"
@@ -108,8 +91,8 @@ scale = Vector2(1.43531, 0.863497)
 texture = ExtResource("6_cd1ki")
 
 [node name="droper" parent="." index="5"]
-drop_item = Array[ExtResource("7_v7q21")]([ExtResource("8_lpaj7")])
-unique_items = Array[ExtResource("9_2k24j")]([SubResource("Resource_n3vdi"), SubResource("Resource_y4qqg"), SubResource("Resource_8e0o7")])
+drop_item = Array[ExtResource("7_v7q21")]([ExtResource("7_ei2fv")])
+unique_items = Array[ExtResource("9_2k24j")]([SubResource("Resource_n3vdi")])
 max_drop = 5
 
 [node name="SFX" type="AudioStreamPlayer2D" parent="." index="7" unique_id=692783260]

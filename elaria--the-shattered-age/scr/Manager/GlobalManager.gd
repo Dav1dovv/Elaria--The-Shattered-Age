@@ -13,6 +13,8 @@ var is_opened_menu : bool = false
 var hotbar
 var inventory
 
+var explored_progress : float = 0
+
 signal save_game
 signal load_game
 
@@ -23,7 +25,7 @@ const HINT = preload("uid://wyeldfaexejh")
 @onready var developer_console: CanvasLayer = %DeveloperConsole
 @onready var scene_manager: SceneManager = $SceneManager
 @onready var day_night: CanvasModulate = $DayNight
-@onready var blaze_music_manager: BlazeMusicManager = $BlazeMusicManager
+@onready var blaze_music_manager: BlazeMusicManager = %MusicManager
 
 
 func _init() -> void:
@@ -84,10 +86,11 @@ func _try_add_to_container(container, item_data: ItemData, amount: int) -> bool:
 	return container.add_item(item_data, amount)
 
 func add_initial_items():
-	#hotbar = get_tree().get_first_node_in_group("Hotbar") as Hotbar
-	#inventory = get_tree().get_first_node_in_group("Inventory") as Inventory
-	#pickup_item(load("res://scr/Resources/Items/Adventurers sword.tres").duplicate(), 1)
-	#pickup_item(load("res://scr/Resources/Items/Stick Pickaxe.tres").duplicate(), 1)
+	hotbar = get_tree().get_first_node_in_group("Hotbar") as Hotbar
+	inventory = get_tree().get_first_node_in_group("Inventory") as Inventory
+	pickup_item(preload("uid://ch2r3sdjgisqa").duplicate(), 1)
+	pickup_item(preload("uid://prg8cq5chkl2").duplicate(), 1)
+	pickup_item(preload("uid://xyck3q0gr12o").duplicate(),1)
 	pass
 
 # Get full path to save file
@@ -96,16 +99,6 @@ func get_save_path() -> String:
 		print("Error: Character name is empty")
 		return ""
 	return "user://Saves/%s/save.json" % player_name.replace(" ", "_")
-
-# Trigger save
-func save() -> void:
-	emit_signal("save_game")
-	print("Save game triggered")
-
-# Trigger load
-func load() -> void:
-	emit_signal("load_game")
-	print("Load game triggered")
 
 
 func hint(object : Node2D,message : String):

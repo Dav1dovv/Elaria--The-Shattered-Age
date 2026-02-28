@@ -1,18 +1,12 @@
-[gd_scene load_steps=23 format=3 uid="uid://5nk644nw1v5k"]
+[gd_scene format=3 uid="uid://5nk644nw1v5k"]
 
 [ext_resource type="Script" uid="uid://dmhx0c874k02q" path="res://scr/Systems/Craft/SimpleCraft/CraftStation.gd" id="1_b2ljv"]
 [ext_resource type="Texture2D" uid="uid://b62hrm50ou235" path="res://Assets/Textures/UI/UI.png" id="2_d2j83"]
-[ext_resource type="Script" uid="uid://b47c08bhjaot6" path="res://scr/Systems/Craft/SimpleCraft/CraftRecipe.gd" id="2_o6wim"]
-[ext_resource type="Resource" uid="uid://di72wr6ninerj" path="res://scr/Resources/Recipes/Dry log.tres" id="3_8pirq"]
 [ext_resource type="Script" uid="uid://bw8xm8btg3jhd" path="res://scr/Systems/Inventory/inventoryslot.gd" id="3_rh3au"]
 [ext_resource type="FontFile" uid="uid://djfo531dg7v6d" path="res://Assets/Fonts/Elariascript2-Regular.ttf" id="4_5jysi"]
-[ext_resource type="Resource" uid="uid://vdievfnccybd" path="res://scr/Resources/Recipes/Key.tres" id="4_6oqsv"]
 [ext_resource type="PackedScene" uid="uid://civqx7y0nh75n" path="res://scr/Systems/Inventory/tooltip.tscn" id="5_hpr4m"]
-[ext_resource type="Resource" uid="uid://bnrgwuqwf468t" path="res://scr/Resources/Recipes/rcp_Iron Ignot.tres" id="5_r1btb"]
 [ext_resource type="PackedScene" uid="uid://bwaixuiwrerk5" path="res://scr/Systems/Inventory/InventorySlot.tscn" id="6_j12g2"]
 [ext_resource type="PackedScene" uid="uid://gb7k36a7pc6o" path="res://scr/Misc/UIelements/button.tscn" id="11_7qfh4"]
-[ext_resource type="Texture2D" uid="uid://bj3k1id46eild" path="res://Assets/Textures/SpriteSheets/weapons-Sheet.png" id="12_4201q"]
-[ext_resource type="Texture2D" uid="uid://ba7377wfgnijs" path="res://Assets/Textures/SpriteSheets/Pickaxe-sheet.png" id="13_n8xq6"]
 [ext_resource type="Texture2D" uid="uid://cf3avrbvs0ues" path="res://Assets/Textures/SpriteSheets/Items-Sheet.png" id="14_ak1er"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_o6wim"]
@@ -39,19 +33,19 @@ shadow_size = 3
 shadow_color = Color(0, 0, 0, 0.2)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_k121k"]
-atlas = ExtResource("12_4201q")
-region = Rect2(0, 16, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_xf6jc"]
-atlas = ExtResource("13_n8xq6")
-region = Rect2(64, 0, 16, 16)
+atlas = ExtResource("14_ak1er")
+region = Rect2(0, 96, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qsghq"]
 atlas = ExtResource("14_ak1er")
-region = Rect2(64, 48, 16, 16)
+region = Rect2(0, 0, 16, 16)
 
-[node name="CraftStation" type="Control"]
-custom_minimum_size = Vector2(159.83, 203)
+[sub_resource type="AtlasTexture" id="AtlasTexture_hpr4m"]
+atlas = ExtResource("14_ak1er")
+region = Rect2(32, 64, 16, 16)
+
+[node name="CraftStation" type="Control" unique_id=104361974]
+custom_minimum_size = Vector2(159.83, 150)
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -61,74 +55,77 @@ anchor_bottom = 0.5
 offset_left = -240.0
 offset_top = -135.0
 offset_right = -80.17
-offset_bottom = 68.0
+offset_bottom = 34.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_b2ljv")
-all_recipes = Array[ExtResource("2_o6wim")]([ExtResource("3_8pirq"), ExtResource("4_6oqsv"), ExtResource("5_r1btb"), ExtResource("5_r1btb")])
 
-[node name="Panel" type="Panel" parent="."]
-custom_minimum_size = Vector2(159.83, 203)
+[node name="Panel" type="Panel" parent="." unique_id=1859719515]
+custom_minimum_size = Vector2(159.83, 150)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_bottom = 8.0
+offset_top = 3.0
+offset_bottom = 5.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="Panel"]
-custom_minimum_size = Vector2(122.17, 141)
+[node name="MarginContainer" type="MarginContainer" parent="Panel" unique_id=8513519]
+custom_minimum_size = Vector2(122.17, 100)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 2.8300018
+offset_top = -21.5
+offset_bottom = 21.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="HBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer"]
-custom_minimum_size = Vector2(122.205, 140.645)
+[node name="HBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer" unique_id=1482640953]
+custom_minimum_size = Vector2(122.205, 100)
 layout_mode = 2
 
-[node name="Control" type="Control" parent="Panel/MarginContainer/HBoxContainer"]
-custom_minimum_size = Vector2(0, 11.63)
+[node name="Control" type="Control" parent="Panel/MarginContainer/HBoxContainer" unique_id=1793320922]
+custom_minimum_size = Vector2(0, 35)
 layout_mode = 2
 
-[node name="Label" type="Label" parent="Panel/MarginContainer/HBoxContainer"]
+[node name="Label" type="Label" parent="Panel/MarginContainer/HBoxContainer" unique_id=589290288]
+visible = false
 layout_mode = 2
 text = "CRAFT"
 label_settings = SubResource("LabelSettings_o6wim")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer/HBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer/HBoxContainer" unique_id=1286852984]
 custom_minimum_size = Vector2(156.75, 97.225)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 size_flags_stretch_ratio = 0.0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer/HBoxContainer/VBoxContainer" unique_id=1303508053]
 visible = false
 layout_mode = 2
 
-[node name="LineEdit" type="LineEdit" parent="Panel/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+[node name="LineEdit" type="LineEdit" parent="Panel/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=1739074172]
 custom_minimum_size = Vector2(69.485, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 5
 
-[node name="OptionButton" type="OptionButton" parent="Panel/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+[node name="OptionButton" type="OptionButton" parent="Panel/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=1121072780]
 custom_minimum_size = Vector2(10, 10)
 layout_direction = 2
 layout_mode = 2
 
-[node name="ScrollContainer" type="ScrollContainer" parent="Panel/MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="Panel/MarginContainer/HBoxContainer/VBoxContainer" unique_id=1259589255]
 custom_minimum_size = Vector2(99.235, 94.7)
 layout_mode = 2
 horizontal_scroll_mode = 3
 
-[node name="GridContainer" type="GridContainer" parent="Panel/MarginContainer/HBoxContainer/VBoxContainer/ScrollContainer"]
+[node name="GridContainer" type="GridContainer" parent="Panel/MarginContainer/HBoxContainer/VBoxContainer/ScrollContainer" unique_id=702297616]
 custom_minimum_size = Vector2(142.75, 120)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -137,41 +134,63 @@ theme_override_constants/h_separation = 8
 theme_override_constants/v_separation = 10
 columns = 6
 
-[node name="InventorySlot" parent="Panel/MarginContainer/HBoxContainer/VBoxContainer/ScrollContainer/GridContainer" instance=ExtResource("6_j12g2")]
+[node name="InventorySlot" parent="Panel/MarginContainer/HBoxContainer/VBoxContainer/ScrollContainer/GridContainer" unique_id=575400975 instance=ExtResource("6_j12g2")]
 layout_mode = 2
 
-[node name="InventorySlot2" parent="Panel/MarginContainer/HBoxContainer/VBoxContainer/ScrollContainer/GridContainer" instance=ExtResource("6_j12g2")]
+[node name="InventorySlot2" parent="Panel/MarginContainer/HBoxContainer/VBoxContainer/ScrollContainer/GridContainer" unique_id=1221156149 instance=ExtResource("6_j12g2")]
 layout_mode = 2
 
-[node name="InventorySlot3" parent="Panel/MarginContainer/HBoxContainer/VBoxContainer/ScrollContainer/GridContainer" instance=ExtResource("6_j12g2")]
+[node name="InventorySlot3" parent="Panel/MarginContainer/HBoxContainer/VBoxContainer/ScrollContainer/GridContainer" unique_id=1845886228 instance=ExtResource("6_j12g2")]
 layout_mode = 2
 
-[node name="InventorySlot4" parent="Panel/MarginContainer/HBoxContainer/VBoxContainer/ScrollContainer/GridContainer" instance=ExtResource("6_j12g2")]
+[node name="InventorySlot4" parent="Panel/MarginContainer/HBoxContainer/VBoxContainer/ScrollContainer/GridContainer" unique_id=183835533 instance=ExtResource("6_j12g2")]
 layout_mode = 2
 
-[node name="InventorySlot5" parent="Panel/MarginContainer/HBoxContainer/VBoxContainer/ScrollContainer/GridContainer" instance=ExtResource("6_j12g2")]
+[node name="InventorySlot5" parent="Panel/MarginContainer/HBoxContainer/VBoxContainer/ScrollContainer/GridContainer" unique_id=784221596 instance=ExtResource("6_j12g2")]
 layout_mode = 2
 
-[node name="InventorySlot6" parent="Panel/MarginContainer/HBoxContainer/VBoxContainer/ScrollContainer/GridContainer" instance=ExtResource("6_j12g2")]
+[node name="InventorySlot6" parent="Panel/MarginContainer/HBoxContainer/VBoxContainer/ScrollContainer/GridContainer" unique_id=1683831420 instance=ExtResource("6_j12g2")]
 layout_mode = 2
 
-[node name="InventorySlot7" parent="Panel/MarginContainer/HBoxContainer/VBoxContainer/ScrollContainer/GridContainer" instance=ExtResource("6_j12g2")]
+[node name="InventorySlot7" parent="Panel/MarginContainer/HBoxContainer/VBoxContainer/ScrollContainer/GridContainer" unique_id=124201385 instance=ExtResource("6_j12g2")]
 layout_mode = 2
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="Panel/MarginContainer/HBoxContainer"]
-custom_minimum_size = Vector2(157.97, 79)
+[node name="VBoxContainer2" type="VBoxContainer" parent="Panel/MarginContainer/HBoxContainer" unique_id=1236229954]
+custom_minimum_size = Vector2(157.97, 65.02)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
+theme_override_constants/separation = 1
 
-[node name="Label" type="Label" parent="Panel/MarginContainer/HBoxContainer/VBoxContainer2"]
+[node name="ScrollContainer" type="ScrollContainer" parent="Panel/MarginContainer/HBoxContainer/VBoxContainer2" unique_id=670412512]
+custom_minimum_size = Vector2(118.495, 24.485)
+layout_mode = 2
+
+[node name="VBoxContainer" type="GridContainer" parent="Panel/MarginContainer/HBoxContainer/VBoxContainer2/ScrollContainer" unique_id=871626384]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+columns = 3
+
+[node name="Label" type="Label" parent="Panel/MarginContainer/HBoxContainer/VBoxContainer2" unique_id=1074611738]
+custom_minimum_size = Vector2(0, 31.13)
 layout_mode = 2
 theme_override_font_sizes/font_size = 14
 text = "Result"
 
-[node name="ResultSlot" type="TextureButton" parent="Panel/MarginContainer/HBoxContainer/VBoxContainer2"]
+[node name="ResultSlot" type="TextureButton" parent="Panel/MarginContainer/HBoxContainer/VBoxContainer2/Label" unique_id=1947290085]
 custom_minimum_size = Vector2(20, 20)
-layout_mode = 2
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -15.330002
+offset_top = -18.279999
+offset_right = 4.669998
+offset_bottom = 1.7200012
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 texture_normal = SubResource("AtlasTexture_o6wim")
@@ -180,7 +199,7 @@ script = ExtResource("3_rh3au")
 active_slot = SubResource("AtlasTexture_8pirq")
 unactive_slot = SubResource("AtlasTexture_6oqsv")
 
-[node name="Border" type="ColorRect" parent="Panel/MarginContainer/HBoxContainer/VBoxContainer2/ResultSlot"]
+[node name="Border" type="ColorRect" parent="Panel/MarginContainer/HBoxContainer/VBoxContainer2/Label/ResultSlot" unique_id=1587277077]
 visible = false
 z_index = -1
 layout_mode = 0
@@ -189,7 +208,7 @@ offset_top = 1.0
 offset_right = 15.0
 offset_bottom = 15.0
 
-[node name="Icon" type="TextureRect" parent="Panel/MarginContainer/HBoxContainer/VBoxContainer2/ResultSlot"]
+[node name="Icon" type="TextureRect" parent="Panel/MarginContainer/HBoxContainer/VBoxContainer2/Label/ResultSlot" unique_id=46299809]
 custom_minimum_size = Vector2(16, 16)
 layout_mode = 0
 offset_left = 2.0
@@ -197,7 +216,7 @@ offset_top = 2.0
 offset_right = 18.0
 offset_bottom = 18.0
 
-[node name="Count" type="Label" parent="Panel/MarginContainer/HBoxContainer/VBoxContainer2/ResultSlot"]
+[node name="Count" type="Label" parent="Panel/MarginContainer/HBoxContainer/VBoxContainer2/Label/ResultSlot" unique_id=128909155]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -213,7 +232,7 @@ label_settings = SubResource("LabelSettings_rnow5")
 horizontal_alignment = 2
 vertical_alignment = 2
 
-[node name="Tooltip" parent="Panel/MarginContainer/HBoxContainer/VBoxContainer2/ResultSlot" instance=ExtResource("5_hpr4m")]
+[node name="Tooltip" parent="Panel/MarginContainer/HBoxContainer/VBoxContainer2/Label/ResultSlot" unique_id=2117052548 instance=ExtResource("5_hpr4m")]
 visible = false
 z_index = 1
 layout_mode = 1
@@ -227,7 +246,7 @@ offset_top = -3.0
 offset_right = -2.0
 offset_bottom = -3.0
 
-[node name="MaxCount" type="Button" parent="Panel/MarginContainer/HBoxContainer/VBoxContainer2/ResultSlot"]
+[node name="MaxCount" type="Button" parent="Panel/MarginContainer/HBoxContainer/VBoxContainer2/Label/ResultSlot" unique_id=1979851188]
 layout_mode = 0
 offset_left = 24.0
 offset_top = 2.5
@@ -235,19 +254,21 @@ offset_right = 50.0
 offset_bottom = 17.5
 text = "max"
 
-[node name="ScrollContainer" type="ScrollContainer" parent="Panel/MarginContainer/HBoxContainer/VBoxContainer2"]
-custom_minimum_size = Vector2(118.495, 36.345)
-layout_mode = 2
-
-[node name="VBoxContainer" type="GridContainer" parent="Panel/MarginContainer/HBoxContainer/VBoxContainer2/ScrollContainer"]
-layout_mode = 2
-columns = 3
-
-[node name="Button" type="Button" parent="Panel/MarginContainer/HBoxContainer/VBoxContainer2"]
+[node name="Button" type="Button" parent="Panel/MarginContainer/HBoxContainer/VBoxContainer2" unique_id=586007625]
 layout_mode = 2
 text = "Craft"
 
-[node name="Close" type="Button" parent="."]
+[node name="ProgressBar" type="ProgressBar" parent="Panel/MarginContainer/HBoxContainer/VBoxContainer2/Button" unique_id=1465622492]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 7
+
+[node name="Close" type="Button" parent="." unique_id=1437698835]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -260,37 +281,43 @@ grow_horizontal = 0
 theme_override_font_sizes/font_size = 8
 text = "x"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=981426769]
 layout_mode = 0
 offset_left = 2.0
-offset_top = -24.0
-offset_right = 149.0
-offset_bottom = -2.0
+offset_top = -22.0
+offset_right = 160.0
+scale = Vector2(0.89424956, 0.89424956)
 theme_override_constants/separation = 12
 alignment = 1
 
-[node name="SwordTag" parent="HBoxContainer" instance=ExtResource("11_7qfh4")]
+[node name="All" parent="HBoxContainer" unique_id=60490692 instance=ExtResource("11_7qfh4")]
+custom_minimum_size = Vector2(22, 18)
+layout_mode = 2
+text = "all"
+
+[node name="SwordTag" parent="HBoxContainer" unique_id=1992956638 instance=ExtResource("11_7qfh4")]
 custom_minimum_size = Vector2(22, 18)
 layout_mode = 2
 icon = SubResource("AtlasTexture_k121k")
 
-[node name="PickaxaTag" parent="HBoxContainer" instance=ExtResource("11_7qfh4")]
-custom_minimum_size = Vector2(22, 18)
-layout_mode = 2
-icon = SubResource("AtlasTexture_xf6jc")
-
-[node name="ItemsTag" parent="HBoxContainer" instance=ExtResource("11_7qfh4")]
+[node name="ItemsTag" parent="HBoxContainer" unique_id=1163487686 instance=ExtResource("11_7qfh4")]
 custom_minimum_size = Vector2(22, 18)
 layout_mode = 2
 icon = SubResource("AtlasTexture_qsghq")
 
+[node name="Food" parent="HBoxContainer" unique_id=1978304525 instance=ExtResource("11_7qfh4")]
+custom_minimum_size = Vector2(22, 18)
+layout_mode = 2
+icon = SubResource("AtlasTexture_hpr4m")
+
 [connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
-[connection signal="gui_input" from="Panel/MarginContainer/HBoxContainer/VBoxContainer2/ResultSlot" to="Panel/MarginContainer/HBoxContainer/VBoxContainer2/ResultSlot" method="_on_gui_input"]
-[connection signal="mouse_entered" from="Panel/MarginContainer/HBoxContainer/VBoxContainer2/ResultSlot" to="Panel/MarginContainer/HBoxContainer/VBoxContainer2/ResultSlot" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="Panel/MarginContainer/HBoxContainer/VBoxContainer2/ResultSlot" to="Panel/MarginContainer/HBoxContainer/VBoxContainer2/ResultSlot" method="_on_mouse_exited"]
-[connection signal="mouse_entered" from="Panel/MarginContainer/HBoxContainer/VBoxContainer2/ResultSlot/Icon" to="Panel/MarginContainer/HBoxContainer/VBoxContainer2/ResultSlot" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="Panel/MarginContainer/HBoxContainer/VBoxContainer2/ResultSlot/Icon" to="Panel/MarginContainer/HBoxContainer/VBoxContainer2/ResultSlot" method="_on_mouse_exited"]
+[connection signal="gui_input" from="Panel/MarginContainer/HBoxContainer/VBoxContainer2/Label/ResultSlot" to="Panel/MarginContainer/HBoxContainer/VBoxContainer2/Label/ResultSlot" method="_on_gui_input"]
+[connection signal="mouse_entered" from="Panel/MarginContainer/HBoxContainer/VBoxContainer2/Label/ResultSlot" to="Panel/MarginContainer/HBoxContainer/VBoxContainer2/Label/ResultSlot" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Panel/MarginContainer/HBoxContainer/VBoxContainer2/Label/ResultSlot" to="Panel/MarginContainer/HBoxContainer/VBoxContainer2/Label/ResultSlot" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Panel/MarginContainer/HBoxContainer/VBoxContainer2/Label/ResultSlot/Icon" to="Panel/MarginContainer/HBoxContainer/VBoxContainer2/Label/ResultSlot" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Panel/MarginContainer/HBoxContainer/VBoxContainer2/Label/ResultSlot/Icon" to="Panel/MarginContainer/HBoxContainer/VBoxContainer2/Label/ResultSlot" method="_on_mouse_exited"]
 [connection signal="pressed" from="Close" to="." method="_on_close_pressed"]
+[connection signal="pressed" from="HBoxContainer/All" to="." method="_on_items_tag_pressed"]
 [connection signal="pressed" from="HBoxContainer/SwordTag" to="." method="_on_sword_tag_pressed"]
-[connection signal="pressed" from="HBoxContainer/PickaxaTag" to="." method="_on_pickaxa_tag_pressed"]
 [connection signal="pressed" from="HBoxContainer/ItemsTag" to="." method="_on_items_tag_pressed"]
+[connection signal="pressed" from="HBoxContainer/Food" to="." method="_on_items_tag_pressed"]

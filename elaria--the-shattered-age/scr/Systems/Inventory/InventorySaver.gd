@@ -1,4 +1,4 @@
-# InventorySaver.gd — ФИНАЛЬНАЯ РАБОЧАЯ ВЕРСИЯ ДЛЯ ТЕБЯ
+# InventorySaver.gd — с поддержкой прочности оружия
 extends Node
 
 @export var inventory_node: Inventory
@@ -11,23 +11,21 @@ func _ready() -> void:
 	DirAccess.make_dir_recursive_absolute("user://Saves/" + Global.player_name)
 	call_deferred("load_game")
 
-# Вызывай вручную или при выходе из игры
 func save_game() -> void:
 	var save_data = {
-		"version"   : 5,
+		"version"   : 6,   # ← версия повышена (добавлена прочность)
 		"inventory" : _pack_container(inventory.items),
 		"hotbar"    : _pack_container(hotbar.slots)
 	}
 	
 	var path = "user://Saves/%s/inventory.save" % Global.player_name
 	
-	# ВАЖНО: открываем с флагом UTF8, иначе будут иероглифы!
 	var file = FileAccess.open(path, FileAccess.WRITE)
 	if file:
 		var json_text = JSON.stringify(save_data, "    ", false)
-		file.store_string(json_text)           # ← без параметров = UTF-8
+		file.store_string(json_text)
 		file.close()
-		print("Инвентарь сохранён красиво → ", path)
+		print("Инвентарь сохранён → ", path)
 	else:
 		push_error("Не удалось сохранить!")
 
@@ -53,6 +51,7 @@ func load_game() -> void:
 		return
 	
 	var data = json.data
+	# Версии 5 и 6 совместимы (6 просто добавляет durability)
 	if data.get("version", 1) < 5:
 		print("Старое сохранение → сброс")
 		Global.add_initial_items()
@@ -67,7 +66,7 @@ func load_game() -> void:
 	
 	inventory.emit_signal("inventory_changed")
 	hotbar.emit_signal("hotbar_changed")
-	print("Инвентарь и хотбар загружены идеально!")
+	print("Инвентарь и хотбар загружены!")
 
 # ─────────────────────────────────────────────────────────────────────
 func _clear_all() -> void:
@@ -76,7 +75,7 @@ func _clear_all() -> void:
 		slot_data.amount = 0
 		slot_data.slot_node.item = null
 		slot_data.slot_node.ammount = 0
-		slot_data.slot_node.update_ui()   # ← у тебя точно есть update_ui()
+		slot_data.slot_node.update_ui()
 
 func _pack_container(container: Array[InventorySlotData]) -> Array:
 	var packed = []
@@ -89,8 +88,8 @@ func _pack_container(container: Array[InventorySlotData]) -> Array:
 		var entry: Dictionary = {
 			"type"        : _get_item_type(item),
 			"item_name"   : item.item_name,
-			"Animation" : item.play_anim,
-			"description"  : item.description,
+			"Animation"   : item.play_anim,
+			"description" : item.description,
 			"amount"      : slot_data.amount,
 			"max_count"   : item.max_count,
 			"stackable"   : item.stackable,
@@ -101,13 +100,16 @@ func _pack_container(container: Array[InventorySlotData]) -> Array:
 		if item is equip_data:
 			entry.merge({
 				"lvl"               : item.lvl,
-				"Damage"             : item.Damage,
-				"hit_distance"       : item.hit_distance,
-				"Atk_speed"          : item.Atk_speed,
-				"sprite_data"        : _serialize_texture(item.equiped_weapon_sprite),
-				"projectile_path"    : item.projectile.resource_path if item.projectile else "",
-				"is_weapon"          : item.is_weapon,
-				"one_shot"           : item.one_shot_attack
+				"Damage"            : item.Damage,
+				"hit_distance"      : item.hit_distance,
+				"Atk_speed"         : item.Atk_speed,
+				"sprite_data"       : _serialize_texture(item.equiped_weapon_sprite),
+				"projectile_path"   : item.projectile.resource_path if item.projectile else "",
+				"is_weapon"         : item.is_weapon,
+				"one_shot"          : item.one_shot_attack,
+				# ← Прочность
+				"durability"        : item.get_durability(),
+				"max_durability"    : item.max_durability
 			})
 		
 		if item is FoodData:
@@ -154,6 +156,9 @@ func _create_item_from_dict(data: Dictionary) -> ItemData:
 				item.projectile = load(data.projectile_path)
 			item.is_weapon = data.get("is_weapon", true)
 			item.one_shot_attack = data.get("one_shot", true)
+			# ← Восстанавливаем прочность
+			item.max_durability = data.get("max_durability", 100)
+			item.durability = data.get("durability", item.max_durability)
 		
 		"FoodData":
 			item = FoodData.new()
@@ -173,15 +178,21 @@ func _create_item_from_dict(data: Dictionary) -> ItemData:
 	
 	# Общие поля
 	item.item_name = data.get("item_name", "??")
-	item.play_anim = data.get("Animation","Attack")
+	item.play_anim = data.get("Animation", "Attack")
 	item.description = data.get("description", "")
 	item.max_count = data.get("max_count", 64)
 	item.stackable = data.get("stackable", true)
 	item.icon = _deserialize_texture(data.get("icon_data"))
 	item.quality = data.get("quality", 0)
 	
-	if item.has_method("apply_quality_multiplier"):
-		item.apply_quality_multiplier(item.quality)
+	# apply_quality_multiplier вызываем ТОЛЬКО если прочность не была загружена из файла
+	# (при загрузке прочность уже стоит правильно, мультипликатор не нужен)
+	if item is equip_data and not data.has("durability"):
+		if item.has_method("apply_quality_multiplier"):
+			item.apply_quality_multiplier(item.quality)
+	elif not (item is equip_data):
+		if item.has_method("apply_quality_multiplier"):
+			item.apply_quality_multiplier(item.quality)
 	
 	return item
 
@@ -192,7 +203,7 @@ func _get_item_type(item: ItemData) -> String:
 	return "ItemData"
 
 func _pack_effects(effects: Array[Effect]) -> Array:
-	var arr: Array = []  # можно и без типа Array[Dictionary], но обычный Array тоже ок
+	var arr: Array = []
 	for e in effects:
 		var d: Dictionary = {
 			"type": e.effect_type,
@@ -208,7 +219,7 @@ func _pack_effects(effects: Array[Effect]) -> Array:
 	return arr
 
 func _unpack_effects(arr: Array) -> Array[Effect]:
-	var effects: Array[Effect] = []  # ← ЯВНО указываем тип!
+	var effects: Array[Effect] = []
 	for d in arr:
 		var e := Effect.new()
 		e.effect_type = d.get("type", 0)
@@ -221,7 +232,7 @@ func _unpack_effects(arr: Array) -> Array[Effect]:
 			e.particle = load(d.particle)
 		if d.has("icon"):
 			e.icon = _deserialize_texture(d.icon)
-		effects.append(e)  # ← теперь тип совпадает
+		effects.append(e)
 	return effects
 
 func _serialize_texture(t: Texture2D) -> Dictionary:
@@ -231,7 +242,6 @@ func _serialize_texture(t: Texture2D) -> Dictionary:
 	if t.resource_path != "":
 		return { "path": t.resource_path }
 	
-	# Для preload с пустым path — пытаемся сохранить как Atlas или просто пусто
 	if t is AtlasTexture and t.atlas and t.atlas.resource_path != "":
 		return {
 			"type": "atlas",

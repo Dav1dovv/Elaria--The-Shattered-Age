@@ -1,0 +1,8 @@
+~ start
+Princess Elaria: Please help me...
+Princess Elaria: Activate 4 energetic stabilizators and help me to be real.
+Princess Elaria: Are you remember your mission?
+- No => start
+- Yes => END
+Princess Elaria: I belive you you can
+=> END

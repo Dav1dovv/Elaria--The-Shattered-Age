@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://dt2b6cng2gr6j"]
+
+[ext_resource type="Texture2D" uid="uid://cf3avrbvs0ues" path="res://Assets/Textures/SpriteSheets/Items-Sheet.png" id="1_7mg33"]
+[ext_resource type="Script" uid="uid://wm1t8anytdyq" path="res://scr/Resources/ItemData/ItemData.gd" id="1_rud2g"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uf058"]
+atlas = ExtResource("1_7mg33")
+region = Rect2(128, 0, 16, 16)
+
+[resource]
+script = ExtResource("1_rud2g")
+icon = SubResource("AtlasTexture_uf058")
+item_name = "Platinum Ore"
+metadata/_custom_type_script = "uid://wm1t8anytdyq"

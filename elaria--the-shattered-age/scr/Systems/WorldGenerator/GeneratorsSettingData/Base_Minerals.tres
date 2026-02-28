@@ -8,7 +8,7 @@
 
 [resource]
 script = ExtResource("4_i2hde")
-Generation_scene = ExtResource("1_veb0x")
+Generation_scene = ExtResource("3_6crxu")
 spawn_weight = 0.3
 Generation_random_versions = Array[PackedScene]([ExtResource("1_veb0x"), ExtResource("2_posht"), ExtResource("3_6crxu"), ExtResource("4_jjmlr")])
 random_rotation_degress = 0.6

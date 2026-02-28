@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://dh4va4h1hould"]
+
+[ext_resource type="Script" uid="uid://wm1t8anytdyq" path="res://scr/Resources/ItemData/ItemData.gd" id="1_gntiv"]
+[ext_resource type="Texture2D" uid="uid://cf3avrbvs0ues" path="res://Assets/Textures/SpriteSheets/Items-Sheet.png" id="1_gx7yh"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_em3mx"]
+atlas = ExtResource("1_gx7yh")
+region = Rect2(80, 32, 16, 16)
+
+[resource]
+script = ExtResource("1_gntiv")
+icon = SubResource("AtlasTexture_em3mx")
+item_name = "Iron Ingot"
+metadata/_custom_type_script = "uid://wm1t8anytdyq"

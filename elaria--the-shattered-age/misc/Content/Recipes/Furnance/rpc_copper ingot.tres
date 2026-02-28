@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="CraftRecipe" format=3 uid="uid://ctkfyv3o7w1yq"]
+
+[ext_resource type="Script" uid="uid://bcg5vwna4id5n" path="res://scr/Systems/Craft/SimpleCraft/CraftIngeridents.gd" id="1_vh0k5"]
+[ext_resource type="Resource" uid="uid://bgxln2nrofexr" path="res://misc/Content/Items/CooperOre.tres" id="2_yr0vx"]
+[ext_resource type="Resource" uid="uid://10qblpi41tcd" path="res://misc/Content/Items/Wood.tres" id="3_qhvq7"]
+[ext_resource type="Resource" uid="uid://bk51less4fsvv" path="res://misc/Content/Items/CopperIngot.tres" id="4_dbebm"]
+[ext_resource type="Script" uid="uid://b47c08bhjaot6" path="res://scr/Systems/Craft/SimpleCraft/CraftRecipe.gd" id="5_1yg6s"]
+
+[sub_resource type="Resource" id="Resource_d71wi"]
+script = ExtResource("1_vh0k5")
+item = ExtResource("2_yr0vx")
+metadata/_custom_type_script = "uid://bcg5vwna4id5n"
+
+[sub_resource type="Resource" id="Resource_j7kds"]
+script = ExtResource("1_vh0k5")
+item = ExtResource("3_qhvq7")
+amount = 2
+metadata/_custom_type_script = "uid://bcg5vwna4id5n"
+
+[resource]
+script = ExtResource("5_1yg6s")
+recipe_name = "Copper Ingot"
+result_item = ExtResource("4_dbebm")
+result_amount = 2
+ingredients = Array[ExtResource("1_vh0k5")]([SubResource("Resource_d71wi"), SubResource("Resource_j7kds")])
+metadata/_custom_type_script = "uid://b47c08bhjaot6"

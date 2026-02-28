@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://o4a6276bgxhx"]
+
+[ext_resource type="PackedScene" uid="uid://ddok5ai5dtxca" path="res://misc/Entity/entity.tscn" id="1_hdtsf"]
+[ext_resource type="Script" uid="uid://dscq1tdnyogtm" path="res://misc/Entity/AI/UniversalAI.gd" id="2_vty7x"]
+[ext_resource type="Script" uid="uid://d2b3gchtl7jhb" path="res://misc/Boxes/HurtBox.gd" id="5_yi3og"]
+[ext_resource type="Script" uid="uid://c8gtsucgxp2ef" path="res://misc/Boxes/EnemyHitBox.gd" id="6_15r6q"]
+[ext_resource type="Script" uid="uid://c6tw2fkklnri5" path="res://misc/Drop/DropItem.gd" id="7_1dodm"]
+[ext_resource type="PackedScene" uid="uid://digbxx3ko1dgy" path="res://misc/Particles/BloodSplash.tscn" id="7_q2x7o"]
+[ext_resource type="AudioStream" uid="uid://b7e11d7dloks2" path="res://Assets/Audio/SFX/Hurt.wav" id="8_hdtsf"]
+[ext_resource type="Script" uid="uid://cyqd8atmamgy0" path="res://scr/Misc/VFX.gd" id="8_r5xd3"]
+
+[node name="Creature" unique_id=2111811093 instance=ExtResource("1_hdtsf")]
+script = ExtResource("2_vty7x")
+config = null
+can_move = true
+explore_points = 0.1
+enemy_lvl = 1
+lvl_changeable = false
+screen_shake_strength = 0.0
+screen_shake_duration = 0.1
+hit_flash_count = 4
+
+[node name="HurtBox" type="Area2D" parent="." index="3" unique_id=173476354 node_paths=PackedStringArray("Path_to_stat") groups=["Ennemy"]]
+collision_layer = 16
+collision_mask = 8
+script = ExtResource("5_yi3og")
+Path_to_stat = NodePath("..")
+metadata/_custom_type_script = "uid://d2b3gchtl7jhb"
+
+[node name="HitBox" type="Area2D" parent="." index="4" unique_id=2095800506]
+script = ExtResource("6_15r6q")
+metadata/_custom_type_script = "uid://c8gtsucgxp2ef"
+
+[node name="Drop" type="Node" parent="." index="5" unique_id=1421496829]
+script = ExtResource("7_1dodm")
+metadata/_custom_type_script = "uid://c6tw2fkklnri5"
+
+[node name="VFX" type="Node" parent="." index="6" unique_id=1555286990 node_paths=PackedStringArray("audio_player", "particles")]
+script = ExtResource("8_r5xd3")
+audio_player = NodePath("../AudioStreamPlayer2D")
+particles = NodePath("../GPUParticles2D")
+metadata/_custom_type_script = "uid://cyqd8atmamgy0"
+
+[node name="GPUParticles2D" parent="." index="7" unique_id=1460921651 instance=ExtResource("7_q2x7o")]
+position = Vector2(0, -9.999999)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." index="8" unique_id=368596084]
+stream = ExtResource("8_hdtsf")
+max_distance = 160.0

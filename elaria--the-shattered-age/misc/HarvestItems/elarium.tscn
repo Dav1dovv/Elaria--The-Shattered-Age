@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cacjsvs2mqcgl" path="res://misc/HarvestItems/Textures/ElarOre.png" id="2_14iy6"]
 [ext_resource type="Script" uid="uid://wm1t8anytdyq" path="res://scr/Resources/ItemData/ItemData.gd" id="2_gs2mf"]
 [ext_resource type="Script" uid="uid://b7lfnqk6b5cdp" path="res://scr/Misc/RandomSprite.gd" id="3_gs2mf"]
-[ext_resource type="Resource" path="res://scr/Resources/Items/Elarium ore.tres" id="3_nbmun"]
+[ext_resource type="Resource" uid="uid://d3solnlslg6pa" path="res://misc/Drop/Auralis.tres" id="3_nbmun"]
 [ext_resource type="Texture2D" uid="uid://bvn1k3yr05y11" path="res://Assets/Textures/Shadows/Shadow.png" id="6_sbbvi"]
 [ext_resource type="AudioStream" uid="uid://d16cd8gkmveq0" path="res://misc/HarvestItems/SFX/Mining/Stone1.mp3" id="7_bdtdg"]
 [ext_resource type="AudioStream" uid="uid://ck8tnuu1blxre" path="res://misc/HarvestItems/SFX/Mining/Stone2.mp3" id="8_1hdrd"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dtmd2j03iu8sl"]
+[gd_scene format=3 uid="uid://dtmd2j03iu8sl"]
 
 [ext_resource type="Texture2D" uid="uid://flab6oe40r8p" path="res://misc/Particles/Leafe.png" id="1_ekfnw"]
 
@@ -41,7 +41,7 @@ tangential_accel_max = 21.95
 color_ramp = SubResource("GradientTexture1D_50apn")
 alpha_curve = SubResource("CurveTexture_axuvx")
 
-[node name="Particles" type="GPUParticles2D"]
+[node name="Particles" type="GPUParticles2D" unique_id=2009312611]
 z_index = -1
 emitting = false
 amount = 36

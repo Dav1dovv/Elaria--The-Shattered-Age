@@ -2,8 +2,6 @@
 
 [ext_resource type="PackedScene" uid="uid://bny4sqh4i8i5v" path="res://misc/HarvestItems/Harvestable.tscn" id="1_n45lw"]
 [ext_resource type="Texture2D" uid="uid://drri1rppcrhxp" path="res://misc/HarvestItems/Textures/Mushroom.png" id="2_2bia2"]
-[ext_resource type="Script" uid="uid://wm1t8anytdyq" path="res://scr/Resources/ItemData/ItemData.gd" id="2_svf7w"]
-[ext_resource type="Resource" path="res://scr/Resources/Items/Mushroom.tres" id="3_e6uwh"]
 [ext_resource type="Script" uid="uid://b7lfnqk6b5cdp" path="res://scr/Misc/RandomSprite.gd" id="3_svf7w"]
 [ext_resource type="Texture2D" uid="uid://bvn1k3yr05y11" path="res://Assets/Textures/Shadows/Shadow.png" id="4_e6uwh"]
 [ext_resource type="AudioStream" uid="uid://bdpgims8h837c" path="res://misc/HarvestItems/SFX/Tree/Chop1.mp3" id="7_ymwi6"]
@@ -17,9 +15,6 @@
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_n45lw"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_2bia2"]
-radius = 12.468
-
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_t5dff"]
 playback_mode = 1
 streams_count = 7
@@ -31,48 +26,50 @@ stream_4/stream = ExtResource("11_nsi15")
 stream_5/stream = ExtResource("12_8k55c")
 stream_6/stream = ExtResource("13_4rdwa")
 
-[node name="Mushroom" instance=ExtResource("1_n45lw")]
-durability = 10.0
-harvest_tool_lvl = 2
+[sub_resource type="CircleShape2D" id="CircleShape2D_2bia2"]
+radius = 12.468
+
+[node name="Mushroom" unique_id=1447700831 instance=ExtResource("1_n45lw")]
+durability = 85.0
 
 [node name="CollisionShape2D" parent="StaticBody2D" index="0"]
 position = Vector2(0, -10)
 shape = SubResource("CircleShape2D_n45lw")
 
-[node name="CollisionShape2D" parent="." index="1"]
-position = Vector2(0, -12)
-shape = SubResource("CircleShape2D_2bia2")
-
-[node name="VFX" parent="." index="2" node_paths=PackedStringArray("audio_player")]
+[node name="VFX" parent="." index="1" node_paths=PackedStringArray("audio_player")]
 audio_player = NodePath("../SFX")
 
-[node name="optimizer" parent="." index="3" node_paths=PackedStringArray("hide_objects")]
+[node name="optimizer" parent="." index="2" node_paths=PackedStringArray("hide_objects")]
 position = Vector2(-3.5, -25)
 scale = Vector2(2.15, 2.8)
 hide_objects = [NodePath("../Sprite2D"), NodePath("../Shadow")]
 
-[node name="droper" parent="." index="4"]
-drop_item = Array[ExtResource("2_svf7w")]([ExtResource("3_e6uwh")])
+[node name="droper" parent="." index="3"]
 max_drop = 5
 
-[node name="Sprite2D" type="Sprite2D" parent="." index="5"]
+[node name="Sprite2D" type="Sprite2D" parent="." index="5" unique_id=1370246797]
 position = Vector2(0, -17)
 texture = ExtResource("2_2bia2")
 offset = Vector2(-3, -11)
 hframes = 3
+frame = 1
 script = ExtResource("3_svf7w")
 frame_weights = Array[float]([0.5, 0.5, 0.5])
 metadata/_custom_type_script = "uid://b7lfnqk6b5cdp"
 
-[node name="Shadow" type="Sprite2D" parent="." index="6"]
+[node name="Shadow" type="Sprite2D" parent="." index="6" unique_id=90142268]
 self_modulate = Color(0.0392157, 0.0705882, 0.2, 0.388235)
 z_index = -10
 position = Vector2(0, -3)
 scale = Vector2(2.25, 0.739666)
 texture = ExtResource("4_e6uwh")
 
-[node name="SFX" type="AudioStreamPlayer2D" parent="." index="7"]
+[node name="SFX" type="AudioStreamPlayer2D" parent="." index="7" unique_id=970851052]
 stream = SubResource("AudioStreamRandomizer_t5dff")
 
-[node name="Destroy" type="AudioStreamPlayer2D" parent="." index="8"]
+[node name="Destroy" type="AudioStreamPlayer2D" parent="." index="8" unique_id=1720021826]
 stream = ExtResource("14_1s5bg")
+
+[node name="CollisionShape2D" parent="." index="9"]
+position = Vector2(0, -12)
+shape = SubResource("CircleShape2D_2bia2")

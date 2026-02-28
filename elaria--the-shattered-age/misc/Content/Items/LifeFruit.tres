@@ -1,0 +1,39 @@
+[gd_resource type="Resource" script_class="FoodData" format=3 uid="uid://dwhy2xb7bqqsf"]
+
+[ext_resource type="Script" uid="uid://dj4umu6271nxr" path="res://scr/Resources/effects/EffectResource.gd" id="1_3kco4"]
+[ext_resource type="Script" uid="uid://ds5d4cljtsmfp" path="res://scr/Resources/ItemData/Food_item_data.gd" id="2_urbld"]
+
+[sub_resource type="Resource" id="Resource_6vp8f"]
+script = ExtResource("1_3kco4")
+value = 20.0
+metadata/_custom_type_script = "uid://dj4umu6271nxr"
+
+[sub_resource type="Resource" id="Resource_4hhgv"]
+script = ExtResource("1_3kco4")
+effect_type = 3
+value = 6.0
+duration = 15.0
+display_name = "Regeneration"
+metadata/_custom_type_script = "uid://dj4umu6271nxr"
+
+[sub_resource type="Resource" id="Resource_3kco4"]
+script = ExtResource("1_3kco4")
+effect_type = 1
+value = 4.0
+duration = 10.0
+metadata/_custom_type_script = "uid://dj4umu6271nxr"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_4hhgv"]
+load_path = "res://.godot/imported/Items-Sheet.png-aac78636ff9000301da0a84e0a143de0.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vrolc"]
+atlas = SubResource("CompressedTexture2D_4hhgv")
+region = Rect2(48, 64, 16, 16)
+
+[resource]
+script = ExtResource("2_urbld")
+effects = Array[ExtResource("1_3kco4")]([SubResource("Resource_6vp8f"), SubResource("Resource_4hhgv"), SubResource("Resource_3kco4")])
+icon = SubResource("AtlasTexture_vrolc")
+play_anim = "Eating"
+item_name = "LifeFruit"
+metadata/_custom_type_script = "uid://ds5d4cljtsmfp"

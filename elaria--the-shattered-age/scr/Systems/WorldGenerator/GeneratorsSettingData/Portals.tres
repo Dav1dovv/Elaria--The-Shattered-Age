@@ -1,12 +1,12 @@
 [gd_resource type="Resource" script_class="SpecialStructure" format=3 uid="uid://df70mryquxya7"]
 
-[ext_resource type="PackedScene" uid="uid://c5n1prf77xiqy" path="res://misc/Portal/Teleporter.tscn" id="1_fog11"]
+[ext_resource type="PackedScene" uid="uid://b8g6o4tj34wvb" path="res://misc/Ruins/syncer.tscn" id="1_bvxvj"]
 [ext_resource type="Script" uid="uid://bwabf86cec2s5" path="res://scr/Systems/WorldGenerator/Generation.gd" id="3_rg1rm"]
 [ext_resource type="Script" uid="uid://cxixcs17bxicy" path="res://scr/Systems/WorldGenerator/SpecialStructure.gd" id="4_om2jp"]
 
 [sub_resource type="Resource" id="Resource_5wbjo"]
 script = ExtResource("3_rg1rm")
-Generation_scene = ExtResource("1_fog11")
+Generation_scene = ExtResource("1_bvxvj")
 random_scales = {
 "Big": Vector2(1, 1),
 "Middle": Vector2(1.2, 1.2),
@@ -16,9 +16,9 @@ metadata/_custom_type_script = "uid://bwabf86cec2s5"
 
 [resource]
 script = ExtResource("4_om2jp")
-structure_name = "Teleporter"
+structure_name = "Syncer"
 structure_type = 2
-custom_type_name = "Teleporter"
+custom_type_name = "Syncer"
 generation_item = SubResource("Resource_5wbjo")
 max_instances = 7
 min_distance_from_player = 200.0

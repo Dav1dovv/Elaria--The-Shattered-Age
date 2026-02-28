@@ -1,7 +1,6 @@
-[gd_scene load_steps=11 format=3 uid="uid://ci5gno40fiu81"]
+[gd_scene format=3 uid="uid://ci5gno40fiu81"]
 
 [ext_resource type="Script" uid="uid://b1l7sa4nobavs" path="res://misc/Projectiles/Projectile.gd" id="1_6nsx8"]
-[ext_resource type="Texture2D" uid="uid://bj3k1id46eild" path="res://Assets/Textures/SpriteSheets/weapons-Sheet.png" id="2_6nsx8"]
 [ext_resource type="AudioStream" uid="uid://cgigsrfyxuodb" path="res://Assets/Audio/SFX/Swing.wav" id="3_pf3kb"]
 [ext_resource type="Texture2D" uid="uid://cf3avrbvs0ues" path="res://Assets/Textures/SpriteSheets/Items-Sheet.png" id="4_aqrar"]
 
@@ -50,41 +49,44 @@ scale_over_velocity_min = 0.19999999
 scale_over_velocity_max = 0.59999996
 color_ramp = SubResource("GradientTexture1D_fdh37")
 
-[node name="Bumerang" type="CharacterBody2D"]
+[node name="Bumerang" type="CharacterBody2D" unique_id=1030202062]
 script = ExtResource("1_6nsx8")
-speed = 350.0
-lifetime = 7.0
+speed = 200.0
+lifetime = 10.0
+damage = 20.0
 projectile_type = "boomerang"
 explode_on_hit = false
+homing_strength = 1.0
+max_travel_distance = 30.0
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1145688796]
 rotation = -0.7853982
-texture = ExtResource("2_6nsx8")
+texture = ExtResource("4_aqrar")
 region_enabled = true
-region_rect = Rect2(80, 80, 16, 16)
+region_rect = Rect2(48, 128, 16, 16)
 
-[node name="LifetimeTimer" type="Timer" parent="."]
+[node name="LifetimeTimer" type="Timer" parent="." unique_id=1454724338]
 one_shot = true
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="." unique_id=1830582343]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1441622911]
 position = Vector2(1, 0)
 shape = SubResource("CircleShape2D_njjya")
 
-[node name="HitSound" type="AudioStreamPlayer2D" parent="."]
+[node name="HitSound" type="AudioStreamPlayer2D" parent="." unique_id=1048631233]
 stream = ExtResource("3_pf3kb")
 
-[node name="ExplosionParticles" type="GPUParticles2D" parent="."]
+[node name="ExplosionParticles" type="GPUParticles2D" parent="." unique_id=1343482457]
 emitting = false
 lifetime = 0.2
 one_shot = true
 process_material = SubResource("ParticleProcessMaterial_njjya")
 
-[node name="BombTimer" type="Timer" parent="."]
+[node name="BombTimer" type="Timer" parent="." unique_id=1256012541]
 one_shot = true
 
-[node name="HitParticles" type="GPUParticles2D" parent="."]
+[node name="HitParticles" type="GPUParticles2D" parent="." unique_id=837474753]
 emitting = false
 amount = 12
 texture = SubResource("AtlasTexture_mg0kq")

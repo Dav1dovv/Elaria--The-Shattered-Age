@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://wm1t8anytdyq" path="res://scr/Resources/ItemData/ItemData.gd" id="2_ntuou"]
 [ext_resource type="Texture2D" uid="uid://bvn1k3yr05y11" path="res://Assets/Textures/Shadows/Shadow.png" id="2_xtb5t"]
 [ext_resource type="Texture2D" uid="uid://cj6hw2ur1wfqb" path="res://misc/HarvestItems/Textures/Minerals.png" id="3_ntuou"]
-[ext_resource type="Resource" path="res://scr/Resources/Items/Iron Ore.tres" id="3_q1xnp"]
+[ext_resource type="Resource" uid="uid://ce8lum742bja1" path="res://misc/Content/Items/IronOre.tres" id="4_l2vy5"]
 [ext_resource type="Script" uid="uid://b7lfnqk6b5cdp" path="res://scr/Misc/RandomSprite.gd" id="4_q1xnp"]
 [ext_resource type="AudioStream" uid="uid://dhnejho0mmxmq" path="res://misc/HarvestItems/SFX/Mining/Destroy1.mp3" id="7_p4tn7"]
 [ext_resource type="AudioStream" uid="uid://prb16b2eig2m" path="res://misc/HarvestItems/SFX/Mining/Destroy2.mp3" id="8_l2vy5"]
@@ -15,9 +15,6 @@
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3dfft"]
 radius = 7.0
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_ckdin"]
-radius = 15.4663
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_homfl"]
 atlas = ExtResource("3_ntuou")
@@ -36,38 +33,39 @@ streams_count = 2
 stream_0/stream = ExtResource("10_pvkrq")
 stream_1/stream = ExtResource("11_a56ye")
 
-[node name="Iron" instance=ExtResource("1_ckdin")]
+[sub_resource type="CircleShape2D" id="CircleShape2D_ckdin"]
+radius = 15.4663
+
+[node name="Iron" unique_id=1037766192 instance=ExtResource("1_ckdin")]
 script = ExtResource("2_e6m8d")
-durability = 25.0
+durability = 100.0
+harvest_tool_lvl = 3
 
 [node name="CollisionShape2D" parent="StaticBody2D" index="0"]
 position = Vector2(0, -7)
 rotation = -1.57079
 shape = SubResource("CapsuleShape2D_3dfft")
 
-[node name="CollisionShape2D" parent="." index="1"]
-shape = SubResource("CircleShape2D_ckdin")
-
-[node name="VFX" parent="." index="2" node_paths=PackedStringArray("audio_player")]
+[node name="VFX" parent="." index="1" node_paths=PackedStringArray("audio_player")]
 audio_player = NodePath("../SFX")
 
-[node name="optimizer" parent="." index="3" node_paths=PackedStringArray("hide_objects")]
+[node name="optimizer" parent="." index="2" node_paths=PackedStringArray("hide_objects")]
 position = Vector2(-1, -11)
 scale = Vector2(1.9, 1.4)
 hide_objects = [NodePath("../Sprite2D"), NodePath("../Shadow")]
 
-[node name="droper" parent="." index="4"]
-drop_item = Array[ExtResource("2_ntuou")]([ExtResource("3_q1xnp")])
-max_drop = 4
+[node name="droper" parent="." index="3"]
+drop_item = Array[ExtResource("2_ntuou")]([ExtResource("4_l2vy5")])
+max_drop = 8
 
-[node name="Shadow" type="Sprite2D" parent="." index="5"]
+[node name="Shadow" type="Sprite2D" parent="." index="5" unique_id=341842603]
 self_modulate = Color(0.0392157, 0.0705882, 0.2, 0.388235)
 z_index = -10
 position = Vector2(0, -2)
 scale = Vector2(2.25, 0.739666)
 texture = ExtResource("2_xtb5t")
 
-[node name="Sprite2D" type="Sprite2D" parent="." index="6"]
+[node name="Sprite2D" type="Sprite2D" parent="." index="6" unique_id=1965435148]
 position = Vector2(0, -9)
 texture = SubResource("AtlasTexture_homfl")
 offset = Vector2(0, -6)
@@ -76,8 +74,11 @@ script = ExtResource("4_q1xnp")
 frame_weights = Array[float]([1.0, 1.0, 1.0])
 metadata/_custom_type_script = "uid://b7lfnqk6b5cdp"
 
-[node name="Destroy" type="AudioStreamPlayer2D" parent="." index="7"]
+[node name="Destroy" type="AudioStreamPlayer2D" parent="." index="7" unique_id=19561450]
 stream = SubResource("AudioStreamRandomizer_gaad7")
 
-[node name="SFX" type="AudioStreamPlayer2D" parent="." index="8"]
+[node name="SFX" type="AudioStreamPlayer2D" parent="." index="8" unique_id=592545100]
 stream = SubResource("AudioStreamRandomizer_7ae0e")
+
+[node name="CollisionShape2D" parent="." index="9"]
+shape = SubResource("CircleShape2D_ckdin")

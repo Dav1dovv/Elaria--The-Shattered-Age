@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="FoodData" format=3 uid="uid://ca6nahl8frsog"]
+
+[ext_resource type="Script" uid="uid://dj4umu6271nxr" path="res://scr/Resources/effects/EffectResource.gd" id="1_6s161"]
+[ext_resource type="Texture2D" uid="uid://cf3avrbvs0ues" path="res://Assets/Textures/SpriteSheets/Items-Sheet.png" id="2_mx6ty"]
+[ext_resource type="Script" uid="uid://ds5d4cljtsmfp" path="res://scr/Resources/ItemData/Food_item_data.gd" id="3_dl616"]
+
+[sub_resource type="Resource" id="Resource_nobfn"]
+script = ExtResource("1_6s161")
+effect_type = 8
+value = 1.5
+duration = 60.0
+tick_interval = 1.6
+display_name = "Poison"
+metadata/_custom_type_script = "uid://dj4umu6271nxr"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bgefe"]
+atlas = ExtResource("2_mx6ty")
+region = Rect2(16, 80, 16, 16)
+
+[resource]
+script = ExtResource("3_dl616")
+effects = Array[ExtResource("1_6s161")]([SubResource("Resource_nobfn")])
+icon = SubResource("AtlasTexture_bgefe")
+play_anim = "Eating"
+item_name = "Mushroom"
+metadata/_custom_type_script = "uid://ds5d4cljtsmfp"

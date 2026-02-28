@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="CraftRecipe" format=3 uid="uid://0i282iee3ouk"]
+
+[ext_resource type="Script" uid="uid://bcg5vwna4id5n" path="res://scr/Systems/Craft/SimpleCraft/CraftIngeridents.gd" id="1_n5rlo"]
+[ext_resource type="Resource" uid="uid://cw4dpl8n3v440" path="res://misc/Content/Items/Bone.tres" id="2_46ccs"]
+[ext_resource type="Resource" uid="uid://bbt1e6pby6aa0" path="res://misc/Content/Items/BoneKey.tres" id="3_ngy6w"]
+[ext_resource type="Script" uid="uid://b47c08bhjaot6" path="res://scr/Systems/Craft/SimpleCraft/CraftRecipe.gd" id="4_o0oxb"]
+
+[sub_resource type="Resource" id="Resource_s7dgp"]
+script = ExtResource("1_n5rlo")
+item = ExtResource("2_46ccs")
+amount = 6
+metadata/_custom_type_script = "uid://bcg5vwna4id5n"
+
+[resource]
+script = ExtResource("4_o0oxb")
+recipe_name = "Bone Key"
+result_item = ExtResource("3_ngy6w")
+ingredients = Array[ExtResource("1_n5rlo")]([SubResource("Resource_s7dgp")])
+metadata/_custom_type_script = "uid://b47c08bhjaot6"

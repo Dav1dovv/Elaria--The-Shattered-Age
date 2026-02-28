@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://bk0ed5hrru85x"]
+[gd_scene format=3 uid="uid://jl6w7073r4nv"]
 
 [ext_resource type="Script" uid="uid://b1l7sa4nobavs" path="res://misc/Projectiles/Projectile.gd" id="1_ocmba"]
 [ext_resource type="Texture2D" uid="uid://dqm1tvqyd7xrh" path="res://Assets/Textures/SpriteSheets/Porjectiles.png" id="2_ocmba"]

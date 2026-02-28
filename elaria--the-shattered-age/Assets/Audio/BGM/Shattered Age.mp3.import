@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://b2gas1nsxqvhd"
+path="res://.godot/imported/Shattered Age.mp3-b1bdfeea5c76938e4a2e43560e34324a.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/BGM/Shattered Age.mp3"
+dest_files=["res://.godot/imported/Shattered Age.mp3-b1bdfeea5c76938e4a2e43560e34324a.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

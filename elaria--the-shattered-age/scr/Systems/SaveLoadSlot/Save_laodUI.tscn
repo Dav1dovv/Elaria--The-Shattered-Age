@@ -9,9 +9,8 @@
 [ext_resource type="Texture2D" uid="uid://dhy6cujhwvxvb" path="res://misc/Entity/Player/Textures/Skin2.png" id="6_e20lw"]
 [ext_resource type="Texture2D" uid="uid://bbwrlu36nxdg1" path="res://misc/Entity/Player/Textures/Eyes.png" id="6_fleqo"]
 [ext_resource type="Texture2D" uid="uid://cqid7asxlmd41" path="res://misc/Entity/Player/Textures/Skin1.png" id="7_d86rs"]
-[ext_resource type="Texture2D" uid="uid://bj3k1id46eild" path="res://Assets/Textures/SpriteSheets/weapons-Sheet.png" id="7_p2nwc"]
+[ext_resource type="Texture2D" uid="uid://cf3avrbvs0ues" path="res://Assets/Textures/SpriteSheets/Items-Sheet.png" id="7_p2nwc"]
 [ext_resource type="Texture2D" uid="uid://bbh7qo4njkx2i" path="res://misc/Entity/Player/Textures/Skin3.png" id="8_l0nxe"]
-[ext_resource type="Texture2D" uid="uid://bs52lfemcyt3c" path="res://Assets/Textures/Splash.png" id="8_qb3cx"]
 [ext_resource type="Texture2D" uid="uid://g2642iwv2wba" path="res://misc/Entity/Player/Textures/Skin4.png" id="9_gaae2"]
 [ext_resource type="Texture2D" uid="uid://bvn1k3yr05y11" path="res://Assets/Textures/Shadows/Shadow.png" id="9_hkjfi"]
 [ext_resource type="Texture2D" uid="uid://b62hrm50ou235" path="res://Assets/Textures/UI/UI.png" id="10_kp1yt"]
@@ -20,12 +19,6 @@
 [ext_resource type="Texture2D" uid="uid://b2inxslmbmu65" path="res://misc/Entity/Player/Textures/Skin8.png" id="13_hvekn"]
 [ext_resource type="Texture2D" uid="uid://drjlnqg58dect" path="res://misc/Entity/Player/Textures/Skin9.png" id="14_xvj08"]
 [ext_resource type="Texture2D" uid="uid://7svi7rurwlda" path="res://misc/Entity/Player/Textures/Skin10.png" id="15_4x125"]
-[ext_resource type="Texture2D" uid="uid://bpsgo5ojse0tg" path="res://misc/Entity/Player/Textures/Skin11.png" id="16_gaae2"]
-[ext_resource type="Texture2D" uid="uid://bbiy8isa0iu0a" path="res://misc/Entity/Player/Textures/Skin12.png" id="17_mnx7f"]
-[ext_resource type="Texture2D" uid="uid://qpi1yk2uge8s" path="res://misc/Entity/Player/Textures/Skin13.png" id="18_8usr8"]
-[ext_resource type="Texture2D" uid="uid://cg7cwp8iedun6" path="res://misc/Entity/Player/Textures/Skin14.png" id="19_8usr8"]
-[ext_resource type="Texture2D" uid="uid://60ugp1fvqcr1" path="res://misc/Entity/Player/Textures/Skin15.png" id="20_hvekn"]
-[ext_resource type="Texture2D" uid="uid://d0phxh7y26nyy" path="res://misc/Entity/Player/Textures/Skin16.png" id="21_hvekn"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_yghq4"]
 shader = ExtResource("4_63qnd")
@@ -234,66 +227,6 @@ tracks/9/keys = {
 "handle_modes": PackedInt32Array(0, 0),
 "points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0, 0.966667)
-}
-tracks/10/type = "value"
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/path = NodePath("../../../player_HitBox/CollisionShape2D:disabled")
-tracks/10/interp = 1
-tracks/10/loop_wrap = true
-tracks/10/keys = {
-"times": PackedFloat32Array(0, 0.466667, 0.8),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [true, false, true]
-}
-tracks/11/type = "value"
-tracks/11/imported = false
-tracks/11/enabled = true
-tracks/11/path = NodePath("../../../Swing:playing")
-tracks/11/interp = 1
-tracks/11/loop_wrap = true
-tracks/11/keys = {
-"times": PackedFloat32Array(0.5),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/12/type = "value"
-tracks/12/imported = false
-tracks/12/enabled = true
-tracks/12/path = NodePath("LeftHand/Equip/Sprite2D:visible")
-tracks/12/interp = 1
-tracks/12/loop_wrap = true
-tracks/12/keys = {
-"times": PackedFloat32Array(0, 0.53333336, 1),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [false, true, false]
-}
-tracks/13/type = "value"
-tracks/13/imported = false
-tracks/13/enabled = true
-tracks/13/path = NodePath("LeftHand/Equip/Sprite2D:self_modulate")
-tracks/13/interp = 1
-tracks/13/loop_wrap = true
-tracks/13/keys = {
-"times": PackedFloat32Array(0, 0.56666666, 1.0333333),
-"transitions": PackedFloat32Array(1, 0.2102241, 28.840033),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-tracks/14/type = "value"
-tracks/14/imported = false
-tracks/14/enabled = true
-tracks/14/path = NodePath("LeftHand/Equip/Sprite2D:scale")
-tracks/14/interp = 1
-tracks/14/loop_wrap = true
-tracks/14/keys = {
-"times": PackedFloat32Array(0, 0.84),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0.7581427, 1), Vector2(0.7581427, 0.20048618)]
 }
 
 [sub_resource type="Animation" id="Animation_x7qg1"]
@@ -638,86 +571,26 @@ tracks/13/keys = {
 tracks/14/type = "value"
 tracks/14/imported = false
 tracks/14/enabled = true
-tracks/14/path = NodePath("../../../player_HitBox/CollisionShape2D:disabled")
+tracks/14/path = NodePath("RightHand:z_index")
 tracks/14/interp = 1
 tracks/14/loop_wrap = true
 tracks/14/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true]
+"values": [-1]
 }
 tracks/15/type = "value"
 tracks/15/imported = false
 tracks/15/enabled = true
-tracks/15/path = NodePath("RightHand:z_index")
+tracks/15/path = NodePath("RightHand:self_modulate")
 tracks/15/interp = 1
 tracks/15/loop_wrap = true
 tracks/15/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [-1]
-}
-tracks/16/type = "value"
-tracks/16/imported = false
-tracks/16/enabled = true
-tracks/16/path = NodePath("RightHand:self_modulate")
-tracks/16/interp = 1
-tracks/16/loop_wrap = true
-tracks/16/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Color(0.67069, 0.67069, 0.67069, 1)]
-}
-tracks/17/type = "value"
-tracks/17/imported = false
-tracks/17/enabled = true
-tracks/17/path = NodePath("../../../Swing:playing")
-tracks/17/interp = 1
-tracks/17/loop_wrap = true
-tracks/17/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/18/type = "value"
-tracks/18/imported = false
-tracks/18/enabled = true
-tracks/18/path = NodePath("LeftHand/Equip/Sprite2D:visible")
-tracks/18/interp = 1
-tracks/18/loop_wrap = true
-tracks/18/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/19/type = "value"
-tracks/19/imported = false
-tracks/19/enabled = true
-tracks/19/path = NodePath("LeftHand/Equip/Sprite2D:self_modulate")
-tracks/19/interp = 1
-tracks/19/loop_wrap = true
-tracks/19/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-tracks/20/type = "value"
-tracks/20/imported = false
-tracks/20/enabled = true
-tracks/20/path = NodePath("LeftHand/Equip/Sprite2D:scale")
-tracks/20/interp = 1
-tracks/20/loop_wrap = true
-tracks/20/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0.7581427, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_n3vuq"]
@@ -1273,10 +1146,17 @@ save_slot_template = ExtResource("2_mhc1p")
 
 [node name="Panel" type="Panel" parent="." unique_id=1674953905]
 z_index = -1
-offset_left = 49.0
-offset_top = 11.0
-offset_right = 450.0
-offset_bottom = 262.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.5
+offset_top = -125.5
+offset_right = 200.5
+offset_bottom = 125.5
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel" unique_id=992745321]
 custom_minimum_size = Vector2(380, 227)
@@ -1339,12 +1219,11 @@ layout_direction = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 64.0
-offset_top = 35.0
-offset_right = -64.0
-offset_bottom = -7.0
+offset_left = 101.0
+offset_right = -101.0
 grow_horizontal = 2
 grow_vertical = 2
+alignment = 1
 
 [node name="Label" type="Label" parent="NewSavePanel" unique_id=913014593]
 layout_mode = 2
@@ -1352,18 +1231,23 @@ text = "CREATE NEW CHARACTER"
 horizontal_alignment = 1
 
 [node name="Control" type="Control" parent="NewSavePanel" unique_id=452255884]
-custom_minimum_size = Vector2(0, 25)
+custom_minimum_size = Vector2(0, 7)
 layout_mode = 2
+mouse_filter = 2
 
 [node name="SkinCreator" type="Control" parent="NewSavePanel" unique_id=896466629]
-custom_minimum_size = Vector2(20, 100)
+z_index = 3
+custom_minimum_size = Vector2(270, 74)
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
 
 [node name="Skin" type="Node2D" parent="NewSavePanel/SkinCreator" unique_id=1870768421 node_paths=PackedStringArray("player_sprites")]
-position = Vector2(173.00002, 54)
+position = Vector2(139.00002, 74)
 scale = Vector2(2.3952951, 2.3952951)
 script = ExtResource("5_fleqo")
-player_skins = Array[Texture]([ExtResource("6_e20lw"), ExtResource("7_d86rs"), ExtResource("8_l0nxe"), ExtResource("9_gaae2"), ExtResource("10_mnx7f"), ExtResource("11_8usr8"), ExtResource("5_c56am"), ExtResource("13_hvekn"), ExtResource("14_xvj08"), ExtResource("15_4x125"), ExtResource("16_gaae2"), ExtResource("17_mnx7f"), ExtResource("18_8usr8"), ExtResource("19_8usr8"), ExtResource("20_hvekn"), ExtResource("21_hvekn")])
+player_skins = Array[Texture]([ExtResource("6_e20lw"), ExtResource("7_d86rs"), ExtResource("8_l0nxe"), ExtResource("9_gaae2"), ExtResource("10_mnx7f"), ExtResource("11_8usr8"), ExtResource("5_c56am"), ExtResource("13_hvekn"), ExtResource("14_xvj08"), ExtResource("15_4x125")])
 player_sprites = [NodePath("Body"), NodePath("Body/LeftLeg"), NodePath("Body/RightLeg"), NodePath("Body/Hand/LeftHand"), NodePath("Body/Hand/RightHand")]
 
 [node name="Body" type="Sprite2D" parent="NewSavePanel/SkinCreator/Skin" unique_id=1231008062]
@@ -1423,14 +1307,6 @@ rotation = 0.785398
 texture = SubResource("AtlasTexture_gaae2")
 offset = Vector2(5.1, -3.66)
 
-[node name="Sprite2D" type="Sprite2D" parent="NewSavePanel/SkinCreator/Skin/Body/Hand/LeftHand/Equip" unique_id=72213530]
-visible = false
-show_behind_parent = true
-position = Vector2(5.8349757, -7.110726)
-rotation = -0.7853982
-scale = Vector2(0.7581427, 1)
-texture = ExtResource("8_qb3cx")
-
 [node name="RightHand" type="Sprite2D" parent="NewSavePanel/SkinCreator/Skin/Body/Hand" unique_id=1636452253]
 self_modulate = Color(0.67069, 0.67069, 0.67069, 1)
 z_index = -1
@@ -1457,77 +1333,51 @@ scale = Vector2(1, 0.669852)
 texture = ExtResource("9_hkjfi")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="NewSavePanel/SkinCreator" unique_id=344248940]
-layout_mode = 0
-offset_top = 3.0
-offset_right = 344.0
-offset_bottom = 53.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -171.0
+offset_top = -9.0
+offset_right = 171.0
+offset_bottom = 9.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_constants/separation = 64
 
-[node name="VBoxContainer" type="VBoxContainer" parent="NewSavePanel/SkinCreator/HBoxContainer" unique_id=657608679]
-custom_minimum_size = Vector2(140, 0)
-layout_mode = 2
-theme_override_constants/separation = 14
-
-[node name="HBoxContainer" type="HBoxContainer" parent="NewSavePanel/SkinCreator/HBoxContainer/VBoxContainer" unique_id=355603443]
+[node name="HBoxContainer" type="HBoxContainer" parent="NewSavePanel/SkinCreator/HBoxContainer" unique_id=355603443]
 layout_mode = 2
 theme_override_constants/separation = 29
 
-[node name="Button" type="Button" parent="NewSavePanel/SkinCreator/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=1494594686]
+[node name="Button" type="Button" parent="NewSavePanel/SkinCreator/HBoxContainer/HBoxContainer" unique_id=1494594686]
 layout_mode = 2
 icon = SubResource("AtlasTexture_h50x6")
 
-[node name="Label" type="Label" parent="NewSavePanel/SkinCreator/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=200598855]
+[node name="Label" type="Label" parent="NewSavePanel/SkinCreator/HBoxContainer/HBoxContainer" unique_id=200598855]
 layout_mode = 2
 text = "Head"
 
-[node name="Button2" type="Button" parent="NewSavePanel/SkinCreator/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=1362254621]
+[node name="Button2" type="Button" parent="NewSavePanel/SkinCreator/HBoxContainer/HBoxContainer" unique_id=1362254621]
 layout_mode = 2
 icon = SubResource("AtlasTexture_lqclo")
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="NewSavePanel/SkinCreator/HBoxContainer/VBoxContainer" unique_id=222931793]
+[node name="HBoxContainer2" type="HBoxContainer" parent="NewSavePanel/SkinCreator/HBoxContainer" unique_id=222931793]
 layout_mode = 2
 theme_override_constants/separation = 29
 
-[node name="Button" type="Button" parent="NewSavePanel/SkinCreator/HBoxContainer/VBoxContainer/HBoxContainer2" unique_id=1919551777]
+[node name="Button" type="Button" parent="NewSavePanel/SkinCreator/HBoxContainer/HBoxContainer2" unique_id=1919551777]
 layout_mode = 2
 icon = SubResource("AtlasTexture_h50x6")
 
-[node name="Label" type="Label" parent="NewSavePanel/SkinCreator/HBoxContainer/VBoxContainer/HBoxContainer2" unique_id=1598214254]
+[node name="Label" type="Label" parent="NewSavePanel/SkinCreator/HBoxContainer/HBoxContainer2" unique_id=1598214254]
 layout_mode = 2
 text = "Body"
 
-[node name="Button2" type="Button" parent="NewSavePanel/SkinCreator/HBoxContainer/VBoxContainer/HBoxContainer2" unique_id=1007067250]
+[node name="Button2" type="Button" parent="NewSavePanel/SkinCreator/HBoxContainer/HBoxContainer2" unique_id=1007067250]
 layout_mode = 2
 icon = SubResource("AtlasTexture_lqclo")
-
-[node name="VBoxContainer2" type="VBoxContainer" parent="NewSavePanel/SkinCreator/HBoxContainer" unique_id=1049287031]
-custom_minimum_size = Vector2(140, 0)
-layout_mode = 2
-theme_override_constants/separation = 14
-alignment = 1
-
-[node name="HBoxContainer" type="HBoxContainer" parent="NewSavePanel/SkinCreator/HBoxContainer/VBoxContainer2" unique_id=1104828352]
-layout_mode = 2
-theme_override_constants/separation = 16
-alignment = 1
-
-[node name="Button" type="Button" parent="NewSavePanel/SkinCreator/HBoxContainer/VBoxContainer2/HBoxContainer" unique_id=893599096]
-layout_mode = 2
-icon = SubResource("AtlasTexture_h50x6")
-
-[node name="Label" type="Label" parent="NewSavePanel/SkinCreator/HBoxContainer/VBoxContainer2/HBoxContainer" unique_id=1790794320]
-layout_mode = 2
-text = "Difficulty"
-
-[node name="Button2" type="Button" parent="NewSavePanel/SkinCreator/HBoxContainer/VBoxContainer2/HBoxContainer" unique_id=276487626]
-layout_mode = 2
-icon = SubResource("AtlasTexture_lqclo")
-
-[node name="Label" type="Label" parent="NewSavePanel/SkinCreator/HBoxContainer/VBoxContainer2" unique_id=1466523719]
-layout_mode = 2
-text = "Easy"
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="LineEdit" type="LineEdit" parent="NewSavePanel" unique_id=1105312655]
 custom_minimum_size = Vector2(20, 5)
@@ -1537,11 +1387,7 @@ placeholder_text = "CHARACTER  NAME"
 max_length = 14
 
 [node name="Control2" type="Control" parent="NewSavePanel" unique_id=1468163000]
-custom_minimum_size = Vector2(0, 10)
-layout_mode = 2
-
-[node name="Control3" type="Control" parent="NewSavePanel" unique_id=975303843]
-custom_minimum_size = Vector2(0, 1)
+custom_minimum_size = Vector2(0, 25)
 layout_mode = 2
 
 [node name="Create" parent="NewSavePanel" unique_id=581529071 instance=ExtResource("3_oxe6j")]
@@ -1551,8 +1397,8 @@ text = "Create Character"
 
 [connection signal="pressed" from="Panel/VBoxContainer/HBoxContainer/Back" to="." method="_on_back_pressed"]
 [connection signal="pressed" from="Panel/VBoxContainer/HBoxContainer/New Character" to="." method="_on_new_save_pressed"]
-[connection signal="pressed" from="NewSavePanel/SkinCreator/HBoxContainer/VBoxContainer/HBoxContainer/Button" to="NewSavePanel/SkinCreator/Skin" method="_on_previus_head_pressed"]
-[connection signal="pressed" from="NewSavePanel/SkinCreator/HBoxContainer/VBoxContainer/HBoxContainer/Button2" to="NewSavePanel/SkinCreator/Skin" method="_on_next_head_pressed"]
-[connection signal="pressed" from="NewSavePanel/SkinCreator/HBoxContainer/VBoxContainer/HBoxContainer2/Button" to="NewSavePanel/SkinCreator/Skin" method="_on_previus_pressed"]
-[connection signal="pressed" from="NewSavePanel/SkinCreator/HBoxContainer/VBoxContainer/HBoxContainer2/Button2" to="NewSavePanel/SkinCreator/Skin" method="_on_next_pressed"]
+[connection signal="pressed" from="NewSavePanel/SkinCreator/HBoxContainer/HBoxContainer/Button" to="NewSavePanel/SkinCreator/Skin" method="_on_previus_head_pressed"]
+[connection signal="pressed" from="NewSavePanel/SkinCreator/HBoxContainer/HBoxContainer/Button2" to="NewSavePanel/SkinCreator/Skin" method="_on_next_head_pressed"]
+[connection signal="pressed" from="NewSavePanel/SkinCreator/HBoxContainer/HBoxContainer2/Button" to="NewSavePanel/SkinCreator/Skin" method="_on_previus_pressed"]
+[connection signal="pressed" from="NewSavePanel/SkinCreator/HBoxContainer/HBoxContainer2/Button2" to="NewSavePanel/SkinCreator/Skin" method="_on_next_pressed"]
 [connection signal="pressed" from="NewSavePanel/Create" to="." method="_on_create_pressed"]

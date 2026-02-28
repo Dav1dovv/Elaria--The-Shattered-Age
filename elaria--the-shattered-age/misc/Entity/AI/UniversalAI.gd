@@ -1,10 +1,3 @@
-## UniversalAI.gd
-## Один скрипт для всех существ.
-## Поведение задаётся через @export var config: EntityConfig
-##
-## Совместимость: работает поверх Enemy (extends Enemy).
-## Для мирных существ замени на "extends Entity" и убери enemy_lvl логику.
-
 extends Enemy
 class_name UniversalAI
 
@@ -12,7 +5,8 @@ class_name UniversalAI
 #  КОНФИГ — единственное что надо трогать в инспекторе
 # ─────────────────────────────────────────────
 @export var config: EntityConfig
-
+@export var can_move : bool = true
+@export var explore_points : float = 0.1
 # ─────────────────────────────────────────────
 #  НОДЫ (назначь в инспекторе или оставь авто-поиск)
 # ─────────────────────────────────────────────
@@ -153,7 +147,7 @@ func _tick_melee(delta: float, dist: float) -> void:
 				randf_range(-config.approach_offset, config.approach_offset))
 			_offset_timer = 0.0
 
-		position = position.move_toward(
+		if can_move: position = position.move_toward(
 			player.global_position + _move_offset,
 			delta * Entity_stats.move_speed * config.chase_speed_mult)
 
@@ -445,17 +439,16 @@ func _on_health_changed(new_health: float) -> void:
 
 func _on_died() -> void:
 	_set_state(State.DEAD)
-
+	Global.hint(self,"+explore point")
+	Global.explored_progress[Global.current_location] += explore_points
 	if health_bar:
 		health_bar.visible = false
 
 	# Звук смерти
 	_play_sound_event(config.death_sounds)
 
-	# Дроп
-	if randf() <= config.drop_chance:
-		if has_node("Drop") and $Drop.has_method("exp_drop"):
-			$Drop.exp_drop()
+	if has_node("Drop"):
+		$Drop._drop_items()
 
 	# Удаляем боксы
 	for box_name in ["HitBox", "HurtBox"]:

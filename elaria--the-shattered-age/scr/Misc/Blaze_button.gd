@@ -1,5 +1,5 @@
 extends Button
-
+class_name blaze_button
 
 func _on_mouse_entered() -> void:
 	$Hover.play()

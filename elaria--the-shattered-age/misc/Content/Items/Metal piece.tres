@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://r1vs08ih23fx"]
+
+[ext_resource type="Script" uid="uid://wm1t8anytdyq" path="res://scr/Resources/ItemData/ItemData.gd" id="1_dt2ty"]
+[ext_resource type="Texture2D" uid="uid://cf3avrbvs0ues" path="res://Assets/Textures/SpriteSheets/Items-Sheet.png" id="1_wd62f"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6k3dc"]
+atlas = ExtResource("1_wd62f")
+region = Rect2(128, 48, 16, 16)
+
+[resource]
+script = ExtResource("1_dt2ty")
+icon = SubResource("AtlasTexture_6k3dc")
+item_name = "Metal piece"
+max_count = 40
+metadata/_custom_type_script = "uid://wm1t8anytdyq"

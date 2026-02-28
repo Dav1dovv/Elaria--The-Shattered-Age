@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="CraftRecipe" format=3 uid="uid://rev507lj5sor"]
+
+[ext_resource type="Script" uid="uid://bcg5vwna4id5n" path="res://scr/Systems/Craft/SimpleCraft/CraftIngeridents.gd" id="1_m7ibh"]
+[ext_resource type="Resource" uid="uid://ca2ldcxwv61wr" path="res://misc/Content/Items/Dried coal.tres" id="2_pigq3"]
+[ext_resource type="Resource" uid="uid://bhnhx8ev1gp0b" path="res://misc/Content/Items/Fuel.tres" id="4_pwlpb"]
+[ext_resource type="Script" uid="uid://b47c08bhjaot6" path="res://scr/Systems/Craft/SimpleCraft/CraftRecipe.gd" id="5_kh8eu"]
+
+[sub_resource type="Resource" id="Resource_lpwgx"]
+script = ExtResource("1_m7ibh")
+item = ExtResource("2_pigq3")
+amount = 3
+metadata/_custom_type_script = "uid://bcg5vwna4id5n"
+
+[sub_resource type="Resource" id="Resource_qgoy0"]
+metadata/__load_path__ = "res://misc/Drop/Auralis.tres"
+
+[sub_resource type="Resource" id="Resource_7btlo"]
+script = ExtResource("1_m7ibh")
+item = SubResource("Resource_qgoy0")
+amount = 3
+metadata/_custom_type_script = "uid://bcg5vwna4id5n"
+
+[resource]
+script = ExtResource("5_kh8eu")
+recipe_name = "Active fuel"
+result_item = ExtResource("4_pwlpb")
+result_amount = 5
+ingredients = Array[ExtResource("1_m7ibh")]([SubResource("Resource_lpwgx"), SubResource("Resource_7btlo")])
+metadata/_custom_type_script = "uid://b47c08bhjaot6"

@@ -3,8 +3,24 @@ class_name Entity
 
 @export var Entity_stats: stats
 @export var Vfx_node : VFX
-@export var knockback_strength: float = 300.0
+@export var knockback_strength: float = 30.0
 @export var knockback_duration: float = 0.1
+
+# ── Hit-feel настройки ──────────────────────────────────────────
+@export_group("Hit Feel")
+## Длительность hit-stop в секундах (0 = выкл)
+@export var hitstop_duration: float = 0.06
+## Сила дрожания камеры
+@export var screen_shake_strength: float = 3.0
+## Длительность дрожания камеры
+@export var screen_shake_duration: float = 0.12
+## Время неуязвимости после удара (iframes)
+@export var invincibility_duration: float = 0.25
+## Цвет вспышки при получении урона
+@export var hit_flash_color: Color = Color(1, 1, 1, 1)
+## Количество миганий
+@export var hit_flash_count: int = 2
+# ────────────────────────────────────────────────────────────────
 
 # Сигналы
 signal health_changed(new_health: float)
@@ -13,77 +29,130 @@ signal died
 # Переменные состояния
 var is_alive: bool = true
 var is_knocked_back: bool = false
+var is_invincible: bool = false   # iframes
 
 # Менеджер эффектов
 var effect_manager: EffectManager
 
+# Кешируем спрайт сущности для flash-эффекта
+var _entity_sprite: Node = null
+
 func _ready():
 	Entity_stats.move_speed = Entity_stats.base_move_speed
-	# Инициализируем менеджер эффектов
 	effect_manager = EffectManager.new(self)
 	add_child(effect_manager)
-	
-	# Подключаем сигналы эффектов
 	effect_manager.effect_added.connect(_on_effect_added)
 	effect_manager.effect_removed.connect(_on_effect_removed)
 
-# УЛУЧШЕННАЯ СИСТЕМА ПОЛУЧЕНИЯ УРОНА
+	# Ищем спрайт автоматически
+	_entity_sprite = _find_sprite(self)
+
+# ── ПОЛУЧЕНИЕ УРОНА ─────────────────────────────────────────────
 func take_damage(damage: float, damage_source: Node2D = null) -> void:
-	if not is_alive or is_knocked_back:
+	if not is_alive or is_invincible:
 		return
-	
-	# Получаем итоговое снижение урона
+
 	var total_reduction = Entity_stats.get_total_damage_reduction()
-	
-	# Добавляем снижение от эффектов
 	if effect_manager:
 		total_reduction += effect_manager.defense_modifier
 		total_reduction = clamp(total_reduction, 0.0, 0.9)
-	
-	# Рассчитываем фактический урон
+
 	var actual_damage = damage * (1.0 - total_reduction)
-	
-	# Визуальные эффекты
-	if Vfx_node != null: 
+
+	# ── VFX ─────────────────────────────────────────
+	if Vfx_node != null:
 		Vfx_node._damage_vfx(self)
-	
-	# Применяем урон
+
+	_play_hit_flash()
+	_trigger_screen_shake()
+	_do_hitstop()
+	# ────────────────────────────────────────────────
+
 	Entity_stats.current_health -= actual_damage
 	emit_signal("health_changed", Entity_stats.current_health)
-	
-	# Информация в консоль
-	print("====================================")
-	print("Получен урон:")
-	print("  Базовый урон: %.1f" % damage)
-	print("  Броня: %.1f (%.1f%% снижения)" % [Entity_stats.armor, Entity_stats.get_armor_reduction() * 100])
-	print("  Доп. защита: %.1f%%" % (Entity_stats.defense_modifier * 100))
-	if effect_manager and effect_manager.defense_modifier > 0:
-		print("  Защита от эффектов: %.1f%%" % (effect_manager.defense_modifier * 100))
-	print("  Итоговое снижение: %.1f%%" % (total_reduction * 100))
-	print("  Фактический урон: %.1f" % actual_damage)
-	print("  Осталось HP: %.1f / %.1f" % [Entity_stats.current_health, Entity_stats.max_health])
-	print("====================================")
-	
-	# Отбрасывание
-	if damage_source != null:
-		apply_knockback(damage_source, knockback_strength)
-	
-	# Проверка на смерть
-	if Entity_stats.current_health <= 0:
-		die()
 
+	_log_damage(damage, actual_damage, total_reduction)
+
+	if Entity_stats.current_health <= 0:
+		knockback_strength += 25
+		die()
+	elif invincibility_duration > 0:
+		_start_invincibility()
+
+	if damage_source != null:
+		var knockback_power = knockback_strength + randi_range(0, int(damage))
+		apply_knockback(damage_source, knockback_power)
+
+# ── HIT FLASH ───────────────────────────────────────────────────
+func _play_hit_flash() -> void:
+	if _entity_sprite == null:
+		return
+	var tween = create_tween()
+	for i in hit_flash_count:
+		tween.tween_property(_entity_sprite, "modulate", hit_flash_color, 0.04)
+		tween.tween_property(_entity_sprite, "modulate", Color(1, 1, 1, 1), 0.04)
+
+# ── SCREEN SHAKE ────────────────────────────────────────────────
+func _trigger_screen_shake() -> void:
+	if screen_shake_strength <= 0:
+		return
+	# Ищем камеру через viewport
+	var cam = _find_camera()
+	if cam == null:
+		return
+	var origin = cam.offset
+	var tween = create_tween()
+	var steps := int(screen_shake_duration / 0.03)
+	for i in steps:
+		var strength = screen_shake_strength * (1.0 - float(i) / steps)
+		var rand_offset = Vector2(
+			randf_range(-strength, strength),
+			randf_range(-strength, strength)
+		)
+		tween.tween_property(cam, "offset", rand_offset, 0.03)
+	tween.tween_property(cam, "offset", origin, 0.04)
+
+# ── HIT-STOP ────────────────────────────────────────────────────
+func _do_hitstop() -> void:
+	if hitstop_duration <= 0:
+		return
+	Engine.time_scale = 0.0
+	await get_tree().create_timer(hitstop_duration, true, false, true).timeout
+	Engine.time_scale = 1.0
+
+# ── IFRAMES ─────────────────────────────────────────────────────
+func _start_invincibility() -> void:
+	is_invincible = true
+	# Мигание полупрозрачностью во время неуязвимости
+	if _entity_sprite:
+		var tween = create_tween().set_loops(int(invincibility_duration / 0.12))
+		tween.tween_property(_entity_sprite, "modulate:a", 0.35, 0.06)
+		tween.tween_property(_entity_sprite, "modulate:a", 1.0, 0.06)
+
+	await get_tree().create_timer(invincibility_duration).timeout
+	is_invincible = false
+	if _entity_sprite:
+		_entity_sprite.modulate.a = 1.0
+
+# ── KNOCKBACK ───────────────────────────────────────────────────
 func apply_knockback(damage_source: Node2D, knockback_multipiler: float) -> void:
 	if is_knocked_back:
 		return
 	is_knocked_back = true
-	
-	var knockback_direction = (global_position - damage_source.global_position).normalized()
+
+	var base_dir = (global_position - damage_source.global_position).normalized()
+	# Добавляем лёгкий случайный угол для ощущения «живости»
+	var angle_variance = deg_to_rad(randf_range(-12.0, 12.0))
+	var knockback_direction = base_dir.rotated(angle_variance)
 	var knockback_distance = knockback_direction * knockback_multipiler / 3.5
-	
+
 	var tween = create_tween()
+	# Быстрый старт → плавное торможение
+	tween.set_ease(Tween.EASE_OUT)
+	tween.set_trans(Tween.TRANS_EXPO)
 	tween.tween_property(self, "position", position + knockback_distance, knockback_duration)
 	tween.tween_callback(func(): is_knocked_back = false)
-	
+
 	set_collision_layer_value(1, false)
 	set_collision_mask_value(1, false)
 	tween.tween_callback(func():
@@ -91,25 +160,53 @@ func apply_knockback(damage_source: Node2D, knockback_multipiler: float) -> void
 		set_collision_mask_value(1, true)
 	)
 
+# ── УТИЛИТЫ ─────────────────────────────────────────────────────
+func _find_sprite(node: Node) -> Node:
+	for child in node.get_children():
+		if child is Sprite2D or child is AnimatedSprite2D:
+			return child
+	return null
+
+func _find_camera() -> Camera2D:
+	var vp = get_viewport()
+	if vp == null:
+		return null
+	return _search_camera(get_tree().root)
+
+func _search_camera(node: Node) -> Camera2D:
+	if node is Camera2D and node.is_current():
+		return node
+	for child in node.get_children():
+		var result = _search_camera(child)
+		if result:
+			return result
+	return null
+
+func _log_damage(base: float, actual: float, reduction: float) -> void:
+	print("====================================")
+	print("Получен урон:")
+	print("  Базовый урон: %.1f" % base)
+	print("  Броня: %.1f (%.1f%% снижения)" % [Entity_stats.armor, Entity_stats.get_armor_reduction() * 100])
+	print("  Итоговое снижение: %.1f%%" % (reduction * 100))
+	print("  Фактический урон: %.1f" % actual)
+	print("  Осталось HP: %.1f / %.1f" % [Entity_stats.current_health, Entity_stats.max_health])
+	print("====================================")
+
+# ── СМЕРТЬ И ЭФФЕКТЫ ────────────────────────────────────────────
 func die() -> void:
 	if not is_alive:
 		return
 	is_alive = false
 	emit_signal("died")
-	
-	# Очищаем все эффекты
 	if effect_manager:
 		effect_manager.clear_all_effects()
-	
 	set_collision_layer_value(1, false)
 	set_collision_mask_value(1, false)
-	if $Drop: 
+	if $Drop:
 		$Drop._drop_items()
-	
 	if is_in_group("Creature"):
 		remove_from_group("Creature")
 
-####### Entity effects - через EffectManager
 func heal(amount: float) -> void:
 	if !is_alive:
 		return

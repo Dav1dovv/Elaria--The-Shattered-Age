@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://c7hhm5i1vluh6" path="res://misc/HarvestItems/Textures/DeseertCactus.png" id="2_4vhbo"]
 [ext_resource type="Script" uid="uid://wm1t8anytdyq" path="res://scr/Resources/ItemData/ItemData.gd" id="2_kimx4"]
 [ext_resource type="Texture2D" uid="uid://bvn1k3yr05y11" path="res://Assets/Textures/Shadows/Shadow.png" id="3_lcvta"]
-[ext_resource type="Resource" path="res://scr/Resources/Items/Cactus.tres" id="3_vkbtg"]
+[ext_resource type="Resource" uid="uid://dxg74nxb8uriw" path="res://misc/Content/Items/Cactus.tres" id="3_vkbtg"]
 [ext_resource type="Script" uid="uid://c8gtsucgxp2ef" path="res://misc/Boxes/EnemyHitBox.gd" id="4_kimx4"]
 [ext_resource type="Script" uid="uid://b2ovoyoflp1gw" path="res://scr/Resources/ItemData/Equip_item_data.gd" id="5_lcvta"]
 

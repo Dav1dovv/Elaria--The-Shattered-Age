@@ -1,7 +1,7 @@
 extends Node
 class_name SceneManager
 
-const MAIN_MENU = "res://common/main_menu.tscn"
+const MAIN_MENU = "res://Assets/Scenes/Menu/main_menu.tscn"
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var message_label: Label = $CanvasLayer/ColorRect/Message
 
@@ -9,7 +9,8 @@ const MAIN_MENU = "res://common/main_menu.tscn"
 
 @export var scenes : Dictionary = {
 	"Test_Scene" : "res://Assets/Locations/WorlRoot.tscn",
-	"Land" : "res://Assets/Locations/land.tscn"}
+	"World" : "res://Assets/Scenes/Playable/world_root.tscn",
+	"oktavia" : "res://Assets/Scenes/Playable/Planets/Oktavia.tscn"}
 
 #func _ready() -> void:
 	#Global.developer_console.register_command("change_scene",_cmd_change_scene,"chaging scene to X: change_scene")
@@ -25,7 +26,7 @@ func change_scene(scene : String, can_save : bool, player_position: Vector2):
 	update_message()
 	get_parent().current_location = scene
 	if can_save:
-		get_tree().call_group("Save","save_game")
+		get_parent().save()
 	# ← меняем музыку под новую локацию
 	get_tree().call_group("MusicManager", "on_scene_changed", scene)
 	Cursor.detection_mode(true)

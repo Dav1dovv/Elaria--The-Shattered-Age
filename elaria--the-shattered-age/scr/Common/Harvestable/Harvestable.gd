@@ -4,9 +4,8 @@ class_name Harvestable
 @onready var Dropper_component = $droper
 @export_range(2,999,1) var durability : float = 6
 @export_range(0,10) var harvest_tool_lvl : int = 1
+@export var explore_points : float = 0.1
 @export var VFX_component : VFX
-@export var energy_sprite : Texture
-var is_corrupted : bool = false
 
 var player
 var tween: Tween
@@ -30,11 +29,6 @@ func _ready() -> void:
 		await tree_entered
 	
 	Dropper_component = $droper
-	if energy_sprite:
-		is_corrupted = randf() < 0.25
-		if is_corrupted:
-			$Sprite2D.texture = energy_sprite
-			$PointLight2D.visible = true
 	
 	player = get_tree().get_first_node_in_group("Player")
 	connect("area_entered",_on_area_entered)
@@ -86,16 +80,14 @@ func Harvest(hit_strenght : float, tool_lvl:int,is_weapon:bool):
 		
 	
 	if durability <= 0:
+		Global.hint(self,"+explore point")
 		if VFX_component: await VFX_component.vfx_finished
+		Global.explored_progress[Global.current_location] += explore_points
 		if $Destroy: $Destroy.play()
 		if Dropper_component != null: 
 			# Исправил странную строку (было выражение без присваивания)
 			Dropper_component.max_drop *= tool_lvl + scale.x
-			if is_corrupted:
-				Dropper_component._drop_items()
-				Dropper_component.exp_drop()
-			else:
-				Dropper_component._drop_items()
+			Dropper_component._drop_items()
 		queue_free()
 
 func _on_area_entered(area: Area2D) -> void:

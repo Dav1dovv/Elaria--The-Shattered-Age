@@ -1,16 +1,17 @@
 extends Control
 
 var player
+var world
 
 func _ready() -> void:
 	player = get_parent().get_parent()
+	world = get_tree().get_first_node_in_group("World")
 	visible = false
 	
 
 func death():
-	$AnimationPlayer.play("Blur")
 	visible = true
-	$Panel.visible = true
+	$AnimationPlayer.play("Blur")
 
 
 
@@ -20,7 +21,6 @@ func _on_main_menu_pressed() -> void:
 
 
 func _on_revive_pressed() -> void:
-	player.save_and_load.load_player(player)
-	print(Global.current_location)
-	Global.scene_manager.change_scene(Global.current_location,false,Vector2.ZERO)
+	world.respawn()
+	visible = false
 	

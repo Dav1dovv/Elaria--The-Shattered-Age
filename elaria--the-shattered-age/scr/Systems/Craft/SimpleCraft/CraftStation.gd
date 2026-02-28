@@ -1,14 +1,13 @@
-# CraftingStation.gd — НОВАЯ ВЕРСИЯ
-extends UI_Controller
+extends Control
 
 @onready var search_box: LineEdit = $Panel/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/LineEdit
 @onready var category_filter: OptionButton = $Panel/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/OptionButton
 @onready var recipe_grid: GridContainer = $Panel/MarginContainer/HBoxContainer/VBoxContainer/ScrollContainer/GridContainer
-@onready var result_slot: InventorySlot = $Panel/MarginContainer/HBoxContainer/VBoxContainer2/ResultSlot
+@onready var result_slot: InventorySlot = $Panel/MarginContainer/HBoxContainer/VBoxContainer2/Label/ResultSlot
 @onready var ingredients_list: GridContainer = $Panel/MarginContainer/HBoxContainer/VBoxContainer2/ScrollContainer/VBoxContainer
 @onready var craft_button: Button = $Panel/MarginContainer/HBoxContainer/VBoxContainer2/Button
-#@onready var progress_bar: ProgressBar = $Panel/MarginContainer/HBoxContainer/VBoxContainer2/ProgressBar
-@onready var craft_max_button: Button = $Panel/MarginContainer/HBoxContainer/VBoxContainer2/ResultSlot/MaxCount
+@onready var progress_bar: ProgressBar = $Panel/MarginContainer/HBoxContainer/VBoxContainer2/Button/ProgressBar
+@onready var craft_max_button: Button = $Panel/MarginContainer/HBoxContainer/VBoxContainer2/Label/ResultSlot/MaxCount
 
 @export var all_recipes: Array[CraftRecipe] = []
 var filtered_recipes: Array[CraftRecipe] = []
@@ -20,21 +19,21 @@ func _ready() -> void:
 	inventory = get_tree().get_first_node_in_group("Inventory")
 	var hotbar = get_tree().get_first_node_in_group("Hotbar")
 	
-	#if inventory:
-		#inventory.inventory_changed.connect(_refresh)
-	#if hotbar:
-		#hotbar.hotbar_changed.connect(_refresh)
+	if inventory:
+		inventory.inventory_changed.connect(_refresh)
+	if hotbar:
+		hotbar.hotbar_changed.connect(_refresh)
 	
-	# Загружаем все рецепты из папки
-	#_load_all_recipes()
-	#_setup_categories()
-	#_refresh()
+	 #Загружаем все рецепты из папки
+	_load_all_recipes()
+	_setup_categories()
+	_refresh()
 
-	#search_box.text_changed.connect(_on_search_changed)
-	#category_filter.item_selected.connect(_on_category_changed)
-	#recipe_list.item_selected.connect(_on_recipe_selected)
-	#craft_button.pressed.connect(_on_craft_pressed)
-	#craft_max_button.pressed.connect(_on_craft_max_pressed)
+	search_box.text_changed.connect(_on_search_changed)
+	category_filter.item_selected.connect(_on_category_changed)
+	#recipe_grid.item_selected.connect(_on_recipe_selected)
+	craft_button.pressed.connect(_on_craft_pressed)
+	craft_max_button.pressed.connect(_on_craft_max_pressed)
 
 func _load_all_recipes() -> void:
 	var dir = DirAccess.open("res://scr/Resources/Recipes/")
@@ -110,7 +109,7 @@ func _update_recipe_list() -> void:
 		name_label.size_flags_vertical = Control.SIZE_SHRINK_CENTER
 		name_label.position = Vector2(-20, 18)
 		name_label.size = Vector2(64, 20)
-		name_label.add_theme_font_size_override("font_size", 8)
+		name_label.add_theme_font_size_override("font_size", 4)
 		name_label.clip_text = true
 		button.add_child(name_label)
 		
@@ -238,8 +237,9 @@ func _perform_craft(amount: int) -> void:
 
 
 func _on_close_pressed() -> void:
-	get_parent().visible = false
+	get_parent().get_parent().uncall_craft()
 	Global.is_opened_menu = false
+	Cursor.detection_mode( false)
 
 
 func _on_sword_tag_pressed() -> void:

@@ -1,0 +1,123 @@
+[gd_scene format=3 uid="uid://d0qb8iwxdcwpn"]
+
+[ext_resource type="PackedScene" uid="uid://bny4sqh4i8i5v" path="res://misc/HarvestItems/Harvestable.tscn" id="1_32v1v"]
+[ext_resource type="Texture2D" uid="uid://bk4arjpmpgt81" path="res://misc/HarvestItems/Textures/Tree.png" id="2_4cjpm"]
+[ext_resource type="Script" uid="uid://b7lfnqk6b5cdp" path="res://scr/Misc/RandomSprite.gd" id="3_hs44r"]
+[ext_resource type="Texture2D" uid="uid://bvn1k3yr05y11" path="res://Assets/Textures/Shadows/Shadow.png" id="4_8f8hu"]
+[ext_resource type="Script" uid="uid://wm1t8anytdyq" path="res://scr/Resources/ItemData/ItemData.gd" id="5_fmajy"]
+[ext_resource type="Resource" uid="uid://10qblpi41tcd" path="res://misc/Content/Items/Wood.tres" id="6_1fv40"]
+[ext_resource type="Script" uid="uid://ctm4b4v8txo1q" path="res://scr/Resources/WeightItem.gd" id="7_buu5p"]
+[ext_resource type="Resource" uid="uid://bx48che8mxghx" path="res://misc/Content/Items/Apple.tres" id="8_xne83"]
+[ext_resource type="Texture2D" uid="uid://cf3avrbvs0ues" path="res://Assets/Textures/SpriteSheets/Items-Sheet.png" id="9_4cjpm"]
+[ext_resource type="AudioStream" uid="uid://bdpgims8h837c" path="res://misc/HarvestItems/SFX/Tree/Chop1.mp3" id="9_i2x8x"]
+[ext_resource type="AudioStream" uid="uid://bjtqd3qjpmj7i" path="res://misc/HarvestItems/SFX/Tree/Chop2.mp3" id="10_4bsqo"]
+[ext_resource type="AudioStream" uid="uid://7cg0p0tt6th1" path="res://misc/HarvestItems/SFX/Tree/Chop3.mp3" id="11_jdof1"]
+[ext_resource type="AudioStream" uid="uid://j5uefj5halva" path="res://misc/HarvestItems/SFX/Tree/Chop4.mp3" id="12_aeqi6"]
+[ext_resource type="AudioStream" uid="uid://b8nyht1i5ljfb" path="res://misc/HarvestItems/SFX/Tree/Chop5.mp3" id="13_2atfo"]
+[ext_resource type="AudioStream" uid="uid://bwykf37vh1ja0" path="res://misc/HarvestItems/SFX/Tree/Chop6.mp3" id="14_0g0cy"]
+[ext_resource type="AudioStream" uid="uid://cgq3vrt2mb3mp" path="res://misc/HarvestItems/SFX/Tree/Chop7.mp3" id="15_2ejol"]
+[ext_resource type="AudioStream" uid="uid://bucv88ie5tnuv" path="res://misc/HarvestItems/SFX/Tree/WoodDestroy.mp3" id="16_3spyh"]
+[ext_resource type="PackedScene" uid="uid://dtmd2j03iu8sl" path="res://misc/Particles/BushSFX.tscn" id="17_as4p2"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_phfk7"]
+radius = 6.33594
+height = 15.6869
+
+[sub_resource type="Resource" id="Resource_mchyi"]
+script = ExtResource("7_buu5p")
+item = ExtResource("8_xne83")
+weight = 0.1
+metadata/_custom_type_script = "uid://ctm4b4v8txo1q"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hs44r"]
+atlas = ExtResource("9_4cjpm")
+region = Rect2(48, 16, 16, 16)
+
+[sub_resource type="Resource" id="Resource_8f8hu"]
+script = ExtResource("5_fmajy")
+icon = SubResource("AtlasTexture_hs44r")
+item_name = "Wayfinder"
+metadata/_custom_type_script = "uid://wm1t8anytdyq"
+
+[sub_resource type="Resource" id="Resource_hs44r"]
+script = ExtResource("7_buu5p")
+item = SubResource("Resource_8f8hu")
+weight = 0.5
+metadata/_custom_type_script = "uid://ctm4b4v8txo1q"
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_mchyi"]
+playback_mode = 1
+streams_count = 7
+stream_0/stream = ExtResource("9_i2x8x")
+stream_1/stream = ExtResource("10_4bsqo")
+stream_2/stream = ExtResource("11_jdof1")
+stream_3/stream = ExtResource("12_aeqi6")
+stream_4/stream = ExtResource("13_2atfo")
+stream_5/stream = ExtResource("14_0g0cy")
+stream_6/stream = ExtResource("15_2ejol")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_phfk7"]
+size = Vector2(21.7234, 24.4137)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_4cjpm"]
+polygon = PackedVector2Array(-8, -6, -9, -1, 13, -1, 12, -7)
+
+[node name="Tree" unique_id=1525282769 instance=ExtResource("1_32v1v")]
+durability = 65.0
+harvest_tool_lvl = 0
+max_distance = 10.0
+
+[node name="CollisionShape2D" parent="StaticBody2D" index="0"]
+position = Vector2(1.93237, -6.42923)
+rotation = -1.57079
+shape = SubResource("CapsuleShape2D_phfk7")
+
+[node name="VFX" parent="." index="1" node_paths=PackedStringArray("audio_player", "particles")]
+audio_player = NodePath("../SFX")
+particles = NodePath("../Particles")
+
+[node name="optimizer" parent="." index="2" node_paths=PackedStringArray("hide_objects")]
+position = Vector2(1.3378, -22.6682)
+scale = Vector2(1.71349, 2.43441)
+hide_objects = [NodePath("../Sprite2D"), NodePath("../Shadow")]
+
+[node name="Sprite2D" type="Sprite2D" parent="." index="3" unique_id=1603376117]
+process_thread_group = 2
+process_thread_group_order = 0
+process_thread_messages = 0
+position = Vector2(4, -18)
+texture = ExtResource("2_4cjpm")
+offset = Vector2(-2, -15)
+hframes = 7
+script = ExtResource("3_hs44r")
+frame_weights = Array[float]([1.0, 1.0, 0.0, 0.0, 1.0, 1.0, 1.0])
+metadata/_custom_type_script = "uid://b7lfnqk6b5cdp"
+
+[node name="Shadow" type="Sprite2D" parent="." index="4" unique_id=682321914]
+self_modulate = Color(0.039215688, 0.07058824, 0.2, 0.23529412)
+z_index = -10
+position = Vector2(2.85278, -2.19958)
+scale = Vector2(1.8934023, 0.863497)
+texture = ExtResource("4_8f8hu")
+
+[node name="droper" parent="." index="5"]
+drop_item = Array[ExtResource("5_fmajy")]([ExtResource("6_1fv40")])
+unique_items = Array[ExtResource("7_buu5p")]([SubResource("Resource_mchyi"), SubResource("Resource_hs44r")])
+max_drop = 8
+random_values = true
+
+[node name="SFX" type="AudioStreamPlayer2D" parent="." index="7" unique_id=692783260]
+stream = SubResource("AudioStreamRandomizer_mchyi")
+
+[node name="Destroy" type="AudioStreamPlayer2D" parent="." index="8" unique_id=1206173942]
+stream = ExtResource("16_3spyh")
+
+[node name="Particles" parent="." index="9" unique_id=1055449671 instance=ExtResource("17_as4p2")]
+position = Vector2(0, -33)
+
+[node name="CollisionShape2D" parent="." index="10"]
+position = Vector2(1.31389, -12.7471)
+shape = SubResource("RectangleShape2D_phfk7")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="." index="11" unique_id=1545977258]
+occluder = SubResource("OccluderPolygon2D_4cjpm")

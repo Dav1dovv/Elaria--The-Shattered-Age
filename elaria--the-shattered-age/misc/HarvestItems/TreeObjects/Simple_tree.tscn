@@ -1,13 +1,15 @@
 [gd_scene format=3 uid="uid://wrujdkh27eaa"]
 
 [ext_resource type="PackedScene" uid="uid://bny4sqh4i8i5v" path="res://misc/HarvestItems/Harvestable.tscn" id="1_c13gt"]
-[ext_resource type="Texture2D" uid="uid://7iypgtxx6sng" path="res://misc/HarvestItems/Textures/Energetic/Tree.png" id="2_8e0o7"]
-[ext_resource type="Shader" uid="uid://btycjoosxomvj" path="res://Assets/Shader/Wind.gdshader" id="2_1688n"]
 [ext_resource type="Script" uid="uid://b7lfnqk6b5cdp" path="res://scr/Misc/RandomSprite.gd" id="2_c13gt"]
-[ext_resource type="Texture2D" uid="uid://bk4arjpmpgt81" path="res://misc/HarvestItems/Textures/Tree.png" id="2_phfk7"]
+[ext_resource type="Texture2D" uid="uid://c1e076bqw7scs" path="res://misc/HarvestItems/Textures/EmeraldTRee.png" id="2_s0ucg"]
 [ext_resource type="Texture2D" uid="uid://bvn1k3yr05y11" path="res://Assets/Textures/Shadows/Shadow.png" id="4_phfk7"]
+[ext_resource type="Script" uid="uid://wm1t8anytdyq" path="res://scr/Resources/ItemData/ItemData.gd" id="7_y4qqg"]
+[ext_resource type="Resource" uid="uid://10qblpi41tcd" path="res://misc/Content/Items/Wood.tres" id="8_8e0o7"]
 [ext_resource type="AudioStream" uid="uid://bdpgims8h837c" path="res://misc/HarvestItems/SFX/Tree/Chop1.mp3" id="8_qlrmn"]
+[ext_resource type="Script" uid="uid://ctm4b4v8txo1q" path="res://scr/Resources/WeightItem.gd" id="9_1688n"]
 [ext_resource type="AudioStream" uid="uid://bjtqd3qjpmj7i" path="res://misc/HarvestItems/SFX/Tree/Chop2.mp3" id="9_irnft"]
+[ext_resource type="Resource" uid="uid://bx48che8mxghx" path="res://misc/Content/Items/Apple.tres" id="10_6ve0l"]
 [ext_resource type="AudioStream" uid="uid://7cg0p0tt6th1" path="res://misc/HarvestItems/SFX/Tree/Chop3.mp3" id="10_s0ucg"]
 [ext_resource type="AudioStream" uid="uid://j5uefj5halva" path="res://misc/HarvestItems/SFX/Tree/Chop4.mp3" id="11_n3vdi"]
 [ext_resource type="AudioStream" uid="uid://b8nyht1i5ljfb" path="res://misc/HarvestItems/SFX/Tree/Chop5.mp3" id="12_y4qqg"]
@@ -16,18 +18,15 @@
 [ext_resource type="AudioStream" uid="uid://bucv88ie5tnuv" path="res://misc/HarvestItems/SFX/Tree/WoodDestroy.mp3" id="15_6ve0l"]
 [ext_resource type="PackedScene" uid="uid://dtmd2j03iu8sl" path="res://misc/Particles/BushSFX.tscn" id="16_irnft"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_6ve0l"]
-shader = ExtResource("2_1688n")
-shader_parameter/wind_start_threshold = 0.10800000513
-shader_parameter/wind_end_threshold = 3.1200001482
-shader_parameter/wind_end_threshold_2 = 0.27600001311
-shader_parameter/wind_strength = 0.26000001235
-shader_parameter/wind_speed = 0.84600003366523
-shader_parameter/scale = 2.0
-
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_phfk7"]
 radius = 6.33594
 height = 15.6869
+
+[sub_resource type="Resource" id="Resource_mchyi"]
+script = ExtResource("9_1688n")
+item = ExtResource("10_6ve0l")
+weight = 0.1
+metadata/_custom_type_script = "uid://ctm4b4v8txo1q"
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_mchyi"]
 playback_mode = 1
@@ -44,9 +43,8 @@ stream_6/stream = ExtResource("14_1688n")
 size = Vector2(21.7234, 24.4137)
 
 [node name="Tree" unique_id=1525282769 instance=ExtResource("1_c13gt")]
-material = SubResource("ShaderMaterial_6ve0l")
 durability = 65.0
-energy_sprite = ExtResource("2_8e0o7")
+harvest_tool_lvl = 0
 max_distance = 60.0
 
 [node name="CollisionShape2D" parent="StaticBody2D" index="0"]
@@ -67,9 +65,9 @@ hide_objects = [NodePath("../Sprite2D"), NodePath("../Shadow")]
 process_thread_group = 2
 process_thread_group_order = 0
 process_thread_messages = 0
-use_parent_material = true
-position = Vector2(-1, -28)
-texture = ExtResource("2_phfk7")
+position = Vector2(1, -13)
+texture = ExtResource("2_s0ucg")
+offset = Vector2(-2, -15)
 hframes = 4
 frame = 3
 script = ExtResource("2_c13gt")
@@ -84,6 +82,8 @@ scale = Vector2(1.43531, 0.863497)
 texture = ExtResource("4_phfk7")
 
 [node name="droper" parent="." index="5"]
+drop_item = Array[ExtResource("7_y4qqg")]([ExtResource("8_8e0o7")])
+unique_items = Array[ExtResource("9_1688n")]([SubResource("Resource_mchyi")])
 max_drop = 5
 
 [node name="SFX" type="AudioStreamPlayer2D" parent="." index="7" unique_id=692783260]
@@ -96,7 +96,5 @@ stream = ExtResource("15_6ve0l")
 position = Vector2(0, -33)
 
 [node name="CollisionShape2D" parent="." index="10"]
-visible = false
 position = Vector2(1.31389, -12.7471)
 shape = SubResource("RectangleShape2D_phfk7")
-disabled = true

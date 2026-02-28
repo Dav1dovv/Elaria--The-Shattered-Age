@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="FoodData" format=3 uid="uid://c6ysff0u2v0n"]
+
+[ext_resource type="Script" uid="uid://dj4umu6271nxr" path="res://scr/Resources/effects/EffectResource.gd" id="1_6qlix"]
+[ext_resource type="Texture2D" uid="uid://cf3avrbvs0ues" path="res://Assets/Textures/SpriteSheets/Items-Sheet.png" id="2_gvr3s"]
+[ext_resource type="Script" uid="uid://ds5d4cljtsmfp" path="res://scr/Resources/ItemData/Food_item_data.gd" id="2_wglry"]
+
+[sub_resource type="Resource" id="Resource_wglry"]
+script = ExtResource("1_6qlix")
+value = 50.0
+metadata/_custom_type_script = "uid://dj4umu6271nxr"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_axyn0"]
+atlas = ExtResource("2_gvr3s")
+region = Rect2(0, 16, 16, 16)
+
+[resource]
+script = ExtResource("2_wglry")
+effects = Array[ExtResource("1_6qlix")]([SubResource("Resource_wglry")])
+icon = SubResource("AtlasTexture_axyn0")
+play_anim = "Eating"
+item_name = "Life Crystal"
+max_count = 20
+metadata/_custom_type_script = "uid://ds5d4cljtsmfp"

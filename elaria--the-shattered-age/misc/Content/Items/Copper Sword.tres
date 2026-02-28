@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="equip_data" format=3 uid="uid://dvukk5p825yse"]
+
+[ext_resource type="Texture2D" uid="uid://cf3avrbvs0ues" path="res://Assets/Textures/SpriteSheets/Items-Sheet.png" id="1_pvaa8"]
+[ext_resource type="Script" uid="uid://b2ovoyoflp1gw" path="res://scr/Resources/ItemData/Equip_item_data.gd" id="2_td75k"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tuabl"]
+atlas = ExtResource("1_pvaa8")
+region = Rect2(32, 96, 16, 16)
+
+[resource]
+script = ExtResource("2_td75k")
+lvl = 2
+max_durability = 200
+Damage = 11
+Atk_speed = 1.25
+equiped_weapon_sprite = SubResource("AtlasTexture_tuabl")
+accuracy_radius = 8.0
+miss_chance_per_unit = 0.06
+critical_radius = 6.0
+critical_multiplier = 2.5
+icon = SubResource("AtlasTexture_tuabl")
+item_name = "Yellow plasma"
+stackable = false
+metadata/_custom_type_script = "uid://b2ovoyoflp1gw"

@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://bbc1aftv65w3b"]
+
+[ext_resource type="Texture2D" uid="uid://cf3avrbvs0ues" path="res://Assets/Textures/SpriteSheets/Items-Sheet.png" id="1_x21sn"]
+[ext_resource type="Script" uid="uid://wm1t8anytdyq" path="res://scr/Resources/ItemData/ItemData.gd" id="2_kunva"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qvb03"]
+atlas = ExtResource("1_x21sn")
+region = Rect2(96, 48, 16, 16)
+
+[resource]
+script = ExtResource("2_kunva")
+icon = SubResource("AtlasTexture_qvb03")
+item_name = "Scrao"
+metadata/_custom_type_script = "uid://wm1t8anytdyq"

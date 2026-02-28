@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="equip_data" format=3 uid="uid://brx2h8fjjdsq2"]
+
+[ext_resource type="Texture2D" uid="uid://cf3avrbvs0ues" path="res://Assets/Textures/SpriteSheets/Items-Sheet.png" id="1_vixln"]
+[ext_resource type="Script" uid="uid://b2ovoyoflp1gw" path="res://scr/Resources/ItemData/Equip_item_data.gd" id="2_ebiit"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tuabl"]
+atlas = ExtResource("1_vixln")
+region = Rect2(80, 144, 16, 16)
+
+[resource]
+script = ExtResource("2_ebiit")
+lvl = 4
+max_durability = 500
+Damage = 6
+hit_distance = 20.0
+Atk_speed = 2.0
+equiped_weapon_sprite = SubResource("AtlasTexture_tuabl")
+is_weapon = false
+accuracy_radius = 22.0
+miss_chance_per_unit = 0.01
+critical_radius = 12.0
+critical_chance = 0.8
+critical_multiplier = 3.5
+one_shot_attack = false
+icon = SubResource("AtlasTexture_tuabl")
+item_name = "Power Picakxe"
+stackable = false
+metadata/_custom_type_script = "uid://b2ovoyoflp1gw"

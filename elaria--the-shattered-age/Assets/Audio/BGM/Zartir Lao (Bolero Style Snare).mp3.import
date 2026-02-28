@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://3g6rhskr1uu"
+path="res://.godot/imported/Zartir Lao (Bolero Style Snare).mp3-851318e5da592d5f71b1279009cd45c8.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/BGM/Zartir Lao (Bolero Style Snare).mp3"
+dest_files=["res://.godot/imported/Zartir Lao (Bolero Style Snare).mp3-851318e5da592d5f71b1279009cd45c8.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

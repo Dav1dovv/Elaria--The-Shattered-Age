@@ -15,9 +15,8 @@
 [ext_resource type="Texture2D" uid="uid://bbwrlu36nxdg1" path="res://misc/Entity/Player/Textures/Eyes.png" id="13_2lycn"]
 [ext_resource type="Texture2D" uid="uid://bpsgo5ojse0tg" path="res://misc/Entity/Player/Textures/Skin11.png" id="13_kxodd"]
 [ext_resource type="Texture2D" uid="uid://bbiy8isa0iu0a" path="res://misc/Entity/Player/Textures/Skin12.png" id="14_jdvgb"]
-[ext_resource type="Texture2D" uid="uid://bj3k1id46eild" path="res://Assets/Textures/SpriteSheets/weapons-Sheet.png" id="14_t6mi7"]
+[ext_resource type="Texture2D" uid="uid://cf3avrbvs0ues" path="res://Assets/Textures/SpriteSheets/Items-Sheet.png" id="14_t6mi7"]
 [ext_resource type="Texture2D" uid="uid://qpi1yk2uge8s" path="res://misc/Entity/Player/Textures/Skin13.png" id="15_5vpdw"]
-[ext_resource type="Texture2D" uid="uid://bs52lfemcyt3c" path="res://Assets/Textures/Splash.png" id="15_kxodd"]
 [ext_resource type="Texture2D" uid="uid://cg7cwp8iedun6" path="res://misc/Entity/Player/Textures/Skin14.png" id="16_5vpdw"]
 [ext_resource type="Texture2D" uid="uid://bvn1k3yr05y11" path="res://Assets/Textures/Shadows/Shadow.png" id="16_jdvgb"]
 [ext_resource type="Texture2D" uid="uid://60ugp1fvqcr1" path="res://misc/Entity/Player/Textures/Skin15.png" id="17_l2vfi"]
@@ -25,6 +24,90 @@
 [ext_resource type="Script" uid="uid://bttgnk3bb2a8i" path="res://addons/font_auto_size_labels/auto_size_label.gd" id="22_wwx2f"]
 [ext_resource type="PackedScene" uid="uid://gb7k36a7pc6o" path="res://scr/Misc/UIelements/button.tscn" id="23_b6csp"]
 [ext_resource type="Texture2D" uid="uid://b62hrm50ou235" path="res://Assets/Textures/UI/UI.png" id="24_uss3u"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a67o8"]
+atlas = ExtResource("24_uss3u")
+region = Rect2(17, 1, 46, 14)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xqwq4"]
+texture = SubResource("AtlasTexture_a67o8")
+texture_margin_left = 3.0
+texture_margin_top = 1.0
+texture_margin_right = 3.0
+texture_margin_bottom = 1.0
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+region_rect = Rect2(0, 0, 46, 14)
+modulate_color = Color(1, 0.32451692, 0.35151342, 0.84705883)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sk3jv"]
+atlas = ExtResource("24_uss3u")
+region = Rect2(33, 33, 46, 14)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_eu7le"]
+texture = SubResource("AtlasTexture_sk3jv")
+texture_margin_left = 3.0
+texture_margin_top = 1.0
+texture_margin_right = 3.0
+texture_margin_bottom = 1.0
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+region_rect = Rect2(0, 0, 46, 14)
+modulate_color = Color(1, 0.3254902, 0.3529412, 0.84705883)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_keseg"]
+atlas = ExtResource("24_uss3u")
+region = Rect2(65, 1, 46, 14)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vswmi"]
+texture = SubResource("AtlasTexture_keseg")
+texture_margin_left = 3.0
+texture_margin_top = 1.0
+texture_margin_right = 3.0
+texture_margin_bottom = 1.0
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+region_rect = Rect2(0, 0, 46, 14)
+modulate_color = Color(1, 0.3254902, 0.3529412, 0.84705883)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t3oq6"]
+atlas = ExtResource("24_uss3u")
+region = Rect2(33, 17, 46, 14)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_cp6da"]
+texture = SubResource("AtlasTexture_t3oq6")
+texture_margin_left = 3.0
+texture_margin_top = 1.0
+texture_margin_right = 3.0
+texture_margin_bottom = 1.0
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+region_rect = Rect2(0, 0, 46, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5u1tl"]
+atlas = ExtResource("24_uss3u")
+region = Rect2(33, 33, 46, 14)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_l50q1"]
+texture = SubResource("AtlasTexture_5u1tl")
+texture_margin_left = 3.0
+texture_margin_top = 1.0
+texture_margin_right = 3.0
+texture_margin_bottom = 1.0
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+region_rect = Rect2(0, 0, 46, 14)
+modulate_color = Color(1, 0.3254902, 0.3529412, 0.84705883)
 
 [sub_resource type="Animation" id="Animation_utbik"]
 resource_name = "Idle1"
@@ -231,58 +314,34 @@ tracks/9/keys = {
 tracks/10/type = "value"
 tracks/10/imported = false
 tracks/10/enabled = true
-tracks/10/path = NodePath("../../../player_HitBox/CollisionShape2D:disabled")
+tracks/10/path = NodePath("LeftHand/Equip/Sprite2D:visible")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
-"times": PackedFloat32Array(0, 0.466667, 0.8),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [true, false, true]
-}
-tracks/11/type = "value"
-tracks/11/imported = false
-tracks/11/enabled = true
-tracks/11/path = NodePath("../../../Swing:playing")
-tracks/11/interp = 1
-tracks/11/loop_wrap = true
-tracks/11/keys = {
-"times": PackedFloat32Array(0.5),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/12/type = "value"
-tracks/12/imported = false
-tracks/12/enabled = true
-tracks/12/path = NodePath("LeftHand/Equip/Sprite2D:visible")
-tracks/12/interp = 1
-tracks/12/loop_wrap = true
-tracks/12/keys = {
 "times": PackedFloat32Array(0, 0.53333336, 1),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [false, true, false]
 }
-tracks/13/type = "value"
-tracks/13/imported = false
-tracks/13/enabled = true
-tracks/13/path = NodePath("LeftHand/Equip/Sprite2D:self_modulate")
-tracks/13/interp = 1
-tracks/13/loop_wrap = true
-tracks/13/keys = {
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("LeftHand/Equip/Sprite2D:self_modulate")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
 "times": PackedFloat32Array(0, 0.56666666, 1.0333333),
 "transitions": PackedFloat32Array(1, 0.2102241, 28.840033),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
-tracks/14/type = "value"
-tracks/14/imported = false
-tracks/14/enabled = true
-tracks/14/path = NodePath("LeftHand/Equip/Sprite2D:scale")
-tracks/14/interp = 1
-tracks/14/loop_wrap = true
-tracks/14/keys = {
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("LeftHand/Equip/Sprite2D:scale")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
 "times": PackedFloat32Array(0, 0.84),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
@@ -631,82 +690,58 @@ tracks/13/keys = {
 tracks/14/type = "value"
 tracks/14/imported = false
 tracks/14/enabled = true
-tracks/14/path = NodePath("../../../player_HitBox/CollisionShape2D:disabled")
+tracks/14/path = NodePath("RightHand:z_index")
 tracks/14/interp = 1
 tracks/14/loop_wrap = true
 tracks/14/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true]
+"values": [-1]
 }
 tracks/15/type = "value"
 tracks/15/imported = false
 tracks/15/enabled = true
-tracks/15/path = NodePath("RightHand:z_index")
+tracks/15/path = NodePath("RightHand:self_modulate")
 tracks/15/interp = 1
 tracks/15/loop_wrap = true
 tracks/15/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [-1]
+"update": 0,
+"values": [Color(0.67069, 0.67069, 0.67069, 1)]
 }
 tracks/16/type = "value"
 tracks/16/imported = false
 tracks/16/enabled = true
-tracks/16/path = NodePath("RightHand:self_modulate")
+tracks/16/path = NodePath("LeftHand/Equip/Sprite2D:visible")
 tracks/16/interp = 1
 tracks/16/loop_wrap = true
 tracks/16/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(0.67069, 0.67069, 0.67069, 1)]
+"update": 1,
+"values": [false]
 }
 tracks/17/type = "value"
 tracks/17/imported = false
 tracks/17/enabled = true
-tracks/17/path = NodePath("../../../Swing:playing")
+tracks/17/path = NodePath("LeftHand/Equip/Sprite2D:self_modulate")
 tracks/17/interp = 1
 tracks/17/loop_wrap = true
 tracks/17/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
 }
 tracks/18/type = "value"
 tracks/18/imported = false
 tracks/18/enabled = true
-tracks/18/path = NodePath("LeftHand/Equip/Sprite2D:visible")
+tracks/18/path = NodePath("LeftHand/Equip/Sprite2D:scale")
 tracks/18/interp = 1
 tracks/18/loop_wrap = true
 tracks/18/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/19/type = "value"
-tracks/19/imported = false
-tracks/19/enabled = true
-tracks/19/path = NodePath("LeftHand/Equip/Sprite2D:self_modulate")
-tracks/19/interp = 1
-tracks/19/loop_wrap = true
-tracks/19/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-tracks/20/type = "value"
-tracks/20/imported = false
-tracks/20/enabled = true
-tracks/20/path = NodePath("LeftHand/Equip/Sprite2D:scale")
-tracks/20/interp = 1
-tracks/20/loop_wrap = true
-tracks/20/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -1250,98 +1285,41 @@ _data = {
 
 [sub_resource type="LabelSettings" id="LabelSettings_3dn7r"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_a67o8"]
-atlas = ExtResource("24_uss3u")
-region = Rect2(17, 1, 46, 14)
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xqwq4"]
-texture = SubResource("AtlasTexture_a67o8")
-texture_margin_left = 3.0
-texture_margin_top = 1.0
-texture_margin_right = 3.0
-texture_margin_bottom = 1.0
-expand_margin_left = 2.0
-expand_margin_top = 2.0
-expand_margin_right = 2.0
-expand_margin_bottom = 2.0
-region_rect = Rect2(0, 0, 46, 14)
-modulate_color = Color(1, 0.32451692, 0.35151342, 0.84705883)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_sk3jv"]
-atlas = ExtResource("24_uss3u")
-region = Rect2(33, 33, 46, 14)
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_eu7le"]
-texture = SubResource("AtlasTexture_sk3jv")
-texture_margin_left = 3.0
-texture_margin_top = 1.0
-texture_margin_right = 3.0
-texture_margin_bottom = 1.0
-expand_margin_left = 2.0
-expand_margin_top = 2.0
-expand_margin_right = 2.0
-expand_margin_bottom = 2.0
-region_rect = Rect2(0, 0, 46, 14)
-modulate_color = Color(1, 0.3254902, 0.3529412, 0.84705883)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_keseg"]
-atlas = ExtResource("24_uss3u")
-region = Rect2(65, 1, 46, 14)
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vswmi"]
-texture = SubResource("AtlasTexture_keseg")
-texture_margin_left = 3.0
-texture_margin_top = 1.0
-texture_margin_right = 3.0
-texture_margin_bottom = 1.0
-expand_margin_left = 2.0
-expand_margin_top = 2.0
-expand_margin_right = 2.0
-expand_margin_bottom = 2.0
-region_rect = Rect2(0, 0, 46, 14)
-modulate_color = Color(1, 0.3254902, 0.3529412, 0.84705883)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_t3oq6"]
-atlas = ExtResource("24_uss3u")
-region = Rect2(33, 17, 46, 14)
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_cp6da"]
-texture = SubResource("AtlasTexture_t3oq6")
-texture_margin_left = 3.0
-texture_margin_top = 1.0
-texture_margin_right = 3.0
-texture_margin_bottom = 1.0
-expand_margin_left = 2.0
-expand_margin_top = 2.0
-expand_margin_right = 2.0
-expand_margin_bottom = 2.0
-region_rect = Rect2(0, 0, 46, 14)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_5u1tl"]
-atlas = ExtResource("24_uss3u")
-region = Rect2(33, 33, 46, 14)
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_l50q1"]
-texture = SubResource("AtlasTexture_5u1tl")
-texture_margin_left = 3.0
-texture_margin_top = 1.0
-texture_margin_right = 3.0
-texture_margin_bottom = 1.0
-expand_margin_left = 2.0
-expand_margin_top = 2.0
-expand_margin_right = 2.0
-expand_margin_bottom = 2.0
-region_rect = Rect2(0, 0, 46, 14)
-modulate_color = Color(1, 0.3254902, 0.3529412, 0.84705883)
-
 [node name="Panel" type="Button" unique_id=966165572 node_paths=PackedStringArray("player_name_label", "date_label")]
 custom_minimum_size = Vector2(261, 41)
-offset_right = 261.0
-offset_bottom = 41.0
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 2.0
+grow_horizontal = 2
 script = ExtResource("1_fq7x7")
 player_name_label = NodePath("HBoxContainer2/HBoxContainer/Charachter_name")
 date_label = NodePath("HBoxContainer2/HBoxContainer/Date")
 textures = Array[Texture2D]([ExtResource("2_1u1yc"), ExtResource("3_njkwq"), ExtResource("4_tf6xd"), ExtResource("5_07rtf"), ExtResource("6_urpkn"), ExtResource("7_ew20d"), ExtResource("8_2lycn"), ExtResource("9_t6mi7"), ExtResource("10_kxodd"), ExtResource("11_jdvgb"), ExtResource("13_kxodd"), ExtResource("14_jdvgb"), ExtResource("15_5vpdw"), ExtResource("16_5vpdw"), ExtResource("17_l2vfi"), ExtResource("20_b6csp")])
+
+[node name="Delete" parent="." unique_id=53937464 instance=ExtResource("23_b6csp")]
+z_index = 5
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -20.5
+offset_right = 0.0
+offset_bottom = 20.5
+grow_horizontal = 0
+grow_vertical = 2
+size_flags_horizontal = 8
+mouse_force_pass_scroll_events = false
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxTexture_xqwq4")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_eu7le")
+theme_override_styles/hover = SubResource("StyleBoxTexture_vswmi")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_cp6da")
+theme_override_styles/focus = SubResource("StyleBoxTexture_l50q1")
+text = "X"
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="." unique_id=1961733690]
 layout_mode = 1
@@ -1350,13 +1328,16 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer2" unique_id=197720245]
 layout_mode = 2
+mouse_filter = 2
 
 [node name="TextureRect" type="TextureRect" parent="HBoxContainer2/HBoxContainer" unique_id=14730497]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
+mouse_filter = 2
 expand_mode = 2
 stretch_mode = 3
 
@@ -1366,7 +1347,7 @@ y_sort_enabled = true
 position = Vector2(14, 35)
 scale = Vector2(1.4240557, 1.4240557)
 script = ExtResource("12_ew20d")
-player_skins = Array[Texture2D]([ExtResource("2_1u1yc"), ExtResource("3_njkwq"), ExtResource("4_tf6xd"), ExtResource("5_07rtf"), ExtResource("6_urpkn"), ExtResource("7_ew20d"), ExtResource("8_2lycn"), ExtResource("9_t6mi7"), ExtResource("10_kxodd"), ExtResource("11_jdvgb"), ExtResource("13_kxodd"), ExtResource("14_jdvgb"), ExtResource("15_5vpdw"), ExtResource("16_5vpdw"), ExtResource("17_l2vfi"), ExtResource("20_b6csp")])
+player_skins = Array[Texture]([ExtResource("2_1u1yc"), ExtResource("3_njkwq"), ExtResource("4_tf6xd"), ExtResource("5_07rtf"), ExtResource("6_urpkn"), ExtResource("7_ew20d"), ExtResource("8_2lycn"), ExtResource("9_t6mi7"), ExtResource("10_kxodd"), ExtResource("11_jdvgb")])
 player_sprites = [NodePath("Body"), NodePath("Body/LeftLeg"), NodePath("Body/RightLeg"), NodePath("Body/Hand/LeftHand"), NodePath("Body/Hand/RightHand")]
 
 [node name="Body" type="Sprite2D" parent="HBoxContainer2/HBoxContainer/TextureRect/Skin" unique_id=448531435]
@@ -1433,7 +1414,6 @@ show_behind_parent = true
 position = Vector2(5.8349757, -7.110726)
 rotation = -0.7853982
 scale = Vector2(0.7581427, 1)
-texture = ExtResource("15_kxodd")
 
 [node name="RightHand" type="Sprite2D" parent="HBoxContainer2/HBoxContainer/TextureRect/Skin/Body/Hand" unique_id=2113672383]
 self_modulate = Color(0.67069, 0.67069, 0.67069, 1)
@@ -1482,19 +1462,4 @@ _current_font_size = 15
 _editor_defaults_set = true
 metadata/_custom_type_script = "uid://bttgnk3bb2a8i"
 
-[node name="Delete" parent="HBoxContainer2" unique_id=53937464 instance=ExtResource("23_b6csp")]
-z_index = 5
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-size_flags_horizontal = 8
-mouse_force_pass_scroll_events = false
-theme_override_font_sizes/font_size = 32
-theme_override_styles/normal = SubResource("StyleBoxTexture_xqwq4")
-theme_override_styles/pressed = SubResource("StyleBoxTexture_eu7le")
-theme_override_styles/hover = SubResource("StyleBoxTexture_vswmi")
-theme_override_styles/disabled = SubResource("StyleBoxTexture_cp6da")
-theme_override_styles/focus = SubResource("StyleBoxTexture_l50q1")
-text = "X"
-metadata/_edit_use_anchors_ = true
-
-[connection signal="pressed" from="HBoxContainer2/Delete" to="." method="_on_delete_pressed"]
+[connection signal="pressed" from="Delete" to="." method="_on_delete_pressed"]

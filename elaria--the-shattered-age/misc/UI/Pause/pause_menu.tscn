@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://b0mf3l56dvooj"]
+[gd_scene format=3 uid="uid://b0mf3l56dvooj"]
 
 [ext_resource type="Script" uid="uid://dgpbrmp4fahb" path="res://misc/UI/Pause/pause_menu.gd" id="1_1h2e4"]
 [ext_resource type="Shader" uid="uid://cpqgkpo83gda7" path="res://Assets/Shader/Blur.gdshader" id="1_mjrbq"]
@@ -9,8 +9,6 @@ shader = ExtResource("1_mjrbq")
 shader_parameter/blur_amount = 2.0
 shader_parameter/mix_amount = 0.3350000159125
 shader_parameter/color_over = Color(0, 0, 0, 1)
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_i1arw"]
 
 [sub_resource type="Animation" id="Animation_u6emx"]
 length = 0.001
@@ -61,7 +59,7 @@ _data = {
 &"blur": SubResource("Animation_4fqp4")
 }
 
-[node name="PauseMenu" type="Control"]
+[node name="PauseMenu" type="Control" unique_id=1332997478]
 process_mode = 3
 layout_mode = 3
 anchors_preset = 15
@@ -71,8 +69,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_1h2e4")
 
-[node name="Panel" type="Panel" parent="."]
-visible = false
+[node name="Panel" type="Panel" parent="." unique_id=2049019441]
 modulate = Color(1, 1, 1, 0)
 material = SubResource("ShaderMaterial_1h2e4")
 layout_mode = 1
@@ -83,49 +80,35 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="Panel2" type="Panel" parent="Panel"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel" unique_id=1863244744]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -72.0
-offset_top = -10.0
-offset_right = 72.0
-offset_bottom = 74.0
+offset_left = -67.0
+offset_top = -34.5
+offset_right = 67.0
+offset_bottom = 34.5
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-theme_override_styles/panel = SubResource("StyleBoxEmpty_i1arw")
+theme_override_constants/separation = 12
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Panel/Panel2"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 3.0
-offset_top = -4.0
-offset_right = 3.0
-offset_bottom = -20.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-theme_override_constants/separation = 21
-
-[node name="Resume" parent="Panel/Panel2/VBoxContainer" instance=ExtResource("3_u6emx")]
+[node name="Resume" parent="Panel/VBoxContainer" unique_id=1937313467 instance=ExtResource("3_u6emx")]
 layout_mode = 2
 text = "Resume"
 
-[node name="Options" parent="Panel/Panel2/VBoxContainer" instance=ExtResource("3_u6emx")]
+[node name="Options" parent="Panel/VBoxContainer" unique_id=742123188 instance=ExtResource("3_u6emx")]
 layout_mode = 2
 text = "Options"
 
-[node name="Exit" parent="Panel/Panel2/VBoxContainer" instance=ExtResource("3_u6emx")]
+[node name="Exit" parent="Panel/VBoxContainer" unique_id=1642030339 instance=ExtResource("3_u6emx")]
 layout_mode = 2
 text = "Main Menu"
 
-[node name="Label" type="Label" parent="Panel"]
+[node name="Label" type="Label" parent="Panel" unique_id=316053633]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -142,7 +125,7 @@ vertical_alignment = 1
 autowrap_trim_flags = 128
 justification_flags = 34
 
-[node name="LinkButton" type="LinkButton" parent="Panel"]
+[node name="LinkButton" type="LinkButton" parent="Panel" unique_id=244142539]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -161,11 +144,9 @@ uri = "https://docs.google.com/forms/d/e/1FAIpQLSet0XvkBd1-Ay8jgNT1lBt_jbAg7Si-_
 text_direction = 2
 structured_text_bidi_override = 1
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_u6emx")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1331036989]
+libraries/ = SubResource("AnimationLibrary_u6emx")
 
-[connection signal="pressed" from="Panel/Panel2/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
-[connection signal="pressed" from="Panel/Panel2/VBoxContainer/Options" to="." method="_on_options_pressed"]
-[connection signal="pressed" from="Panel/Panel2/VBoxContainer/Exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/Exit" to="." method="_on_exit_pressed"]

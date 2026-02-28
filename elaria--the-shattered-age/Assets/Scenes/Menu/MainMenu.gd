@@ -1,7 +1,7 @@
-extends Control
+extends ColorRect
 
 # Ссылка на узел Label для сплеш-текста
-@onready var splash_label : Label = $CanvasLayer/SplashLabel
+@onready var splash_label : Label = $CanvasLayer/TextureRect/SplashLabel
 
 
 # Путь к JSON-файлу с текстами

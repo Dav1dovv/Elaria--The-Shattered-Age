@@ -12,7 +12,7 @@ class_name Projectile
 @export var explosion_radius: float = 80.0
 @export var explode_on_hit: bool = true
 @export var bomb_timer: float = 2.5
-@export var homing_strength: float = 3.0      # Для бумеранга (чем больше — резче поворачивает)
+@export var homing_strength: float = 3.0      # Для бумеранга — сила притяжения при возврате
 @export var max_travel_distance: float = 600.0  # Для бумеранга — когда начинать возвращаться
 
 @onready var lifetime_timer: Timer = $LifetimeTimer
@@ -69,55 +69,64 @@ func _physics_process(delta: float) -> void:
 	if is_exploded:
 		return
 
-	var vel = direction * speed
-
-	# === Бумеранг: homing + возврат ===
+	# === Бумеранг: прямо вперёд → разворот → возврат к игроку ===
 	if projectile_type == "boomerang":
-		if not has_returned and global_position.distance_to(start_position) > max_travel_distance:
+		if not has_returned and global_position.distance_to(start_position) >= max_travel_distance:
 			has_returned = true
-		
+
 		if has_returned and owner_player:
-			var return_dir = (owner_player.global_position - global_position).normalized()
-			direction = direction.lerp(return_dir, homing_strength * delta)
-		else:
-			# Лёгкий homing к мыши во время полёта вперёд (опционально)
-			var mouse_dir = (get_global_mouse_position() - global_position).normalized()
-			direction = direction.lerp(mouse_dir, homing_strength * 0.5 * delta)
+			# Летим прямо к текущей позиции игрока
+			direction = (owner_player.global_position - global_position).normalized()
+
+	# Вычисляем скорость уже после изменения direction
+	var vel = direction * speed
 
 	# === Обновляем ротацию спрайта ===
 	if sprite:
-		sprite.rotation = direction.angle()
+		if projectile_type == "boomerang":
+			sprite.rotation += 5.0 * delta  # Крутится вокруг своей оси
+		else:
+			sprite.rotation = direction.angle()
 
 	# Движение
 	velocity = vel
 	move_and_slide()
 
 func _on_area_entered(area: Area2D) -> void:
-	# Не бьём своего владельца (особенно важно для бумеранга!)
+	# Не бьём своего владельца
 	if area.get_parent() == owner_player:
+		if projectile_type == "boomerang" and has_returned:
+			# Поймали бумеранг — уничтожаем
+			queue_free()
 		return
 
-	var parent = area.get_parent()
+	# Бумеранг на обратном пути не наносит урон повторно
+	if projectile_type == "boomerang" and has_returned:
+		return
 
 	if area.is_in_group("Ennemy") or area.is_in_group("Harvestable"):
 		if projectile_type == "bomb" and explode_on_hit:
 			_explode()
 			return
 
-		# Обычный урон
 	if area.is_in_group(shot_target):
-		area.get_parent().take_damage(damage,self)
+		area.get_parent().take_damage(damage, self)
 		print("weapon damaged: " + str(damage))
 		_play_hit_effect()
+		if projectile_type == "boomerang":
+			has_returned = true
+			return
 		queue_free()
 	elif area.is_in_group("Harvestable"):
 		_play_hit_effect()
+		if projectile_type == "boomerang":
+			has_returned = true
+			return
 		queue_free()
-
+	elif projectile_type == "boomerang":
+		# Бумеранг задел любой другой объект — возвращаемся
 		_play_hit_effect()
-		
-		if projectile_type != "boomerang":  # Бумеранг не уничтожается при попадании
-			queue_free()
+		has_returned = true
 
 func _explode() -> void:
 	if is_exploded:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bpj1sgib1xsqp"]
+[gd_scene format=3 uid="uid://bpj1sgib1xsqp"]
 
 [ext_resource type="Texture2D" uid="uid://ibdewex7hnc5" path="res://misc/Particles/Effect.png" id="1_sybyi"]
 
@@ -26,6 +26,7 @@ curve = SubResource("Curve_o0kup")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_lb1ea"]
 particle_flag_disable_z = true
+emission_shape_scale = Vector3(1.5, 1, 1)
 emission_shape = 1
 emission_sphere_radius = 19.53
 angle_min = -360.0
@@ -45,7 +46,7 @@ scale_max = 0.5
 scale_curve = SubResource("CurveTexture_mrbxq")
 color_ramp = SubResource("GradientTexture1D_jy704")
 
-[node name="GPUParticles2D" type="GPUParticles2D"]
+[node name="GPUParticles2D" type="GPUParticles2D" unique_id=1675798955]
 amount = 16
 texture = ExtResource("1_sybyi")
 lifetime = 0.5

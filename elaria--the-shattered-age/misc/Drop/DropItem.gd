@@ -3,14 +3,14 @@ class_name Drop_items
 
 @export var drop_item : Array[ItemData]
 @export var unique_items : Array[weight_item] 
-@export var max_drop : int = 9 
+@export var max_drop : int
 @export var random_values : bool = false
 const DROP = preload("res://misc/Drop/Drop.tscn")
 
 
 func _drop_items() -> void:
-	var root = get_parent().get_parent()
-	var drop_count = randi_range(2, max_drop)
+	var root = get_tree().get_first_node_in_group("World")
+	var drop_count = randi_range(3, max_drop)
 	
 	for i in drop_count:
 		var new_drop = DROP.instantiate()
