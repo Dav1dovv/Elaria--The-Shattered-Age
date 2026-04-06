@@ -31,6 +31,8 @@ func _update_from_hotbar() -> void:
 
 func update_equip(new_equip : ItemData):
 	print("updating equip sprite")
+	# Сбрасываем цвет спрайта при смене предмета
+	equip_sprite.modulate = Color(1, 1, 1)
 	equip = new_equip
 	if equip is equip_data:
 		play_anim = "Attack"
@@ -44,6 +46,9 @@ func update_equip(new_equip : ItemData):
 		# Подключаем сигналы прочности
 		if not equip.weapon_broken.is_connected(_on_weapon_broken):
 			equip.weapon_broken.connect(_on_weapon_broken)
+		# Если предмет уже сломан — сразу показываем тёмный оттенок
+		if equip.is_broken():
+			equip_sprite.modulate = Color(0.4, 0.4, 0.4)
 		print("equiped weapon")
 
 	elif equip is FoodData:
@@ -153,5 +158,5 @@ func eat_food():
 
 
 func _on_animation_player_animation_started(anim_name: StringName) -> void:
-	if anim_name == "Eating":
+	if anim_name == "Eating" or anim_name == "Drink":
 		consume_food(equip as FoodData)

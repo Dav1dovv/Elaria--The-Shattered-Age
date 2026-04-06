@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="CraftRecipe" format=3 uid="uid://bkt7jnr5gkgk6"]
+
+[ext_resource type="Script" uid="uid://bcg5vwna4id5n" path="res://scr/Systems/Craft/SimpleCraft/CraftIngeridents.gd" id="1_e3m4m"]
+[ext_resource type="Resource" uid="uid://dq73nt5b44oyx" path="res://misc/Content/Items/GoldOre.tres" id="2_5sfj3"]
+[ext_resource type="Resource" uid="uid://c4euk0if6gfye" path="res://misc/Content/Items/Coal.tres" id="3_kpiv0"]
+[ext_resource type="Resource" uid="uid://cvyfo3lr6n0kc" path="res://misc/Content/Items/Gold Ingot.tres" id="4_bkjob"]
+[ext_resource type="Script" uid="uid://b47c08bhjaot6" path="res://scr/Systems/Craft/SimpleCraft/CraftRecipe.gd" id="5_qpqnk"]
+
+[sub_resource type="Resource" id="Resource_3ua8p"]
+script = ExtResource("1_e3m4m")
+item = ExtResource("2_5sfj3")
+amount = 4
+metadata/_custom_type_script = "uid://bcg5vwna4id5n"
+
+[sub_resource type="Resource" id="Resource_vdpcj"]
+script = ExtResource("1_e3m4m")
+item = ExtResource("3_kpiv0")
+amount = 3
+metadata/_custom_type_script = "uid://bcg5vwna4id5n"
+
+[resource]
+script = ExtResource("5_qpqnk")
+recipe_name = "Gold Ingot"
+result_item = ExtResource("4_bkjob")
+result_amount = 2
+ingredients = Array[ExtResource("1_e3m4m")]([SubResource("Resource_3ua8p"), SubResource("Resource_vdpcj")])
+metadata/_custom_type_script = "uid://b47c08bhjaot6"

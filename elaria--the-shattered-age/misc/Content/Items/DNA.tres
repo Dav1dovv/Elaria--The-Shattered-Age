@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://b0mxsda1t18es"]
+
+[ext_resource type="Script" uid="uid://wm1t8anytdyq" path="res://scr/Resources/ItemData/ItemData.gd" id="1_i766o"]
+[ext_resource type="Texture2D" uid="uid://cf3avrbvs0ues" path="res://Assets/Textures/SpriteSheets/Items-Sheet.png" id="1_q7dus"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7dgm6"]
+atlas = ExtResource("1_q7dus")
+region = Rect2(144, 112, 16, 16)
+
+[resource]
+script = ExtResource("1_i766o")
+icon = SubResource("AtlasTexture_7dgm6")
+item_name = "DNA"
+metadata/_custom_type_script = "uid://wm1t8anytdyq"

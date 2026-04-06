@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://dq770hckpfiny"]
+
+[ext_resource type="Texture2D" uid="uid://cf3avrbvs0ues" path="res://Assets/Textures/SpriteSheets/Items-Sheet.png" id="1_bd60g"]
+[ext_resource type="Script" uid="uid://wm1t8anytdyq" path="res://scr/Resources/ItemData/ItemData.gd" id="1_pxf7j"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qrmt3"]
+atlas = ExtResource("1_bd60g")
+region = Rect2(96, 128, 16, 16)
+
+[resource]
+script = ExtResource("1_pxf7j")
+icon = SubResource("AtlasTexture_qrmt3")
+item_name = "Essence of Life"
+metadata/_custom_type_script = "uid://wm1t8anytdyq"

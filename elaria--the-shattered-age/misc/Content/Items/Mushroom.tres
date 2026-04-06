@@ -20,5 +20,5 @@ script = ExtResource("2_1v76e")
 effects = Array[ExtResource("1_f4mjo")]([SubResource("Resource_nobfn")])
 icon = SubResource("AtlasTexture_bgefe")
 play_anim = "Eating"
-item_name = "Mushroom"
+item_name = "Glow Mushroom"
 metadata/_custom_type_script = "uid://ds5d4cljtsmfp"

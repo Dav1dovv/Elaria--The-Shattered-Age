@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://dg35pb8yqd0fn"]
+
+[ext_resource type="Script" uid="uid://wm1t8anytdyq" path="res://scr/Resources/ItemData/ItemData.gd" id="1_0tfbf"]
+[ext_resource type="Texture2D" uid="uid://cf3avrbvs0ues" path="res://Assets/Textures/SpriteSheets/Items-Sheet.png" id="1_a6qti"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5kc2f"]
+atlas = ExtResource("1_a6qti")
+region = Rect2(96, 48, 16, 16)
+
+[resource]
+script = ExtResource("1_0tfbf")
+icon = SubResource("AtlasTexture_5kc2f")
+item_name = "Nano Component"
+metadata/_custom_type_script = "uid://wm1t8anytdyq"

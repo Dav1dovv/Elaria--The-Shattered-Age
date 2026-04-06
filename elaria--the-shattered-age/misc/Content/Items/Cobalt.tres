@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://culbt0b4s2nrn"]
+
+[ext_resource type="Texture2D" uid="uid://cf3avrbvs0ues" path="res://Assets/Textures/SpriteSheets/Items-Sheet.png" id="1_d8maq"]
+[ext_resource type="Script" uid="uid://wm1t8anytdyq" path="res://scr/Resources/ItemData/ItemData.gd" id="1_tqcu7"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3gfxo"]
+atlas = ExtResource("1_d8maq")
+region = Rect2(128, 16, 16, 16)
+
+[resource]
+script = ExtResource("1_tqcu7")
+icon = SubResource("AtlasTexture_3gfxo")
+item_name = "Cobalt"
+metadata/_custom_type_script = "uid://wm1t8anytdyq"

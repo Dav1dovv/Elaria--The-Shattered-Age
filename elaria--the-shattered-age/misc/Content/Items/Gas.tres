@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://y46y4iyhdm4g"]
+
+[ext_resource type="Texture2D" uid="uid://cf3avrbvs0ues" path="res://Assets/Textures/SpriteSheets/Items-Sheet.png" id="1_73sph"]
+[ext_resource type="Script" uid="uid://wm1t8anytdyq" path="res://scr/Resources/ItemData/ItemData.gd" id="2_0p17v"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mjb5r"]
+atlas = ExtResource("1_73sph")
+region = Rect2(80, 16, 16, 16)
+
+[resource]
+script = ExtResource("2_0p17v")
+icon = SubResource("AtlasTexture_mjb5r")
+item_name = "Gas"
+metadata/_custom_type_script = "uid://wm1t8anytdyq"

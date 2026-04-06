@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://2p2o8pvxptw2"]
+
+[ext_resource type="Texture2D" uid="uid://cf3avrbvs0ues" path="res://Assets/Textures/SpriteSheets/Items-Sheet.png" id="1_d8f3m"]
+[ext_resource type="Script" uid="uid://wm1t8anytdyq" path="res://scr/Resources/ItemData/ItemData.gd" id="2_02pxv"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_35lw3"]
+atlas = ExtResource("1_d8f3m")
+region = Rect2(48, 32, 16, 16)
+
+[resource]
+script = ExtResource("2_02pxv")
+icon = SubResource("AtlasTexture_35lw3")
+item_name = "Runic Stone"
+max_count = 40
+metadata/_custom_type_script = "uid://wm1t8anytdyq"

@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://c3gyvcnhryywy"]
 
 [ext_resource type="Script" uid="uid://bvjwq42peqx7y" path="res://scr/Systems/Cursor/Cursor.gd" id="1_64xn1"]
-[ext_resource type="FontFile" uid="uid://djfo531dg7v6d" path="res://Assets/Fonts/Elariascript2-Regular.ttf" id="2_64xn1"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_dd4go"]
 blend_mode = 1
@@ -16,10 +15,13 @@ radius = 5.51274
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_0nsgu"]
 light_mode = 1
 
-[sub_resource type="LabelSettings" id="LabelSettings_omhd0"]
-font = ExtResource("2_64xn1")
-outline_size = 1
+[sub_resource type="LabelSettings" id="LabelSettings_3d3f0"]
+font_size = 13
+outline_size = 5
 outline_color = Color(0, 0, 0, 1)
+shadow_size = 6
+shadow_color = Color(0, 0, 0, 0.21568628)
+shadow_offset = Vector2(1, 1.14)
 
 [sub_resource type="Animation" id="Animation_dd4go"]
 length = 0.001
@@ -63,6 +65,7 @@ z_index = 810
 material = SubResource("CanvasItemMaterial_dd4go")
 collision_layer = 256
 collision_mask = 128
+priority = 20
 script = ExtResource("1_64xn1")
 help_label = NodePath("Label")
 metadata/_custom_type_script = "uid://bvjwq42peqx7y"
@@ -86,7 +89,7 @@ offset_left = 5.0
 offset_top = 5.0
 offset_right = 70.0
 offset_bottom = 28.0
-label_settings = SubResource("LabelSettings_omhd0")
+label_settings = SubResource("LabelSettings_3d3f0")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=833827734]
 libraries/ = SubResource("AnimationLibrary_0nsgu")

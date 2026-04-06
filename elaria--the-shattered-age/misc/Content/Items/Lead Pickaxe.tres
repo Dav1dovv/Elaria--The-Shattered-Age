@@ -9,6 +9,7 @@ region = Rect2(16, 144, 16, 16)
 
 [resource]
 script = ExtResource("2_83po7")
+lvl = 3
 max_durability = 250
 Damage = 6
 equiped_weapon_sprite = SubResource("AtlasTexture_tuabl")

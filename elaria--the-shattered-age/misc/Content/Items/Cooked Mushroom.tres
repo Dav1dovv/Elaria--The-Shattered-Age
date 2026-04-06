@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="FoodData" format=3 uid="uid://bvyr07c4lf4nq"]
+[gd_resource type="Resource" script_class="FoodData" format=3 uid="uid://bkd34sg43rb34"]
 
 [ext_resource type="Script" uid="uid://dj4umu6271nxr" path="res://scr/Resources/effects/EffectResource.gd" id="1_4n675"]
 [ext_resource type="Texture2D" uid="uid://cf3avrbvs0ues" path="res://Assets/Textures/SpriteSheets/Items-Sheet.png" id="2_3wsgx"]

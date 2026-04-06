@@ -18,6 +18,6 @@ script = ExtResource("2_wglry")
 effects = Array[ExtResource("1_6qlix")]([SubResource("Resource_wglry")])
 icon = SubResource("AtlasTexture_axyn0")
 play_anim = "Eating"
-item_name = "Life Crystal"
+item_name = "Crystal Fruit"
 max_count = 20
 metadata/_custom_type_script = "uid://ds5d4cljtsmfp"

@@ -3,18 +3,23 @@ extends Node2D
 ## Название анимации активации в AnimationPlayer
 @export var activation_animation: String = "activate"
 ## Сообщения подсказок
-@export var need_item : ItemData
 @onready var interaction: interaction_area = $interaction
+@onready var interacton_collision: CollisionShape2D = $interaction/CollisionShape2D
 
 var is_activated : bool = false
+var is_enabled : bool = false
 
 @onready var anim: AnimationPlayer = $AnimationPlayer
 
 func _ready() -> void:
+	interaction.show_message = "stop"
 	interaction.interact = Callable(self, "open")
 func open():
-		if !is_activated and Global.inventory.has_total_item(need_item,40):
-			$AnimationPlayer.play("Activate")
-			Global.inventory.remove_from_total(need_item,39)
-			interaction.queue_free()
-			get_tree().get_first_node_in_group("World").activate_station()
+		$AnimationPlayer.play("Activate")
+		await $AnimationPlayer.animation_finished
+		Global.scene_manager.change_scene("World",true,Vector2.ZERO)
+
+
+func _on_timer_timeout() -> void:
+	is_enabled = true
+	interaction.show_message = "Back to ship"

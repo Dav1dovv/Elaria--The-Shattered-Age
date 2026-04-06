@@ -1,0 +1,275 @@
+[gd_scene format=3 uid="uid://dimimwnvcwvo"]
+
+[ext_resource type="Texture2D" uid="uid://dgr0kvxj2beh" path="res://Assets/Textures/TileMap/Ship_sheet.png" id="1_gamat"]
+[ext_resource type="Script" uid="uid://b2bndprh5rwa2" path="res://misc/Stations/foodmachine.gd" id="2_h38gg"]
+[ext_resource type="Script" uid="uid://btxho8sqg8tnx" path="res://scr/Systems/Interaction/Interaction.gd" id="2_v6idy"]
+[ext_resource type="Texture2D" uid="uid://bvn1k3yr05y11" path="res://Assets/Textures/Shadows/Shadow.png" id="3_1yxil"]
+[ext_resource type="Script" uid="uid://c6tw2fkklnri5" path="res://misc/Drop/DropItem.gd" id="4_ypa3k"]
+[ext_resource type="Script" uid="uid://ctm4b4v8txo1q" path="res://scr/Resources/WeightItem.gd" id="5_h38gg"]
+[ext_resource type="AudioStream" uid="uid://b15uoyeoq3550" path="res://Assets/Audio/SFX/Player/Drink.wav" id="6_gcsvp"]
+[ext_resource type="Script" uid="uid://dj4umu6271nxr" path="res://scr/Resources/effects/EffectResource.gd" id="7_hkcok"]
+[ext_resource type="Texture2D" uid="uid://cf3avrbvs0ues" path="res://Assets/Textures/SpriteSheets/Items-Sheet.png" id="8_xbdur"]
+[ext_resource type="Script" uid="uid://ds5d4cljtsmfp" path="res://scr/Resources/ItemData/Food_item_data.gd" id="9_u6lc8"]
+[ext_resource type="AudioStream" uid="uid://b1pe4ord4bxue" path="res://Assets/Audio/SFX/Coin.wav" id="11_gcsvp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jusa0"]
+size = Vector2(20, 19)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gcsvp"]
+atlas = ExtResource("8_xbdur")
+region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2wl45"]
+radius = 16.03122
+
+[sub_resource type="Resource" id="Resource_6aymf"]
+script = ExtResource("7_hkcok")
+value = 20.0
+metadata/_custom_type_script = "uid://dj4umu6271nxr"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yksxf"]
+atlas = ExtResource("8_xbdur")
+region = Rect2(80, 80, 16, 16)
+
+[sub_resource type="Resource" id="Resource_jyw5b"]
+script = ExtResource("9_u6lc8")
+eat_sound = ExtResource("6_gcsvp")
+effects = Array[ExtResource("7_hkcok")]([SubResource("Resource_6aymf")])
+icon = SubResource("AtlasTexture_yksxf")
+play_anim = "Drink"
+item_name = "Star Cola"
+metadata/_custom_type_script = "uid://ds5d4cljtsmfp"
+
+[sub_resource type="Resource" id="Resource_pnbqu"]
+script = ExtResource("5_h38gg")
+item = SubResource("Resource_jyw5b")
+weight = 0.5
+metadata/_custom_type_script = "uid://ctm4b4v8txo1q"
+
+[sub_resource type="Resource" id="Resource_eoxhd"]
+script = ExtResource("7_hkcok")
+value = 30.0
+metadata/_custom_type_script = "uid://dj4umu6271nxr"
+
+[sub_resource type="Resource" id="Resource_k65o5"]
+script = ExtResource("7_hkcok")
+effect_type = 3
+value = 10.0
+duration = 30.0
+metadata/_custom_type_script = "uid://dj4umu6271nxr"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6i3hw"]
+atlas = ExtResource("8_xbdur")
+region = Rect2(128, 80, 16, 16)
+
+[sub_resource type="Resource" id="Resource_k51gm"]
+script = ExtResource("9_u6lc8")
+eat_sound = ExtResource("6_gcsvp")
+effects = Array[ExtResource("7_hkcok")]([SubResource("Resource_eoxhd"), SubResource("Resource_k65o5")])
+icon = SubResource("AtlasTexture_6i3hw")
+play_anim = "Drink"
+item_name = "Big Star Cola"
+metadata/_custom_type_script = "uid://ds5d4cljtsmfp"
+
+[sub_resource type="Resource" id="Resource_qtbhi"]
+script = ExtResource("5_h38gg")
+item = SubResource("Resource_k51gm")
+weight = 0.25
+metadata/_custom_type_script = "uid://ctm4b4v8txo1q"
+
+[sub_resource type="Resource" id="Resource_i8wx3"]
+script = ExtResource("7_hkcok")
+effect_type = 1
+value = 2.0
+duration = 60.0
+metadata/_custom_type_script = "uid://dj4umu6271nxr"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_v1k57"]
+load_path = "res://.godot/imported/Items-Sheet.png-aac78636ff9000301da0a84e0a143de0.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_obqn1"]
+atlas = SubResource("CompressedTexture2D_v1k57")
+region = Rect2(112, 96, 16, 16)
+
+[sub_resource type="Resource" id="Resource_ng460"]
+script = ExtResource("9_u6lc8")
+eat_sound = ExtResource("6_gcsvp")
+effects = Array[ExtResource("7_hkcok")]([SubResource("Resource_eoxhd"), SubResource("Resource_k65o5"), SubResource("Resource_i8wx3")])
+icon = SubResource("AtlasTexture_obqn1")
+play_anim = "Drink"
+item_name = "Energetic Star Cola"
+metadata/_custom_type_script = "uid://ds5d4cljtsmfp"
+
+[sub_resource type="Resource" id="Resource_duxgb"]
+script = ExtResource("5_h38gg")
+item = SubResource("Resource_ng460")
+weight = 0.25
+metadata/_custom_type_script = "uid://ctm4b4v8txo1q"
+
+[sub_resource type="Animation" id="Animation_hkcok"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:scale:x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:scale:y")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_xbdur"]
+resource_name = "use"
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 2, 2),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.085, 0, 0.08166667, 0, 0, -0.16666667, 0, 0, 0),
+"times": PackedFloat32Array(0, 0.51, 1)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 2, 2),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 2.9999998, -0.085, 0, 0.08166667, 0, 0, -0.16666667, 0, 0, 0),
+"times": PackedFloat32Array(0, 0.51, 1)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 2, 2),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, -0.097508006, -0.10333334, 0, 0.06333333, 0, 0, -0.16666667, 0, 0, 0),
+"times": PackedFloat32Array(0, 0.62, 1)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:scale:x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 2, 0, 2),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.08166667, 0, 0.085, 0, 0.8, -0.026666662, 0, 0.058333337, 0, 1, -0.16666667, 0, 0, 0),
+"times": PackedFloat32Array(0, 0.49, 0.73333335, 1)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:scale:y")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0, 2, 0, 2),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 0.5857143, -0.08166667, 0, 0.085, 0, 0.7225114, -0.026666662, -0.021661995, 0.058333337, 0.047385626, 1, -0.16666667, 0, 0, 0),
+"times": PackedFloat32Array(0, 0.49, 0.73333335, 1)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_u6lc8"]
+_data = {
+&"RESET": SubResource("Animation_hkcok"),
+&"use": SubResource("Animation_xbdur")
+}
+
+[node name="Foodmachine" type="Sprite2D" unique_id=800669328]
+texture = ExtResource("1_gamat")
+region_enabled = true
+region_rect = Rect2(118, 91, 20, 35)
+script = ExtResource("2_h38gg")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1012372602]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1106718963]
+position = Vector2(0, 7.5)
+shape = SubResource("RectangleShape2D_jusa0")
+debug_color = Color(0.98626536, 0, 0.33015007, 0.41960785)
+
+[node name="interaction_area" type="Area2D" parent="." unique_id=61434777]
+collision_layer = 128
+collision_mask = 256
+script = ExtResource("2_v6idy")
+show_message = "x 5"
+icon_help = SubResource("AtlasTexture_gcsvp")
+metadata/_custom_type_script = "uid://btxho8sqg8tnx"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="interaction_area" unique_id=486063547]
+position = Vector2(0, 3)
+shape = SubResource("CircleShape2D_2wl45")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=145444642]
+modulate = Color(0.05882353, 0.101960786, 0.15294118, 0.33333334)
+show_behind_parent = true
+position = Vector2(2.0000088, 12.011974)
+scale = Vector2(2.0000007, 1.6235032)
+texture = ExtResource("3_1yxil")
+
+[node name="Drop_items" type="Node" parent="." unique_id=160797411]
+script = ExtResource("4_ypa3k")
+unique_items = Array[ExtResource("5_h38gg")]([SubResource("Resource_pnbqu"), SubResource("Resource_qtbhi"), SubResource("Resource_duxgb")])
+max_drop = 1
+metadata/_custom_type_script = "uid://c6tw2fkklnri5"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=801083296]
+libraries/ = SubResource("AnimationLibrary_u6lc8")
+speed_scale = 2.0
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=290477687]
+stream = ExtResource("11_gcsvp")
+max_polyphony = 10

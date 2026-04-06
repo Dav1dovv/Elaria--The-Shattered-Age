@@ -1,29 +1,87 @@
+## MainMenu.gd
+## Обновлённая версия — добавлен экран выбора режима (одиночная / мультиплеер)
+## Всё остальное (сплеш, анимации, выход) работает как раньше.
+
 extends ColorRect
 
-# Ссылка на узел Label для сплеш-текста
+# ── Сплеш ────────────────────────────────────────────────────────────────────
 @onready var splash_label : Label = $CanvasLayer/TextureRect/SplashLabel
 
-
-# Путь к JSON-файлу с текстами
 var splash_json_path = "res://common/SplashTexts.json"
 var splash_texts = []
 
-func _ready():
-	# Загружаем и парсим JSON
+# ── Панель выбора режима (новая) ──────────────────────────────────────────────
+## Добавь узел Panel с именем "ModeSelectPanel" внутри CanvasLayer.
+## Внутри него нужны три кнопки: SoloBtn, MultiBtn, ModeBackBtn
+## Подробная структура описана в LOBBY_SCENE_STRUCTURE.md
+@onready var mode_select_panel : Panel    = $CanvasLayer/ModeSelectPanel
+@onready var solo_btn          : Button   = $CanvasLayer/VBoxContainer/VBoxContainer/SoloBtn
+@onready var multi_btn         : Button   = $CanvasLayer/VBoxContainer/VBoxContainer/MultiBtn
+#@onready var mode_back_btn     : Button   = $CanvasLayer/ModeSelectPanel/VBoxContainer/ModeBackBtn
+
+# ── Существующие узлы ─────────────────────────────────────────────────────────
+@onready var save_load_ui      : CanvasLayer = $SaveLoadUI   # твой существующий SaveLoadUI
+## LobbyUI — добавь инстанс Lobby.tscn как дочерний к MainMenu, visible=false
+@onready var lobby_ui          : CanvasLayer     = $Coop
+
+
+# ═════════════════════════════════════════════════════════════════════════════
+func _ready() -> void:
 	load_splash_texts()
-	# Выбираем случайный сплеш-текст
 	set_random_splash_text()
-	# Запускаем анимацию
 	animate_splash()
 
+	# Скрываем всё кроме главного меню
+	#mode_select_panel.visible = false
+	save_load_ui.visible      = false
+	lobby_ui.visible          = false
+
+	# Подключаем новые кнопки
+	solo_btn.pressed.connect(_on_solo_pressed)
+	multi_btn.pressed.connect(_on_multi_pressed)
+	#mode_back_btn.pressed.connect(_on_mode_back_pressed)
+
+
+# ═════════════════════════════════════════════════════════════════════════════
+#  КНОПКИ ГЛАВНОГО МЕНЮ
+# ═════════════════════════════════════════════════════════════════════════════
+
+## "Start Game" — теперь открывает экран выбора режима
+func _on_start_game_pressed() -> void:
+	mode_select_panel.visible = true
+
+
+func _on_exit_pressed() -> void:
+	$CanvasLayer/ConfirmationDialog.visible = true
+
+
+# ═════════════════════════════════════════════════════════════════════════════
+#  КНОПКИ ВЫБОРА РЕЖИМА
+# ═════════════════════════════════════════════════════════════════════════════
+
+func _on_solo_pressed() -> void:
+	#mode_select_panel.visible = false
+	save_load_ui.visible      = true   # открываем как раньше — список сейвов
+
+
+func _on_multi_pressed() -> void:
+	#mode_select_panel.visible = false
+	lobby_ui.visible          = true   # открываем лобби с выбором сейва
+
+
+func _on_mode_back_pressed() -> void:
+	mode_select_panel.visible = false  # назад к главным кнопкам
+
+
+# ═════════════════════════════════════════════════════════════════════════════
+#  СУЩЕСТВУЮЩАЯ ЛОГИКА (не трогаем)
+# ═════════════════════════════════════════════════════════════════════════════
+
 func load_splash_texts():
-	# Проверяем существование файла
 	if FileAccess.file_exists(splash_json_path):
 		var file = FileAccess.open(splash_json_path, FileAccess.READ)
 		var json_string = file.get_as_text()
 		file.close()
-		
-		# Парсим JSON
 		var json = JSON.new()
 		var error = json.parse(json_string)
 		if error == OK:
@@ -36,35 +94,24 @@ func load_splash_texts():
 			push_error("Failed to parse JSON: " + json.get_error_message())
 	else:
 		push_error("Splash texts JSON file not found at: " + splash_json_path)
-		# Запасной массив на случай ошибки
 		splash_texts = ["Error loading splash texts!"]
 
+
 func set_random_splash_text():
-	# Выбираем случайный текст из массива
 	if splash_texts.size() > 0:
-		var random_index = randi() % splash_texts.size()
-		splash_label.text = splash_texts[random_index]
+		splash_label.text = splash_texts[randi() % splash_texts.size()]
 	else:
 		splash_label.text = "No splash texts available!"
 
+
 func animate_splash():
-	# Создаем твин для анимации
 	var tween = create_tween()
-	# Начальный масштаб немного меньше
 	splash_label.scale = Vector2(0.8, 0.8)
-	# Анимация увеличения и уменьшения
-	tween.tween_property(splash_label, "scale", Vector2(1.0, 1.0), 0.5).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SINE)
-	tween.tween_property(splash_label, "scale", Vector2(0.9, 0.9), 0.5).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_SINE)
-	# Зацикливаем анимацию
+	tween.tween_property(splash_label, "scale", Vector2(1.0, 1.0), 0.5)\
+		.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SINE)
+	tween.tween_property(splash_label, "scale", Vector2(0.9, 0.9), 0.5)\
+		.set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_SINE)
 	tween.set_loops()
-
-
-func _on_options_pressed() -> void:
-	#OptionsLayer.visible = true
-	pass
-
-func _on_exit_pressed() -> void:
-	$CanvasLayer/ConfirmationDialog.visible = true
 
 
 func _on_confirmation_dialog_confirmed() -> void:
@@ -75,9 +122,9 @@ func _on_confirmation_dialog_canceled() -> void:
 	$CanvasLayer/ConfirmationDialog.visible = false
 
 
-func _on_start_game_pressed() -> void:
-	$SaveLoadUI.visible = true
+func _on_options_pressed() -> void:
+	$OptionMenu.open()
 
 
 func _on_authors_pressed() -> void:
-	pass # Replace with function body.
+	pass

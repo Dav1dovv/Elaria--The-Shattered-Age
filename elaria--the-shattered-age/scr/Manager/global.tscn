@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://b0axajdtsw2j4" path="res://misc/UI/DeveloperConsole/developer_console.tscn" id="2_w6mfr"]
 [ext_resource type="PackedScene" uid="uid://cajofw8k5naam" path="res://scr/Manager/scene_manager.tscn" id="3_2p3co"]
 [ext_resource type="Script" uid="uid://uahjcr0ydax3" path="res://scr/Manager/MusicManager.gd" id="6_0btrw"]
+[ext_resource type="Script" uid="uid://dm0fatudshy1s" path="res://scr/Systems/Options/SettingsManager.gd" id="6_h51m3"]
 [ext_resource type="Script" uid="uid://pbt7e74fa2co" path="res://scr/Misc/Musiclibrary.gd" id="7_tgb6n"]
 
 [node name="Global" type="Node" unique_id=1524236085]
@@ -13,6 +14,12 @@ script = ExtResource("1_37aq7")
 unique_name_in_owner = true
 
 [node name="SceneManager" parent="." unique_id=1678669278 instance=ExtResource("3_2p3co")]
+messages = Array[String](["Space is completely silent. Sound needs air to travel — and space has none.", "A day on Venus is longer than its year.", "Neutron stars are so dense that a single teaspoon would weigh billions of tons.", "The footprints left on the Moon may remain there for millions of years.", "The Sun makes up 99.8% of the mass of our entire Solar System.", "The purple crystals found on the outer planets emit unstable energy that attracts hostile lifeforms.", "Not all planets in this sector were formed naturally. Some show signs of artificial origin.", "Mining deep layers increases the probability of biological mutations in local fauna.", "The ship’s AI occasionally detects signals that do not match any known language.", "Energy storms in the outer belt can temporarily disable mining equipment.", "Exploration is voluntary. Survival is not guaranteed.", "Reminder: Selling all your fuel for shiny crystals is considered a poor strategic decision.", "Thank's for playing:)))", "Statistically, running toward unknown glowing objects ends badly.", "Thank's for playing:)))", "Thank's for playing:)))", "The vending machine contains 3% real fruit. The other 97% are classified.", "Hostile lifeforms are more aggressive when stared at continuously.", "Hostile lifeforms are more aggressive when stared at continuously.", "Mining while low on health is considered “brave” in the official reports.", "The AI has calculated your survival probability. Would you like to know?", "This planet was marked as “low threat.” The survey team is unavailable for comment.", "Thank you for exploring the unknown with us.", "Your courage fuels this expedition.", "We appreciate your commitment to exploration", "Thank you for trusting this ship with your survival.", "Your decisions shape the future of this sector.", "Mission progress acknowledged. Crew morale increased.", "Thank you for being part of this journey beyond the stars."])
+scenes = {
+"Test_Scene": "res://Assets/Locations/WorlRoot.tscn",
+"World": "res://Assets/Scenes/Playable/ship.tscn",
+"oktavia": "res://Assets/Scenes/Playable/Planets/Oktavia.tscn"
+}
 
 [node name="MusicManager" type="Node" parent="." unique_id=1081242722 groups=["MusicManager"]]
 unique_name_in_owner = true
@@ -22,3 +29,8 @@ fade_duration = 3.6
 [node name="music_library" type="Node" parent="MusicManager" unique_id=854691489]
 script = ExtResource("7_tgb6n")
 metadata/_custom_type_script = "uid://pbt7e74fa2co"
+
+[node name="SettingManager" type="Node" parent="." unique_id=1512219625]
+unique_name_in_owner = true
+script = ExtResource("6_h51m3")
+metadata/_custom_type_script = "uid://dm0fatudshy1s"

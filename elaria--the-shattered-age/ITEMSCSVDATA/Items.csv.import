@@ -1,0 +1,19 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://dwds2c5od3nc3"
+
+[deps]
+
+files=["res://ITEMSCSVDATA/Items.icon.translation", "res://ITEMSCSVDATA/Items.en.translation", "res://ITEMSCSVDATA/Items.item.translation", "res://ITEMSCSVDATA/Items.en.translation", "res://ITEMSCSVDATA/Items.count.translation", "res://ITEMSCSVDATA/Items.max.translation", "res://ITEMSCSVDATA/Items.stackable.translation", "res://ITEMSCSVDATA/Items.quality.translation", "res://ITEMSCSVDATA/Items.en.translation", "res://ITEMSCSVDATA/Items.effects.translation", "res://ITEMSCSVDATA/Items.hunger.translation", "res://ITEMSCSVDATA/Items.lvl.translation", "res://ITEMSCSVDATA/Items.max.translation", "res://ITEMSCSVDATA/Items.Damage.translation", "res://ITEMSCSVDATA/Items.hit.translation", "res://ITEMSCSVDATA/Items.Atk.translation", "res://ITEMSCSVDATA/Items.equiped.translation", "res://ITEMSCSVDATA/Items.projectile.translation", "res://ITEMSCSVDATA/Items.is.translation", "res://ITEMSCSVDATA/Items.num.translation", "res://ITEMSCSVDATA/Items.spread.translation", "res://ITEMSCSVDATA/Items.projectile.translation", "res://ITEMSCSVDATA/Items.accuracy.translation", "res://ITEMSCSVDATA/Items.miss.translation", "res://ITEMSCSVDATA/Items.critical.translation", "res://ITEMSCSVDATA/Items.critical.translation", "res://ITEMSCSVDATA/Items.critical.translation", "res://ITEMSCSVDATA/Items.one.translation", "res://ITEMSCSVDATA/Items.en.translation", "res://ITEMSCSVDATA/Items.ui.translation"]
+
+source_file="res://ITEMSCSVDATA/Items.csv"
+dest_files=["res://ITEMSCSVDATA/Items.icon.translation", "res://ITEMSCSVDATA/Items.en.translation", "res://ITEMSCSVDATA/Items.item.translation", "res://ITEMSCSVDATA/Items.en.translation", "res://ITEMSCSVDATA/Items.count.translation", "res://ITEMSCSVDATA/Items.max.translation", "res://ITEMSCSVDATA/Items.stackable.translation", "res://ITEMSCSVDATA/Items.quality.translation", "res://ITEMSCSVDATA/Items.en.translation", "res://ITEMSCSVDATA/Items.effects.translation", "res://ITEMSCSVDATA/Items.hunger.translation", "res://ITEMSCSVDATA/Items.lvl.translation", "res://ITEMSCSVDATA/Items.max.translation", "res://ITEMSCSVDATA/Items.Damage.translation", "res://ITEMSCSVDATA/Items.hit.translation", "res://ITEMSCSVDATA/Items.Atk.translation", "res://ITEMSCSVDATA/Items.equiped.translation", "res://ITEMSCSVDATA/Items.projectile.translation", "res://ITEMSCSVDATA/Items.is.translation", "res://ITEMSCSVDATA/Items.num.translation", "res://ITEMSCSVDATA/Items.spread.translation", "res://ITEMSCSVDATA/Items.projectile.translation", "res://ITEMSCSVDATA/Items.accuracy.translation", "res://ITEMSCSVDATA/Items.miss.translation", "res://ITEMSCSVDATA/Items.critical.translation", "res://ITEMSCSVDATA/Items.critical.translation", "res://ITEMSCSVDATA/Items.critical.translation", "res://ITEMSCSVDATA/Items.one.translation", "res://ITEMSCSVDATA/Items.en.translation", "res://ITEMSCSVDATA/Items.ui.translation"]
+
+[params]
+
+compress=1
+delimiter=0
+unescape_keys=false
+unescape_translations=true

@@ -1,10 +1,12 @@
 extends Area2D
 class_name Harvestable
 
+signal collected
+
+
 @onready var Dropper_component = $droper
 @export_range(2,999,1) var durability : float = 6
 @export_range(0,10) var harvest_tool_lvl : int = 1
-@export var explore_points : float = 0.1
 @export var VFX_component : VFX
 
 var player
@@ -80,14 +82,13 @@ func Harvest(hit_strenght : float, tool_lvl:int,is_weapon:bool):
 		
 	
 	if durability <= 0:
-		Global.hint(self,"+explore point")
 		if VFX_component: await VFX_component.vfx_finished
-		Global.explored_progress[Global.current_location] += explore_points
 		if $Destroy: $Destroy.play()
 		if Dropper_component != null: 
 			# Исправил странную строку (было выражение без присваивания)
-			Dropper_component.max_drop *= tool_lvl + scale.x
+			Dropper_component.max_drop += scale.x
 			Dropper_component._drop_items()
+		emit_signal("collected")
 		queue_free()
 
 func _on_area_entered(area: Area2D) -> void:

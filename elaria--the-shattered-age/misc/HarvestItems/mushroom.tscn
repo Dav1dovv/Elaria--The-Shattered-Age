@@ -2,6 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://bny4sqh4i8i5v" path="res://misc/HarvestItems/Harvestable.tscn" id="1_n45lw"]
 [ext_resource type="Texture2D" uid="uid://drri1rppcrhxp" path="res://misc/HarvestItems/Textures/Mushroom.png" id="2_2bia2"]
+[ext_resource type="Script" uid="uid://wm1t8anytdyq" path="res://scr/Resources/ItemData/ItemData.gd" id="2_ymwi6"]
+[ext_resource type="Resource" uid="uid://cc82arvgiindl" path="res://misc/Content/Items/Mushroom.tres" id="3_rb7gh"]
 [ext_resource type="Script" uid="uid://b7lfnqk6b5cdp" path="res://scr/Misc/RandomSprite.gd" id="3_svf7w"]
 [ext_resource type="Texture2D" uid="uid://bvn1k3yr05y11" path="res://Assets/Textures/Shadows/Shadow.png" id="4_e6uwh"]
 [ext_resource type="AudioStream" uid="uid://bdpgims8h837c" path="res://misc/HarvestItems/SFX/Tree/Chop1.mp3" id="7_ymwi6"]
@@ -32,19 +34,20 @@ radius = 12.468
 [node name="Mushroom" unique_id=1447700831 instance=ExtResource("1_n45lw")]
 durability = 85.0
 
-[node name="CollisionShape2D" parent="StaticBody2D" index="0"]
+[node name="CollisionShape2D" parent="StaticBody2D" parent_id_path=PackedInt32Array(1226065190) index="0" unique_id=605264910]
 position = Vector2(0, -10)
 shape = SubResource("CircleShape2D_n45lw")
 
-[node name="VFX" parent="." index="1" node_paths=PackedStringArray("audio_player")]
+[node name="VFX" parent="." index="1" unique_id=508582770 node_paths=PackedStringArray("audio_player")]
 audio_player = NodePath("../SFX")
 
-[node name="optimizer" parent="." index="2" node_paths=PackedStringArray("hide_objects")]
+[node name="optimizer" parent="." index="2" unique_id=2100972979 node_paths=PackedStringArray("hide_objects")]
 position = Vector2(-3.5, -25)
 scale = Vector2(2.15, 2.8)
 hide_objects = [NodePath("../Sprite2D"), NodePath("../Shadow")]
 
-[node name="droper" parent="." index="3"]
+[node name="droper" parent="." index="3" unique_id=1465568748]
+drop_item = Array[ExtResource("2_ymwi6")]([ExtResource("3_rb7gh")])
 max_drop = 5
 
 [node name="Sprite2D" type="Sprite2D" parent="." index="5" unique_id=1370246797]
@@ -52,7 +55,7 @@ position = Vector2(0, -17)
 texture = ExtResource("2_2bia2")
 offset = Vector2(-3, -11)
 hframes = 3
-frame = 1
+frame = 2
 script = ExtResource("3_svf7w")
 frame_weights = Array[float]([0.5, 0.5, 0.5])
 metadata/_custom_type_script = "uid://b7lfnqk6b5cdp"
@@ -70,6 +73,6 @@ stream = SubResource("AudioStreamRandomizer_t5dff")
 [node name="Destroy" type="AudioStreamPlayer2D" parent="." index="8" unique_id=1720021826]
 stream = ExtResource("14_1s5bg")
 
-[node name="CollisionShape2D" parent="." index="9"]
+[node name="CollisionShape2D" parent="." index="9" unique_id=1716306559]
 position = Vector2(0, -12)
 shape = SubResource("CircleShape2D_2bia2")

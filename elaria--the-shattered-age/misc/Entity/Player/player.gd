@@ -14,11 +14,27 @@ var slow_speed:     float = 7.0
 var dash_speed:     float = 20.0
 
 # ─────────────────────────────────────────
+#  Лестницы
+# ─────────────────────────────────────────
+
+## Множитель скорости на тайле лестницы (0.5 = половина скорости)
+@export_range(0.1, 1.0) var ladder_speed_ratio: float = 0.5
+
+## TileMapLayer со слоем лестниц — назначь в инспекторе
+@export var ladder_tilemap: TileMapLayer = null
+
+## Название custom data layer на тайле (тип bool, значение true)
+@export var ladder_custom_data_name: String = "ladder"
+
+var _on_ladder: bool = false
+
+# ─────────────────────────────────────────
 #  Нарастание / угасание скорости
 # ─────────────────────────────────────────
 
 ## Как быстро набирается скорость (выше = резче старт)
 @export_range(1.0, 40.0) var acceleration: float = 12.0
+@export var acceleration2 : Curve
 
 ## Как быстро гасится скорость при отпускании (выше = резче стоп)
 @export_range(1.0, 40.0) var deceleration: float = 18.0
@@ -81,6 +97,8 @@ var save_and_load = SaveSystem.new()
 
 func _ready() -> void:
 	super._ready()
+	Global.hotbar = get_tree().get_first_node_in_group("Hotbar") as Hotbar
+	Global.inventory = get_tree().get_first_node_in_group("Inventory") as Inventory
 	get_tree().get_first_node_in_group("DebugObject").update()
 	defense_label.text = str(clamp(Entity_stats.base_defense_modifier * 10, 0, 1))
 	save_and_load.load_player(self)
@@ -113,8 +131,9 @@ func _hp_to_display(hp: float) -> float:
 
 func _physics_process(delta: float) -> void:
 	mouse_pos = get_global_mouse_position()
-	progress_bar.value = Global.explored_progress[Global.current_location]
+	progress_bar.value = Global.explored_progress
 	if is_alive:
+		_check_ladder()
 		_movement(delta)
 		_animate()
 
@@ -162,6 +181,17 @@ func _get_bounds() -> Rect2:
 
 # ─────────────────────────────────────────────────────────────────────────────
 
+func _check_ladder() -> void:
+	if ladder_tilemap == null:
+		_on_ladder = false
+		return
+	var tile_pos := ladder_tilemap.local_to_map(ladder_tilemap.to_local(global_position))
+	var tile_data := ladder_tilemap.get_cell_tile_data(tile_pos)
+	if tile_data and tile_data.get_custom_data(ladder_custom_data_name):
+		_on_ladder = true
+	else:
+		_on_ladder = false
+
 func _movement(delta: float) -> void:
 	if Global.is_opened_menu:
 		# В меню плавно останавливаемся
@@ -197,11 +227,12 @@ func _movement(delta: float) -> void:
 		return
 
 	# ── Нарастание / угасание ─────────────────────────────────────────────
-	var target_velocity: Vector2 = dir * Entity_stats.move_speed * standart_speed
+	var speed_ratio := ladder_speed_ratio if _on_ladder else 1.0
+	var target_velocity: Vector2 = dir * Entity_stats.move_speed * standart_speed * speed_ratio
 
 	if dir != Vector2.ZERO:
 		# Нарастание: плавно разгоняемся до целевой скорости
-		_current_velocity = _current_velocity.move_toward(target_velocity, acceleration * Entity_stats.move_speed * standart_speed * delta)
+		_current_velocity = _current_velocity.move_toward(target_velocity, acceleration2.max_domain * Entity_stats.move_speed * standart_speed * delta)
 	else:
 		# Угасание: плавно тормозим до нуля
 		_current_velocity = _current_velocity.move_toward(Vector2.ZERO, deceleration * Entity_stats.move_speed * standart_speed * delta)

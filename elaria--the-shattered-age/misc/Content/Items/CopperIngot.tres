@@ -11,5 +11,4 @@ region = Rect2(96, 32, 16, 16)
 script = ExtResource("2_6gjna")
 icon = SubResource("AtlasTexture_em3mx")
 item_name = "Copper Ingot"
-stackable = false
 metadata/_custom_type_script = "uid://wm1t8anytdyq"

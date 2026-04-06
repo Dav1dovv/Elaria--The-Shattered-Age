@@ -53,9 +53,9 @@ func _on_options_pressed() -> void:
 	Global.is_opened_menu = true
 	#Global.is_opened_menu = true
 
-func _notification(what):
-	match what:
-		#NOTIFICATION_APPLICATION_FOCUS_IN:
-			#resume()
-		NOTIFICATION_APPLICATION_FOCUS_OUT:
-			pause()
+#func _notification(what):
+	#match what:
+		##NOTIFICATION_APPLICATION_FOCUS_IN:
+			##resume()
+		#NOTIFICATION_APPLICATION_FOCUS_OUT:
+			#pause()

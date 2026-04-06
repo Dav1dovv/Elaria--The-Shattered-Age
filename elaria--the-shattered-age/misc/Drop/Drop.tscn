@@ -139,6 +139,7 @@ stream_0/stream = ExtResource("5_hil6v")
 stream_1/stream = ExtResource("6_ij6c4")
 
 [node name="Drop" type="CharacterBody2D" unique_id=344010950]
+z_index = 10
 script = ExtResource("3_tvgdi")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1813599795]

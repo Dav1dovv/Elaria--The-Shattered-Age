@@ -1,8 +1,24 @@
 [gd_scene format=3 uid="uid://cajofw8k5naam"]
 
 [ext_resource type="Script" uid="uid://dm3p1fw3o1vwv" path="res://scr/Manager/LevelManager.gd" id="1_3icio"]
+[ext_resource type="Shader" uid="uid://c385wv3jtcml3" path="res://Assets/Shader/StarField.gdshader" id="2_6vyuc"]
 [ext_resource type="Texture2D" uid="uid://hf3cyclv72nt" path="res://icon.svg" id="2_agclx"]
+[ext_resource type="Script" uid="uid://bttgnk3bb2a8i" path="res://addons/font_auto_size_labels/auto_size_label.gd" id="2_wtyph"]
 [ext_resource type="Script" uid="uid://c1igchodw77w8" path="res://scr/Misc/Texture_rotation.gd" id="3_gcf7u"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_h4ltw"]
+shader = ExtResource("2_6vyuc")
+shader_parameter/dimensions = Vector2(1920, 1080)
+shader_parameter/small_stars = 300.0
+shader_parameter/small_stars_far_size = 0.70000001043084
+shader_parameter/small_stars_near_size = 1.0
+shader_parameter/large_stars = 31.85
+shader_parameter/large_stars_far_size = 0.30000000447036
+shader_parameter/large_stars_near_size = 0.70000001043084
+shader_parameter/far_stars_color = Color(0.3764706, 0.32941177, 1, 1)
+shader_parameter/near_stars_color = Color(1, 1, 1, 1)
+shader_parameter/base_scroll_speed = 0.03999999910592
+shader_parameter/additional_scroll_speed = 0.00999999977648
 
 [sub_resource type="Animation" id="Animation_agclx"]
 resource_name = "Fade_In"
@@ -65,6 +81,7 @@ layer = 8
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=68827252]
 modulate = Color(1, 1, 1, 0)
+material = SubResource("ShaderMaterial_h4ltw")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -87,19 +104,29 @@ offset_bottom = -20.0
 grow_horizontal = 2
 grow_vertical = 0
 text = "LOADING..."
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="Message" type="Label" parent="CanvasLayer/ColorRect" unique_id=1534210792]
+[node name="Message" type="Label" parent="CanvasLayer/ColorRect" unique_id=1959319250]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
 offset_left = 21.0
-offset_top = -41.0
+offset_top = -56.0
 offset_right = 450.0
-offset_bottom = 54.0
+offset_bottom = 39.0
 grow_vertical = 2
+theme_override_font_sizes/font_size = 32
 text = "Message"
 horizontal_alignment = 1
+autowrap_mode = 3
+clip_text = true
+script = ExtResource("2_wtyph")
+_max_size = 32
+_current_font_size = 32
+_editor_defaults_set = true
+metadata/_custom_type_script = "uid://bttgnk3bb2a8i"
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/ColorRect" unique_id=1100088440]
 layout_mode = 1

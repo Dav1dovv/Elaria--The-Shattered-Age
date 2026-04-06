@@ -1,7 +1,7 @@
 [gd_resource type="Theme" format=3 uid="uid://bmjvsrl7b67cy"]
 
-[ext_resource type="FontFile" uid="uid://djfo531dg7v6d" path="res://Assets/Fonts/Elariascript2-Regular.ttf" id="1_gwh2h"]
 [ext_resource type="Texture2D" uid="uid://b62hrm50ou235" path="res://Assets/Textures/UI/UI.png" id="2_sk3jv"]
+[ext_resource type="FontFile" uid="uid://xct2lg8doe5w" path="res://Assets/Fonts/static/ScienceGothic_Condensed-SemiBold.ttf" id="3_vaw2w"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gwh2h"]
 atlas = ExtResource("2_sk3jv")
@@ -230,48 +230,79 @@ region = Rect2(160, 80, 16, 16)
 atlas = ExtResource("2_sk3jv")
 region = Rect2(160, 80, 16, 16)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t3oq6"]
-bg_color = Color(0.662745, 0.419608, 0.192157, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.464489, 0.285629, 0.11653, 1)
-border_blend = true
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 7
-corner_radius_bottom_left = 7
+[sub_resource type="AtlasTexture" id="AtlasTexture_rifk1"]
+atlas = ExtResource("2_sk3jv")
+region = Rect2(0, 32, 32, 32)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_keseg"]
-bg_color = Color(0.0762797, 0.031642, 0.00575619, 0.501961)
-border_blend = true
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_awkti"]
+texture = SubResource("AtlasTexture_rifk1")
+texture_margin_left = 1.0
+texture_margin_top = 1.0
+texture_margin_right = 1.0
+texture_margin_bottom = 1.0
 expand_margin_left = 2.0
+expand_margin_top = 2.0
 expand_margin_right = 2.0
+expand_margin_bottom = 2.0
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5u1tl"]
-bg_color = Color(0.73106, 0.468489, 0.224884, 1)
-border_width_top = 5
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ejlxd"]
-bg_color = Color(0.740999, 0.475859, 0.230264, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a67o8"]
-bg_color = Color(0.73106, 0.468489, 0.224884, 1)
-border_width_top = 2
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-expand_margin_left = 5.0
-expand_margin_right = 5.0
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n0q6p"]
-bg_color = Color(0.56958, 0.355819, 0.154533, 1)
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hbecx"]
+texture = SubResource("AtlasTexture_rifk1")
+texture_margin_left = 1.0
+texture_margin_top = 1.0
+texture_margin_right = 1.0
+texture_margin_bottom = 1.0
 expand_margin_left = 2.0
+expand_margin_top = 2.0
 expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bwvfu"]
+texture = SubResource("AtlasTexture_rifk1")
+texture_margin_left = 1.0
+texture_margin_top = 1.0
+texture_margin_right = 1.0
+texture_margin_bottom = 1.0
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_n0l8q"]
+texture = SubResource("AtlasTexture_rifk1")
+texture_margin_left = 1.0
+texture_margin_top = 1.0
+texture_margin_right = 1.0
+texture_margin_bottom = 1.0
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hutou"]
+texture = SubResource("AtlasTexture_rifk1")
+texture_margin_left = 1.0
+texture_margin_top = 1.0
+texture_margin_right = 1.0
+texture_margin_bottom = 1.0
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ocnyy"]
+texture = SubResource("AtlasTexture_rifk1")
+texture_margin_left = 1.0
+texture_margin_top = 1.0
+texture_margin_right = 1.0
+texture_margin_bottom = 1.0
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
 
 [resource]
-default_font = ExtResource("1_gwh2h")
-default_font_size = 22
+default_font = ExtResource("3_vaw2w")
+default_font_size = 13
 AcceptDialog/styles/embedded_border = null
 AcceptDialog/styles/embedded_unfocused_border = SubResource("StyleBoxTexture_kfyo1")
 AcceptDialog/styles/panel = SubResource("StyleBoxTexture_7pjvw")
@@ -290,10 +321,9 @@ Button/colors/icon_normal_color = Color(1, 1, 1, 1)
 Button/colors/icon_pressed_color = Color(1, 1, 1, 1)
 Button/constants/align_to_largest_stylebox = 1
 Button/constants/h_separation = 6
-Button/constants/icon_max_width = 27
+Button/constants/icon_max_width = 0
 Button/constants/outline_size = 3
-Button/font_sizes/font_size = 12
-Button/fonts/font = ExtResource("1_gwh2h")
+Button/font_sizes/font_size = 13
 Button/styles/disabled = SubResource("StyleBoxTexture_keseg")
 Button/styles/focus = SubResource("StyleBoxTexture_ejlxd")
 Button/styles/hover = SubResource("StyleBoxTexture_5u1tl")
@@ -321,8 +351,7 @@ Label/constants/outline_size = 2
 Label/constants/shadow_offset_x = 1
 Label/constants/shadow_offset_y = 3
 Label/constants/shadow_outline_size = 2
-Label/font_sizes/font_size = 16
-Label/fonts/font = ExtResource("1_gwh2h")
+Label/font_sizes/font_size = 8
 Label/styles/normal = SubResource("StyleBoxEmpty_a67o8")
 OptionButton/colors/font_color = Color(0.875, 0.875, 0.875, 1)
 OptionButton/colors/font_disabled_color = Color(0.875, 0.875, 0.875, 0.5)
@@ -341,15 +370,16 @@ OptionButton/styles/hover_mirrored = null
 Panel/styles/panel = SubResource("StyleBoxTexture_60d0j")
 ProgressBar/styles/background = SubResource("StyleBoxTexture_v2w6c")
 ProgressBar/styles/fill = SubResource("StyleBoxTexture_c7kau")
+TabContainer/fonts/font = ExtResource("3_vaw2w")
 TabContainer/icons/decrement = SubResource("AtlasTexture_bcl10")
 TabContainer/icons/decrement_highlight = SubResource("AtlasTexture_m6g4m")
 TabContainer/icons/increment = SubResource("AtlasTexture_ekbp4")
 TabContainer/icons/increment_highlight = SubResource("AtlasTexture_ui2cv")
 TabContainer/icons/menu = SubResource("AtlasTexture_6fbao")
 TabContainer/icons/menu_highlight = SubResource("AtlasTexture_078fy")
-TabContainer/styles/panel = SubResource("StyleBoxFlat_t3oq6")
-TabContainer/styles/tab_disabled = SubResource("StyleBoxFlat_keseg")
-TabContainer/styles/tab_focus = SubResource("StyleBoxFlat_5u1tl")
-TabContainer/styles/tab_hovered = SubResource("StyleBoxFlat_ejlxd")
-TabContainer/styles/tab_selected = SubResource("StyleBoxFlat_a67o8")
-TabContainer/styles/tab_unselected = SubResource("StyleBoxFlat_n0q6p")
+TabContainer/styles/panel = SubResource("StyleBoxTexture_awkti")
+TabContainer/styles/tab_disabled = SubResource("StyleBoxTexture_hbecx")
+TabContainer/styles/tab_focus = SubResource("StyleBoxTexture_bwvfu")
+TabContainer/styles/tab_hovered = SubResource("StyleBoxTexture_n0l8q")
+TabContainer/styles/tab_selected = SubResource("StyleBoxTexture_hutou")
+TabContainer/styles/tab_unselected = SubResource("StyleBoxTexture_ocnyy")

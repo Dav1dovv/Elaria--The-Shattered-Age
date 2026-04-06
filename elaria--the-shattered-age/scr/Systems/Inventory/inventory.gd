@@ -223,9 +223,6 @@ func call_inventory():
 	Global.is_opened_menu = is_opened
 	$HBoxContainer.visible = is_opened
 	$HBoxContainer/Inventory.visible = true
-	$HBoxContainer/WorkBench.visible = true
-	$HBoxContainer/WorkBench._refresh()
-	$HBoxContainer/WorkBench._update_preview()
 
 	Cursor.detection_mode(is_opened)
 
@@ -235,3 +232,21 @@ func uncall_craft():
 	$HBoxContainer.visible = is_opened
 	$HBoxContainer/Inventory.visible = false
 	$HBoxContainer/WorkBench.visible = false
+	$HBoxContainer/sciencist.visible = false
+func call_craft():
+	if Global.is_opened_menu && !is_opened:
+		return
+
+	is_opened = !is_opened
+	Global.is_opened_menu = is_opened
+	$HBoxContainer.visible = is_opened
+	$HBoxContainer/Inventory.visible = true
+	$HBoxContainer/WorkBench.visible = true
+	$HBoxContainer/WorkBench._refresh()
+	$HBoxContainer/WorkBench._update_preview()
+
+func call_sciensist():
+	$HBoxContainer/Inventory.visible = true
+	$HBoxContainer/sciencist.visible = true
+	$HBoxContainer/sciencist._refresh()
+	$HBoxContainer/sciencist._update_preview()

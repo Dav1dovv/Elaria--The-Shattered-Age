@@ -3,7 +3,7 @@ extends Control
 
 @onready var label: Label = $HBoxContainer/Label
 
-var player : Player
+var player
 
 func _ready() -> void:
 	if !player:

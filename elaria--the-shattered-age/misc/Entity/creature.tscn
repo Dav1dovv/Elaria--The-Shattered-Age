@@ -4,16 +4,23 @@
 [ext_resource type="Script" uid="uid://dscq1tdnyogtm" path="res://misc/Entity/AI/UniversalAI.gd" id="2_vty7x"]
 [ext_resource type="Script" uid="uid://d2b3gchtl7jhb" path="res://misc/Boxes/HurtBox.gd" id="5_yi3og"]
 [ext_resource type="Script" uid="uid://c8gtsucgxp2ef" path="res://misc/Boxes/EnemyHitBox.gd" id="6_15r6q"]
+[ext_resource type="Script" uid="uid://ctm4b4v8txo1q" path="res://scr/Resources/WeightItem.gd" id="6_c6snw"]
 [ext_resource type="Script" uid="uid://c6tw2fkklnri5" path="res://misc/Drop/DropItem.gd" id="7_1dodm"]
 [ext_resource type="PackedScene" uid="uid://digbxx3ko1dgy" path="res://misc/Particles/BloodSplash.tscn" id="7_q2x7o"]
+[ext_resource type="Resource" uid="uid://y46y4iyhdm4g" path="res://misc/Content/Items/Gas.tres" id="7_x812b"]
 [ext_resource type="AudioStream" uid="uid://b7e11d7dloks2" path="res://Assets/Audio/SFX/Hurt.wav" id="8_hdtsf"]
 [ext_resource type="Script" uid="uid://cyqd8atmamgy0" path="res://scr/Misc/VFX.gd" id="8_r5xd3"]
+
+[sub_resource type="Resource" id="Resource_yi3og"]
+script = ExtResource("6_c6snw")
+item = ExtResource("7_x812b")
+weight = 0.1
+metadata/_custom_type_script = "uid://ctm4b4v8txo1q"
 
 [node name="Creature" unique_id=2111811093 instance=ExtResource("1_hdtsf")]
 script = ExtResource("2_vty7x")
 config = null
 can_move = true
-explore_points = 0.1
 enemy_lvl = 1
 lvl_changeable = false
 screen_shake_strength = 0.0
@@ -33,6 +40,7 @@ metadata/_custom_type_script = "uid://c8gtsucgxp2ef"
 
 [node name="Drop" type="Node" parent="." index="5" unique_id=1421496829]
 script = ExtResource("7_1dodm")
+unique_items = Array[ExtResource("6_c6snw")]([SubResource("Resource_yi3og")])
 metadata/_custom_type_script = "uid://c6tw2fkklnri5"
 
 [node name="VFX" type="Node" parent="." index="6" unique_id=1555286990 node_paths=PackedStringArray("audio_player", "particles")]

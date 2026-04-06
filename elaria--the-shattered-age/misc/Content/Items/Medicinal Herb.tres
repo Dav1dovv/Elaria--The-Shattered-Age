@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://c3xe3dh8qqd4j"]
+
+[ext_resource type="Script" uid="uid://wm1t8anytdyq" path="res://scr/Resources/ItemData/ItemData.gd" id="1_b2ubo"]
+[ext_resource type="Texture2D" uid="uid://cf3avrbvs0ues" path="res://Assets/Textures/SpriteSheets/Items-Sheet.png" id="1_wmvsg"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nd5sx"]
+atlas = ExtResource("1_wmvsg")
+region = Rect2(112, 48, 16, 16)
+
+[resource]
+script = ExtResource("1_b2ubo")
+icon = SubResource("AtlasTexture_nd5sx")
+item_name = "Medicinal Herb"
+metadata/_custom_type_script = "uid://wm1t8anytdyq"

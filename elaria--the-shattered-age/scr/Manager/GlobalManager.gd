@@ -11,12 +11,9 @@ var game_progress : int = 0
 var is_opened_menu : bool = false
 
 var hotbar
-var inventory
+var inventory : Inventory
 
 var explored_progress : float = 0
-
-signal save_game
-signal load_game
 
 const MOUSE_Arrow = preload("res://Assets/Textures/UI/Cursors/Cursor1.png")
 const HINT = preload("uid://wyeldfaexejh")
@@ -24,8 +21,8 @@ const HINT = preload("uid://wyeldfaexejh")
 
 @onready var developer_console: CanvasLayer = %DeveloperConsole
 @onready var scene_manager: SceneManager = $SceneManager
-@onready var day_night: CanvasModulate = $DayNight
 @onready var blaze_music_manager: BlazeMusicManager = %MusicManager
+@onready var setting_manager: SettingManager = $SettingManager
 
 
 func _init() -> void:
@@ -41,6 +38,8 @@ func _ready() -> void:
 	var dir = DirAccess.open("user://")
 	if dir:
 		dir.make_dir("Saves")
+		
+	
 
 # Set character name and create folder
 func set_character_name(new_name: String):
@@ -86,8 +85,6 @@ func _try_add_to_container(container, item_data: ItemData, amount: int) -> bool:
 	return container.add_item(item_data, amount)
 
 func add_initial_items():
-	hotbar = get_tree().get_first_node_in_group("Hotbar") as Hotbar
-	inventory = get_tree().get_first_node_in_group("Inventory") as Inventory
 	pickup_item(preload("uid://ch2r3sdjgisqa").duplicate(), 1)
 	pickup_item(preload("uid://prg8cq5chkl2").duplicate(), 1)
 	pickup_item(preload("uid://xyck3q0gr12o").duplicate(),1)
@@ -108,3 +105,6 @@ func hint(object : Node2D,message : String):
 		hint_instant.position = object.global_position
 		hint_instant.position.y -= 10
 		object.call_deferred("add_child",hint_instant)
+
+func save():
+	get_tree().call_group("Save","save_game")

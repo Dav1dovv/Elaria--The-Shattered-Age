@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://dbxsovdq7bbia" path="res://scr/Misc/Optimizer.gd" id="1_7b68o"]
 [ext_resource type="Script" uid="uid://wflmgj2qexop" path="res://misc/Chest/Chest.gd" id="1_8dabs"]
-[ext_resource type="Resource" uid="uid://xyck3q0gr12o" path="res://misc/Content/Items/Wayfinder.tres" id="2_lqs0i"]
 [ext_resource type="Script" uid="uid://btxho8sqg8tnx" path="res://scr/Systems/Interaction/Interaction.gd" id="2_yb1kq"]
 [ext_resource type="Texture2D" uid="uid://bvn1k3yr05y11" path="res://Assets/Textures/Shadows/Shadow.png" id="4_uyyit"]
 [ext_resource type="Texture2D" uid="uid://ccsu05d4cl65i" path="res://misc/Chest/Simple Chest.png" id="6_f7t7j"]
@@ -357,7 +356,6 @@ metadata/_custom_type_script = "uid://ctm4b4v8txo1q"
 
 [node name="Chest" type="Node2D" unique_id=1524391707]
 script = ExtResource("1_8dabs")
-need_tool = ExtResource("2_lqs0i")
 
 [node name="optimizer" type="VisibleOnScreenEnabler2D" parent="." unique_id=1282912484 node_paths=PackedStringArray("hide_objects")]
 position = Vector2(-0.0817547, -9.31995)

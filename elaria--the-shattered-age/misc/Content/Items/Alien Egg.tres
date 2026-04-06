@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://jr1ajkpo3505"]
+
+[ext_resource type="Script" uid="uid://wm1t8anytdyq" path="res://scr/Resources/ItemData/ItemData.gd" id="1_ehwjv"]
+[ext_resource type="Texture2D" uid="uid://cf3avrbvs0ues" path="res://Assets/Textures/SpriteSheets/Items-Sheet.png" id="1_t3j2p"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mbs5u"]
+atlas = ExtResource("1_t3j2p")
+region = Rect2(112, 112, 16, 16)
+
+[resource]
+script = ExtResource("1_ehwjv")
+icon = SubResource("AtlasTexture_mbs5u")
+item_name = "Alien Egg"
+metadata/_custom_type_script = "uid://wm1t8anytdyq"

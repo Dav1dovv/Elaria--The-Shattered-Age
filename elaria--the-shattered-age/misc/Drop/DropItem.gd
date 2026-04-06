@@ -10,7 +10,7 @@ const DROP = preload("res://misc/Drop/Drop.tscn")
 
 func _drop_items() -> void:
 	var root = get_tree().get_first_node_in_group("World")
-	var drop_count = randi_range(3, max_drop)
+	var drop_count = randi_range(1, max_drop)
 	
 	for i in drop_count:
 		var new_drop = DROP.instantiate()
@@ -34,7 +34,7 @@ func _drop_items() -> void:
 		if selected_item != null:
 			new_drop.update_drop(selected_item)
 			new_drop.global_position = get_parent().global_position + Vector2(
-				randf_range(-30.0, 30.0),
-				randf_range(-30.0, 30.0)
+				randf_range(-10.0, 10.0),
+				randf_range(-10.0, 10.0)
 			)
 			root.call_deferred("add_child", new_drop)

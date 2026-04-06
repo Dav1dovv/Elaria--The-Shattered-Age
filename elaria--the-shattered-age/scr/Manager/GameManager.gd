@@ -16,7 +16,6 @@ func _ready() -> void:
 	world_seed = Global.player_name
 	add_to_group("World")
 	_initialize_seed_system()
-	
 func respawn():
 	player = get_tree().get_first_node_in_group("Player")
 	if last_saved_position.is_empty():

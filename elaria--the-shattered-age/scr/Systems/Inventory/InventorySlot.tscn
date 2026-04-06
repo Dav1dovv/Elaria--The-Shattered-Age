@@ -2,7 +2,6 @@
 
 [ext_resource type="Texture2D" uid="uid://b62hrm50ou235" path="res://Assets/Textures/UI/UI.png" id="2_bu6t6"]
 [ext_resource type="Script" uid="uid://bw8xm8btg3jhd" path="res://scr/Systems/Inventory/inventoryslot.gd" id="2_ekxhe"]
-[ext_resource type="FontFile" uid="uid://djfo531dg7v6d" path="res://Assets/Fonts/Elariascript2-Regular.ttf" id="3_1nw2f"]
 [ext_resource type="PackedScene" uid="uid://civqx7y0nh75n" path="res://scr/Systems/Inventory/tooltip.tscn" id="4_bu6t6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nthsc"]
@@ -14,8 +13,7 @@ atlas = ExtResource("2_bu6t6")
 region = Rect2(0, 16, 16, 16)
 
 [sub_resource type="LabelSettings" id="LabelSettings_rnow5"]
-font = ExtResource("3_1nw2f")
-font_size = 8
+font_size = 4
 outline_size = 1
 outline_color = Color(0, 0, 0, 1)
 shadow_size = 3

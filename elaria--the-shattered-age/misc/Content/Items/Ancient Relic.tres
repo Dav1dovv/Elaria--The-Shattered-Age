@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://pap3rvqe0bee"]
+
+[ext_resource type="Script" uid="uid://wm1t8anytdyq" path="res://scr/Resources/ItemData/ItemData.gd" id="1_8if24"]
+[ext_resource type="Texture2D" uid="uid://cf3avrbvs0ues" path="res://Assets/Textures/SpriteSheets/Items-Sheet.png" id="1_ukow7"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1y30j"]
+atlas = ExtResource("1_ukow7")
+region = Rect2(128, 112, 16, 16)
+
+[resource]
+script = ExtResource("1_8if24")
+icon = SubResource("AtlasTexture_1y30j")
+item_name = "Ancient Relic"
+metadata/_custom_type_script = "uid://wm1t8anytdyq"

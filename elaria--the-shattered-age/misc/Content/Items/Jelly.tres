@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="FoodData" format=3 uid="uid://dbqrv4e5wbas4"]
+
+[ext_resource type="Script" uid="uid://dj4umu6271nxr" path="res://scr/Resources/effects/EffectResource.gd" id="1_y14pg"]
+[ext_resource type="Texture2D" uid="uid://cf3avrbvs0ues" path="res://Assets/Textures/SpriteSheets/Items-Sheet.png" id="2_g5hcy"]
+[ext_resource type="Script" uid="uid://ds5d4cljtsmfp" path="res://scr/Resources/ItemData/Food_item_data.gd" id="3_p5gqv"]
+
+[sub_resource type="Resource" id="Resource_27uwk"]
+script = ExtResource("1_y14pg")
+value = 18.0
+metadata/_custom_type_script = "uid://dj4umu6271nxr"
+
+[sub_resource type="Resource" id="Resource_apdu8"]
+script = ExtResource("1_y14pg")
+effect_type = 4
+value = 5.0
+duration = 30.0
+display_name = "No damage"
+metadata/_custom_type_script = "uid://dj4umu6271nxr"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7iepf"]
+atlas = ExtResource("2_g5hcy")
+region = Rect2(32, 80, 16, 16)
+
+[resource]
+script = ExtResource("3_p5gqv")
+effects = Array[ExtResource("1_y14pg")]([SubResource("Resource_27uwk"), SubResource("Resource_apdu8")])
+icon = SubResource("AtlasTexture_7iepf")
+play_anim = "Eating"
+item_name = "Jelly"
+metadata/_custom_type_script = "uid://ds5d4cljtsmfp"

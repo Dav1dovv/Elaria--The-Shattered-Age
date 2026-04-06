@@ -247,6 +247,7 @@ offset_right = -2.0
 offset_bottom = -3.0
 
 [node name="MaxCount" type="Button" parent="Panel/MarginContainer/HBoxContainer/VBoxContainer2/Label/ResultSlot" unique_id=1979851188]
+visible = false
 layout_mode = 0
 offset_left = 24.0
 offset_top = 2.5
@@ -256,6 +257,7 @@ text = "max"
 
 [node name="Button" type="Button" parent="Panel/MarginContainer/HBoxContainer/VBoxContainer2" unique_id=586007625]
 layout_mode = 2
+theme_override_font_sizes/font_size = 11
 text = "Craft"
 
 [node name="ProgressBar" type="ProgressBar" parent="Panel/MarginContainer/HBoxContainer/VBoxContainer2/Button" unique_id=1465622492]
@@ -282,6 +284,7 @@ theme_override_font_sizes/font_size = 8
 text = "x"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=981426769]
+visible = false
 layout_mode = 0
 offset_left = 2.0
 offset_top = -22.0

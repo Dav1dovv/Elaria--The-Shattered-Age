@@ -6,6 +6,8 @@ const ACCELERATION = 3
 @onready var sprite = $Sprite2D
 @onready var animationPlayer = $AnimationPlayer
 
+@export var explore_points : float
+
 var item : ItemData
 var can_pick : bool = false
 var speed : float
@@ -81,6 +83,9 @@ func _on_pick_zone_body_exited(body: Node2D) -> void:
 	player = null
 
 func _on_pick_area_entered(area: Area2D) -> void:
+	if explore_points != 0:
+		Global.hint(self,"+explore point")
+		Global.explored_progress += explore_points
 	$SFX.play()
 	if Global.inventory.can_add_item(item, 1):
 		animationPlayer.play("Pick")

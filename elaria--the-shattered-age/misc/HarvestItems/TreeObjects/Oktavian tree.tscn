@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://d0qb8iwxdcwpn"]
 
 [ext_resource type="PackedScene" uid="uid://bny4sqh4i8i5v" path="res://misc/HarvestItems/Harvestable.tscn" id="1_32v1v"]
-[ext_resource type="Texture2D" uid="uid://bk4arjpmpgt81" path="res://misc/HarvestItems/Textures/Tree.png" id="2_4cjpm"]
+[ext_resource type="Texture2D" uid="uid://bk4arjpmpgt81" path="res://misc/HarvestItems/Textures/Oktavian Tree.png" id="2_4cjpm"]
 [ext_resource type="Script" uid="uid://b7lfnqk6b5cdp" path="res://scr/Misc/RandomSprite.gd" id="3_hs44r"]
 [ext_resource type="Texture2D" uid="uid://bvn1k3yr05y11" path="res://Assets/Textures/Shadows/Shadow.png" id="4_8f8hu"]
 [ext_resource type="Script" uid="uid://wm1t8anytdyq" path="res://scr/Resources/ItemData/ItemData.gd" id="5_fmajy"]
@@ -29,22 +29,6 @@ item = ExtResource("8_xne83")
 weight = 0.1
 metadata/_custom_type_script = "uid://ctm4b4v8txo1q"
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_hs44r"]
-atlas = ExtResource("9_4cjpm")
-region = Rect2(48, 16, 16, 16)
-
-[sub_resource type="Resource" id="Resource_8f8hu"]
-script = ExtResource("5_fmajy")
-icon = SubResource("AtlasTexture_hs44r")
-item_name = "Wayfinder"
-metadata/_custom_type_script = "uid://wm1t8anytdyq"
-
-[sub_resource type="Resource" id="Resource_hs44r"]
-script = ExtResource("7_buu5p")
-item = SubResource("Resource_8f8hu")
-weight = 0.5
-metadata/_custom_type_script = "uid://ctm4b4v8txo1q"
-
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_mchyi"]
 playback_mode = 1
 streams_count = 7
@@ -55,6 +39,10 @@ stream_3/stream = ExtResource("12_aeqi6")
 stream_4/stream = ExtResource("13_2atfo")
 stream_5/stream = ExtResource("14_0g0cy")
 stream_6/stream = ExtResource("15_2ejol")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4cjpm"]
+atlas = ExtResource("9_4cjpm")
+region = Rect2(0, 0, 16, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_phfk7"]
 size = Vector2(21.7234, 24.4137)
@@ -67,16 +55,16 @@ durability = 65.0
 harvest_tool_lvl = 0
 max_distance = 10.0
 
-[node name="CollisionShape2D" parent="StaticBody2D" index="0"]
+[node name="CollisionShape2D" parent="StaticBody2D" parent_id_path=PackedInt32Array(1226065190) index="0" unique_id=605264910]
 position = Vector2(1.93237, -6.42923)
 rotation = -1.57079
 shape = SubResource("CapsuleShape2D_phfk7")
 
-[node name="VFX" parent="." index="1" node_paths=PackedStringArray("audio_player", "particles")]
+[node name="VFX" parent="." index="1" unique_id=508582770 node_paths=PackedStringArray("audio_player", "particles")]
 audio_player = NodePath("../SFX")
 particles = NodePath("../Particles")
 
-[node name="optimizer" parent="." index="2" node_paths=PackedStringArray("hide_objects")]
+[node name="optimizer" parent="." index="2" unique_id=2100972979 node_paths=PackedStringArray("hide_objects")]
 position = Vector2(1.3378, -22.6682)
 scale = Vector2(1.71349, 2.43441)
 hide_objects = [NodePath("../Sprite2D"), NodePath("../Shadow")]
@@ -88,7 +76,7 @@ process_thread_messages = 0
 position = Vector2(4, -18)
 texture = ExtResource("2_4cjpm")
 offset = Vector2(-2, -15)
-hframes = 7
+hframes = 4
 script = ExtResource("3_hs44r")
 frame_weights = Array[float]([1.0, 1.0, 0.0, 0.0, 1.0, 1.0, 1.0])
 metadata/_custom_type_script = "uid://b7lfnqk6b5cdp"
@@ -100,9 +88,9 @@ position = Vector2(2.85278, -2.19958)
 scale = Vector2(1.8934023, 0.863497)
 texture = ExtResource("4_8f8hu")
 
-[node name="droper" parent="." index="5"]
+[node name="droper" parent="." index="5" unique_id=1465568748]
 drop_item = Array[ExtResource("5_fmajy")]([ExtResource("6_1fv40")])
-unique_items = Array[ExtResource("7_buu5p")]([SubResource("Resource_mchyi"), SubResource("Resource_hs44r")])
+unique_items = Array[ExtResource("7_buu5p")]([SubResource("Resource_mchyi")])
 max_drop = 8
 random_values = true
 
@@ -113,9 +101,11 @@ stream = SubResource("AudioStreamRandomizer_mchyi")
 stream = ExtResource("16_3spyh")
 
 [node name="Particles" parent="." index="9" unique_id=1055449671 instance=ExtResource("17_as4p2")]
-position = Vector2(0, -33)
+position = Vector2(0, -7)
+amount = 8
+texture = SubResource("AtlasTexture_4cjpm")
 
-[node name="CollisionShape2D" parent="." index="10"]
+[node name="CollisionShape2D" parent="." index="10" unique_id=1716306559]
 position = Vector2(1.31389, -12.7471)
 shape = SubResource("RectangleShape2D_phfk7")
 

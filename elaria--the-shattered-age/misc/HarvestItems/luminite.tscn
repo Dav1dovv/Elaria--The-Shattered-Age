@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://ckitjmo7p0v35"]
+[gd_scene format=3 uid="uid://ckitjmo7p0v35"]
 
 [ext_resource type="PackedScene" uid="uid://bny4sqh4i8i5v" path="res://misc/HarvestItems/Harvestable.tscn" id="1_cmv6d"]
 [ext_resource type="Texture2D" uid="uid://lgjasnfkcba5" path="res://misc/HarvestItems/Textures/Luminite.png" id="2_7y21w"]
+[ext_resource type="Script" uid="uid://wm1t8anytdyq" path="res://scr/Resources/ItemData/ItemData.gd" id="2_ykuh0"]
+[ext_resource type="Resource" uid="uid://bg8mu8l5xhhhk" path="res://misc/Content/Items/Solar Dust.tres" id="3_7xs45"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ykuh0"]
 radius = 5.7398996
@@ -10,26 +12,30 @@ height = 20.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_7xs45"]
 radius = 14.469567
 
-[node name="Luminite" instance=ExtResource("1_cmv6d")]
+[node name="Luminite" unique_id=89284545 instance=ExtResource("1_cmv6d")]
 harvest_tool_lvl = 3
 
-[node name="CollisionShape2D" parent="StaticBody2D" index="0"]
+[node name="CollisionShape2D" parent="StaticBody2D" parent_id_path=PackedInt32Array(1226065190) index="0" unique_id=605264910]
 position = Vector2(0, -7)
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_ykuh0")
 
-[node name="CollisionShape2D" parent="." index="1"]
-shape = SubResource("CircleShape2D_7xs45")
-
-[node name="optimizer" parent="." index="3"]
+[node name="optimizer" parent="." index="2" unique_id=2100972979]
 rect = Rect2(-21, -30, 45, 42)
 
-[node name="PointLight2D" parent="." index="5"]
+[node name="droper" parent="." index="3" unique_id=1465568748]
+drop_item = Array[ExtResource("2_ykuh0")]([ExtResource("3_7xs45")])
+max_drop = 5
+
+[node name="PointLight2D" parent="." index="4" unique_id=802892367]
 visible = true
 color = Color(0.8784314, 0.9019608, 0.12156863, 1)
 energy = 0.86
 texture_scale = 5.65
 
-[node name="Sprite2D" type="Sprite2D" parent="." index="6"]
+[node name="CollisionShape2D" parent="." index="5" unique_id=1716306559]
+shape = SubResource("CircleShape2D_7xs45")
+
+[node name="Sprite2D" type="Sprite2D" parent="." index="6" unique_id=2132617586]
 position = Vector2(1, -14)
 texture = ExtResource("2_7y21w")

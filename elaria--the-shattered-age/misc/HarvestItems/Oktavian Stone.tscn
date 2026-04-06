@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://b6si518suxk67"]
 
 [ext_resource type="PackedScene" uid="uid://bny4sqh4i8i5v" path="res://misc/HarvestItems/Harvestable.tscn" id="1_lse0o"]
-[ext_resource type="Texture2D" uid="uid://cj6hw2ur1wfqb" path="res://misc/HarvestItems/Textures/Minerals.png" id="2_xk4tn"]
+[ext_resource type="Texture2D" uid="uid://dqaxq3iceubds" path="res://misc/HarvestItems/Textures/SandStone.png" id="2_lse0o"]
 [ext_resource type="Script" uid="uid://b7lfnqk6b5cdp" path="res://scr/Misc/RandomSprite.gd" id="3_i7ruk"]
 [ext_resource type="Texture2D" uid="uid://bvn1k3yr05y11" path="res://Assets/Textures/Shadows/Shadow.png" id="4_fxiew"]
 [ext_resource type="Script" uid="uid://wm1t8anytdyq" path="res://scr/Resources/ItemData/ItemData.gd" id="5_suxn6"]
@@ -18,10 +18,6 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bhrl0"]
 size = Vector2(36, 27)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_4xc2r"]
-atlas = ExtResource("2_xk4tn")
-region = Rect2(96, 0, 96, 32)
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_bhrl0"]
 playback_mode = 1
@@ -45,7 +41,7 @@ polygon = PackedVector2Array(-15, -6, -15, -1, 15, -1, 15, -6)
 durability = 20.0
 harvest_tool_lvl = 0
 
-[node name="CollisionShape2D" parent="StaticBody2D" index="0"]
+[node name="CollisionShape2D" parent="StaticBody2D" parent_id_path=PackedInt32Array(1226065190) index="0" unique_id=605264910]
 rotation = -1.5707941
 shape = SubResource("CapsuleShape2D_bhrl0")
 
@@ -55,7 +51,7 @@ shape = SubResource("RectangleShape2D_bhrl0")
 
 [node name="Sprite2D" type="Sprite2D" parent="." index="2" unique_id=971498566]
 position = Vector2(0, -16)
-texture = SubResource("AtlasTexture_4xc2r")
+texture = ExtResource("2_lse0o")
 hframes = 3
 frame = 1
 script = ExtResource("3_i7ruk")
@@ -69,15 +65,15 @@ position = Vector2(0, 13)
 scale = Vector2(2.625, 1.125)
 texture = ExtResource("4_fxiew")
 
-[node name="VFX" parent="." index="3" node_paths=PackedStringArray("audio_player")]
+[node name="VFX" parent="." index="3" unique_id=508582770 node_paths=PackedStringArray("audio_player")]
 audio_player = NodePath("../SFX")
 
-[node name="optimizer" parent="." index="4" node_paths=PackedStringArray("hide_objects")]
+[node name="optimizer" parent="." index="4" unique_id=2100972979 node_paths=PackedStringArray("hide_objects")]
 position = Vector2(0, -13)
 rect = Rect2(-18, -14, 36, 28)
 hide_objects = [NodePath("../Sprite2D")]
 
-[node name="droper" parent="." index="5"]
+[node name="droper" parent="." index="5" unique_id=1465568748]
 drop_item = Array[ExtResource("5_suxn6")]([ExtResource("6_hscks")])
 max_drop = 10
 random_values = true

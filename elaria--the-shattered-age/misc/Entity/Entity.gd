@@ -73,16 +73,17 @@ func take_damage(damage: float, damage_source: Node2D = null) -> void:
 
 	_log_damage(damage, actual_damage, total_reduction)
 
-	if Entity_stats.current_health <= 0:
-		knockback_strength += 25
-		die()
-	elif invincibility_duration > 0:
-		_start_invincibility()
 
 	if damage_source != null:
 		var knockback_power = knockback_strength + randi_range(0, int(damage))
+		if Entity_stats.current_health <= 0:
+			knockback_power += 40 + damage
 		apply_knockback(damage_source, knockback_power)
 
+	if Entity_stats.current_health <= 0:
+		die()
+	elif invincibility_duration > 0:
+		_start_invincibility()
 # ── HIT FLASH ───────────────────────────────────────────────────
 func _play_hit_flash() -> void:
 	if _entity_sprite == null:

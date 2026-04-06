@@ -2,11 +2,10 @@
 
 [ext_resource type="Shader" uid="uid://c385wv3jtcml3" path="res://Assets/Shader/StarField.gdshader" id="1_ipo4k"]
 [ext_resource type="Script" uid="uid://ysh8w6vpmjfx" path="res://Assets/Scenes/Menu/MainMenu.gd" id="1_xj65m"]
-[ext_resource type="FontFile" uid="uid://djfo531dg7v6d" path="res://Assets/Fonts/Elariascript2-Regular.ttf" id="2_uc0ha"]
 [ext_resource type="Script" uid="uid://bttgnk3bb2a8i" path="res://addons/font_auto_size_labels/auto_size_label.gd" id="3_bwn3d"]
 [ext_resource type="Shader" uid="uid://vrsslnus0n8r" path="res://Assets/Shader/Shine.gdshader" id="4_axoc4"]
+[ext_resource type="Texture2D" uid="uid://uhl76fascf73" path="res://Assets/Textures/UI/Title/Title.png" id="4_wk7rc"]
 [ext_resource type="PackedScene" uid="uid://gb7k36a7pc6o" path="res://scr/Misc/UIelements/button.tscn" id="5_bwn3d"]
-[ext_resource type="Texture2D" uid="uid://b5yc4d73c6ri" path="res://Assets/Textures/UI/Title/Shattered Lands 1.png" id="6_5yjyr"]
 [ext_resource type="Theme" uid="uid://bmjvsrl7b67cy" path="res://misc/UI/theme.tres" id="6_tuj82"]
 [ext_resource type="PackedScene" uid="uid://oq4fs5yb67n0" path="res://scr/Systems/SaveLoadSlot/Save_laodUI.tscn" id="7_uc0ha"]
 [ext_resource type="Texture2D" uid="uid://ch5onqwjk71kp" path="res://misc/Planet/planet-Sheet.png" id="10_fqo0y"]
@@ -14,6 +13,9 @@
 [ext_resource type="Script" uid="uid://bc1542mcwk5go" path="res://misc/Planet/Planet.gd" id="11_jm7od"]
 [ext_resource type="Texture2D" uid="uid://dv2s6nalj8ge7" path="res://misc/Planet/Orbit.png" id="12_qbvys"]
 [ext_resource type="Texture2D" uid="uid://bvoncha27hd3l" path="res://misc/Planet/PlanetX-Sheet.png" id="13_wk7rc"]
+[ext_resource type="PackedScene" uid="uid://g0r3cri4p8m5" path="res://misc/UI/lobby ui/lobby_ui.tscn" id="16_2yin0"]
+[ext_resource type="Texture2D" uid="uid://bxdo1vxnkafsa" path="res://Assets/Textures/ship.png" id="16_uel20"]
+[ext_resource type="PackedScene" uid="uid://b3xyfsgecbtas" path="res://misc/UI/OptionMenu/option_menu.tscn" id="16_wk7rc"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5yjyr"]
 shader = ExtResource("1_ipo4k")
@@ -63,7 +65,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(337.00003, 110.00001)]
+"values": [Vector2(207, 84)]
 }
 
 [sub_resource type="Animation" id="Animation_axoc4"]
@@ -89,10 +91,10 @@ tracks/1/path = NodePath("../TextureRect/SplashLabel:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 1.5, 3),
+"times": PackedFloat32Array(0, 1.51, 3),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(337.00003, 110.00001), Vector2(337.00003, 118.00001), Vector2(337.00003, 110.00001)]
+"values": [Vector2(207, 84), Vector2(218, 92), Vector2(205, 84)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_y08pf"]
@@ -101,8 +103,7 @@ _data = {
 &"TIitle": SubResource("Animation_axoc4")
 }
 
-[sub_resource type="LabelSettings" id="LabelSettings_qx74u"]
-font = ExtResource("2_uc0ha")
+[sub_resource type="LabelSettings" id="LabelSettings_qbvys"]
 font_size = 12
 font_color = Color(0.992157, 0.733333, 0.294118, 1)
 outline_size = 1
@@ -175,11 +176,12 @@ custom_minimum_size = Vector2(30, 121.545)
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -240.0
-offset_right = 240.0
-offset_bottom = 121.545
+offset_left = -157.0
+offset_top = 16.0
+offset_right = 157.0
+offset_bottom = 116.0
 grow_horizontal = 2
-texture = ExtResource("6_5yjyr")
+texture = ExtResource("4_wk7rc")
 expand_mode = 1
 stretch_mode = 5
 
@@ -191,37 +193,37 @@ autoplay = &"TIitle"
 [node name="SplashLabel" type="Label" parent="CanvasLayer/TextureRect" unique_id=1362709919]
 z_index = 3
 layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -142.99997
-offset_top = 110.00001
-offset_right = -28.476746
-offset_bottom = 179.00305
-grow_horizontal = 0
-rotation = -0.126507
-scale = Vector2(1.044707, 1.044707)
-text = "Also play Felaria"
-label_settings = SubResource("LabelSettings_qx74u")
-autowrap_mode = 3
-clip_text = true
-script = ExtResource("3_bwn3d")
-_max_size = 12
-_min_size = 6
-_current_font_size = 12
-_editor_defaults_set = true
-metadata/_custom_type_script = "uid://bttgnk3bb2a8i"
-
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer" unique_id=1727128541]
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -147.0
-offset_top = -38.0
-offset_right = 149.0
-offset_bottom = -22.0
+offset_left = 50.0
+offset_top = -43.95141
+offset_right = 194.53796
+offset_bottom = 25.051735
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(1.044707, 1.044707)
+theme_override_font_sizes/font_size = 12
+text = "Also play Felaria"
+label_settings = SubResource("LabelSettings_qbvys")
+autowrap_mode = 3
+script = ExtResource("3_bwn3d")
+_max_size = 12
+_min_size = 6
+_current_font_size = 12
+_size_just_modified_by_autosizer = true
+_editor_defaults_set = true
+metadata/_custom_type_script = "uid://bttgnk3bb2a8i"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer" unique_id=1727128541]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -61.0
+offset_bottom = -38.0
 grow_horizontal = 2
 grow_vertical = 0
 
@@ -229,16 +231,27 @@ grow_vertical = 0
 custom_minimum_size = Vector2(130, 10)
 layout_mode = 2
 size_flags_horizontal = 4
+size_flags_vertical = 4
 theme_override_constants/separation = 16
 alignment = 1
 
-[node name="Start Game" parent="CanvasLayer/VBoxContainer/VBoxContainer" unique_id=392024303 instance=ExtResource("5_bwn3d")]
-custom_minimum_size = Vector2(130, 16)
+[node name="SoloBtn" parent="CanvasLayer/VBoxContainer/VBoxContainer" unique_id=392024303 instance=ExtResource("5_bwn3d")]
+custom_minimum_size = Vector2(80, 8)
 layout_mode = 2
 text = "Start Game"
 
+[node name="MultiBtn" parent="CanvasLayer/VBoxContainer/VBoxContainer" unique_id=1793936385 instance=ExtResource("5_bwn3d")]
+custom_minimum_size = Vector2(100, 8)
+layout_mode = 2
+text = "Multiplayer"
+
+[node name="OptionBtn" parent="CanvasLayer/VBoxContainer/VBoxContainer" unique_id=1554355578 instance=ExtResource("5_bwn3d")]
+custom_minimum_size = Vector2(100, 8)
+layout_mode = 2
+text = "Options"
+
 [node name="Exit" parent="CanvasLayer/VBoxContainer/VBoxContainer" unique_id=1321396718 instance=ExtResource("5_bwn3d")]
-custom_minimum_size = Vector2(130, 16)
+custom_minimum_size = Vector2(100, 8)
 layout_mode = 2
 text = "Exit"
 
@@ -278,14 +291,16 @@ visible = false
 [node name="Sun" type="Sprite2D" parent="." unique_id=512788803]
 self_modulate = Color(0.9490196, 0.60784316, 0.3137255, 0.5372549)
 position = Vector2(1, 272)
+rotation = 84.57479
 scale = Vector2(19.733444, 19.733444)
 texture = ExtResource("10_jm7od")
 script = ExtResource("11_jm7od")
-rotation_speed = 0.7
+rotation_speed = 0.2
 metadata/_custom_type_script = "uid://bc1542mcwk5go"
 
 [node name="planet" type="Sprite2D" parent="Sun" unique_id=2045172199]
 position = Vector2(4.323749, -5.8711944)
+rotation = 1241.3612
 scale = Vector2(0.07226596, 0.07226596)
 texture = ExtResource("10_fqo0y")
 hframes = 4
@@ -295,6 +310,7 @@ metadata/_custom_type_script = "uid://bc1542mcwk5go"
 
 [node name="planet" type="Sprite2D" parent="Sun/planet" unique_id=359456937]
 position = Vector2(-0.22612311, 0.6022835)
+rotation = 698.7701
 scale = Vector2(0.30136618, 0.30136618)
 texture = ExtResource("12_qbvys")
 offset = Vector2(0.75032043, -100.22)
@@ -304,16 +320,17 @@ metadata/_custom_type_script = "uid://bc1542mcwk5go"
 
 [node name="planet2" type="Sprite2D" parent="Sun/planet/planet" unique_id=267674162]
 position = Vector2(5.722046e-06, -100.05464)
+rotation = 168.2915
 scale = Vector2(0.44005448, 0.44005448)
 texture = ExtResource("12_qbvys")
 offset = Vector2(-31.537933, 28.118225)
 script = ExtResource("11_jm7od")
-rotation_speed = 1.3
+rotation_speed = 0.3
 metadata/_custom_type_script = "uid://bc1542mcwk5go"
 
 [node name="planet2" type="Sprite2D" parent="Sun" unique_id=1871835572]
 position = Vector2(9.222921, 1.9256649)
-rotation = 1.5707964
+rotation = 1245.2563
 scale = Vector2(0.10164626, 0.10164626)
 texture = ExtResource("10_fqo0y")
 offset = Vector2(-0.1647644, 0.7749214)
@@ -325,17 +342,19 @@ metadata/_custom_type_script = "uid://bc1542mcwk5go"
 
 [node name="planet" type="Sprite2D" parent="Sun/planet2" unique_id=639723876]
 modulate = Color(1, 0.79607844, 0.39607844, 1)
-position = Vector2(-0.7599411, 0.32079887)
+position = Vector2(1.4956424, 1.9941834)
+rotation = 621.86584
 scale = Vector2(0.30136618, 0.30136618)
 texture = ExtResource("12_qbvys")
-offset = Vector2(-20.64386, 73.501434)
+offset = Vector2(-7.9999695, 76.903046)
 script = ExtResource("11_jm7od")
-rotation_speed = 1.3
+rotation_speed = 0.5
 metadata/_custom_type_script = "uid://bc1542mcwk5go"
 
 [node name="planet3" type="Sprite2D" parent="Sun" unique_id=1615755420]
 position = Vector2(-7.828262, -1.8660383)
-scale = Vector2(0.10164626, 0.10164626)
+rotation = 1917.8507
+scale = Vector2(0.113371275, 0.113371275)
 texture = ExtResource("10_fqo0y")
 hframes = 4
 frame = 2
@@ -346,29 +365,33 @@ metadata/_custom_type_script = "uid://bc1542mcwk5go"
 [node name="planet" type="Sprite2D" parent="Sun/planet3" unique_id=301970675]
 modulate = Color(1, 1, 0.48235294, 1)
 position = Vector2(0.23858804, -0.08806169)
+rotation = -96.27516
 scale = Vector2(0.30136618, 0.30136618)
 texture = ExtResource("12_qbvys")
 offset = Vector2(-27.265778, 81.47525)
 script = ExtResource("11_jm7od")
+rotation_speed = 0.1
 metadata/_custom_type_script = "uid://bc1542mcwk5go"
 
 [node name="planet3" type="Sprite2D" parent="Sun/planet3/planet" unique_id=1050679470]
 modulate = Color(1, 0.62352943, 1, 1)
 position = Vector2(-28.122898, 82.71441)
+rotation = 226.9623
 scale = Vector2(0.6595364, 0.6595364)
 texture = ExtResource("12_qbvys")
 offset = Vector2(43.1817, 13.724976)
 script = ExtResource("11_jm7od")
-rotation_speed = 5.0
+rotation_speed = 0.2
 metadata/_custom_type_script = "uid://bc1542mcwk5go"
 
 [node name="planet2" type="Sprite2D" parent="Sun/planet3" unique_id=244564525]
 position = Vector2(0.23858833, 0.41049278)
+rotation = -235.6311
 scale = Vector2(0.30136618, 0.30136618)
 texture = ExtResource("12_qbvys")
 offset = Vector2(73.49666, 4.5809326)
 script = ExtResource("11_jm7od")
-rotation_speed = 4.0
+rotation_speed = 0.1
 metadata/_custom_type_script = "uid://bc1542mcwk5go"
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=283230977]
@@ -380,7 +403,18 @@ speed_scale = 0.3
 visibility_rect = Rect2(0, -260, 3850, 260)
 process_material = SubResource("ParticleProcessMaterial_2yin0")
 
-[connection signal="pressed" from="CanvasLayer/VBoxContainer/VBoxContainer/Start Game" to="." method="_on_start_game_pressed"]
+[node name="OptionMenu" parent="." unique_id=1619027941 instance=ExtResource("16_wk7rc")]
+visible = false
+
+[node name="Coop" parent="." unique_id=786535988 instance=ExtResource("16_2yin0")]
+
+[node name="Ship" type="Sprite2D" parent="." unique_id=2031828150]
+position = Vector2(237, 145)
+rotation = -0.2617994
+scale = Vector2(1.266793, 1.266793)
+texture = ExtResource("16_uel20")
+
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/VBoxContainer/OptionBtn" to="." method="_on_options_pressed"]
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/VBoxContainer/Exit" to="." method="_on_exit_pressed"]
 [connection signal="canceled" from="CanvasLayer/ConfirmationDialog" to="." method="_on_confirmation_dialog_canceled"]
 [connection signal="confirmed" from="CanvasLayer/ConfirmationDialog" to="." method="_on_confirmation_dialog_confirmed"]

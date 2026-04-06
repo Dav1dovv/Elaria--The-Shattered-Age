@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://bu28rtcvibldl"]
 
 [ext_resource type="Script" uid="uid://ck6fwtmpc5riu" path="res://misc/Stations/Activators/activator.gd" id="1_n4wj6"]
-[ext_resource type="Resource" uid="uid://xyck3q0gr12o" path="res://misc/Content/Items/Wayfinder.tres" id="2_53e6p"]
 [ext_resource type="Texture2D" uid="uid://bvn1k3yr05y11" path="res://Assets/Textures/Shadows/Shadow.png" id="2_ifd3r"]
 [ext_resource type="Texture2D" uid="uid://76k3rd8s0r6e" path="res://Assets/Textures/Activator.png" id="3_53e6p"]
 [ext_resource type="Texture2D" uid="uid://fwrn3xk6rkdq" path="res://Assets/Textures/CrashedCapsulePart.png" id="3_jyyft"]
@@ -172,8 +171,6 @@ radius = 17.029387
 
 [node name="Activator" type="Node2D" unique_id=1665726688]
 script = ExtResource("1_n4wj6")
-activation_animation = "Аctivate"
-need_item = ExtResource("2_53e6p")
 
 [node name="CrashedCapsulePart" type="Sprite2D" parent="." unique_id=393945363]
 modulate = Color(0.6039216, 0.6039216, 0.6039216, 0.47058824)
@@ -200,7 +197,7 @@ libraries/ = SubResource("AnimationLibrary_1lcig")
 collision_layer = 128
 collision_mask = 256
 script = ExtResource("4_jyyft")
-show_message = "x 40"
+show_message = "poka nelzya aktivirirovat"
 icon_help = SubResource("AtlasTexture_7tlw0")
 metadata/_custom_type_script = "uid://btxho8sqg8tnx"
 
@@ -218,3 +215,9 @@ texture = ExtResource("8_7tlw0")
 position = Vector2(0, -7)
 pitch_scale = 0.74
 autoplay = true
+
+[node name="Timer" type="Timer" parent="." unique_id=137183247]
+wait_time = 7.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

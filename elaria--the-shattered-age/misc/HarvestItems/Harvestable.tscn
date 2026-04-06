@@ -6,7 +6,7 @@
 [ext_resource type="Script" uid="uid://c6tw2fkklnri5" path="res://misc/Drop/DropItem.gd" id="4_wrbgf"]
 [ext_resource type="Texture2D" uid="uid://dsqxjnpk365qg" path="res://Assets/Textures/Light/Light.png" id="5_w5cb6"]
 
-[node name="HarvestItem" type="Area2D" node_paths=PackedStringArray("VFX_component") groups=["Harvestable"]]
+[node name="HarvestItem" type="Area2D" unique_id=1934415035 node_paths=PackedStringArray("VFX_component") groups=["Harvestable"]]
 collision_layer = 19
 collision_mask = 136
 script = ExtResource("1_wrbgf")
@@ -14,28 +14,28 @@ durability = 15.0
 VFX_component = NodePath("VFX")
 metadata/_custom_type_script = "uid://ckghcn3me8e7p"
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1226065190]
 show_behind_parent = true
 z_index = -1
 disable_mode = 1
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=605264910]
 position = Vector2(0, -10.7399)
 debug_color = Color(0.99072, 0.0103639, 0.261337, 0.42)
 
-[node name="VFX" type="Node" parent="."]
+[node name="VFX" type="Node" parent="." unique_id=508582770]
 script = ExtResource("4_n1i2x")
 metadata/_custom_type_script = "uid://cyqd8atmamgy0"
 
-[node name="optimizer" type="VisibleOnScreenEnabler2D" parent="."]
+[node name="optimizer" type="VisibleOnScreenEnabler2D" parent="." unique_id=2100972979]
 script = ExtResource("3_8a784")
 metadata/_custom_type_script = "uid://dbxsovdq7bbia"
 
-[node name="droper" type="Node" parent="."]
+[node name="droper" type="Node" parent="." unique_id=1465568748]
 script = ExtResource("4_wrbgf")
 metadata/_custom_type_script = "uid://c6tw2fkklnri5"
 
-[node name="PointLight2D" type="PointLight2D" parent="."]
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=802892367]
 visible = false
 position = Vector2(0, -10)
 color = Color(0, 1, 1, 1)
@@ -43,6 +43,6 @@ energy = 0.6
 texture = ExtResource("5_w5cb6")
 texture_scale = 4.05
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1716306559]
 z_index = 6
 position = Vector2(0.54052, -10.5402)

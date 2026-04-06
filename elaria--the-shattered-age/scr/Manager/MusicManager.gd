@@ -9,6 +9,9 @@ var tracks : Dictionary = {}
 var current_scene : String = "MainMenu"
 var is_night      : bool   = false
 
+## Текущая громкость музыки (0.0 – 1.0). Устанавливается из SettingsManager.
+var music_volume  : float  = 1.0
+
 ## Длительность кроссфейда в секундах
 @export var fade_duration : float = 1.5
 
@@ -31,6 +34,10 @@ func _ready() -> void:
 	_player_b = AudioStreamPlayer.new()
 	add_child(_player_a)
 	add_child(_player_b)
+
+	# Привязываем оба плеера к шине BGM
+	_player_a.bus = "BGM"
+	_player_b.bus = "BGM"
 
 	_player_a.volume_db = linear_to_db(1.0)
 	_player_b.volume_db = linear_to_db(0.0)
@@ -81,12 +88,12 @@ func _crossfade_to_next() -> void:
 	_inactive.volume_db = linear_to_db(0.0)
 	_inactive.play()
 
-	# Запускаем tween
+	# Запускаем tween с учётом текущей громкости музыки
 	if _tween:
 		_tween.kill()
 	_tween = create_tween().set_parallel(true)
-	_tween.tween_property(_active,   "volume_db", linear_to_db(0.0), fade_duration)
-	_tween.tween_property(_inactive, "volume_db", linear_to_db(1.0), fade_duration)
+	_tween.tween_property(_active,   "volume_db", linear_to_db(0.0),          fade_duration)
+	_tween.tween_property(_inactive, "volume_db", linear_to_db(music_volume), fade_duration)
 
 	await _tween.finished
 
@@ -96,6 +103,14 @@ func _crossfade_to_next() -> void:
 	var tmp  = _active
 	_active   = _inactive
 	_inactive = tmp
+
+## Устанавливает громкость музыки (вызывается из SettingsManager)
+func set_music_volume(volume: float) -> void:
+	music_volume = clampf(volume, 0.0, 1.0)
+	# Применяем только к активному плееру.
+	# Неактивный (тихий) трогать не нужно — его громкость управляется tween-ом.
+	if _active and _active.playing:
+		_active.volume_db = linear_to_db(music_volume)
 
 func _fade_out_active() -> void:
 	if _tween:

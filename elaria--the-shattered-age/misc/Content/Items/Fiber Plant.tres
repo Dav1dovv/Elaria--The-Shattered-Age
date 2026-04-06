@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://qi3tp4umcncu"]
+
+[ext_resource type="Script" uid="uid://wm1t8anytdyq" path="res://scr/Resources/ItemData/ItemData.gd" id="1_kv4is"]
+[ext_resource type="Texture2D" uid="uid://cf3avrbvs0ues" path="res://Assets/Textures/SpriteSheets/Items-Sheet.png" id="1_ntlo6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v8ch8"]
+atlas = ExtResource("1_ntlo6")
+region = Rect2(144, 16, 16, 16)
+
+[resource]
+script = ExtResource("1_kv4is")
+icon = SubResource("AtlasTexture_v8ch8")
+item_name = "Fiber Plant"
+metadata/_custom_type_script = "uid://wm1t8anytdyq"

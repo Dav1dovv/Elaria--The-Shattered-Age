@@ -16,10 +16,15 @@
 [ext_resource type="Resource" uid="uid://c7aaoxy31ltp7" path="res://misc/Content/Recipes/WorkBench/pickaxe/rcp lead pickaxe .tres" id="18_vjhki"]
 [ext_resource type="Resource" uid="uid://dp4o26e2upfim" path="res://misc/Content/Recipes/WorkBench/pickaxe/rcp iron pickaxe.tres" id="20_j2bxu"]
 [ext_resource type="Resource" uid="uid://gkib8vp5bdwu" path="res://misc/Content/Recipes/WorkBench/swords/rcp gold sword.tres" id="21_j2bxu"]
+[ext_resource type="Resource" uid="uid://bkt7jnr5gkgk6" path="res://misc/Content/Recipes/Sciensist/rcp gold ingot.tres" id="22_3ua8p"]
 [ext_resource type="Resource" uid="uid://beyrqfxs2kaj0" path="res://misc/Content/Recipes/WorkBench/pickaxe/rcp gold pickaxe.tres" id="22_qm215"]
 [ext_resource type="Resource" uid="uid://btudfcis3rlg" path="res://misc/Content/Recipes/WorkBench/swords/rcp platinum sword.tres" id="23_6pkmi"]
+[ext_resource type="Resource" uid="uid://cnolmec4val18" path="res://misc/Content/Recipes/Sciensist/rcp iron ingot.tres" id="23_j7kds"]
+[ext_resource type="Resource" uid="uid://dmkwrb3l1o4n7" path="res://misc/Content/Recipes/Sciensist/rcp_lead ingot.tres" id="24_katqi"]
 [ext_resource type="Resource" uid="uid://yfhh8e1fryu6" path="res://misc/Content/Recipes/WorkBench/pickaxe/rcp platinum pickaxe.tres" id="24_q0wty"]
+[ext_resource type="Resource" uid="uid://ctkfyv3o7w1yq" path="res://misc/Content/Recipes/Sciensist/rpc_copper ingot.tres" id="25_6lp5d"]
 [ext_resource type="Resource" uid="uid://b3r7peyek6uxr" path="res://misc/Content/Recipes/WorkBench/swords/rsc diamond sword.tres" id="25_vpfof"]
+[ext_resource type="Resource" uid="uid://bxwkalfuoeqrw" path="res://misc/Content/Recipes/Sciensist/rcp platinum ingot.tres" id="26_1vkoa"]
 [ext_resource type="Resource" uid="uid://dqy1ikg8lyh8h" path="res://misc/Content/Recipes/WorkBench/pickaxe/rcp diamond pickaxe.tres" id="26_fueuc"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jhamk"]
@@ -190,7 +195,7 @@ alignment = 1
 
 [node name="Inventory" type="Panel" parent="HBoxContainer" unique_id=1430589918]
 visible = false
-custom_minimum_size = Vector2(122.17, 141)
+custom_minimum_size = Vector2(122.17, 167.185)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -334,6 +339,11 @@ script = ExtResource("3_08cpt")
 visible = false
 layout_mode = 2
 all_recipes = Array[ExtResource("9_30377")]([ExtResource("10_6lp5d"), ExtResource("11_1vkoa"), ExtResource("16_xo71i"), ExtResource("15_n80kw"), ExtResource("18_vjhki"), ExtResource("18_cq4sd"), ExtResource("20_j2bxu"), ExtResource("21_j2bxu"), ExtResource("22_qm215"), ExtResource("23_6pkmi"), ExtResource("24_q0wty"), ExtResource("25_vpfof"), ExtResource("26_fueuc")])
+
+[node name="sciencist" parent="HBoxContainer" unique_id=104361974 instance=ExtResource("8_d17u8")]
+visible = false
+layout_mode = 2
+all_recipes = Array[ExtResource("9_30377")]([ExtResource("22_3ua8p"), ExtResource("23_j7kds"), ExtResource("24_katqi"), ExtResource("25_6lp5d"), ExtResource("26_1vkoa")])
 
 [connection signal="mouse_entered" from="HBoxContainer/Inventory/VBoxContainer/GridContainer/TrashSlot" to="HBoxContainer/Inventory/VBoxContainer/GridContainer/TrashSlot" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="HBoxContainer/Inventory/VBoxContainer/GridContainer/TrashSlot" to="HBoxContainer/Inventory/VBoxContainer/GridContainer/TrashSlot" method="_on_mouse_exited"]

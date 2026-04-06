@@ -7,8 +7,6 @@
 [ext_resource type="Texture2D" uid="uid://cf3avrbvs0ues" path="res://Assets/Textures/SpriteSheets/Items-Sheet.png" id="5_h0w0q"]
 [ext_resource type="Texture2D" uid="uid://bvn1k3yr05y11" path="res://Assets/Textures/Shadows/Shadow.png" id="6_8ksjs"]
 [ext_resource type="Script" uid="uid://b2ovoyoflp1gw" path="res://scr/Resources/ItemData/Equip_item_data.gd" id="7_7g834"]
-[ext_resource type="Script" uid="uid://ctm4b4v8txo1q" path="res://scr/Resources/WeightItem.gd" id="8_h6rqw"]
-[ext_resource type="Script" uid="uid://wm1t8anytdyq" path="res://scr/Resources/ItemData/ItemData.gd" id="9_h6rqw"]
 
 [sub_resource type="Resource" id="Resource_gd51a"]
 script = ExtResource("2_dh3r4")
@@ -1507,29 +1505,12 @@ metadata/_custom_type_script = "uid://b2ovoyoflp1gw"
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dh3r4"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_4xexb"]
-atlas = ExtResource("5_h0w0q")
-region = Rect2(48, 16, 16, 16)
-
-[sub_resource type="Resource" id="Resource_h0w0q"]
-script = ExtResource("9_h6rqw")
-icon = SubResource("AtlasTexture_4xexb")
-item_name = "Wayfinder"
-metadata/_custom_type_script = "uid://wm1t8anytdyq"
-
-[sub_resource type="Resource" id="Resource_8ksjs"]
-script = ExtResource("8_h6rqw")
-item = SubResource("Resource_h0w0q")
-weight = 0.1
-metadata/_custom_type_script = "uid://ctm4b4v8txo1q"
-
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_h6rqw"]
 radius = 5.0
 height = 14.0
 
 [node name="Creature" unique_id=2111811093 node_paths=PackedStringArray("body_anim", "hand_anim", "Vfx_node") instance=ExtResource("1_owdma")]
 config = SubResource("Resource_gd51a")
-explore_points = 0.2
 body_anim = NodePath("Skin/Body/BodyAnim")
 hand_anim = NodePath("Skin/Body/Hand/AnimationPlayer")
 Entity_stats = SubResource("Resource_gkipm")
@@ -1627,7 +1608,6 @@ shape = SubResource("CircleShape2D_dh3r4")
 disabled = true
 
 [node name="Drop" parent="." index="5" unique_id=1421496829]
-unique_items = Array[ExtResource("8_h6rqw")]([SubResource("Resource_8ksjs")])
 max_drop = 5
 random_values = true
 

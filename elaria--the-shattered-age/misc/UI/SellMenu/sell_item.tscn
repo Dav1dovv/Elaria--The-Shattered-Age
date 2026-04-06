@@ -1,0 +1,92 @@
+[gd_scene format=3 uid="uid://v8iejh66poru"]
+
+[ext_resource type="Script" uid="uid://tbuigjmuhdnd" path="res://misc/UI/SellMenu/sell_item.gd" id="1_4n6x2"]
+[ext_resource type="Texture2D" uid="uid://cf3avrbvs0ues" path="res://Assets/Textures/SpriteSheets/Items-Sheet.png" id="1_a1ib5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_item"]
+atlas = ExtResource("1_a1ib5")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_coin"]
+atlas = ExtResource("1_a1ib5")
+region = Rect2(0, 32, 16, 16)
+
+;  Layout:  [ItemIcon + count]  [item name...]  [∞/stock]  [coin icon + price]  [BUY/SELL btn]
+
+[node name="SellItem" type="HBoxContainer"]
+custom_minimum_size = Vector2(260, 36)
+theme_override_constants/separation = 6
+script = ExtResource("1_4n6x2")
+
+; ── Иконка предмета ──────────────────────────────
+[node name="ItemIcon" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = SubResource("AtlasTexture_item")
+stretch_mode = 5
+
+[node name="ItemCount" type="Label" parent="ItemIcon"]
+layout_mode = 1
+anchors_preset = 4
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -12.0
+offset_top = -14.0
+offset_right = 12.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "1"
+theme_override_font_sizes/font_size = 9
+horizontal_alignment = 1
+
+; ── Заглушка-распорка ────────────────────────────
+[node name="Spacer" type="Control" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+
+; ── Stock label (BUY mode) ───────────────────────
+[node name="StockLabel" type="Label" parent="."]
+layout_mode = 2
+text = "∞"
+theme_override_font_sizes/font_size = 11
+visible = false
+
+; ── Цена ─────────────────────────────────────────
+[node name="PriceBox" type="HBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="CoinIcon" type="TextureRect" parent="PriceBox"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+texture = SubResource("AtlasTexture_coin")
+stretch_mode = 5
+
+[node name="PriceLabel" type="Label" parent="PriceBox/CoinIcon"]
+layout_mode = 1
+anchors_preset = 4
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -12.0
+offset_top = -14.0
+offset_right = 12.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "10"
+theme_override_font_sizes/font_size = 9
+horizontal_alignment = 1
+
+; ── Кнопка действия ──────────────────────────────
+[node name="ActionButton" type="Button" parent="."]
+custom_minimum_size = Vector2(52, 28)
+layout_mode = 2
+text = "SELL"
+theme_override_font_sizes/font_size = 11
+
+[connection signal="pressed" from="ActionButton" to="." method="_on_action_button_pressed"]
